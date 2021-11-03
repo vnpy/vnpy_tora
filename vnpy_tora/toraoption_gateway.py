@@ -1,5 +1,4 @@
 from typing import Dict, Tuple, List
-from vnpy.gateway.tora.stock_api.mdapi import TORA_TSTP_LACT_AccountID
 import pytz
 from datetime import datetime
 from dataclasses import dataclass
@@ -29,6 +28,7 @@ from vnpy.trader.constant import (
     OptionType
 )
 
+from .stock_api.mdapi import TORA_TSTP_LACT_AccountID
 from .option_api import (
     sptraderapi,
     spmdapi,
