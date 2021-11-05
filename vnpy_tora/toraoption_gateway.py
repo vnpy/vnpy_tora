@@ -1,4 +1,4 @@
-from typing import Dict, Tuple, List
+from typing import Dict, Tuple, List, Any
 import pytz
 from datetime import datetime
 from dataclasses import dataclass
@@ -169,7 +169,7 @@ class ToraOptionGateway(BaseGateway):
     vn.py用于对接华鑫奇点期权的交易接口。
     """
 
-    default_setting = {
+    default_setting: Dict[str, Any] = {
         "账号": "",
         "密码": "",
         "行情服务器": "",
@@ -628,7 +628,7 @@ class ToraTdApi(sptraderapi.CTORATstpSPTraderSpi):
         if not data:
             return
 
-        self.account_id = data["AccountID"]
+        self.account_id: str = data["AccountID"]
         account_data: AccountData = AccountData(
             gateway_name=self.gateway.gateway_name,
             accountid=data["AccountID"],
