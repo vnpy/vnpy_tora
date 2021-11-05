@@ -64,12 +64,7 @@ from .stock_api import (
     CTORATstpInputOrderField,
     CTORATstpInputOrderActionField,
     TORA_TSTP_PID_SHKC,
-    TORA_TSTP_OST_Unknown,
-    # TORA_TSTP_OST_Handled,
-    # TORA_TSTP_PD_Net,
-    # TORA_TSTP_PD_Long,
-    # TORA_TSTP_PD_Short,
-    # TORA_TSTP_OST_Failed,
+    TORA_TSTP_OST_Unknown
 )
 from .terminal_info import get_terminal_info
 
