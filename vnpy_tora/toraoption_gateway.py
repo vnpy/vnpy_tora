@@ -104,26 +104,26 @@ ORDER_TYPE_VT2TORA: Dict[OrderType, Tuple[str, str, str]] = {
 ORDER_TYPE_TORA2VT: Dict[Tuple[str, str, str], OrderType] = {
     v: k for k, v in ORDER_TYPE_VT2TORA.items()
 }
-ORDERTYPE_TORA2VT = {
+ORDERTYPE_TORA2VT: Dict[str, OrderType] = {
     TORA_TSTP_SP_OPT_LimitPrice: OrderType.LIMIT
 }
 
 # 多空方向映射
-DIRECTION_TORA2VT = {
+DIRECTION_TORA2VT: Dict[str, Direction] = {
     TORA_TSTP_SP_D_Buy: Direction.LONG,
     TORA_TSTP_SP_D_Sell: Direction.SHORT,
 }
-DIRECTION_VT2TORA = {v: k for k, v in DIRECTION_TORA2VT.items()}
+DIRECTION_VT2TORA: Dict[Direction, str] = {v: k for k, v in DIRECTION_TORA2VT.items()}
 
 # 交易所映射
-EXCHANGE_TORA2VT = {
+EXCHANGE_TORA2VT: Dict[str, Exchange] = {
     TORA_TSTP_SP_EXD_SSE: Exchange.SSE,
     TORA_TSTP_SP_EXD_SZSE: Exchange.SZSE,
 }
-EXCHANGE_VT2TORA = {v: k for k, v in EXCHANGE_TORA2VT.items()}
+EXCHANGE_VT2TORA: Dict[Exchange, str] = {v: k for k, v in EXCHANGE_TORA2VT.items()}
 
 # 产品类型映射
-PRODUCT_TORA2VT = {
+PRODUCT_TORA2VT: Dict[str, Product] = {
     TORA_TSTP_SP_PID_SHStock: Product.EQUITY,
     TORA_TSTP_SP_PID_SHFund: Product.FUND,
     TORA_TSTP_SP_PID_SHBond: Product.BOND,
@@ -135,21 +135,21 @@ PRODUCT_TORA2VT = {
 }
 
 # 持仓方向映射
-POSITION_TORA2VT = {
+POSITION_TORA2VT: Dict[str, Direction] = {
     TORA_TSTP_SP_PD_Net: Direction.NET,
     TORA_TSTP_SP_PD_Long: Direction.LONG,
     TORA_TSTP_SP_PD_Short: Direction.SHORT,
 }
 
 # 开平方向映射
-OFFSET_TORA2VT = {
+OFFSET_TORA2VT: Dict[str, Offset] = {
     TORA_TSTP_SP_OF_Open: Offset.OPEN,
     TORA_TSTP_SP_OF_Close: Offset.CLOSE
 }
-OFFSET_VT2TORA = {v: k for k, v in OFFSET_TORA2VT.items()}
+OFFSET_VT2TORA: Dict[Offset, str] = {v: k for k, v in OFFSET_TORA2VT.items()}
 
 # 期权类型映射
-OPTIONTYPE_TORA2VT = {
+OPTIONTYPE_TORA2VT: Dict[str, OptionType] = {
     TORA_TSTP_SP_CP_CallOptions: OptionType.CALL,
     TORA_TSTP_SP_CP_PutOptions: OptionType.PUT
 }
