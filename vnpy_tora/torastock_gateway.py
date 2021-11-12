@@ -36,9 +36,10 @@ from .stock_api import (
     TORA_TSTP_EXD_SZSE,
     TORA_TSTP_OPT_LimitPrice,
     TORA_TSTP_OST_AllTraded,
-    TORA_TSTP_OST_Canceled,
-    TORA_TSTP_OST_NoTradeQueueing,
-    TORA_TSTP_OST_PartTradedQueueing,
+    TORA_TSTP_OST_AllCanceled,
+    TORA_TSTP_OST_PartTradeCanceled, # 新加部分撤单
+    # TORA_TSTP_OST_NoTradeQueueing, # 新版把该状态删除了
+    TORA_TSTP_OST_PartTraded,
     TORA_TERT_RESTART,
     TORA_TSTP_LACT_UserID,
     TORA_TSTP_LACT_AccountID,
@@ -51,9 +52,9 @@ from .stock_api import (
     TORA_TSTP_TC_GFD,
     TORA_TSTP_VC_AV,
     TORA_TSTP_AF_Delete,
-    TORA_TSTP_HF_Speculation,
-    TORA_TSTP_OF_Open,
-    TORA_TSTP_OF_Close,
+    # TORA_TSTP_HF_Speculation,
+    # TORA_TSTP_OF_Open,
+    # TORA_TSTP_OF_Close,
     CTORATstpQrySecurityField,
     CTORATstpQryInvestorField,
     CTORATstpQryShareholderAccountField,
@@ -72,9 +73,10 @@ from .terminal_info import get_terminal_info
 # 委托状态映射
 ORDER_STATUS_TORA2VT: Dict[str, Status] = {
     TORA_TSTP_OST_AllTraded: Status.ALLTRADED,
-    TORA_TSTP_OST_PartTradedQueueing: Status.PARTTRADED,
-    TORA_TSTP_OST_NoTradeQueueing: Status.NOTTRADED,
-    TORA_TSTP_OST_Canceled: Status.CANCELLED,
+    TORA_TSTP_OST_PartTraded: Status.PARTTRADED,
+    # TORA_TSTP_OST_NoTradeQueueing: Status.NOTTRADED,
+    TORA_TSTP_OST_AllCanceled: Status.CANCELLED,
+    TORA_TSTP_OST_PartTradeCanceled:Status.CANCELLED,
     TORA_TSTP_OST_Unknown: Status.NOTTRADED,
 }
 
@@ -84,9 +86,7 @@ ORDER_TYPE_VT2TORA: Dict[OrderType, Tuple[str, str, str]] = {
         TORA_TSTP_OPT_LimitPrice, TORA_TSTP_TC_GFD, TORA_TSTP_VC_AV
     ),
 }
-ORDER_TYPE_TORA2VT: Dict[Tuple[str, str, str], OrderType] = {
-    v: k for k, v in ORDER_TYPE_VT2TORA.items()
-}
+
 ORDERTYPE_TORA2VT: Dict[str, OrderType] = {
     TORA_TSTP_OPT_LimitPrice: OrderType.LIMIT
 }
@@ -116,12 +116,6 @@ DIRECTION_TORA2VT: Dict[str, Direction] = {
 }
 DIRECTION_VT2TORA: Dict[Direction, str] = {v: k for k, v in DIRECTION_TORA2VT.items()}
 
-# 开平方向映射
-OFFSET_TORA2VT: Dict[str, Offset] = {
-    TORA_TSTP_OF_Open: Offset.OPEN,
-    TORA_TSTP_OF_Close: Offset.CLOSE
-}
-OFFSET_VT2TORA: Dict[Offset, str] = {v: k for k, v in OFFSET_TORA2VT.items()}
 
 # 其他常量
 CHINA_TZ = pytz.timezone("Asia/Shanghai")       # 中国时区
@@ -227,7 +221,7 @@ class ToraStockGateway(BaseGateway):
         self.event_engine.register(EVENT_TIMER, self.process_timer_event)
 
 
-class ToraMdApi(mdapi.CTORATstpMdSpi):
+class ToraMdApi(mdapi.CTORATstpXMdSpi):
 
     def __init__(self, gateway: ToraStockGateway) -> None:
         """构造函数"""
@@ -237,7 +231,7 @@ class ToraMdApi(mdapi.CTORATstpMdSpi):
         self.gateway_name: str = gateway.gateway_name
 
         self.reqid: int = 0
-        self.api: mdapi.CTORATstpMdApi_CreateTstpMdApi = None
+        self.api: mdapi.CTORATstpXMdApi_CreateTstpXMdApi = None
 
         self.connect_status: bool = False
         self.login_status: bool = False
@@ -297,7 +291,6 @@ class ToraMdApi(mdapi.CTORATstpMdSpi):
             f'{current_date}-{current_time}', "%Y%m%d-%H:%M:%S"
         )
         dt: datetime = CHINA_TZ.localize(dt)
-
         tick: TickData = TickData(
             symbol=data["SecurityID"],
             exchange=EXCHANGE_TORA2VT[bytes.decode(data["ExchangeID"])],
@@ -360,7 +353,7 @@ class ToraMdApi(mdapi.CTORATstpMdSpi):
 
         # 禁止重复发起连接，会导致异常崩溃
         if not self.connect_status:
-            self.api = mdapi.CTORATstpMdApi_CreateTstpMdApi()
+            self.api = mdapi.CTORATstpXMdApi_CreateTstpXMdApi()
 
             self.api.RegisterSpi(self)
 
