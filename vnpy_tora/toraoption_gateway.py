@@ -28,7 +28,7 @@ from vnpy.trader.constant import (
     OptionType
 )
 
-from .stock_api.mdapi import TORA_TSTP_LACT_AccountID
+from .stock_api.xmdapi import TORA_TSTP_LACT_AccountID
 from .option_api import (
     sptraderapi,
     spmdapi,
@@ -594,7 +594,6 @@ class ToraTdApi(sptraderapi.CTORATstpSPTraderSpi):
             pricetick=data["PriceTick"],
             min_volume=data["MinLimitOrderBuyVolume"],
             stop_supported=False,
-            net_position=True,
             history_data=False,
         )
 
@@ -726,6 +725,23 @@ class ToraTdApi(sptraderapi.CTORATstpSPTraderSpi):
             f"拒单({order_id}):"
             f"错误码:{error['ErrorID']}, 错误消息:{error['ErrorMsg']}"
         )
+    
+    def OnErrRtnOrderAction(self, data: dict, error: dict, reqid: int) -> None:
+        """"""
+        pass
+
+    def OnRtnCondOrder(self, data: dict) -> None:
+        """"""
+        pass
+
+    def OnRspOrderInsert(
+        self,
+        data: dict,
+        error: dict,
+        reqid: int,
+    ) -> None:
+        """"""
+        pass
 
     def connect(
         self,
