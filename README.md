@@ -5,8 +5,8 @@
 </p>
 
 <p align="center">
-    <img src ="https://img.shields.io/badge/version-2021.10.23-blueviolet.svg"/>
-    <img src ="https://img.shields.io/badge/platform-windows|linux|macos-yellow.svg"/>
+    <img src ="https://img.shields.io/badge/version-2021.12.5-blueviolet.svg"/>
+    <img src ="https://img.shields.io/badge/platform-windows|-yellow.svg"/>
     <img src ="https://img.shields.io/badge/python-3.7-blue.svg" />
     <img src ="https://img.shields.io/github/license/vnpy/vnpy.svg?color=orange"/>
 </p>
@@ -14,6 +14,7 @@
 ## 说明
 
 基于华鑫奇点的Python API开发，支持账户下的股票和期权交易。其中股票API的版本为：
+
 - level1行情：API_Python3.7_行情_v1.0.0_20210924；
 - level2行情：API_Python3.7_v4.0.0_20210426；
 - 交易：API_Python3.7_交易_v4.0.2_20211103。
@@ -46,10 +47,7 @@ from vnpy.event import EventEngine
 from vnpy.trader.engine import MainEngine
 from vnpy.trader.ui import MainWindow, create_qapp
 
-from vnpy_tora import (
-    ToraOptionGateway,
-    ToraStockGateway
-)
+from vnpy_tora import ToraOptionGateway, ToraStockGateway
 
 
 def main():
