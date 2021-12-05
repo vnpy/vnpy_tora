@@ -6,7 +6,7 @@
 
 <p align="center">
     <img src ="https://img.shields.io/badge/version-2021.12.5-blueviolet.svg"/>
-    <img src ="https://img.shields.io/badge/platform-windows|-yellow.svg"/>
+    <img src ="https://img.shields.io/badge/platform-windows-yellow.svg"/>
     <img src ="https://img.shields.io/badge/python-3.7-blue.svg" />
     <img src ="https://img.shields.io/github/license/vnpy/vnpy.svg?color=orange"/>
 </p>
@@ -17,12 +17,14 @@
 
 股票API的版本为：
 
-- Level1行情：API_Python3.7_行情_v1.0.0_20210924；
-- Level2行情：API_Python3.7_v4.0.0_20210426；
-- 交易：API_Python3.7_交易_v4.0.2_20211103。
+- Level1行情：API_Python3.7_行情_v1.0.0_20210924
+- Level2行情：API_Python3.7_v4.0.0_20210426
+- 交易：API_Python3.7_交易_v4.0.2_20211103
 
 期权的API版本为：
 - API_Python3.7_v1.2.6_20200319
+
+API版本的详细信息，请参考[奇点官网](https://n-sight.com.cn/)。
 
 ## 安装
 
