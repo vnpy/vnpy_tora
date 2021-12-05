@@ -22,8 +22,7 @@
 
 import importlib_metadata
 
-from .toraoption_gateway import ToraOptionGateway
-from .torastock_gateway import ToraStockGateway
+from .gateway import ToraStockGateway, ToraOptionGateway
 
 
 try:
