@@ -272,6 +272,8 @@ class ToraMdApi(xmdapi.CTORATstpXMdSpi):
         self.password: str = ""
         self.address: str = ""
 
+        self.current_date: str = datetime.now().strftime("%Y%m%d")
+
     def OnFrontConnected(self) -> None:
         """服务器连接成功回报"""
         self.gateway.write_log("行情服务器连接成功")
@@ -433,6 +435,8 @@ class ToraL2Api(lev2mdapi.CTORATstpLev2MdSpi):
         self.userid: str = ""
         self.password: str = ""
         self.address: str = ""
+
+        self.current_date: str = datetime.now().strftime("%Y%m%d")
 
     def OnFrontConnected(self) -> None:
         """服务器连接成功回报"""
@@ -629,7 +633,6 @@ class ToraTdApi(traderapi.CTORATstpTraderSpi):
         self.sessionid: int = 0
 
         self.sysid_orderid_map: Dict[str, str] = {}
-        self.orders: Dict[str, OrderInfo] = {}
 
     def OnFrontConnected(self) -> None:
         """服务器连接成功回报"""
@@ -703,13 +706,6 @@ class ToraTdApi(traderapi.CTORATstpTraderSpi):
         self.gateway.on_order(order)
 
         self.sysid_orderid_map[data.OrderSysID] = order_id
-
-        self.orders[order_id] = OrderInfo(
-            order_ref,
-            exchange,
-            sessionid,
-            frontid,
-        )
 
     def OnRtnTrade(self, data: CTORATstpTradeField) -> None:
         """成交数据推送"""
@@ -826,12 +822,11 @@ class ToraTdApi(traderapi.CTORATstpTraderSpi):
 
         volume: int = data.TodayBSPos
         if volume == 0:
-            price = data.TotalPosCost
+            price = data.TotalPosCost / data.HistoryPos
         else:
-            price = data.TotalPosCost / volume
+            price = data.TotalPosCost / (volume + data.HistoryPos)
 
-        frozen: int = data.HistoryPosFrozen + data.TodayBSPosFrozen + \
-            data.TodayPRPosFrozen
+        frozen: int = data.HistoryPosFrozen + data.TodayBSPosFrozen + data.TodayPRPosFrozen
         position_data: PositionData = PositionData(
             gateway_name=self.gateway.gateway_name,
             symbol=data.SecurityID,
@@ -963,7 +958,7 @@ class ToraTdApi(traderapi.CTORATstpTraderSpi):
     def send_order(self, req: OrderRequest):
         """委托下单"""
         self.reqid += 1
-        order_ref: int = self._get_new_order_id()
+        self.order_ref += 1
 
         opt, tc, vc = ORDER_TYPE_VT2TORA[req.type]
 
@@ -971,7 +966,7 @@ class ToraTdApi(traderapi.CTORATstpTraderSpi):
         info.ShareholderID = self.shareholder_ids[req.exchange]
         info.SecurityID = req.symbol
         info.ExchangeID = EXCHANGE_VT2TORA[req.exchange]
-        info.OrderRef = order_ref
+        info.OrderRef = self.order_ref
         info.OrderPriceType = opt
         info.Direction = DIRECTION_VT2TORA[req.direction]
         info.LimitPrice = req.price
@@ -979,47 +974,27 @@ class ToraTdApi(traderapi.CTORATstpTraderSpi):
         info.TimeCondition = tc
         info.VolumeCondition = vc
 
-        order_id: str = f"{self.frontid}_{self.sessionid}_{order_ref}"
-
-        self.orders[order_id] = OrderInfo(
-            order_ref,
-            EXCHANGE_VT2TORA[req.exchange],
-            self.sessionid,
-            self.frontid,
-        )
-        self.gateway.on_order(
-            req.create_order_data(order_id, self.gateway.gateway_name)
-        )
         self.api.ReqOrderInsert(info, self.reqid)
 
+        order_id: str = f"{self.frontid}_{self.sessionid}_{self.order_ref}"
+        order: OrderData = req.create_order_data(order_id, self.gateway_name)
+        self.gateway.on_order(order)
+        
         return f"{self.gateway_name}.{order_id}"
 
     def cancel_order(self, req: CancelRequest) -> None:
         """委托撤单"""
         self.reqid += 1
+        self.order_ref += 1
         info = CTORATstpInputOrderActionField()
         info.ExchangeID = EXCHANGE_VT2TORA[req.exchange]
         info.SecurityID = req.symbol
 
-        order_info: OrderInfo = self.orders[req.orderid]
-        info.OrderRef = order_info.local_order_id
-        info.FrontID = order_info.front_id
-        info.SessionID = order_info.session_id
+        frontid, sessionid, order_ref = req.orderid.split("_")
+        info.OrderRef = int(order_ref)
+        info.FrontID = int(frontid)
+        info.SessionID = int(sessionid)
         info.ActionFlag = TORA_TSTP_AF_Delete
+        info.OrderActionRef = self.order_ref
 
         self.api.ReqOrderAction(info, self.reqid)
-
-    def _get_new_order_id(self) -> int:
-        """生成本地委托号"""
-        self.localid += 1
-        order_id = self.localid
-        return order_id
-
-
-@dataclass()
-class OrderInfo:
-    """储存委托信息"""
-    local_order_id: str
-    exchange_id: str
-    session_id: int
-    front_id: int
