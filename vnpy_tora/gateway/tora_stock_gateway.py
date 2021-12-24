@@ -1,7 +1,6 @@
-from typing import Callable, Dict, Tuple, Any, List
+from typing import Callable, Dict, Set, Tuple, Any, List
 import pytz
 from datetime import datetime
-from dataclasses import dataclass
 from vnpy.event.engine import Event
 
 from vnpy.trader.gateway import BaseGateway
@@ -57,7 +56,6 @@ from vnpy_tora.api.stock import (
     TORA_TSTP_TC_GFD,
     TORA_TSTP_VC_AV,
     TORA_TSTP_AF_Delete,
-
     CTORATstpQrySecurityField,
     CTORATstpQryInvestorField,
     CTORATstpQryShareholderAccountField,
@@ -78,9 +76,7 @@ from vnpy_tora.api.stock import (
     CTORATstpShareholderAccountField,
     CTORATstpInvestorField,
     CTORATstpPositionField,
-
     CTORATstpLev2MarketDataField,
-
     TORA_TSTP_PID_SHKC,
     TORA_TSTP_OST_Unknown
 )
@@ -99,10 +95,9 @@ ORDER_STATUS_TORA2VT: Dict[str, Status] = {
 }
 
 # 委托类型映射
-ORDER_TYPE_VT2TORA: Dict[OrderType, Tuple[str, str, str]] = {
+ORDER_TYPE_VT2TORA: Dict[OrderType, Tuple] = {
     OrderType.LIMIT: (TORA_TSTP_OPT_LimitPrice, TORA_TSTP_TC_GFD, TORA_TSTP_VC_AV),
 }
-
 ORDERTYPE_TORA2VT: Dict[str, OrderType] = {
     TORA_TSTP_OPT_LimitPrice: OrderType.LIMIT
 }
@@ -266,7 +261,7 @@ class ToraMdApi(xmdapi.CTORATstpXMdSpi):
 
         self.connect_status: bool = False
         self.login_status: bool = False
-        self.subscribed: List[str] = set()
+        self.subscribed: Set = set()
 
         self.userid: str = ""
         self.password: str = ""
@@ -321,7 +316,6 @@ class ToraMdApi(xmdapi.CTORATstpXMdSpi):
             exchange=EXCHANGE_TORA2VT[data.ExchangeID],
             datetime=dt,
             name=data.SecurityName,
-            volume=0,
             turnover=data.Turnover,
             open_interest=data.OpenInterest,
             last_price=data.LastPrice,
@@ -430,7 +424,7 @@ class ToraL2Api(lev2mdapi.CTORATstpLev2MdSpi):
 
         self.connect_status: bool = False
         self.login_status: bool = False
-        self.subscribed: List[str] = set()
+        self.subscribed: Set = set()
 
         self.userid: str = ""
         self.password: str = ""
@@ -494,7 +488,7 @@ class ToraL2Api(lev2mdapi.CTORATstpLev2MdSpi):
             )
         else:
             if current_datetime.startswith('1'):
-                dt = datetime.strptime(
+                dt: datetime = datetime.strptime(
                     f"{current_date}-{current_datetime[:2]}:{current_datetime[2:4]}:{current_datetime[4:6]}",
                     "%Y%m%d-%H:%M:%S"
                 )
@@ -512,9 +506,7 @@ class ToraL2Api(lev2mdapi.CTORATstpLev2MdSpi):
             name=data["SecurityID"],
             volume=data["TotalVolumeTrade"],
             turnover=data["TotalValueTrade"],
-            open_interest=0,
             last_price=data["LastPrice"],
-            last_volume=0,
             limit_up=data["UpperLimitPrice"],
             limit_down=data["LowerLimitPrice"],
             open_price=data["OpenPrice"],
@@ -745,7 +737,7 @@ class ToraTdApi(traderapi.CTORATstpTraderSpi):
             return
 
         contract_data: ContractData = ContractData(
-            gateway_name=self.gateway.gateway_name,
+            gateway_name=self.gateway_name,
             symbol=data.SecurityID,
             exchange=EXCHANGE_TORA2VT[data.ExchangeID],
             name=data.SecurityName,
@@ -753,9 +745,7 @@ class ToraTdApi(traderapi.CTORATstpTraderSpi):
             size=data.VolumeMultiple,
             pricetick=data.PriceTick,
             min_volume=data.MinLimitOrderBuyVolume,
-            stop_supported=False,
             net_position=True,
-            history_data=False,
         )
         self.gateway.on_contract(contract_data)
 
@@ -772,7 +762,7 @@ class ToraTdApi(traderapi.CTORATstpTraderSpi):
 
         self.account_id: str = data.AccountID
         account_data: AccountData = AccountData(
-            gateway_name=self.gateway.gateway_name,
+            gateway_name=self.gateway_name,
             accountid=data.AccountID,
             balance=data.UsefulMoney,
             frozen=data.FrozenCash + data.FrozenCommission
@@ -828,14 +818,13 @@ class ToraTdApi(traderapi.CTORATstpTraderSpi):
 
         frozen: int = data.HistoryPosFrozen + data.TodayBSPosFrozen + data.TodayPRPosFrozen
         position_data: PositionData = PositionData(
-            gateway_name=self.gateway.gateway_name,
+            gateway_name=self.gateway_name,
             symbol=data.SecurityID,
             exchange=EXCHANGE_TORA2VT[data.ExchangeID],
             direction=Direction.NET,
             volume=volume,
             frozen=frozen,
             price=price,
-            pnl=0,
             yd_volume=data.HistoryPos,
         )
         self.gateway.on_position(position_data)
@@ -855,7 +844,6 @@ class ToraTdApi(traderapi.CTORATstpTraderSpi):
             direction=Direction.NET,
             price=data.LimitPrice,
             volume=data.VolumeTotalOriginal,
-            traded=0,
             status=Status.REJECTED,
             datetime=dt,
             gateway_name=self.gateway_name
