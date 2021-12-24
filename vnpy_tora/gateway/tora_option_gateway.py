@@ -834,6 +834,8 @@ class ToraTdApi(sptraderapi.CTORATstpSPTraderSpi):
     def cancel_order(self, req: CancelRequest) -> None:
         """委托撤单"""
         self.reqid += 1
+        self.order_ref += 1
+
         info = CTORATstpSPInputOrderActionField()
         info.InvestorID = self.investor_id
         info.ExchangeID = EXCHANGE_VT2TORA[req.exchange]
@@ -844,6 +846,7 @@ class ToraTdApi(sptraderapi.CTORATstpSPTraderSpi):
         info.FrontID = int(frontid)
         info.SessionID = int(sessionid)
         info.OrderActionFlag = TORA_TSTP_SP_OAF_Delete
+        info.OrderActionRef = self.order_ref
 
         self.api.ReqOrderAction(info, self.reqid)
 
@@ -871,4 +874,3 @@ def get_option_index(strike_price: float, exchange_instrument_id: str) -> str:
     option_index: str = f"{strike_price:.3f}-{index}"
 
     return option_index
-

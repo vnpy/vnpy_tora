@@ -87,10 +87,10 @@ from .terminal_info import get_terminal_info
 ORDER_STATUS_TORA2VT: Dict[str, Status] = {
     TORA_TSTP_OST_AllTraded: Status.ALLTRADED,
     TORA_TSTP_OST_PartTraded: Status.PARTTRADED,
-    TORA_TSTP_OST_Accepted: Status.SUBMITTING,
+    TORA_TSTP_OST_Accepted: Status.NOTTRADED,
     TORA_TSTP_OST_AllCanceled: Status.CANCELLED,
     TORA_TSTP_OST_PartTradeCanceled: Status.CANCELLED,
-    TORA_TSTP_OST_Unknown: Status.NOTTRADED,
+    TORA_TSTP_OST_Unknown: Status.SUBMITTING,
     TORA_TSTP_OST_Rejected: Status.REJECTED,
 }
 
@@ -967,13 +967,14 @@ class ToraTdApi(traderapi.CTORATstpTraderSpi):
         order_id: str = f"{self.frontid}_{self.sessionid}_{self.order_ref}"
         order: OrderData = req.create_order_data(order_id, self.gateway_name)
         self.gateway.on_order(order)
-        
+
         return f"{self.gateway_name}.{order_id}"
 
     def cancel_order(self, req: CancelRequest) -> None:
         """委托撤单"""
         self.reqid += 1
         self.order_ref += 1
+
         info = CTORATstpInputOrderActionField()
         info.ExchangeID = EXCHANGE_VT2TORA[req.exchange]
         info.SecurityID = req.symbol
