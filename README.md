@@ -28,7 +28,7 @@ API版本的详细信息，请参考[奇点官网](https://n-sight.com.cn/)。
 
 ## 安装
 
-安装需要基于2.8.0版本以上的[VN Studio](https://www.vnpy.com)。
+安装需要基于3.0.0版本以上的[VN Studio](https://www.vnpy.com)。
 
 直接使用pip命令：
 
