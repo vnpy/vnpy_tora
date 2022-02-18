@@ -148,6 +148,8 @@ class ToraStockGateway(BaseGateway):
     vn.py用于对接华鑫奇点股票的交易接口。
     """
 
+    default_name: str = "TORASTOCK"
+
     default_setting: Dict[str, Any] = {
         "账号": "",
         "密码": "",
@@ -160,7 +162,7 @@ class ToraStockGateway(BaseGateway):
 
     exchanges: List[str] = list(EXCHANGE_VT2TORA.keys())
 
-    def __init__(self, event_engine: EventEngine, gateway_name: str = "TORASTOCK") -> None:
+    def __init__(self, event_engine: EventEngine, gateway_name: str) -> None:
         """构造函数"""
         super().__init__(event_engine, gateway_name)
 
