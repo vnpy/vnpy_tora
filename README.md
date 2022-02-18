@@ -39,7 +39,7 @@ pip install vnpy_tora
 下载解压后在cmd中运行
 
 ```
-python setup.py install
+pip install -e .
 ```
 
 ## 使用
