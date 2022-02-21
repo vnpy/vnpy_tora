@@ -145,7 +145,7 @@ LEVEL2 = "Level2"
 
 class ToraStockGateway(BaseGateway):
     """
-    vn.py用于对接华鑫奇点股票的交易接口。
+    VeighNa用于对接华鑫奇点股票的交易接口。
     """
 
     default_name: str = "TORASTOCK"

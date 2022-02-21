@@ -1,11 +1,11 @@
-# vn.py框架的华鑫奇点柜台接口
+# VeighNa框架的华鑫奇点柜台接口
 
 <p align="center">
   <img src ="https://vnpy.oss-cn-shanghai.aliyuncs.com/vnpy-logo.png"/>
 </p>
 
 <p align="center">
-    <img src ="https://img.shields.io/badge/version-2021.12.24-blueviolet.svg"/>
+    <img src ="https://img.shields.io/badge/version-2022.2.21-blueviolet.svg"/>
     <img src ="https://img.shields.io/badge/platform-windows-yellow.svg"/>
     <img src ="https://img.shields.io/badge/python-3.7-blue.svg" />
     <img src ="https://img.shields.io/github/license/vnpy/vnpy.svg?color=orange"/>
@@ -28,7 +28,7 @@ API版本的详细信息，请参考[奇点官网](https://n-sight.com.cn/)。
 
 ## 安装
 
-安装需要基于3.0.0版本以上的[VN Studio](https://www.vnpy.com)。
+安装环境推荐基于3.0.0版本以上的【[**VeighNa Studio**](https://www.vnpy.com)】。
 
 直接使用pip命令：
 
@@ -36,10 +36,10 @@ API版本的详细信息，请参考[奇点官网](https://n-sight.com.cn/)。
 pip install vnpy_tora
 ```
 
-下载解压后在cmd中运行
+或者下载源代码后，解压后在cmd中运行：
 
 ```
-pip install -e .
+pip install .
 ```
 
 ## 使用

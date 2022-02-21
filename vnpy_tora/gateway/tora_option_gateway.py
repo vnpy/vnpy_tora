@@ -165,7 +165,7 @@ ADDRESS_FENS = "FENS地址"
 
 class ToraOptionGateway(BaseGateway):
     """
-    vn.py用于对接华鑫奇点期权的交易接口。
+    VeighNa用于对接华鑫奇点期权的交易接口。
     """
 
     default_name: str = "TORAOPTION"
