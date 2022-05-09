@@ -106,7 +106,7 @@ ORDERTYPE_TORA2VT: Dict[str, OrderType] = {
 EXCHANGE_TORA2VT: Dict[str, Exchange] = {
     TORA_TSTP_EXD_SSE: Exchange.SSE,
     TORA_TSTP_EXD_SZSE: Exchange.SZSE,
-    TORA_TSTP_EXD_HK: Exchange.HKSE,
+    TORA_TSTP_EXD_HK: Exchange.SEHK,
     TORA_TSTP_EXD_BSE: Exchange.BSE,
 }
 EXCHANGE_VT2TORA: Dict[Exchange, str] = {v: k for k, v in EXCHANGE_TORA2VT.items()}

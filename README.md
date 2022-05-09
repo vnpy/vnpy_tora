@@ -5,7 +5,7 @@
 </p>
 
 <p align="center">
-    <img src ="https://img.shields.io/badge/version-2022.2.21-blueviolet.svg"/>
+    <img src ="https://img.shields.io/badge/version-2022.5.9-blueviolet.svg"/>
     <img src ="https://img.shields.io/badge/platform-windows-yellow.svg"/>
     <img src ="https://img.shields.io/badge/python-3.7-blue.svg" />
     <img src ="https://img.shields.io/github/license/vnpy/vnpy.svg?color=orange"/>
@@ -17,9 +17,9 @@
 
 股票API的版本为：
 
-- Level1行情：API_Python3.7_行情_v1.0.0_20210924
+- Level1行情：API_Python3.7_行情_v1.0.3_20220303
 - Level2行情：API_Python3.7_v4.0.0_20210426
-- 交易：API_Python3.7_交易_v4.0.2_20211103
+- 交易：API_Python3.7_交易_v4.0.3_20220222
 
 期权的API版本为：
 - API_Python3.7_v1.2.6_20200319

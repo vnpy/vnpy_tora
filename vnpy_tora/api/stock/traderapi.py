@@ -1024,139 +1024,6 @@ TORA_TSTP_FUT_Normal = cvar.TORA_TSTP_FUT_Normal
 TORA_TSTP_FUT_Mother = cvar.TORA_TSTP_FUT_Mother
 # 分级子基金
 TORA_TSTP_FUT_Sub = cvar.TORA_TSTP_FUT_Sub
-TORA_TSTP_FID_NAN = cvar.TORA_TSTP_FID_NAN
-TORA_TSTP_FID_OrderInsert = cvar.TORA_TSTP_FID_OrderInsert
-TORA_TSTP_FID_OrderAction = cvar.TORA_TSTP_FID_OrderAction
-TORA_TSTP_FID_CollateralInJZ = cvar.TORA_TSTP_FID_CollateralInJZ
-TORA_TSTP_FID_MoveFund = cvar.TORA_TSTP_FID_MoveFund
-TORA_TSTP_FID_TransferFund = cvar.TORA_TSTP_FID_TransferFund
-TORA_TSTP_FID_RepealFund = cvar.TORA_TSTP_FID_RepealFund
-TORA_TSTP_FID_RepealPosition = cvar.TORA_TSTP_FID_RepealPosition
-TORA_TSTP_FID_MovePosition = cvar.TORA_TSTP_FID_MovePosition
-TORA_TSTP_FID_CondOrderInsert = cvar.TORA_TSTP_FID_CondOrderInsert
-TORA_TSTP_FID_CondOrderAction = cvar.TORA_TSTP_FID_CondOrderAction
-TORA_TSTP_FID_DesignationRegistration = cvar.TORA_TSTP_FID_DesignationRegistration
-TORA_TSTP_FID_CustodyTransfer = cvar.TORA_TSTP_FID_CustodyTransfer
-TORA_TSTP_FID_ForceDelete = cvar.TORA_TSTP_FID_ForceDelete
-TORA_TSTP_FID_RiskManage = cvar.TORA_TSTP_FID_RiskManage
-TORA_TSTP_FID_RecordOperateLog = cvar.TORA_TSTP_FID_RecordOperateLog
-TORA_TSTP_FID_UploadTradeData = cvar.TORA_TSTP_FID_UploadTradeData
-TORA_TSTP_FID_NegoOrderInsert = cvar.TORA_TSTP_FID_NegoOrderInsert
-TORA_TSTP_FID_NegoOrderAction = cvar.TORA_TSTP_FID_NegoOrderAction
-TORA_TSTP_FID_ForceDeleteNego = cvar.TORA_TSTP_FID_ForceDeleteNego
-TORA_TSTP_FID_ReviewAdjustFund = cvar.TORA_TSTP_FID_ReviewAdjustFund
-TORA_TSTP_FID_ReviewAdjustPosition = cvar.TORA_TSTP_FID_ReviewAdjustPosition
-TORA_TSTP_FID_ReviewBrokerUserManage = cvar.TORA_TSTP_FID_ReviewBrokerUserManage
-TORA_TSTP_FID_ReviewCustomerInfoManage = cvar.TORA_TSTP_FID_ReviewCustomerInfoManage
-TORA_TSTP_FID_ReviewBrokerUserRoleManage = cvar.TORA_TSTP_FID_ReviewBrokerUserRoleManage
-TORA_TSTP_FID_ReviewAdjustCacheChannel = cvar.TORA_TSTP_FID_ReviewAdjustCacheChannel
-TORA_TSTP_FID_ReviewAdjustTradingAccount = cvar.TORA_TSTP_FID_ReviewAdjustTradingAccount
-TORA_TSTP_FID_AdjustSecurity = cvar.TORA_TSTP_FID_AdjustSecurity
-TORA_TSTP_FID_AdjustSystemParam = cvar.TORA_TSTP_FID_AdjustSystemParam
-TORA_TSTP_FID_AppRunManage = cvar.TORA_TSTP_FID_AppRunManage
-TORA_TSTP_FID_MarketDataManage = cvar.TORA_TSTP_FID_MarketDataManage
-TORA_TSTP_FID_TerminalInfoManage = cvar.TORA_TSTP_FID_TerminalInfoManage
-TORA_TSTP_FID_IPOManage = cvar.TORA_TSTP_FID_IPOManage
-TORA_TSTP_FID_CustomerManage = cvar.TORA_TSTP_FID_CustomerManage
-TORA_TSTP_FID_TraderManage = cvar.TORA_TSTP_FID_TraderManage
-TORA_TSTP_FID_DepartmentInfoManage = cvar.TORA_TSTP_FID_DepartmentInfoManage
-TORA_TSTP_FID_BrokerUserManage = cvar.TORA_TSTP_FID_BrokerUserManage
-TORA_TSTP_FID_BrokerUserRoleManage = cvar.TORA_TSTP_FID_BrokerUserRoleManage
-TORA_TSTP_FID_CustomerTradingParamManage = cvar.TORA_TSTP_FID_CustomerTradingParamManage
-TORA_TSTP_FID_BrokerTradingParamManage = cvar.TORA_TSTP_FID_BrokerTradingParamManage
-TORA_TSTP_FID_AdjustFund = cvar.TORA_TSTP_FID_AdjustFund
-TORA_TSTP_FID_UpdateBrokerUserPassword = cvar.TORA_TSTP_FID_UpdateBrokerUserPassword
-TORA_TSTP_FID_AdjustBrokerUserFunction = cvar.TORA_TSTP_FID_AdjustBrokerUserFunction
-TORA_TSTP_FID_ForceBrokerUserLogout = cvar.TORA_TSTP_FID_ForceBrokerUserLogout
-TORA_TSTP_FID_ForceBrokerUserExit = cvar.TORA_TSTP_FID_ForceBrokerUserExit
-TORA_TSTP_FID_ActiveBrokerUser = cvar.TORA_TSTP_FID_ActiveBrokerUser
-TORA_TSTP_FID_AdjustPosition = cvar.TORA_TSTP_FID_AdjustPosition
-TORA_TSTP_FID_AdjustCacheChannel = cvar.TORA_TSTP_FID_AdjustCacheChannel
-TORA_TSTP_FID_NodeInfoManage = cvar.TORA_TSTP_FID_NodeInfoManage
-TORA_TSTP_FID_DynamicPasswordManage = cvar.TORA_TSTP_FID_DynamicPasswordManage
-TORA_TSTP_FID_TradingAccountManage = cvar.TORA_TSTP_FID_TradingAccountManage
-TORA_TSTP_FID_QryTrader = cvar.TORA_TSTP_FID_QryTrader
-TORA_TSTP_FID_QryMarketData = cvar.TORA_TSTP_FID_QryMarketData
-TORA_TSTP_FID_QrySecurity = cvar.TORA_TSTP_FID_QrySecurity
-TORA_TSTP_FID_QryDepartmentInfo = cvar.TORA_TSTP_FID_QryDepartmentInfo
-TORA_TSTP_FID_QryBrokerUserInfo = cvar.TORA_TSTP_FID_QryBrokerUserInfo
-TORA_TSTP_FID_QryBrokerUserRole = cvar.TORA_TSTP_FID_QryBrokerUserRole
-TORA_TSTP_FID_QryCustomerInfo = cvar.TORA_TSTP_FID_QryCustomerInfo
-TORA_TSTP_FID_QryOrder = cvar.TORA_TSTP_FID_QryOrder
-TORA_TSTP_FID_QryTrade = cvar.TORA_TSTP_FID_QryTrade
-TORA_TSTP_FID_QryTradingAccount = cvar.TORA_TSTP_FID_QryTradingAccount
-TORA_TSTP_FID_QryPositon = cvar.TORA_TSTP_FID_QryPositon
-TORA_TSTP_FID_QryCustomerTradingParam = cvar.TORA_TSTP_FID_QryCustomerTradingParam
-TORA_TSTP_FID_QryIPORelateInfo = cvar.TORA_TSTP_FID_QryIPORelateInfo
-TORA_TSTP_FID_QryOrderFundDetail = cvar.TORA_TSTP_FID_QryOrderFundDetail
-TORA_TSTP_FID_QryFundTransferDetail = cvar.TORA_TSTP_FID_QryFundTransferDetail
-TORA_TSTP_FID_QryPositionTransferDetail = cvar.TORA_TSTP_FID_QryPositionTransferDetail
-TORA_TSTP_FID_QryBrokerTradingParam = cvar.TORA_TSTP_FID_QryBrokerTradingParam
-TORA_TSTP_FID_QryTradingNotice = cvar.TORA_TSTP_FID_QryTradingNotice
-TORA_TSTP_FID_QryTradeEvent = cvar.TORA_TSTP_FID_QryTradeEvent
-TORA_TSTP_FID_QrySystemParam = cvar.TORA_TSTP_FID_QrySystemParam
-TORA_TSTP_FID_QryAppInfo = cvar.TORA_TSTP_FID_QryAppInfo
-TORA_TSTP_FID_QryAdjustFund = cvar.TORA_TSTP_FID_QryAdjustFund
-TORA_TSTP_FID_QryAdjustPosition = cvar.TORA_TSTP_FID_QryAdjustPosition
-TORA_TSTP_FID_QryAdjustCacheChannel = cvar.TORA_TSTP_FID_QryAdjustCacheChannel
-TORA_TSTP_FID_QryAdjustBrokerUser = cvar.TORA_TSTP_FID_QryAdjustBrokerUser
-TORA_TSTP_FID_QryAdjustCustomerInfo = cvar.TORA_TSTP_FID_QryAdjustCustomerInfo
-TORA_TSTP_FID_QryAdjustBrokerUserRole = cvar.TORA_TSTP_FID_QryAdjustBrokerUserRole
-TORA_TSTP_FID_QryNodeInfo = cvar.TORA_TSTP_FID_QryNodeInfo
-TORA_TSTP_FID_QryDynamicPasswordInfo = cvar.TORA_TSTP_FID_QryDynamicPasswordInfo
-TORA_TSTP_FID_QryAdjustTradingAccount = cvar.TORA_TSTP_FID_QryAdjustTradingAccount
-TORA_TSTP_FID_EmergencyDbmt = cvar.TORA_TSTP_FID_EmergencyDbmt
-TORA_TSTP_FID_DumpTrader = cvar.TORA_TSTP_FID_DumpTrader
-TORA_TSTP_FID_DumpMarketData = cvar.TORA_TSTP_FID_DumpMarketData
-TORA_TSTP_FID_DumpSecurity = cvar.TORA_TSTP_FID_DumpSecurity
-TORA_TSTP_FID_DumpDepartmentInfo = cvar.TORA_TSTP_FID_DumpDepartmentInfo
-TORA_TSTP_FID_DumpBrokerUserInfo = cvar.TORA_TSTP_FID_DumpBrokerUserInfo
-TORA_TSTP_FID_DumpBrokerUserRole = cvar.TORA_TSTP_FID_DumpBrokerUserRole
-TORA_TSTP_FID_DumpCustomerInfo = cvar.TORA_TSTP_FID_DumpCustomerInfo
-TORA_TSTP_FID_DumpOrder = cvar.TORA_TSTP_FID_DumpOrder
-TORA_TSTP_FID_DumpTrade = cvar.TORA_TSTP_FID_DumpTrade
-TORA_TSTP_FID_DumpTradingAccount = cvar.TORA_TSTP_FID_DumpTradingAccount
-TORA_TSTP_FID_DumpPositon = cvar.TORA_TSTP_FID_DumpPositon
-TORA_TSTP_FID_DumpCustomerTradingParam = cvar.TORA_TSTP_FID_DumpCustomerTradingParam
-TORA_TSTP_FID_DumpIPORelateInfo = cvar.TORA_TSTP_FID_DumpIPORelateInfo
-TORA_TSTP_FID_DumpOrderFundDetail = cvar.TORA_TSTP_FID_DumpOrderFundDetail
-TORA_TSTP_FID_DumpFundTransferDetail = cvar.TORA_TSTP_FID_DumpFundTransferDetail
-TORA_TSTP_FID_DumpPositionTransferDetail = cvar.TORA_TSTP_FID_DumpPositionTransferDetail
-TORA_TSTP_FID_DumpBrokerTradingParam = cvar.TORA_TSTP_FID_DumpBrokerTradingParam
-TORA_TSTP_FID_DumpTradingNotice = cvar.TORA_TSTP_FID_DumpTradingNotice
-TORA_TSTP_FID_DumpTradeEvent = cvar.TORA_TSTP_FID_DumpTradeEvent
-TORA_TSTP_FID_DumpSystemParam = cvar.TORA_TSTP_FID_DumpSystemParam
-TORA_TSTP_FID_DumpAppInfo = cvar.TORA_TSTP_FID_DumpAppInfo
-TORA_TSTP_FID_DumpAdjustFund = cvar.TORA_TSTP_FID_DumpAdjustFund
-TORA_TSTP_FID_DumpAdjustPosition = cvar.TORA_TSTP_FID_DumpAdjustPosition
-TORA_TSTP_FID_DumpAdjustCacheChannel = cvar.TORA_TSTP_FID_DumpAdjustCacheChannel
-TORA_TSTP_FID_DumpAdjustBrokerUser = cvar.TORA_TSTP_FID_DumpAdjustBrokerUser
-TORA_TSTP_FID_DumpAdjustCustomerInfo = cvar.TORA_TSTP_FID_DumpAdjustCustomerInfo
-TORA_TSTP_FID_DumpAdjustBrokerUserRole = cvar.TORA_TSTP_FID_DumpAdjustBrokerUserRole
-TORA_TSTP_FID_DumpNodeInfo = cvar.TORA_TSTP_FID_DumpNodeInfo
-TORA_TSTP_FID_DumpDynamicPassword = cvar.TORA_TSTP_FID_DumpDynamicPassword
-TORA_TSTP_FID_DumpAdjustTradingAccount = cvar.TORA_TSTP_FID_DumpAdjustTradingAccount
-TORA_TSTP_FID_DumpAll = cvar.TORA_TSTP_FID_DumpAll
-TORA_TSTP_FID_GrantOrderInsert = cvar.TORA_TSTP_FID_GrantOrderInsert
-TORA_TSTP_FID_GrantOrderAction = cvar.TORA_TSTP_FID_GrantOrderAction
-TORA_TSTP_FID_GrantMoveFund = cvar.TORA_TSTP_FID_GrantMoveFund
-TORA_TSTP_FID_GrantMovePosition = cvar.TORA_TSTP_FID_GrantMovePosition
-TORA_TSTP_FID_GrantCondOrderInsert = cvar.TORA_TSTP_FID_GrantCondOrderInsert
-TORA_TSTP_FID_GrantCondOrderAction = cvar.TORA_TSTP_FID_GrantCondOrderAction
-# 普通范围模式
-TORA_TSTP_RM_Normal = cvar.TORA_TSTP_RM_Normal
-# 模板范围模式
-TORA_TSTP_RM_Template = cvar.TORA_TSTP_RM_Template
-# 折扣模式
-TORA_TSTP_RM_Discount = cvar.TORA_TSTP_RM_Discount
-# 非默认非通用
-TORA_TSTP_RM_NDNC = cvar.TORA_TSTP_RM_NDNC
-# 非默认通用
-TORA_TSTP_RM_NDYC = cvar.TORA_TSTP_RM_NDYC
-# 默认非通用
-TORA_TSTP_RM_YDNC = cvar.TORA_TSTP_RM_YDNC
-# 默认通用
-TORA_TSTP_RM_YDYC = cvar.TORA_TSTP_RM_YDYC
 # TCP连接模式
 TORA_TSTP_MST_TCP = cvar.TORA_TSTP_MST_TCP
 # UDP单播模式
@@ -7149,136 +7016,28 @@ _traderapi.CTORATstpNegotiationParamField_swigregister(CTORATstpNegotiationParam
 
 
 
-#########################################查询BrokerUserFunction############################################
-class CTORATstpQryBrokerUserFunctionField(object):
-    thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
-    __repr__ = _swig_repr
-
-	# 用户代码
-    UserID = property(_traderapi.CTORATstpQryBrokerUserFunctionField_UserID_get, _traderapi.CTORATstpQryBrokerUserFunctionField_UserID_set)
-
-    def __init__(self):
-        _traderapi.CTORATstpQryBrokerUserFunctionField_swiginit(self, _traderapi.new_CTORATstpQryBrokerUserFunctionField())
-    __swig_destroy__ = _traderapi.delete_CTORATstpQryBrokerUserFunctionField
-
-# Register CTORATstpQryBrokerUserFunctionField in _traderapi:
-_traderapi.CTORATstpQryBrokerUserFunctionField_swigregister(CTORATstpQryBrokerUserFunctionField)
-
-
-
-
-#########################################BrokerUserFunction############################################
-class CTORATstpBrokerUserFunctionField(object):
-    thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
-    __repr__ = _swig_repr
-
-	# 用户代码
-    UserID = property(_traderapi.CTORATstpBrokerUserFunctionField_UserID_get, _traderapi.CTORATstpBrokerUserFunctionField_UserID_set)
-
-	# 功能代码
-    FunctionID = property(_traderapi.CTORATstpBrokerUserFunctionField_FunctionID_get, _traderapi.CTORATstpBrokerUserFunctionField_FunctionID_set)
-
-    def __init__(self):
-        _traderapi.CTORATstpBrokerUserFunctionField_swiginit(self, _traderapi.new_CTORATstpBrokerUserFunctionField())
-    __swig_destroy__ = _traderapi.delete_CTORATstpBrokerUserFunctionField
-
-# Register CTORATstpBrokerUserFunctionField in _traderapi:
-_traderapi.CTORATstpBrokerUserFunctionField_swigregister(CTORATstpBrokerUserFunctionField)
-
-
-
-
-#########################################强制交易员退出############################################
-class CTORATstpForceUserLogoutField(object):
-    thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
-    __repr__ = _swig_repr
-
-	# 用户代码
-    UserID = property(_traderapi.CTORATstpForceUserLogoutField_UserID_get, _traderapi.CTORATstpForceUserLogoutField_UserID_set)
-
-    def __init__(self):
-        _traderapi.CTORATstpForceUserLogoutField_swiginit(self, _traderapi.new_CTORATstpForceUserLogoutField())
-    __swig_destroy__ = _traderapi.delete_CTORATstpForceUserLogoutField
-
-# Register CTORATstpForceUserLogoutField in _traderapi:
-_traderapi.CTORATstpForceUserLogoutField_swigregister(CTORATstpForceUserLogoutField)
-
-
-
-
-#########################################启用解锁用户############################################
-class CTORATstpActivateUserField(object):
-    thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
-    __repr__ = _swig_repr
-
-	# 用户代码
-    UserID = property(_traderapi.CTORATstpActivateUserField_UserID_get, _traderapi.CTORATstpActivateUserField_UserID_set)
-
-    def __init__(self):
-        _traderapi.CTORATstpActivateUserField_swiginit(self, _traderapi.new_CTORATstpActivateUserField())
-    __swig_destroy__ = _traderapi.delete_CTORATstpActivateUserField
-
-# Register CTORATstpActivateUserField in _traderapi:
-_traderapi.CTORATstpActivateUserField_swigregister(CTORATstpActivateUserField)
-
-
-
-
-#########################################请求实时插入柜员用户功能权限############################################
-class CTORATstpReqInsBrokerUserFunctionField(object):
-    thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
-    __repr__ = _swig_repr
-
-	# 用户代码
-    UserID = property(_traderapi.CTORATstpReqInsBrokerUserFunctionField_UserID_get, _traderapi.CTORATstpReqInsBrokerUserFunctionField_UserID_set)
-
-	# 功能代码
-    FunctionID = property(_traderapi.CTORATstpReqInsBrokerUserFunctionField_FunctionID_get, _traderapi.CTORATstpReqInsBrokerUserFunctionField_FunctionID_set)
-
-	# 范围模式
-    RangeMode = property(_traderapi.CTORATstpReqInsBrokerUserFunctionField_RangeMode_get, _traderapi.CTORATstpReqInsBrokerUserFunctionField_RangeMode_set)
-
-    def __init__(self):
-        _traderapi.CTORATstpReqInsBrokerUserFunctionField_swiginit(self, _traderapi.new_CTORATstpReqInsBrokerUserFunctionField())
-    __swig_destroy__ = _traderapi.delete_CTORATstpReqInsBrokerUserFunctionField
-
-# Register CTORATstpReqInsBrokerUserFunctionField in _traderapi:
-_traderapi.CTORATstpReqInsBrokerUserFunctionField_swigregister(CTORATstpReqInsBrokerUserFunctionField)
-
-
-
-
-#########################################请求实时更新柜员用户功能权限############################################
-class CTORATstpReqDelBrokerUserFunctionField(object):
-    thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
-    __repr__ = _swig_repr
-
-	# 用户代码
-    UserID = property(_traderapi.CTORATstpReqDelBrokerUserFunctionField_UserID_get, _traderapi.CTORATstpReqDelBrokerUserFunctionField_UserID_set)
-
-	# 功能代码
-    FunctionID = property(_traderapi.CTORATstpReqDelBrokerUserFunctionField_FunctionID_get, _traderapi.CTORATstpReqDelBrokerUserFunctionField_FunctionID_set)
-
-    def __init__(self):
-        _traderapi.CTORATstpReqDelBrokerUserFunctionField_swiginit(self, _traderapi.new_CTORATstpReqDelBrokerUserFunctionField())
-    __swig_destroy__ = _traderapi.delete_CTORATstpReqDelBrokerUserFunctionField
-
-# Register CTORATstpReqDelBrokerUserFunctionField in _traderapi:
-_traderapi.CTORATstpReqDelBrokerUserFunctionField_swigregister(CTORATstpReqDelBrokerUserFunctionField)
-
-
-
-
 #########################################fens用户信息############################################
 class CTORATstpFensUserInfoField(object):
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr
 
-	# 登录账户
-    LogInAccount = property(_traderapi.CTORATstpFensUserInfoField_LogInAccount_get, _traderapi.CTORATstpFensUserInfoField_LogInAccount_set)
+	# 版本信息
+    FensVer = property(_traderapi.CTORATstpFensUserInfoField_FensVer_get, _traderapi.CTORATstpFensUserInfoField_FensVer_set)
 
-	# 登录账户类型
-    LogInAccountType = property(_traderapi.CTORATstpFensUserInfoField_LogInAccountType_get, _traderapi.CTORATstpFensUserInfoField_LogInAccountType_set)
+	# 环境编号
+    FensEnvID = property(_traderapi.CTORATstpFensUserInfoField_FensEnvID_get, _traderapi.CTORATstpFensUserInfoField_FensEnvID_set)
+
+	# 节点编号
+    FensNodeID = property(_traderapi.CTORATstpFensUserInfoField_FensNodeID_get, _traderapi.CTORATstpFensUserInfoField_FensNodeID_set)
+
+	# Fens用户代码
+    FensUserID = property(_traderapi.CTORATstpFensUserInfoField_FensUserID_get, _traderapi.CTORATstpFensUserInfoField_FensUserID_set)
+
+	# 用户代码
+    UserID = property(_traderapi.CTORATstpFensUserInfoField_UserID_get, _traderapi.CTORATstpFensUserInfoField_UserID_set)
+
+	# 终端信息
+    ClientInfo = property(_traderapi.CTORATstpFensUserInfoField_ClientInfo_get, _traderapi.CTORATstpFensUserInfoField_ClientInfo_set)
 
     def __init__(self):
         _traderapi.CTORATstpFensUserInfoField_swiginit(self, _traderapi.new_CTORATstpFensUserInfoField())
@@ -7673,30 +7432,6 @@ class CTORATstpTraderSpi(object):
     def OnRspQryNegotiationParam(self, pNegotiationParamField: "CTORATstpNegotiationParamField", pRspInfoField: "CTORATstpRspInfoField", nRequestID: "int", bIsLast: "bool") -> "void":
         return _traderapi.CTORATstpTraderSpi_OnRspQryNegotiationParam(self, pNegotiationParamField, pRspInfoField, nRequestID, bIsLast)
 
-	#查询柜员用户功能权限响应,参数pBrokerUserFunctionField是一个CTORATstpBrokerUserFunctionField类对象
-    def OnRspQryBrokerUserFunction(self, pBrokerUserFunctionField: "CTORATstpBrokerUserFunctionField", pRspInfoField: "CTORATstpRspInfoField", nRequestID: "int", bIsLast: "bool") -> "void":
-        return _traderapi.CTORATstpTraderSpi_OnRspQryBrokerUserFunction(self, pBrokerUserFunctionField, pRspInfoField, nRequestID, bIsLast)
-
-	#强制用户登出响应,参数pForceUserLogoutField是一个CTORATstpForceUserLogoutField类对象
-    def OnRspForceUserExit(self, pForceUserLogoutField: "CTORATstpForceUserLogoutField", pRspInfoField: "CTORATstpRspInfoField", nRequestID: "int") -> "void":
-        return _traderapi.CTORATstpTraderSpi_OnRspForceUserExit(self, pForceUserLogoutField, pRspInfoField, nRequestID)
-
-	#强制用户退出响应,参数pForceUserLogoutField是一个CTORATstpForceUserLogoutField类对象
-    def OnRspForceUserLogout(self, pForceUserLogoutField: "CTORATstpForceUserLogoutField", pRspInfoField: "CTORATstpRspInfoField", nRequestID: "int") -> "void":
-        return _traderapi.CTORATstpTraderSpi_OnRspForceUserLogout(self, pForceUserLogoutField, pRspInfoField, nRequestID)
-
-	#用户请求响应,参数pActivateUserField是一个CTORATstpActivateUserField类对象
-    def OnRspActivateUser(self, pActivateUserField: "CTORATstpActivateUserField", pRspInfoField: "CTORATstpRspInfoField", nRequestID: "int") -> "void":
-        return _traderapi.CTORATstpTraderSpi_OnRspActivateUser(self, pActivateUserField, pRspInfoField, nRequestID)
-
-	#录入柜员功能权限响应,参数pReqInsBrokerUserFunctionField是一个CTORATstpReqInsBrokerUserFunctionField类对象
-    def OnRspInsBrokerUserFunction(self, pReqInsBrokerUserFunctionField: "CTORATstpReqInsBrokerUserFunctionField", pRspInfoField: "CTORATstpRspInfoField", nRequestID: "int") -> "void":
-        return _traderapi.CTORATstpTraderSpi_OnRspInsBrokerUserFunction(self, pReqInsBrokerUserFunctionField, pRspInfoField, nRequestID)
-
-	#删除柜员功能权限响应,参数pReqDelBrokerUserFunctionField是一个CTORATstpReqDelBrokerUserFunctionField类对象
-    def OnRspDelBrokerUserFunction(self, pReqDelBrokerUserFunctionField: "CTORATstpReqDelBrokerUserFunctionField", pRspInfoField: "CTORATstpRspInfoField", nRequestID: "int") -> "void":
-        return _traderapi.CTORATstpTraderSpi_OnRspDelBrokerUserFunction(self, pReqDelBrokerUserFunctionField, pRspInfoField, nRequestID)
-
     def __init__(self):
         if self.__class__ == CTORATstpTraderSpi:
             _self = None
@@ -7748,6 +7483,10 @@ class CTORATstpTraderApi(object):
 	#注册名字服务器网络地址,pszNsAddress为名字服务器网络地址,格式tcp://127.0.0.1:12001
     def RegisterNameServer(self, pszNsAddress: "char *") -> "void":
         return _traderapi.CTORATstpTraderApi_RegisterNameServer(self, pszNsAddress)
+
+	#@param pFensUserInfoField：用户信息。,参数pFensUserInfoField是一个CTORATstpFensUserInfoField类对象
+    def RegisterFensUserInfo(self, pFensUserInfoField: "CTORATstpFensUserInfoField") -> "void":
+        return _traderapi.CTORATstpTraderApi_RegisterFensUserInfo(self, pFensUserInfoField)
 
 	#注册回调接口,pSpi为派生自回调接口类的实例
     def RegisterSpi(self, pSpi: "CTORATstpTraderSpi") -> "void":
@@ -8024,30 +7763,6 @@ class CTORATstpTraderApi(object):
 	#查询协议交易参数请求,参数pQryNegotiationParamField是一个CTORATstpQryNegotiationParamField类对象
     def ReqQryNegotiationParam(self, pQryNegotiationParamField: "CTORATstpQryNegotiationParamField", nRequestID: "int") -> "int":
         return _traderapi.CTORATstpTraderApi_ReqQryNegotiationParam(self, pQryNegotiationParamField, nRequestID)
-
-	#查询柜员用户功能权限请求,参数pQryBrokerUserFunctionField是一个CTORATstpQryBrokerUserFunctionField类对象
-    def ReqQryBrokerUserFunction(self, pQryBrokerUserFunctionField: "CTORATstpQryBrokerUserFunctionField", nRequestID: "int") -> "int":
-        return _traderapi.CTORATstpTraderApi_ReqQryBrokerUserFunction(self, pQryBrokerUserFunctionField, nRequestID)
-
-	#强制用户登出请求,参数pForceUserLogoutField是一个CTORATstpForceUserLogoutField类对象
-    def ReqForceUserExit(self, pForceUserLogoutField: "CTORATstpForceUserLogoutField", nRequestID: "int") -> "int":
-        return _traderapi.CTORATstpTraderApi_ReqForceUserExit(self, pForceUserLogoutField, nRequestID)
-
-	#强制用户退出请求,参数pForceUserLogoutField是一个CTORATstpForceUserLogoutField类对象
-    def ReqForceUserLogout(self, pForceUserLogoutField: "CTORATstpForceUserLogoutField", nRequestID: "int") -> "int":
-        return _traderapi.CTORATstpTraderApi_ReqForceUserLogout(self, pForceUserLogoutField, nRequestID)
-
-	#激活用户请求,参数pActivateUserField是一个CTORATstpActivateUserField类对象
-    def ReqActivateUser(self, pActivateUserField: "CTORATstpActivateUserField", nRequestID: "int") -> "int":
-        return _traderapi.CTORATstpTraderApi_ReqActivateUser(self, pActivateUserField, nRequestID)
-
-	#录入柜员功能权限请求,参数pReqInsBrokerUserFunctionField是一个CTORATstpReqInsBrokerUserFunctionField类对象
-    def ReqInsBrokerUserFunction(self, pReqInsBrokerUserFunctionField: "CTORATstpReqInsBrokerUserFunctionField", nRequestID: "int") -> "int":
-        return _traderapi.CTORATstpTraderApi_ReqInsBrokerUserFunction(self, pReqInsBrokerUserFunctionField, nRequestID)
-
-	#删除柜员功能权限请求,参数pReqDelBrokerUserFunctionField是一个CTORATstpReqDelBrokerUserFunctionField类对象
-    def ReqDelBrokerUserFunction(self, pReqDelBrokerUserFunctionField: "CTORATstpReqDelBrokerUserFunctionField", nRequestID: "int") -> "int":
-        return _traderapi.CTORATstpTraderApi_ReqDelBrokerUserFunction(self, pReqDelBrokerUserFunctionField, nRequestID)
 
 # Register CTORATstpTraderApi in _traderapi:
 _traderapi.CTORATstpTraderApi_swigregister(CTORATstpTraderApi)

@@ -326,7 +326,7 @@ class CTORATstpMarketDataField(object):
     ClosePrice = property(_xmdapi.CTORATstpMarketDataField_ClosePrice_get, _xmdapi.CTORATstpMarketDataField_ClosePrice_set)
     SettlementPrice = property(_xmdapi.CTORATstpMarketDataField_SettlementPrice_get, _xmdapi.CTORATstpMarketDataField_SettlementPrice_set)
     MDSecurityStat = property(_xmdapi.CTORATstpMarketDataField_MDSecurityStat_get, _xmdapi.CTORATstpMarketDataField_MDSecurityStat_set)
-    HWFlag = property(_xmdapi.CTORATstpMarketDataField_HWFlag_get, _xmdapi.CTORATstpMarketDataField_HWFlag_set)
+    HWLevel = property(_xmdapi.CTORATstpMarketDataField_HWLevel_get, _xmdapi.CTORATstpMarketDataField_HWLevel_set)
     PreCloseIOPV = property(_xmdapi.CTORATstpMarketDataField_PreCloseIOPV_get, _xmdapi.CTORATstpMarketDataField_PreCloseIOPV_set)
     IOPV = property(_xmdapi.CTORATstpMarketDataField_IOPV_get, _xmdapi.CTORATstpMarketDataField_IOPV_set)
 
@@ -368,7 +368,7 @@ class CTORATstpPHMarketDataField(object):
     UpdateTime = property(_xmdapi.CTORATstpPHMarketDataField_UpdateTime_get, _xmdapi.CTORATstpPHMarketDataField_UpdateTime_set)
     UpdateMillisec = property(_xmdapi.CTORATstpPHMarketDataField_UpdateMillisec_get, _xmdapi.CTORATstpPHMarketDataField_UpdateMillisec_set)
     MDSecurityStat = property(_xmdapi.CTORATstpPHMarketDataField_MDSecurityStat_get, _xmdapi.CTORATstpPHMarketDataField_MDSecurityStat_set)
-    HWFlag = property(_xmdapi.CTORATstpPHMarketDataField_HWFlag_get, _xmdapi.CTORATstpPHMarketDataField_HWFlag_set)
+    HWLevel = property(_xmdapi.CTORATstpPHMarketDataField_HWLevel_get, _xmdapi.CTORATstpPHMarketDataField_HWLevel_set)
 
     def __init__(self):
         _xmdapi.CTORATstpPHMarketDataField_swiginit(self, _xmdapi.new_CTORATstpPHMarketDataField())
@@ -558,6 +558,26 @@ class CTORATstpRapidMarketDataField(object):
     IOPV = property(_xmdapi.CTORATstpRapidMarketDataField_IOPV_get, _xmdapi.CTORATstpRapidMarketDataField_IOPV_set)
     InnerSell = property(_xmdapi.CTORATstpRapidMarketDataField_InnerSell_get, _xmdapi.CTORATstpRapidMarketDataField_InnerSell_set)
     OuterBuy = property(_xmdapi.CTORATstpRapidMarketDataField_OuterBuy_get, _xmdapi.CTORATstpRapidMarketDataField_OuterBuy_set)
+    BidCount1 = property(_xmdapi.CTORATstpRapidMarketDataField_BidCount1_get, _xmdapi.CTORATstpRapidMarketDataField_BidCount1_set)
+    AskCount1 = property(_xmdapi.CTORATstpRapidMarketDataField_AskCount1_get, _xmdapi.CTORATstpRapidMarketDataField_AskCount1_set)
+    AskCount2 = property(_xmdapi.CTORATstpRapidMarketDataField_AskCount2_get, _xmdapi.CTORATstpRapidMarketDataField_AskCount2_set)
+    AskCount3 = property(_xmdapi.CTORATstpRapidMarketDataField_AskCount3_get, _xmdapi.CTORATstpRapidMarketDataField_AskCount3_set)
+    BidCount2 = property(_xmdapi.CTORATstpRapidMarketDataField_BidCount2_get, _xmdapi.CTORATstpRapidMarketDataField_BidCount2_set)
+    BidCount3 = property(_xmdapi.CTORATstpRapidMarketDataField_BidCount3_get, _xmdapi.CTORATstpRapidMarketDataField_BidCount3_set)
+    AskCount4 = property(_xmdapi.CTORATstpRapidMarketDataField_AskCount4_get, _xmdapi.CTORATstpRapidMarketDataField_AskCount4_set)
+    AskCount5 = property(_xmdapi.CTORATstpRapidMarketDataField_AskCount5_get, _xmdapi.CTORATstpRapidMarketDataField_AskCount5_set)
+    BidCount4 = property(_xmdapi.CTORATstpRapidMarketDataField_BidCount4_get, _xmdapi.CTORATstpRapidMarketDataField_BidCount4_set)
+    BidCount5 = property(_xmdapi.CTORATstpRapidMarketDataField_BidCount5_get, _xmdapi.CTORATstpRapidMarketDataField_BidCount5_set)
+    AskCount6 = property(_xmdapi.CTORATstpRapidMarketDataField_AskCount6_get, _xmdapi.CTORATstpRapidMarketDataField_AskCount6_set)
+    AskCount7 = property(_xmdapi.CTORATstpRapidMarketDataField_AskCount7_get, _xmdapi.CTORATstpRapidMarketDataField_AskCount7_set)
+    BidCount6 = property(_xmdapi.CTORATstpRapidMarketDataField_BidCount6_get, _xmdapi.CTORATstpRapidMarketDataField_BidCount6_set)
+    BidCount7 = property(_xmdapi.CTORATstpRapidMarketDataField_BidCount7_get, _xmdapi.CTORATstpRapidMarketDataField_BidCount7_set)
+    AskCount8 = property(_xmdapi.CTORATstpRapidMarketDataField_AskCount8_get, _xmdapi.CTORATstpRapidMarketDataField_AskCount8_set)
+    AskCount9 = property(_xmdapi.CTORATstpRapidMarketDataField_AskCount9_get, _xmdapi.CTORATstpRapidMarketDataField_AskCount9_set)
+    BidCount8 = property(_xmdapi.CTORATstpRapidMarketDataField_BidCount8_get, _xmdapi.CTORATstpRapidMarketDataField_BidCount8_set)
+    BidCount9 = property(_xmdapi.CTORATstpRapidMarketDataField_BidCount9_get, _xmdapi.CTORATstpRapidMarketDataField_BidCount9_set)
+    BidCount10 = property(_xmdapi.CTORATstpRapidMarketDataField_BidCount10_get, _xmdapi.CTORATstpRapidMarketDataField_BidCount10_set)
+    AskCount10 = property(_xmdapi.CTORATstpRapidMarketDataField_AskCount10_get, _xmdapi.CTORATstpRapidMarketDataField_AskCount10_set)
 
     def __init__(self):
         _xmdapi.CTORATstpRapidMarketDataField_swiginit(self, _xmdapi.new_CTORATstpRapidMarketDataField())
@@ -608,8 +628,12 @@ _xmdapi.CTORATstpFundsFlowMarketDataField_swigregister(CTORATstpFundsFlowMarketD
 class CTORATstpFensUserInfoField(object):
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr
-    LogInAccount = property(_xmdapi.CTORATstpFensUserInfoField_LogInAccount_get, _xmdapi.CTORATstpFensUserInfoField_LogInAccount_set)
-    LogInAccountType = property(_xmdapi.CTORATstpFensUserInfoField_LogInAccountType_get, _xmdapi.CTORATstpFensUserInfoField_LogInAccountType_set)
+    FensVer = property(_xmdapi.CTORATstpFensUserInfoField_FensVer_get, _xmdapi.CTORATstpFensUserInfoField_FensVer_set)
+    FensEnvID = property(_xmdapi.CTORATstpFensUserInfoField_FensEnvID_get, _xmdapi.CTORATstpFensUserInfoField_FensEnvID_set)
+    FensNodeID = property(_xmdapi.CTORATstpFensUserInfoField_FensNodeID_get, _xmdapi.CTORATstpFensUserInfoField_FensNodeID_set)
+    FensUserID = property(_xmdapi.CTORATstpFensUserInfoField_FensUserID_get, _xmdapi.CTORATstpFensUserInfoField_FensUserID_set)
+    UserID = property(_xmdapi.CTORATstpFensUserInfoField_UserID_get, _xmdapi.CTORATstpFensUserInfoField_UserID_set)
+    ClientInfo = property(_xmdapi.CTORATstpFensUserInfoField_ClientInfo_get, _xmdapi.CTORATstpFensUserInfoField_ClientInfo_set)
 
     def __init__(self):
         _xmdapi.CTORATstpFensUserInfoField_swiginit(self, _xmdapi.new_CTORATstpFensUserInfoField())
@@ -826,6 +850,9 @@ class CTORATstpXMdApi(object):
 
     def RegisterNameServer(self, pszNsAddress):
         return _xmdapi.CTORATstpXMdApi_RegisterNameServer(self, pszNsAddress)
+
+    def RegisterFensUserInfo(self, pFensUserInfoField):
+        return _xmdapi.CTORATstpXMdApi_RegisterFensUserInfo(self, pFensUserInfoField)
 
     def RegisterMulticast(self, pszMulticastAddress, pszInterfaceIP, pszSourceIp):
         return _xmdapi.CTORATstpXMdApi_RegisterMulticast(self, pszMulticastAddress, pszInterfaceIP, pszSourceIp)
