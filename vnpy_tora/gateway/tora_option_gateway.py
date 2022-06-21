@@ -1,10 +1,19 @@
-from typing import Callable, Dict, Set, Tuple, List, Any
+from typing import Dict, Set, Tuple, List, Any
 import pytz
 from datetime import datetime
 
-from vnpy.trader.gateway import BaseGateway
+
 from vnpy.event import EventEngine
-from vnpy.trader.event import EVENT_TIMER
+from vnpy.trader.constant import (
+    Direction,
+    Exchange,
+    OrderType,
+    Product,
+    Status,
+    Offset,
+    OptionType
+)
+from vnpy.trader.gateway import BaseGateway
 from vnpy.trader.object import (
     TickData,
     OrderData,
@@ -16,19 +25,10 @@ from vnpy.trader.object import (
     CancelRequest,
     SubscribeRequest,
 )
+from vnpy.trader.event import EVENT_TIMER
 
-from vnpy.trader.constant import (
-    Direction,
-    Exchange,
-    OrderType,
-    Product,
-    Status,
-    Offset,
-    OptionType
-)
-
-from vnpy_tora.api.stock import TORA_TSTP_LACT_AccountID
-from vnpy_tora.api.option import (
+from ..api.stock import TORA_TSTP_LACT_AccountID
+from ..api.option import (
     sptraderapi,
     spmdapi,
     TORA_TSTP_SP_D_Buy,
@@ -157,10 +157,10 @@ OPTIONTYPE_TORA2VT: Dict[str, OptionType] = {
 CHINA_TZ = pytz.timezone("Asia/Shanghai")       # 中国时区
 
 
-ACCOUNT_USERID = "用户代码"
-ACCOUNT_ACCOUNTID = "资金账号"
-ADDRESS_FRONT = "前置地址"
-ADDRESS_FENS = "FENS地址"
+ACCOUNT_USERID: str = "用户代码"
+ACCOUNT_ACCOUNTID: str = "资金账号"
+ADDRESS_FRONT: str = "前置地址"
+ADDRESS_FENS: str = "FENS地址"
 
 
 class ToraOptionGateway(BaseGateway):
@@ -246,7 +246,7 @@ class ToraOptionGateway(BaseGateway):
             return
         self.count = 0
 
-        func: Callable = self.query_functions.pop(0)
+        func = self.query_functions.pop(0)
         func()
         self.query_functions.append(func)
 
@@ -403,7 +403,7 @@ class ToraMdApi(spmdapi.CTORATstpSPMdSpi):
 
     def login(self) -> None:
         """用户登录"""
-        login_req = spmdapi.CTORATstpSPReqUserLoginField()
+        login_req: spmdapi.CTORATstpSPReqUserLoginField = spmdapi.CTORATstpSPReqUserLoginField()
         login_req.LogInAccount = self.userid
         login_req.Password = self.password
         login_req.UserProductInfo = "vnpy_2.0"
@@ -748,7 +748,7 @@ class ToraTdApi(sptraderapi.CTORATstpSPTraderSpi):
 
     def login(self) -> None:
         """用户登录"""
-        login_req = sptraderapi.CTORATstpSPReqUserLoginField()
+        login_req: sptraderapi.CTORATstpSPReqUserLoginField = sptraderapi.CTORATstpSPReqUserLoginField()
         login_req.LogInAccount = self.userid
         login_req.Password = self.password
         login_req.UserProductInfo = "vnpy_2.0"
@@ -764,43 +764,43 @@ class ToraTdApi(sptraderapi.CTORATstpSPTraderSpi):
 
     def query_contracts(self) -> None:
         """查询合约"""
-        req = CTORATstpSPQrySecurityField()
+        req: CTORATstpSPQrySecurityField = CTORATstpSPQrySecurityField()
         self.reqid += 1
         self.api.ReqQrySecurity(req, self.reqid)
 
     def query_investors(self) -> None:
         """查询用户名"""
-        req = CTORATstpSPQryInvestorField()
+        req: CTORATstpSPQryInvestorField = CTORATstpSPQryInvestorField()
         self.reqid += 1
         self.api.ReqQryInvestor(req, self.reqid)
 
     def query_shareholder_ids(self) -> None:
         """查询客户号"""
-        req = CTORATstpSPQryShareholderAccountField()
+        req: CTORATstpSPQryShareholderAccountField = CTORATstpSPQryShareholderAccountField()
         self.reqid += 1
         self.api.ReqQryShareholderAccount(req, self.reqid)
 
     def query_accounts(self) -> None:
         """查询资金"""
-        req = CTORATstpSPQryTradingAccountField()
+        req: CTORATstpSPQryTradingAccountField = CTORATstpSPQryTradingAccountField()
         self.reqid += 1
         self.api.ReqQryTradingAccount(req, self.reqid)
 
     def query_positions(self) -> None:
         """查询持仓"""
-        req = CTORATstpSPQryPositionField()
+        req: CTORATstpSPQryPositionField = CTORATstpSPQryPositionField()
         self.reqid += 1
         self.api.ReqQryPosition(req, self.reqid)
 
     def query_orders(self) -> None:
         """查询未成交委托"""
-        req = CTORATstpSPQryOrderField()
+        req: CTORATstpSPQryOrderField = CTORATstpSPQryOrderField()
         self.reqid += 1
         self.api.ReqQryOrder(req, self.reqid)
 
     def query_trades(self) -> None:
         """查询成交"""
-        req = CTORATstpSPQryTradeField()
+        req: CTORATstpSPQryTradeField = CTORATstpSPQryTradeField()
         self.reqid += 1
         self.api.ReqQryTrade(req, self.reqid)
 
@@ -811,7 +811,7 @@ class ToraTdApi(sptraderapi.CTORATstpSPTraderSpi):
 
         opt, tc, vc = ORDER_TYPE_VT2TORA[req.type]
 
-        info = CTORATstpSPInputOrderField()
+        info: CTORATstpSPInputOrderField = CTORATstpSPInputOrderField()
         info.ShareholderID = self.shareholder_ids[req.exchange]
         info.SecurityID = req.symbol
         info.ExchangeID = EXCHANGE_VT2TORA[req.exchange]
@@ -838,7 +838,7 @@ class ToraTdApi(sptraderapi.CTORATstpSPTraderSpi):
         self.reqid += 1
         self.order_ref += 1
 
-        info = CTORATstpSPInputOrderActionField()
+        info: CTORATstpSPInputOrderActionField = CTORATstpSPInputOrderActionField()
         info.InvestorID = self.investor_id
         info.ExchangeID = EXCHANGE_VT2TORA[req.exchange]
         info.SecurityID = req.symbol
@@ -855,7 +855,7 @@ class ToraTdApi(sptraderapi.CTORATstpSPTraderSpi):
     def _get_new_order_id(self) -> int:
         """生成本地委托号"""
         self.localid += 1
-        order_id = self.localid
+        order_id: int = self.localid
         return order_id
 
 
@@ -864,11 +864,11 @@ def get_option_index(strike_price: float, exchange_instrument_id: str) -> str:
     exchange_instrument_id: str = exchange_instrument_id.replace(" ", "")
 
     if "M" in exchange_instrument_id:
-        n = exchange_instrument_id.index("M")
+        n: int = exchange_instrument_id.index("M")
     elif "A" in exchange_instrument_id:
-        n = exchange_instrument_id.index("A")
+        n: int = exchange_instrument_id.index("A")
     elif "B" in exchange_instrument_id:
-        n = exchange_instrument_id.index("B")
+        n: int = exchange_instrument_id.index("B")
     else:
         return str(strike_price)
 

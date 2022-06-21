@@ -22,7 +22,7 @@
 - 交易：API_Python3.7_交易_v4.0.3_20220222
 
 期权的API版本为：
-- API_Python3.7_v1.2.6_20200319
+- API_Python3.7_v1.3.2_20211201
 
 API版本的详细信息，请参考[奇点官网](https://n-sight.com.cn/)。
 

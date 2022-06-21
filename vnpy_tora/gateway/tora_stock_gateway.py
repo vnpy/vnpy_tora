@@ -1,11 +1,16 @@
-from typing import Callable, Dict, Set, Tuple, Any, List
+from typing import Dict, Tuple, Any, List
 import pytz
 from datetime import datetime
-from vnpy.event.engine import Event
 
-from vnpy.trader.gateway import BaseGateway
 from vnpy.event import EventEngine
-from vnpy.trader.event import EVENT_TIMER
+from vnpy.trader.constant import (
+    Direction,
+    Exchange,
+    OrderType,
+    Product,
+    Status,
+)
+from vnpy.trader.gateway import BaseGateway
 from vnpy.trader.object import (
     TickData,
     OrderData,
@@ -17,16 +22,10 @@ from vnpy.trader.object import (
     CancelRequest,
     SubscribeRequest,
 )
+from vnpy.trader.event import EVENT_TIMER
+from vnpy.event.engine import Event
 
-from vnpy.trader.constant import (
-    Direction,
-    Exchange,
-    OrderType,
-    Product,
-    Status,
-)
-
-from vnpy_tora.api.stock import (
+from ..api.stock import (
     traderapi,
     xmdapi,
     lev2mdapi,
@@ -135,12 +134,12 @@ DIRECTION_VT2TORA: Dict[Direction, str] = {v: k for k, v in DIRECTION_TORA2VT.it
 CHINA_TZ = pytz.timezone("Asia/Shanghai")       # 中国时区
 
 
-ACCOUNT_USERID = "用户代码"
-ACCOUNT_ACCOUNTID = "资金账号"
-ADDRESS_FRONT = "前置地址"
-ADDRESS_FENS = "FENS地址"
-LEVEL1 = "Level1"
-LEVEL2 = "Level2"
+ACCOUNT_USERID: str = "用户代码"
+ACCOUNT_ACCOUNTID: str = "资金账号"
+ADDRESS_FRONT: str = "前置地址"
+ADDRESS_FENS: str = "FENS地址"
+LEVEL1: str = "Level1"
+LEVEL2: str = "Level2"
 
 
 class ToraStockGateway(BaseGateway):
@@ -236,7 +235,7 @@ class ToraStockGateway(BaseGateway):
             return
         self.count = 0
 
-        func: Callable = self.query_functions.pop(0)
+        func = self.query_functions.pop(0)
         func()
         self.query_functions.append(func)
 
@@ -263,7 +262,7 @@ class ToraMdApi(xmdapi.CTORATstpXMdSpi):
 
         self.connect_status: bool = False
         self.login_status: bool = False
-        self.subscribed: Set = set()
+        self.subscribed: set = set()
 
         self.userid: str = ""
         self.password: str = ""
@@ -390,7 +389,7 @@ class ToraMdApi(xmdapi.CTORATstpXMdSpi):
 
     def login(self) -> None:
         """用户登录"""
-        login_req = xmdapi.CTORATstpReqUserLoginField()
+        login_req: xmdapi.CTORATstpReqUserLoginField = xmdapi.CTORATstpReqUserLoginField()
 
         self.reqid += 1
         self.api.ReqUserLogin(login_req, self.reqid)
@@ -426,7 +425,7 @@ class ToraL2Api(lev2mdapi.CTORATstpLev2MdSpi):
 
         self.connect_status: bool = False
         self.login_status: bool = False
-        self.subscribed: Set = set()
+        self.subscribed: set = set()
 
         self.userid: str = ""
         self.password: str = ""
@@ -577,10 +576,10 @@ class ToraL2Api(lev2mdapi.CTORATstpLev2MdSpi):
 
     def login(self) -> None:
         """用户登录"""
-        login_reg = lev2mdapi.CTORATstpReqUserLoginField()
+        login_req: lev2mdapi.CTORATstpReqUserLoginField = lev2mdapi.CTORATstpReqUserLoginField()
 
         self.reqid += 1
-        self.api.ReqUserLogin(login_reg, self.reqid)
+        self.api.ReqUserLogin(login_req, self.reqid)
 
     def subscribe(self, req: SubscribeRequest) -> None:
         """订阅行情"""
@@ -889,7 +888,7 @@ class ToraTdApi(traderapi.CTORATstpTraderSpi):
 
     def login(self) -> None:
         """用户登录"""
-        login_req = traderapi.CTORATstpReqUserLoginField()
+        login_req: traderapi.CTORATstpReqUserLoginField = traderapi.CTORATstpReqUserLoginField()
         login_req.LogInAccount = self.userid
         login_req.Password = self.password
         login_req.UserProductInfo = "vnpy_2.0"
@@ -905,43 +904,43 @@ class ToraTdApi(traderapi.CTORATstpTraderSpi):
 
     def query_contracts(self) -> None:
         """查询合约"""
-        req = CTORATstpQrySecurityField()
+        req: CTORATstpQrySecurityField = CTORATstpQrySecurityField()
         self.reqid += 1
         self.api.ReqQrySecurity(req, self.reqid)
 
     def query_investors(self) -> None:
         """查询用户名"""
-        req = CTORATstpQryInvestorField()
+        req: CTORATstpQryInvestorField = CTORATstpQryInvestorField()
         self.reqid += 1
         self.api.ReqQryInvestor(req, self.reqid)
 
     def query_shareholder_ids(self) -> None:
         """查询客户号"""
-        req = CTORATstpQryShareholderAccountField()
+        req: CTORATstpQryShareholderAccountField = CTORATstpQryShareholderAccountField()
         self.reqid += 1
         self.api.ReqQryShareholderAccount(req, self.reqid)
 
     def query_accounts(self) -> None:
         """查询资金"""
-        req = CTORATstpQryTradingAccountField()
+        req: CTORATstpQryTradingAccountField = CTORATstpQryTradingAccountField()
         self.reqid += 1
         self.api.ReqQryTradingAccount(req, self.reqid)
 
     def query_positions(self) -> None:
         """查询持仓"""
-        req = CTORATstpQryPositionField()
+        req: CTORATstpQryPositionField = CTORATstpQryPositionField()
         self.reqid += 1
         self.api.ReqQryPosition(req, self.reqid)
 
     def query_orders(self) -> None:
         """查询未成交委托"""
-        req = CTORATstpQryOrderField()
+        req: CTORATstpQryOrderField = CTORATstpQryOrderField()
         self.reqid += 1
         self.api.ReqQryOrder(req, self.reqid)
 
     def query_trades(self) -> None:
         """查询成交"""
-        req = CTORATstpQryTradeField()
+        req: CTORATstpQryTradeField = CTORATstpQryTradeField()
         self.reqid += 1
         self.api.ReqQryTrade(req, self.reqid)
 
@@ -952,7 +951,7 @@ class ToraTdApi(traderapi.CTORATstpTraderSpi):
 
         opt, tc, vc = ORDER_TYPE_VT2TORA[req.type]
 
-        info = CTORATstpInputOrderField()
+        info: CTORATstpInputOrderField = CTORATstpInputOrderField()
         info.ShareholderID = self.shareholder_ids[req.exchange]
         info.SecurityID = req.symbol
         info.ExchangeID = EXCHANGE_VT2TORA[req.exchange]
@@ -977,7 +976,7 @@ class ToraTdApi(traderapi.CTORATstpTraderSpi):
         self.reqid += 1
         self.order_ref += 1
 
-        info = CTORATstpInputOrderActionField()
+        info: CTORATstpInputOrderActionField = CTORATstpInputOrderActionField()
         info.ExchangeID = EXCHANGE_VT2TORA[req.exchange]
         info.SecurityID = req.symbol
 
