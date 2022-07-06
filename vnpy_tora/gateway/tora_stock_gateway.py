@@ -84,6 +84,7 @@ from .terminal_info import get_terminal_info
 
 # 委托状态映射
 ORDER_STATUS_TORA2VT: Dict[str, Status] = {
+    TORA_TSTP_OST_Cached: Status.SUBMITTING,
     TORA_TSTP_OST_AllTraded: Status.ALLTRADED,
     TORA_TSTP_OST_PartTraded: Status.PARTTRADED,
     TORA_TSTP_OST_Accepted: Status.NOTTRADED,
