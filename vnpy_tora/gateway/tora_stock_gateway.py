@@ -35,6 +35,7 @@ from ..api.stock import (
     TORA_TSTP_EXD_SZSE,
     TORA_TSTP_EXD_HK,
     TORA_TSTP_EXD_BSE,
+    TORA_TSTP_OST_Cached,
     TORA_TSTP_OPT_LimitPrice,
     TORA_TSTP_OST_AllTraded,
     TORA_TSTP_OST_AllCanceled,
@@ -84,6 +85,7 @@ from .terminal_info import get_terminal_info
 
 # 委托状态映射
 ORDER_STATUS_TORA2VT: Dict[str, Status] = {
+    TORA_TSTP_OST_Cached: Status.SUBMITTING,
     TORA_TSTP_OST_AllTraded: Status.ALLTRADED,
     TORA_TSTP_OST_PartTraded: Status.PARTTRADED,
     TORA_TSTP_OST_Accepted: Status.NOTTRADED,
