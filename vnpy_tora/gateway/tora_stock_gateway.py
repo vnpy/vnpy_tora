@@ -35,6 +35,7 @@ from ..api.stock import (
     TORA_TSTP_EXD_SZSE,
     TORA_TSTP_EXD_HK,
     TORA_TSTP_EXD_BSE,
+    TORA_TSTP_OST_Cached,
     TORA_TSTP_OPT_LimitPrice,
     TORA_TSTP_OST_AllTraded,
     TORA_TSTP_OST_AllCanceled,
