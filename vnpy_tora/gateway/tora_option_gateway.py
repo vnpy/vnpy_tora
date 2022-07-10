@@ -582,7 +582,7 @@ class ToraTdApi(sptraderapi.CTORATstpSPTraderSpi):
             exchange=EXCHANGE_TORA2VT[bytes.decode(data["ExchangeID"])],
             name=data["SecurityName"],
             product=PRODUCT_TORA2VT.get(bytes.decode(data["ProductID"]), Product.EQUITY),
-            size=data["VolumeMultiple"],
+            size=data["UnderlyingMultiple"],  # 合约乘数错误
             pricetick=data["PriceTick"],
             min_volume=data["MinLimitOrderBuyVolume"],
         )
