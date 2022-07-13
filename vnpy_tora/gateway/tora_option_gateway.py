@@ -1,7 +1,5 @@
 from typing import Dict, Set, Tuple, List, Any
-import pytz
 from datetime import datetime
-
 
 from vnpy.event import EventEngine
 from vnpy.trader.constant import (
@@ -26,6 +24,7 @@ from vnpy.trader.object import (
     SubscribeRequest,
 )
 from vnpy.trader.event import EVENT_TIMER
+from vnpy.trader.utility import ZoneInfo
 
 from ..api.stock import TORA_TSTP_LACT_AccountID
 from ..api.option import (
@@ -154,7 +153,7 @@ OPTIONTYPE_TORA2VT: Dict[str, OptionType] = {
 }
 
 # 其他常量
-CHINA_TZ = pytz.timezone("Asia/Shanghai")       # 中国时区
+CHINA_TZ = ZoneInfo("Asia/Shanghai")       # 中国时区
 
 
 ACCOUNT_USERID: str = "用户代码"
@@ -323,7 +322,7 @@ class ToraMdApi(spmdapi.CTORATstpSPMdSpi):
         dt: datetime = datetime.strptime(
             f'{current_date}-{current_time}', "%Y%m%d-%H:%M:%S"
         )
-        dt: datetime = CHINA_TZ.localize(dt)
+        dt: datetime = dt.replace(tzinfo=CHINA_TZ)
 
         tick: TickData = TickData(
             symbol=data["SecurityID"],
@@ -518,7 +517,7 @@ class ToraTdApi(sptraderapi.CTORATstpSPTraderSpi):
 
         timestamp: str = f"{data['InsertDate']} {data['InsertTime']}"
         dt: datetime = datetime.strptime(timestamp, "%Y%m%d %H:%M:%S")
-        dt: datetime = CHINA_TZ.localize(dt)
+        dt: datetime = dt.replace(tzinfo=CHINA_TZ)
 
         order: OrderData = OrderData(
             symbol=symbol,
@@ -547,7 +546,7 @@ class ToraTdApi(sptraderapi.CTORATstpSPTraderSpi):
 
         timestamp: str = f"{data['TradeDate']} {data['TradeTime']}"
         dt: datetime = datetime.strptime(timestamp, "%Y%m%d %H:%M:%S")
-        dt: datetime = CHINA_TZ.localize(dt)
+        dt: datetime = dt.replace(tzinfo=CHINA_TZ)
 
         trade: TradeData = TradeData(
             symbol=symbol,
@@ -694,7 +693,7 @@ class ToraTdApi(sptraderapi.CTORATstpSPTraderSpi):
         order_ref: int = data["OrderRef"]
         order_id: str = f"{self.frontid}_{self.sessionid}_{order_ref}"
         dt: datetime = datetime.now()
-        dt: datetime = CHINA_TZ.localize(dt)
+        dt: datetime = dt.replace(tzinfo=CHINA_TZ)
 
         order: OrderData = OrderData(
             symbol=data["SecurityID"],

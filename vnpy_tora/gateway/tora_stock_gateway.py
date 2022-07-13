@@ -1,5 +1,4 @@
 from typing import Dict, Tuple, Any, List
-import pytz
 from datetime import datetime
 
 from vnpy.event import EventEngine
@@ -24,6 +23,7 @@ from vnpy.trader.object import (
 )
 from vnpy.trader.event import EVENT_TIMER
 from vnpy.event.engine import Event
+from vnpy.trader.utility import ZoneInfo
 
 from ..api.stock import (
     traderapi,
@@ -133,7 +133,7 @@ DIRECTION_VT2TORA: Dict[Direction, str] = {v: k for k, v in DIRECTION_TORA2VT.it
 
 
 # 其他常量
-CHINA_TZ = pytz.timezone("Asia/Shanghai")       # 中国时区
+CHINA_TZ = ZoneInfo("Asia/Shanghai")       # 中国时区
 
 
 ACCOUNT_USERID: str = "用户代码"
@@ -313,7 +313,7 @@ class ToraMdApi(xmdapi.CTORATstpXMdSpi):
         dt: datetime = datetime.strptime(
             f'{current_date}-{current_time}', "%Y%m%d-%H:%M:%S"
         )
-        dt: datetime = CHINA_TZ.localize(dt)
+        dt: datetime = dt.replace(tzinfo=CHINA_TZ)
         tick: TickData = TickData(
             symbol=data.SecurityID,
             exchange=EXCHANGE_TORA2VT[data.ExchangeID],
@@ -500,7 +500,7 @@ class ToraL2Api(lev2mdapi.CTORATstpLev2MdSpi):
                     f"{current_date}-0{current_datetime[:1]}:{current_datetime[1:3]}:{current_datetime[3:5]}",
                     "%Y%m%d-%H:%M:%S"
                 )
-        dt: datetime = CHINA_TZ.localize(dt)
+        dt: datetime = dt.replace(tzinfo=CHINA_TZ)
 
         tick: TickData = TickData(
             symbol=data["SecurityID"],
@@ -683,7 +683,7 @@ class ToraTdApi(traderapi.CTORATstpTraderSpi):
 
         timestamp: str = f"{data.InsertDate} {data.InsertTime}"
         dt: datetime = datetime.strptime(timestamp, "%Y%m%d %H:%M:%S")
-        dt: datetime = CHINA_TZ.localize(dt)
+        dt: datetime = dt.replace(tzinfo=CHINA_TZ)
 
         order: OrderData = OrderData(
             symbol=symbol,
@@ -711,7 +711,7 @@ class ToraTdApi(traderapi.CTORATstpTraderSpi):
 
         timestamp: str = f"{data.TradeDate} {data.TradeTime}"
         dt: datetime = datetime.strptime(timestamp, "%Y%m%d %H:%M:%S")
-        dt: datetime = CHINA_TZ.localize(dt)
+        dt: datetime = dt.replace(tzinfo=CHINA_TZ)
 
         trade: TradeData = TradeData(
             symbol=symbol,
@@ -837,7 +837,7 @@ class ToraTdApi(traderapi.CTORATstpTraderSpi):
         order_ref: int = data.OrderRef
         order_id: str = f"{self.frontid}_{self.sessionid}_{order_ref}"
         dt: datetime = datetime.now()
-        dt: datetime = CHINA_TZ.localize(dt)
+        dt: datetime = dt.replace(tzinfo=CHINA_TZ)
 
         order: OrderData = OrderData(
             symbol=data.SecurityID,
