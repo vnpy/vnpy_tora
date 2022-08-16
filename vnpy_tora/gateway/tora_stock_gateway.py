@@ -815,7 +815,10 @@ class ToraTdApi(traderapi.CTORATstpTraderSpi):
 
         volume: int = data.TodayBSPos
         if volume == 0:
-            price = data.TotalPosCost / data.HistoryPos
+            if data.HistoryPos:
+                price = data.TotalPosCost / data.HistoryPos
+            else:
+                price = 0
         else:
             price = data.TotalPosCost / (volume + data.HistoryPos)
 
