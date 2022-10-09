@@ -99,7 +99,7 @@ ORDER_STATUS_TORA2VT: Dict[str, Status] = {
 
 # 委托类型映射
 ORDER_TYPE_VT2TORA: Dict[OrderType, Tuple] = {
-    OrderType.LIMIT: (TORA_TSTP_OPT_LimitPrice, TORA_TSTP_TC_GFD, TORA_TSTP_VC_AV),    
+    OrderType.LIMIT: (TORA_TSTP_OPT_LimitPrice, TORA_TSTP_TC_GFD, TORA_TSTP_VC_AV),
     OrderType.MARKET: (TORA_TSTP_OPT_FiveLevelPrice, TORA_TSTP_TC_IOC, TORA_TSTP_VC_AV),
 }
 ORDERTYPE_TORA2VT: Dict[str, OrderType] = {
