@@ -813,14 +813,11 @@ class ToraTdApi(traderapi.CTORATstpTraderSpi):
             self.gateway.write_log("OnRspQryPosition:收到其他账户的仓位信息")
             return
 
-        volume: int = data.TodayBSPos
+        volume: int = data.CurrentPosition
         if volume == 0:
-            if data.HistoryPos:
-                price = data.TotalPosCost / data.HistoryPos
-            else:
-                price = 0
+            price = 0
         else:
-            price = data.TotalPosCost / (volume + data.HistoryPos)
+            price = data.TotalPosCost / volume
 
         frozen: int = data.HistoryPosFrozen + data.TodayBSPosFrozen + data.TodayPRPosFrozen
         position_data: PositionData = PositionData(
