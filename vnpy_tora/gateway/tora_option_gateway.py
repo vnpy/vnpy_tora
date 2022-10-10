@@ -666,9 +666,9 @@ class ToraTdApi(sptraderapi.CTORATstpSPTraderSpi):
             self.gateway.write_log("OnRspQryPosition:收到其他账户的仓位信息")
             return
 
-        volume: int = data["TodayPos"]
+        volume: int = data["TodayPos"] + data["HistoryPos"]
         if volume == 0:
-            price = data["TotalPosCost"]
+            price = 0
         else:
             price = data["TotalPosCost"] / volume
 
@@ -805,6 +805,10 @@ class ToraTdApi(sptraderapi.CTORATstpSPTraderSpi):
 
     def send_order(self, req: OrderRequest):
         """委托下单"""
+        if req.type not in ORDER_TYPE_VT2TORA:
+            self.gateway.write_log(f"委托失败，不支持的委托类型{req.type.value}")
+            return ""
+
         self.reqid += 1
         order_ref: int = self._get_new_order_id()
 
