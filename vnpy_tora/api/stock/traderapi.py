@@ -802,6 +802,8 @@ TORA_TSTP_CT_Person = cvar.TORA_TSTP_CT_Person
 TORA_TSTP_CT_Company = cvar.TORA_TSTP_CT_Company
 # 自营
 TORA_TSTP_CT_SelfOperate = cvar.TORA_TSTP_CT_SelfOperate
+# 测试
+TORA_TSTP_CT_Test = cvar.TORA_TSTP_CT_Test
 # 组织机构代码
 TORA_TSTP_ICT_EID = cvar.TORA_TSTP_ICT_EID
 # 中国公民身份证
@@ -1014,6 +1016,8 @@ TORA_TSTP_PTID_Stock = cvar.TORA_TSTP_PTID_Stock
 TORA_TSTP_PTID_Bond = cvar.TORA_TSTP_PTID_Bond
 # 股票期权
 TORA_TSTP_PTID_Option = cvar.TORA_TSTP_PTID_Option
+# 买卖基金
+TORA_TSTP_PTID_Fund = cvar.TORA_TSTP_PTID_Fund
 # 价格上下限
 TORA_TSTP_PPT_LimitPrice = cvar.TORA_TSTP_PPT_LimitPrice
 # 价差组
@@ -1467,6 +1471,9 @@ class CTORATstpOrderField(object):
 
 	# 回报附加浮点型数据2
     RtnFloatInfo2 = property(_traderapi.CTORATstpOrderField_RtnFloatInfo2_get, _traderapi.CTORATstpOrderField_RtnFloatInfo2_set)
+
+	# 回报附加浮点型数据3
+    RtnFloatInfo3 = property(_traderapi.CTORATstpOrderField_RtnFloatInfo3_get, _traderapi.CTORATstpOrderField_RtnFloatInfo3_set)
 
     def __init__(self):
         _traderapi.CTORATstpOrderField_swiginit(self, _traderapi.new_CTORATstpOrderField())
@@ -2416,6 +2423,9 @@ class CTORATstpTransferFundField(object):
 	# Mac地址
     MacAddress = property(_traderapi.CTORATstpTransferFundField_MacAddress_get, _traderapi.CTORATstpTransferFundField_MacAddress_set)
 
+	# 投资单元代码
+    BusinessUnitID = property(_traderapi.CTORATstpTransferFundField_BusinessUnitID_get, _traderapi.CTORATstpTransferFundField_BusinessUnitID_set)
+
     def __init__(self):
         _traderapi.CTORATstpTransferFundField_swiginit(self, _traderapi.new_CTORATstpTransferFundField())
     __swig_destroy__ = _traderapi.delete_CTORATstpTransferFundField
@@ -2706,6 +2716,9 @@ class CTORATstpPeripheryTransferFundField(object):
 
 	# 状态信息
     StatusMsg = property(_traderapi.CTORATstpPeripheryTransferFundField_StatusMsg_get, _traderapi.CTORATstpPeripheryTransferFundField_StatusMsg_set)
+
+	# 投资单元代码
+    BusinessUnitID = property(_traderapi.CTORATstpPeripheryTransferFundField_BusinessUnitID_get, _traderapi.CTORATstpPeripheryTransferFundField_BusinessUnitID_set)
 
     def __init__(self):
         _traderapi.CTORATstpPeripheryTransferFundField_swiginit(self, _traderapi.new_CTORATstpPeripheryTransferFundField())
@@ -4132,6 +4145,9 @@ class CTORATstpTradingAccountField(object):
 	# 融券卖出金额冻结(用于偿还融资负债或买特殊品种的未成交冻结金额)(两融专用)
     CreditSellFrozenAmount = property(_traderapi.CTORATstpTradingAccountField_CreditSellFrozenAmount_get, _traderapi.CTORATstpTradingAccountField_CreditSellFrozenAmount_set)
 
+	# 属主单元
+    OwnerUnit = property(_traderapi.CTORATstpTradingAccountField_OwnerUnit_get, _traderapi.CTORATstpTradingAccountField_OwnerUnit_set)
+
     def __init__(self):
         _traderapi.CTORATstpTradingAccountField_swiginit(self, _traderapi.new_CTORATstpTradingAccountField())
     __swig_destroy__ = _traderapi.delete_CTORATstpTradingAccountField
@@ -4309,11 +4325,17 @@ class CTORATstpPositionField(object):
 	# 累计平仓盈亏(两融专用)
     CloseProfit = property(_traderapi.CTORATstpPositionField_CloseProfit_get, _traderapi.CTORATstpPositionField_CloseProfit_set)
 
-	# 当日累计开仓数量(两融专用)
+	# 当日累计开仓数量
     TodayTotalOpenVolume = property(_traderapi.CTORATstpPositionField_TodayTotalOpenVolume_get, _traderapi.CTORATstpPositionField_TodayTotalOpenVolume_set)
 
 	# 今手续费
     TodayCommission = property(_traderapi.CTORATstpPositionField_TodayCommission_get, _traderapi.CTORATstpPositionField_TodayCommission_set)
+
+	# 当日累计买入金额
+    TodayTotalBuyAmount = property(_traderapi.CTORATstpPositionField_TodayTotalBuyAmount_get, _traderapi.CTORATstpPositionField_TodayTotalBuyAmount_set)
+
+	# 当日累计卖出金额
+    TodayTotalSellAmount = property(_traderapi.CTORATstpPositionField_TodayTotalSellAmount_get, _traderapi.CTORATstpPositionField_TodayTotalSellAmount_set)
 
     def __init__(self):
         _traderapi.CTORATstpPositionField_swiginit(self, _traderapi.new_CTORATstpPositionField())
@@ -4840,6 +4862,9 @@ class CTORATstpFundTransferDetailField(object):
 	# (直接还款用)指定偿还时的负债编号(两融专用)
     CreditDebtID = property(_traderapi.CTORATstpFundTransferDetailField_CreditDebtID_get, _traderapi.CTORATstpFundTransferDetailField_CreditDebtID_set)
 
+	# 投资单元代码
+    BusinessUnitID = property(_traderapi.CTORATstpFundTransferDetailField_BusinessUnitID_get, _traderapi.CTORATstpFundTransferDetailField_BusinessUnitID_set)
+
     def __init__(self):
         _traderapi.CTORATstpFundTransferDetailField_swiginit(self, _traderapi.new_CTORATstpFundTransferDetailField())
     __swig_destroy__ = _traderapi.delete_CTORATstpFundTransferDetailField
@@ -5181,6 +5206,9 @@ class CTORATstpPeripheryFundTransferDetailField(object):
 
 	# 状态信息
     StatusMsg = property(_traderapi.CTORATstpPeripheryFundTransferDetailField_StatusMsg_get, _traderapi.CTORATstpPeripheryFundTransferDetailField_StatusMsg_set)
+
+	# 投资单元代码
+    BusinessUnitID = property(_traderapi.CTORATstpPeripheryFundTransferDetailField_BusinessUnitID_get, _traderapi.CTORATstpPeripheryFundTransferDetailField_BusinessUnitID_set)
 
     def __init__(self):
         _traderapi.CTORATstpPeripheryFundTransferDetailField_swiginit(self, _traderapi.new_CTORATstpPeripheryFundTransferDetailField())
@@ -6108,6 +6136,9 @@ class CTORATstpInvestorPositionLimitField(object):
 
 	# 已使用当日合并额度
     MergeFrozen = property(_traderapi.CTORATstpInvestorPositionLimitField_MergeFrozen_get, _traderapi.CTORATstpInvestorPositionLimitField_MergeFrozen_set)
+
+	# 通用统一个人识别码
+    UUPIC = property(_traderapi.CTORATstpInvestorPositionLimitField_UUPIC_get, _traderapi.CTORATstpInvestorPositionLimitField_UUPIC_set)
 
     def __init__(self):
         _traderapi.CTORATstpInvestorPositionLimitField_swiginit(self, _traderapi.new_CTORATstpInvestorPositionLimitField())
