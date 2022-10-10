@@ -37,6 +37,7 @@ from ..api.stock import (
     TORA_TSTP_EXD_BSE,
     TORA_TSTP_OST_Cached,
     TORA_TSTP_OPT_LimitPrice,
+    TORA_TSTP_OPT_FiveLevelPrice,
     TORA_TSTP_OST_AllTraded,
     TORA_TSTP_OST_AllCanceled,
     TORA_TSTP_OST_Accepted,
@@ -54,6 +55,7 @@ from ..api.stock import (
     TORA_TSTP_PID_SZStock,
     TORA_TSTP_PID_BJStock,
     TORA_TSTP_TC_GFD,
+    TORA_TSTP_TC_IOC,
     TORA_TSTP_VC_AV,
     TORA_TSTP_AF_Delete,
     CTORATstpQrySecurityField,
@@ -98,9 +100,11 @@ ORDER_STATUS_TORA2VT: Dict[str, Status] = {
 # 委托类型映射
 ORDER_TYPE_VT2TORA: Dict[OrderType, Tuple] = {
     OrderType.LIMIT: (TORA_TSTP_OPT_LimitPrice, TORA_TSTP_TC_GFD, TORA_TSTP_VC_AV),
+    OrderType.MARKET: (TORA_TSTP_OPT_FiveLevelPrice, TORA_TSTP_TC_IOC, TORA_TSTP_VC_AV),
 }
 ORDERTYPE_TORA2VT: Dict[str, OrderType] = {
-    TORA_TSTP_OPT_LimitPrice: OrderType.LIMIT
+    TORA_TSTP_OPT_LimitPrice: OrderType.LIMIT,
+    TORA_TSTP_OPT_FiveLevelPrice: OrderType.MARKET,
 }
 
 # 交易所映射
@@ -673,6 +677,10 @@ class ToraTdApi(traderapi.CTORATstpTraderSpi):
 
     def OnRtnOrder(self, data: CTORATstpOrderField) -> None:
         """委托更新推送"""
+        type: OrderType = ORDERTYPE_TORA2VT.get(data.OrderPriceType, None)
+        if not type:
+            return
+
         symbol: str = data.SecurityID
         exchange: Exchange = EXCHANGE_TORA2VT[data.ExchangeID]
 
@@ -834,6 +842,10 @@ class ToraTdApi(traderapi.CTORATstpTraderSpi):
 
     def OnErrRtnOrderInsert(self, data: CTORATstpInputOrderField, error: CTORATstpRspInfoField, reason: int) -> None:
         """委托下单失败回报"""
+        type: OrderType = ORDERTYPE_TORA2VT.get(data.OrderPriceType, None)
+        if not type:
+            return
+
         order_ref: int = data.OrderRef
         order_id: str = f"{self.frontid}_{self.sessionid}_{order_ref}"
         dt: datetime = datetime.now()
@@ -948,6 +960,10 @@ class ToraTdApi(traderapi.CTORATstpTraderSpi):
 
     def send_order(self, req: OrderRequest):
         """委托下单"""
+        if req.type not in ORDER_TYPE_VT2TORA:
+            self.gateway.write_log(f"委托失败，不支持的委托类型{req.type.value}")
+            return ""
+
         self.reqid += 1
         self.order_ref += 1
 
