@@ -805,6 +805,10 @@ class ToraTdApi(sptraderapi.CTORATstpSPTraderSpi):
 
     def send_order(self, req: OrderRequest):
         """委托下单"""
+        if req.type not in ORDER_TYPE_VT2TORA:
+            self.gateway.write_log(f"委托失败，不支持的委托类型{req.type.value}")
+            return ""
+
         self.reqid += 1
         order_ref: int = self._get_new_order_id()
 
