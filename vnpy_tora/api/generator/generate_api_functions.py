@@ -404,11 +404,11 @@ class ApiGenerator:
 
 if __name__ == "__main__":
 
-    # generator = ApiGenerator("../include/tora/TORATstpXMdApi.h", "toramd", "md", "ToraMdApi")
+    # generator = ApiGenerator("../include/tora/TORATstpXMdApi.h", "toramd", "md", "MdApi")
     # generator.run()
 
-    # generator = ApiGenerator("../include/tora/TORATstpSPTraderApi.h", "toraoption", "td", "ToraOptionApi")
+    # generator = ApiGenerator("../include/tora/TORATstpSPTraderApi.h", "toraoption", "td", "OptionApi")
     # generator.run()
 
-    generator = ApiGenerator("../include/tora/TORATstpTraderApi.h", "torastock", "td", "ToraStockApi")
+    generator = ApiGenerator("../include/tora/TORATstpTraderApi.h", "torastock", "td", "StockApi")
     generator.run()

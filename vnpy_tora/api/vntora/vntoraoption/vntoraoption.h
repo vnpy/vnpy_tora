@@ -118,7 +118,7 @@ using namespace std;
 ///-------------------------------------------------------------------------------------
 
 //API的继承实现
-class ToraOptionApi : public CTORATstpSPTraderSpi
+class OptionApi : public CTORATstpSPTraderSpi
 {
 private:
 	SPTRADER_API_DLL_EXPORT CTORATstpSPTraderApi* api;      //API对象
@@ -129,11 +129,11 @@ private:
 
 
 public:
-	ToraOptionApi()
+	OptionApi()
 	{
 	};
 
-	~ToraOptionApi()
+	~OptionApi()
 	{
 		if (this->active)
 		{

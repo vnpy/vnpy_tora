@@ -1,11 +1,11 @@
-void ToraStockApi::OnFrontConnected()
+void StockApi::OnFrontConnected()
 {
 	Task task = Task();
 	task.task_name = ONFRONTCONNECTED;
 	this->task_queue.push(task);
 };
 
-void ToraStockApi::OnFrontDisconnected(int nReason)
+void StockApi::OnFrontDisconnected(int nReason)
 {
 	Task task = Task();
 	task.task_name = ONFRONTDISCONNECTED;
@@ -13,7 +13,7 @@ void ToraStockApi::OnFrontDisconnected(int nReason)
 	this->task_queue.push(task);
 };
 
-void ToraStockApi::OnRspError(CTORATstpRspInfoField *pRspInfoField, int nRequestID, bool bIsLast) 
+void StockApi::OnRspError(CTORATstpRspInfoField *pRspInfoField, int nRequestID, bool bIsLast) 
 {
 	Task task = Task();
 	task.task_name = ONRSPERROR;
@@ -28,7 +28,7 @@ void ToraStockApi::OnRspError(CTORATstpRspInfoField *pRspInfoField, int nRequest
 	this->task_queue.push(task);
 };
 
-void ToraStockApi::OnRspGetConnectionInfo(CTORATstpConnectionInfoField *pConnectionInfoField, CTORATstpRspInfoField *pRspInfoField, int nRequestID) 
+void StockApi::OnRspGetConnectionInfo(CTORATstpConnectionInfoField *pConnectionInfoField, CTORATstpRspInfoField *pRspInfoField, int nRequestID) 
 {
 	Task task = Task();
 	task.task_name = ONRSPGETCONNECTIONINFO;
@@ -48,7 +48,7 @@ void ToraStockApi::OnRspGetConnectionInfo(CTORATstpConnectionInfoField *pConnect
 	this->task_queue.push(task);
 };
 
-void ToraStockApi::OnRspUserLogin(CTORATstpRspUserLoginField *pRspUserLoginField, CTORATstpRspInfoField *pRspInfoField, int nRequestID) 
+void StockApi::OnRspUserLogin(CTORATstpRspUserLoginField *pRspUserLoginField, CTORATstpRspInfoField *pRspInfoField, int nRequestID) 
 {
 	Task task = Task();
 	task.task_name = ONRSPUSERLOGIN;
@@ -68,7 +68,7 @@ void ToraStockApi::OnRspUserLogin(CTORATstpRspUserLoginField *pRspUserLoginField
 	this->task_queue.push(task);
 };
 
-void ToraStockApi::OnRspUserLogout(CTORATstpUserLogoutField *pUserLogoutField, CTORATstpRspInfoField *pRspInfoField, int nRequestID) 
+void StockApi::OnRspUserLogout(CTORATstpUserLogoutField *pUserLogoutField, CTORATstpRspInfoField *pRspInfoField, int nRequestID) 
 {
 	Task task = Task();
 	task.task_name = ONRSPUSERLOGOUT;
@@ -88,7 +88,7 @@ void ToraStockApi::OnRspUserLogout(CTORATstpUserLogoutField *pUserLogoutField, C
 	this->task_queue.push(task);
 };
 
-void ToraStockApi::OnRspUserPasswordUpdate(CTORATstpUserPasswordUpdateField *pUserPasswordUpdateField, CTORATstpRspInfoField *pRspInfoField, int nRequestID) 
+void StockApi::OnRspUserPasswordUpdate(CTORATstpUserPasswordUpdateField *pUserPasswordUpdateField, CTORATstpRspInfoField *pRspInfoField, int nRequestID) 
 {
 	Task task = Task();
 	task.task_name = ONRSPUSERPASSWORDUPDATE;
@@ -108,7 +108,7 @@ void ToraStockApi::OnRspUserPasswordUpdate(CTORATstpUserPasswordUpdateField *pUs
 	this->task_queue.push(task);
 };
 
-void ToraStockApi::OnRspInputDeviceSerial(CTORATstpRspInputDeviceSerialField *pRspInputDeviceSerialField, CTORATstpRspInfoField *pRspInfoField, int nRequestID) 
+void StockApi::OnRspInputDeviceSerial(CTORATstpRspInputDeviceSerialField *pRspInputDeviceSerialField, CTORATstpRspInfoField *pRspInfoField, int nRequestID) 
 {
 	Task task = Task();
 	task.task_name = ONRSPINPUTDEVICESERIAL;
@@ -128,7 +128,7 @@ void ToraStockApi::OnRspInputDeviceSerial(CTORATstpRspInputDeviceSerialField *pR
 	this->task_queue.push(task);
 };
 
-void ToraStockApi::OnRspOrderInsert(CTORATstpInputOrderField *pInputOrderField, CTORATstpRspInfoField *pRspInfoField, int nRequestID) 
+void StockApi::OnRspOrderInsert(CTORATstpInputOrderField *pInputOrderField, CTORATstpRspInfoField *pRspInfoField, int nRequestID) 
 {
 	Task task = Task();
 	task.task_name = ONRSPORDERINSERT;
@@ -148,7 +148,7 @@ void ToraStockApi::OnRspOrderInsert(CTORATstpInputOrderField *pInputOrderField, 
 	this->task_queue.push(task);
 };
 
-void ToraStockApi::OnRtnOrder(CTORATstpOrderField *pOrderField) 
+void StockApi::OnRtnOrder(CTORATstpOrderField *pOrderField) 
 {
 	Task task = Task();
 	task.task_name = ONRTNORDER;
@@ -161,7 +161,7 @@ void ToraStockApi::OnRtnOrder(CTORATstpOrderField *pOrderField)
 	this->task_queue.push(task);
 };
 
-void ToraStockApi::OnErrRtnOrderInsert(CTORATstpInputOrderField *pInputOrderField, CTORATstpRspInfoField *pRspInfoField, int nRequestID) 
+void StockApi::OnErrRtnOrderInsert(CTORATstpInputOrderField *pInputOrderField, CTORATstpRspInfoField *pRspInfoField, int nRequestID) 
 {
 	Task task = Task();
 	task.task_name = ONERRRTNORDERINSERT;
@@ -181,7 +181,7 @@ void ToraStockApi::OnErrRtnOrderInsert(CTORATstpInputOrderField *pInputOrderFiel
 	this->task_queue.push(task);
 };
 
-void ToraStockApi::OnRtnTrade(CTORATstpTradeField *pTradeField) 
+void StockApi::OnRtnTrade(CTORATstpTradeField *pTradeField) 
 {
 	Task task = Task();
 	task.task_name = ONRTNTRADE;
@@ -194,7 +194,7 @@ void ToraStockApi::OnRtnTrade(CTORATstpTradeField *pTradeField)
 	this->task_queue.push(task);
 };
 
-void ToraStockApi::OnRspOrderAction(CTORATstpInputOrderActionField *pInputOrderActionField, CTORATstpRspInfoField *pRspInfoField, int nRequestID) 
+void StockApi::OnRspOrderAction(CTORATstpInputOrderActionField *pInputOrderActionField, CTORATstpRspInfoField *pRspInfoField, int nRequestID) 
 {
 	Task task = Task();
 	task.task_name = ONRSPORDERACTION;
@@ -214,7 +214,7 @@ void ToraStockApi::OnRspOrderAction(CTORATstpInputOrderActionField *pInputOrderA
 	this->task_queue.push(task);
 };
 
-void ToraStockApi::OnErrRtnOrderAction(CTORATstpInputOrderActionField *pInputOrderActionField, CTORATstpRspInfoField *pRspInfoField, int nRequestID) 
+void StockApi::OnErrRtnOrderAction(CTORATstpInputOrderActionField *pInputOrderActionField, CTORATstpRspInfoField *pRspInfoField, int nRequestID) 
 {
 	Task task = Task();
 	task.task_name = ONERRRTNORDERACTION;
@@ -234,7 +234,7 @@ void ToraStockApi::OnErrRtnOrderAction(CTORATstpInputOrderActionField *pInputOrd
 	this->task_queue.push(task);
 };
 
-void ToraStockApi::OnRspCondOrderInsert(CTORATstpInputCondOrderField *pInputCondOrderField, CTORATstpRspInfoField *pRspInfoField, int nRequestID) 
+void StockApi::OnRspCondOrderInsert(CTORATstpInputCondOrderField *pInputCondOrderField, CTORATstpRspInfoField *pRspInfoField, int nRequestID) 
 {
 	Task task = Task();
 	task.task_name = ONRSPCONDORDERINSERT;
@@ -254,7 +254,7 @@ void ToraStockApi::OnRspCondOrderInsert(CTORATstpInputCondOrderField *pInputCond
 	this->task_queue.push(task);
 };
 
-void ToraStockApi::OnRtnCondOrder(CTORATstpConditionOrderField *pConditionOrderField) 
+void StockApi::OnRtnCondOrder(CTORATstpConditionOrderField *pConditionOrderField) 
 {
 	Task task = Task();
 	task.task_name = ONRTNCONDORDER;
@@ -267,7 +267,7 @@ void ToraStockApi::OnRtnCondOrder(CTORATstpConditionOrderField *pConditionOrderF
 	this->task_queue.push(task);
 };
 
-void ToraStockApi::OnErrRtnCondOrderInsert(CTORATstpInputCondOrderField *pInputCondOrderField, CTORATstpRspInfoField *pRspInfoField, int nRequestID) 
+void StockApi::OnErrRtnCondOrderInsert(CTORATstpInputCondOrderField *pInputCondOrderField, CTORATstpRspInfoField *pRspInfoField, int nRequestID) 
 {
 	Task task = Task();
 	task.task_name = ONERRRTNCONDORDERINSERT;
@@ -287,7 +287,7 @@ void ToraStockApi::OnErrRtnCondOrderInsert(CTORATstpInputCondOrderField *pInputC
 	this->task_queue.push(task);
 };
 
-void ToraStockApi::OnRspCondOrderAction(CTORATstpInputCondOrderActionField *pInputCondOrderActionField, CTORATstpRspInfoField *pRspInfoField, int nRequestID) 
+void StockApi::OnRspCondOrderAction(CTORATstpInputCondOrderActionField *pInputCondOrderActionField, CTORATstpRspInfoField *pRspInfoField, int nRequestID) 
 {
 	Task task = Task();
 	task.task_name = ONRSPCONDORDERACTION;
@@ -307,7 +307,7 @@ void ToraStockApi::OnRspCondOrderAction(CTORATstpInputCondOrderActionField *pInp
 	this->task_queue.push(task);
 };
 
-void ToraStockApi::OnErrRtnCondOrderAction(CTORATstpInputCondOrderActionField *pInputCondOrderActionField, CTORATstpRspInfoField *pRspInfoField, int nRequestID) 
+void StockApi::OnErrRtnCondOrderAction(CTORATstpInputCondOrderActionField *pInputCondOrderActionField, CTORATstpRspInfoField *pRspInfoField, int nRequestID) 
 {
 	Task task = Task();
 	task.task_name = ONERRRTNCONDORDERACTION;
@@ -327,7 +327,7 @@ void ToraStockApi::OnErrRtnCondOrderAction(CTORATstpInputCondOrderActionField *p
 	this->task_queue.push(task);
 };
 
-void ToraStockApi::OnRspNegoOrderInsert(CTORATstpInputNegoOrderField *pInputNegoOrderField, CTORATstpRspInfoField *pRspInfoField, int nRequestID) 
+void StockApi::OnRspNegoOrderInsert(CTORATstpInputNegoOrderField *pInputNegoOrderField, CTORATstpRspInfoField *pRspInfoField, int nRequestID) 
 {
 	Task task = Task();
 	task.task_name = ONRSPNEGOORDERINSERT;
@@ -347,7 +347,7 @@ void ToraStockApi::OnRspNegoOrderInsert(CTORATstpInputNegoOrderField *pInputNego
 	this->task_queue.push(task);
 };
 
-void ToraStockApi::OnRtnNegoOrder(CTORATstpNegoOrderField *pNegoOrderField) 
+void StockApi::OnRtnNegoOrder(CTORATstpNegoOrderField *pNegoOrderField) 
 {
 	Task task = Task();
 	task.task_name = ONRTNNEGOORDER;
@@ -360,7 +360,7 @@ void ToraStockApi::OnRtnNegoOrder(CTORATstpNegoOrderField *pNegoOrderField)
 	this->task_queue.push(task);
 };
 
-void ToraStockApi::OnErrRtnNegoOrderInsert(CTORATstpInputNegoOrderField *pInputNegoOrderField, CTORATstpRspInfoField *pRspInfoField, int nRequestID) 
+void StockApi::OnErrRtnNegoOrderInsert(CTORATstpInputNegoOrderField *pInputNegoOrderField, CTORATstpRspInfoField *pRspInfoField, int nRequestID) 
 {
 	Task task = Task();
 	task.task_name = ONERRRTNNEGOORDERINSERT;
@@ -380,7 +380,7 @@ void ToraStockApi::OnErrRtnNegoOrderInsert(CTORATstpInputNegoOrderField *pInputN
 	this->task_queue.push(task);
 };
 
-void ToraStockApi::OnRtnNegoTrade(CTORATstpNegoTradeField *pNegoTradeField) 
+void StockApi::OnRtnNegoTrade(CTORATstpNegoTradeField *pNegoTradeField) 
 {
 	Task task = Task();
 	task.task_name = ONRTNNEGOTRADE;
@@ -393,7 +393,7 @@ void ToraStockApi::OnRtnNegoTrade(CTORATstpNegoTradeField *pNegoTradeField)
 	this->task_queue.push(task);
 };
 
-void ToraStockApi::OnRspNegoOrderAction(CTORATstpInputNegoOrderActionField *pInputNegoOrderActionField, CTORATstpRspInfoField *pRspInfoField, int nRequestID) 
+void StockApi::OnRspNegoOrderAction(CTORATstpInputNegoOrderActionField *pInputNegoOrderActionField, CTORATstpRspInfoField *pRspInfoField, int nRequestID) 
 {
 	Task task = Task();
 	task.task_name = ONRSPNEGOORDERACTION;
@@ -413,7 +413,7 @@ void ToraStockApi::OnRspNegoOrderAction(CTORATstpInputNegoOrderActionField *pInp
 	this->task_queue.push(task);
 };
 
-void ToraStockApi::OnErrRtnNegoOrderAction(CTORATstpInputNegoOrderActionField *pInputNegoOrderActionField, CTORATstpRspInfoField *pRspInfoField, int nRequestID) 
+void StockApi::OnErrRtnNegoOrderAction(CTORATstpInputNegoOrderActionField *pInputNegoOrderActionField, CTORATstpRspInfoField *pRspInfoField, int nRequestID) 
 {
 	Task task = Task();
 	task.task_name = ONERRRTNNEGOORDERACTION;
@@ -433,7 +433,7 @@ void ToraStockApi::OnErrRtnNegoOrderAction(CTORATstpInputNegoOrderActionField *p
 	this->task_queue.push(task);
 };
 
-void ToraStockApi::OnRspOrderInsertEx(CTORATstpInputOrderExField *pInputOrderExField, CTORATstpRspInfoField *pRspInfoField, int nRequestID) 
+void StockApi::OnRspOrderInsertEx(CTORATstpInputOrderExField *pInputOrderExField, CTORATstpRspInfoField *pRspInfoField, int nRequestID) 
 {
 	Task task = Task();
 	task.task_name = ONRSPORDERINSERTEX;
@@ -453,7 +453,7 @@ void ToraStockApi::OnRspOrderInsertEx(CTORATstpInputOrderExField *pInputOrderExF
 	this->task_queue.push(task);
 };
 
-void ToraStockApi::OnRspOrderActionEx(CTORATstpInputOrderActionExField *pInputOrderActionExField, CTORATstpRspInfoField *pRspInfoField, int nRequestID) 
+void StockApi::OnRspOrderActionEx(CTORATstpInputOrderActionExField *pInputOrderActionExField, CTORATstpRspInfoField *pRspInfoField, int nRequestID) 
 {
 	Task task = Task();
 	task.task_name = ONRSPORDERACTIONEX;
@@ -473,7 +473,7 @@ void ToraStockApi::OnRspOrderActionEx(CTORATstpInputOrderActionExField *pInputOr
 	this->task_queue.push(task);
 };
 
-void ToraStockApi::OnRtnMarketStatus(CTORATstpMarketStatusField *pMarketStatusField) 
+void StockApi::OnRtnMarketStatus(CTORATstpMarketStatusField *pMarketStatusField) 
 {
 	Task task = Task();
 	task.task_name = ONRTNMARKETSTATUS;
@@ -486,7 +486,7 @@ void ToraStockApi::OnRtnMarketStatus(CTORATstpMarketStatusField *pMarketStatusFi
 	this->task_queue.push(task);
 };
 
-void ToraStockApi::OnRspTransferFund(CTORATstpInputTransferFundField *pInputTransferFundField, CTORATstpRspInfoField *pRspInfoField, int nRequestID) 
+void StockApi::OnRspTransferFund(CTORATstpInputTransferFundField *pInputTransferFundField, CTORATstpRspInfoField *pRspInfoField, int nRequestID) 
 {
 	Task task = Task();
 	task.task_name = ONRSPTRANSFERFUND;
@@ -506,7 +506,7 @@ void ToraStockApi::OnRspTransferFund(CTORATstpInputTransferFundField *pInputTran
 	this->task_queue.push(task);
 };
 
-void ToraStockApi::OnErrRtnTransferFund(CTORATstpInputTransferFundField *pInputTransferFundField, CTORATstpRspInfoField *pRspInfoField, int nRequestID) 
+void StockApi::OnErrRtnTransferFund(CTORATstpInputTransferFundField *pInputTransferFundField, CTORATstpRspInfoField *pRspInfoField, int nRequestID) 
 {
 	Task task = Task();
 	task.task_name = ONERRRTNTRANSFERFUND;
@@ -526,7 +526,7 @@ void ToraStockApi::OnErrRtnTransferFund(CTORATstpInputTransferFundField *pInputT
 	this->task_queue.push(task);
 };
 
-void ToraStockApi::OnRtnTransferFund(CTORATstpTransferFundField *pTransferFundField) 
+void StockApi::OnRtnTransferFund(CTORATstpTransferFundField *pTransferFundField) 
 {
 	Task task = Task();
 	task.task_name = ONRTNTRANSFERFUND;
@@ -539,7 +539,7 @@ void ToraStockApi::OnRtnTransferFund(CTORATstpTransferFundField *pTransferFundFi
 	this->task_queue.push(task);
 };
 
-void ToraStockApi::OnRspTransferPosition(CTORATstpInputTransferPositionField *pInputTransferPositionField, CTORATstpRspInfoField *pRspInfoField, int nRequestID) 
+void StockApi::OnRspTransferPosition(CTORATstpInputTransferPositionField *pInputTransferPositionField, CTORATstpRspInfoField *pRspInfoField, int nRequestID) 
 {
 	Task task = Task();
 	task.task_name = ONRSPTRANSFERPOSITION;
@@ -559,7 +559,7 @@ void ToraStockApi::OnRspTransferPosition(CTORATstpInputTransferPositionField *pI
 	this->task_queue.push(task);
 };
 
-void ToraStockApi::OnErrRtnTransferPosition(CTORATstpInputTransferPositionField *pInputTransferPositionField, CTORATstpRspInfoField *pRspInfoField, int nRequestID) 
+void StockApi::OnErrRtnTransferPosition(CTORATstpInputTransferPositionField *pInputTransferPositionField, CTORATstpRspInfoField *pRspInfoField, int nRequestID) 
 {
 	Task task = Task();
 	task.task_name = ONERRRTNTRANSFERPOSITION;
@@ -579,7 +579,7 @@ void ToraStockApi::OnErrRtnTransferPosition(CTORATstpInputTransferPositionField 
 	this->task_queue.push(task);
 };
 
-void ToraStockApi::OnRtnTransferPosition(CTORATstpTransferPositionField *pTransferPositionField) 
+void StockApi::OnRtnTransferPosition(CTORATstpTransferPositionField *pTransferPositionField) 
 {
 	Task task = Task();
 	task.task_name = ONRTNTRANSFERPOSITION;
@@ -592,7 +592,7 @@ void ToraStockApi::OnRtnTransferPosition(CTORATstpTransferPositionField *pTransf
 	this->task_queue.push(task);
 };
 
-void ToraStockApi::OnRtnPeripheryTransferPosition(CTORATstpPeripheryTransferPositionField *pPeripheryTransferPositionField) 
+void StockApi::OnRtnPeripheryTransferPosition(CTORATstpPeripheryTransferPositionField *pPeripheryTransferPositionField) 
 {
 	Task task = Task();
 	task.task_name = ONRTNPERIPHERYTRANSFERPOSITION;
@@ -605,7 +605,7 @@ void ToraStockApi::OnRtnPeripheryTransferPosition(CTORATstpPeripheryTransferPosi
 	this->task_queue.push(task);
 };
 
-void ToraStockApi::OnRtnPeripheryTransferFund(CTORATstpPeripheryTransferFundField *pPeripheryTransferFundField) 
+void StockApi::OnRtnPeripheryTransferFund(CTORATstpPeripheryTransferFundField *pPeripheryTransferFundField) 
 {
 	Task task = Task();
 	task.task_name = ONRTNPERIPHERYTRANSFERFUND;
@@ -618,7 +618,7 @@ void ToraStockApi::OnRtnPeripheryTransferFund(CTORATstpPeripheryTransferFundFiel
 	this->task_queue.push(task);
 };
 
-void ToraStockApi::OnRspInquiryJZFund(CTORATstpRspInquiryJZFundField *pRspInquiryJZFundField, CTORATstpRspInfoField *pRspInfoField, int nRequestID) 
+void StockApi::OnRspInquiryJZFund(CTORATstpRspInquiryJZFundField *pRspInquiryJZFundField, CTORATstpRspInfoField *pRspInfoField, int nRequestID) 
 {
 	Task task = Task();
 	task.task_name = ONRSPINQUIRYJZFUND;
@@ -638,7 +638,7 @@ void ToraStockApi::OnRspInquiryJZFund(CTORATstpRspInquiryJZFundField *pRspInquir
 	this->task_queue.push(task);
 };
 
-void ToraStockApi::OnRspInquiryBankAccountFund(CTORATstpRspInquiryBankAccountFundField *pRspInquiryBankAccountFundField, CTORATstpRspInfoField *pRspInfoField, int nRequestID) 
+void StockApi::OnRspInquiryBankAccountFund(CTORATstpRspInquiryBankAccountFundField *pRspInquiryBankAccountFundField, CTORATstpRspInfoField *pRspInfoField, int nRequestID) 
 {
 	Task task = Task();
 	task.task_name = ONRSPINQUIRYBANKACCOUNTFUND;
@@ -658,7 +658,7 @@ void ToraStockApi::OnRspInquiryBankAccountFund(CTORATstpRspInquiryBankAccountFun
 	this->task_queue.push(task);
 };
 
-void ToraStockApi::OnRtnTradingNotice(CTORATstpTradingNoticeField *pTradingNoticeField) 
+void StockApi::OnRtnTradingNotice(CTORATstpTradingNoticeField *pTradingNoticeField) 
 {
 	Task task = Task();
 	task.task_name = ONRTNTRADINGNOTICE;
@@ -671,7 +671,7 @@ void ToraStockApi::OnRtnTradingNotice(CTORATstpTradingNoticeField *pTradingNotic
 	this->task_queue.push(task);
 };
 
-void ToraStockApi::OnRspInquiryMaxOrderVolume(CTORATstpRspInquiryMaxOrderVolumeField *pRspInquiryMaxOrderVolumeField, CTORATstpRspInfoField *pRspInfoField, int nRequestID) 
+void StockApi::OnRspInquiryMaxOrderVolume(CTORATstpRspInquiryMaxOrderVolumeField *pRspInquiryMaxOrderVolumeField, CTORATstpRspInfoField *pRspInfoField, int nRequestID) 
 {
 	Task task = Task();
 	task.task_name = ONRSPINQUIRYMAXORDERVOLUME;
@@ -691,7 +691,7 @@ void ToraStockApi::OnRspInquiryMaxOrderVolume(CTORATstpRspInquiryMaxOrderVolumeF
 	this->task_queue.push(task);
 };
 
-void ToraStockApi::OnRspInquiryTradeConcentration(CTORATstpInquiryTradeConcentrationField *pInquiryTradeConcentrationField, CTORATstpRspInfoField *pRspInfoField, int nRequestID) 
+void StockApi::OnRspInquiryTradeConcentration(CTORATstpInquiryTradeConcentrationField *pInquiryTradeConcentrationField, CTORATstpRspInfoField *pRspInfoField, int nRequestID) 
 {
 	Task task = Task();
 	task.task_name = ONRSPINQUIRYTRADECONCENTRATION;
@@ -711,7 +711,7 @@ void ToraStockApi::OnRspInquiryTradeConcentration(CTORATstpInquiryTradeConcentra
 	this->task_queue.push(task);
 };
 
-void ToraStockApi::OnRspModifyOpenPosCost(CTORATstpReqModifyOpenPosCostField *pReqModifyOpenPosCostField, CTORATstpRspInfoField *pRspInfoField, int nRequestID) 
+void StockApi::OnRspModifyOpenPosCost(CTORATstpReqModifyOpenPosCostField *pReqModifyOpenPosCostField, CTORATstpRspInfoField *pRspInfoField, int nRequestID) 
 {
 	Task task = Task();
 	task.task_name = ONRSPMODIFYOPENPOSCOST;
@@ -731,7 +731,7 @@ void ToraStockApi::OnRspModifyOpenPosCost(CTORATstpReqModifyOpenPosCostField *pR
 	this->task_queue.push(task);
 };
 
-void ToraStockApi::OnRspInputNodeFundAssignment(CTORATstpInputNodeFundAssignmentField *pInputNodeFundAssignmentField, CTORATstpRspInfoField *pRspInfoField, int nRequestID) 
+void StockApi::OnRspInputNodeFundAssignment(CTORATstpInputNodeFundAssignmentField *pInputNodeFundAssignmentField, CTORATstpRspInfoField *pRspInfoField, int nRequestID) 
 {
 	Task task = Task();
 	task.task_name = ONRSPINPUTNODEFUNDASSIGNMENT;
@@ -751,7 +751,7 @@ void ToraStockApi::OnRspInputNodeFundAssignment(CTORATstpInputNodeFundAssignment
 	this->task_queue.push(task);
 };
 
-void ToraStockApi::OnRspInquiryNodeFundAssignment(CTORATstpRspInquiryNodeFundAssignmentField *pRspInquiryNodeFundAssignmentField, CTORATstpRspInfoField *pRspInfoField, int nRequestID) 
+void StockApi::OnRspInquiryNodeFundAssignment(CTORATstpRspInquiryNodeFundAssignmentField *pRspInquiryNodeFundAssignmentField, CTORATstpRspInfoField *pRspInfoField, int nRequestID) 
 {
 	Task task = Task();
 	task.task_name = ONRSPINQUIRYNODEFUNDASSIGNMENT;
@@ -771,7 +771,7 @@ void ToraStockApi::OnRspInquiryNodeFundAssignment(CTORATstpRspInquiryNodeFundAss
 	this->task_queue.push(task);
 };
 
-void ToraStockApi::OnRspQryExchange(CTORATstpExchangeField *pExchangeField, CTORATstpRspInfoField *pRspInfoField, int nRequestID, bool bIsLast)  
+void StockApi::OnRspQryExchange(CTORATstpExchangeField *pExchangeField, CTORATstpRspInfoField *pRspInfoField, int nRequestID, bool bIsLast)  
 {
 	Task task = Task();
 	task.task_name = ONRSPQRYEXCHANGE;
@@ -792,7 +792,7 @@ void ToraStockApi::OnRspQryExchange(CTORATstpExchangeField *pExchangeField, CTOR
 	this->task_queue.push(task);
 };
 
-void ToraStockApi::OnRspQrySecurity(CTORATstpSecurityField *pSecurityField, CTORATstpRspInfoField *pRspInfoField, int nRequestID, bool bIsLast)  
+void StockApi::OnRspQrySecurity(CTORATstpSecurityField *pSecurityField, CTORATstpRspInfoField *pRspInfoField, int nRequestID, bool bIsLast)  
 {
 	Task task = Task();
 	task.task_name = ONRSPQRYSECURITY;
@@ -813,7 +813,7 @@ void ToraStockApi::OnRspQrySecurity(CTORATstpSecurityField *pSecurityField, CTOR
 	this->task_queue.push(task);
 };
 
-void ToraStockApi::OnRspQryIPOInfo(CTORATstpIPOInfoField *pIPOInfoField, CTORATstpRspInfoField *pRspInfoField, int nRequestID, bool bIsLast)  
+void StockApi::OnRspQryIPOInfo(CTORATstpIPOInfoField *pIPOInfoField, CTORATstpRspInfoField *pRspInfoField, int nRequestID, bool bIsLast)  
 {
 	Task task = Task();
 	task.task_name = ONRSPQRYIPOINFO;
@@ -834,7 +834,7 @@ void ToraStockApi::OnRspQryIPOInfo(CTORATstpIPOInfoField *pIPOInfoField, CTORATs
 	this->task_queue.push(task);
 };
 
-void ToraStockApi::OnRspQryUser(CTORATstpUserField *pUserField, CTORATstpRspInfoField *pRspInfoField, int nRequestID, bool bIsLast)  
+void StockApi::OnRspQryUser(CTORATstpUserField *pUserField, CTORATstpRspInfoField *pRspInfoField, int nRequestID, bool bIsLast)  
 {
 	Task task = Task();
 	task.task_name = ONRSPQRYUSER;
@@ -855,7 +855,7 @@ void ToraStockApi::OnRspQryUser(CTORATstpUserField *pUserField, CTORATstpRspInfo
 	this->task_queue.push(task);
 };
 
-void ToraStockApi::OnRspQryInvestor(CTORATstpInvestorField *pInvestorField, CTORATstpRspInfoField *pRspInfoField, int nRequestID, bool bIsLast)  
+void StockApi::OnRspQryInvestor(CTORATstpInvestorField *pInvestorField, CTORATstpRspInfoField *pRspInfoField, int nRequestID, bool bIsLast)  
 {
 	Task task = Task();
 	task.task_name = ONRSPQRYINVESTOR;
@@ -876,7 +876,7 @@ void ToraStockApi::OnRspQryInvestor(CTORATstpInvestorField *pInvestorField, CTOR
 	this->task_queue.push(task);
 };
 
-void ToraStockApi::OnRspQryShareholderAccount(CTORATstpShareholderAccountField *pShareholderAccountField, CTORATstpRspInfoField *pRspInfoField, int nRequestID, bool bIsLast)  
+void StockApi::OnRspQryShareholderAccount(CTORATstpShareholderAccountField *pShareholderAccountField, CTORATstpRspInfoField *pRspInfoField, int nRequestID, bool bIsLast)  
 {
 	Task task = Task();
 	task.task_name = ONRSPQRYSHAREHOLDERACCOUNT;
@@ -897,7 +897,7 @@ void ToraStockApi::OnRspQryShareholderAccount(CTORATstpShareholderAccountField *
 	this->task_queue.push(task);
 };
 
-void ToraStockApi::OnRspQryRationalInfo(CTORATstpRationalInfoField *pRationalInfoField, CTORATstpRspInfoField *pRspInfoField, int nRequestID, bool bIsLast)  
+void StockApi::OnRspQryRationalInfo(CTORATstpRationalInfoField *pRationalInfoField, CTORATstpRspInfoField *pRspInfoField, int nRequestID, bool bIsLast)  
 {
 	Task task = Task();
 	task.task_name = ONRSPQRYRATIONALINFO;
@@ -918,7 +918,7 @@ void ToraStockApi::OnRspQryRationalInfo(CTORATstpRationalInfoField *pRationalInf
 	this->task_queue.push(task);
 };
 
-void ToraStockApi::OnRspQryOrder(CTORATstpOrderField *pOrderField, CTORATstpRspInfoField *pRspInfoField, int nRequestID, bool bIsLast)  
+void StockApi::OnRspQryOrder(CTORATstpOrderField *pOrderField, CTORATstpRspInfoField *pRspInfoField, int nRequestID, bool bIsLast)  
 {
 	Task task = Task();
 	task.task_name = ONRSPQRYORDER;
@@ -939,7 +939,7 @@ void ToraStockApi::OnRspQryOrder(CTORATstpOrderField *pOrderField, CTORATstpRspI
 	this->task_queue.push(task);
 };
 
-void ToraStockApi::OnRspQryOrderAction(CTORATstpOrderActionField *pOrderActionField, CTORATstpRspInfoField *pRspInfoField, int nRequestID, bool bIsLast)  
+void StockApi::OnRspQryOrderAction(CTORATstpOrderActionField *pOrderActionField, CTORATstpRspInfoField *pRspInfoField, int nRequestID, bool bIsLast)  
 {
 	Task task = Task();
 	task.task_name = ONRSPQRYORDERACTION;
@@ -960,7 +960,7 @@ void ToraStockApi::OnRspQryOrderAction(CTORATstpOrderActionField *pOrderActionFi
 	this->task_queue.push(task);
 };
 
-void ToraStockApi::OnRspQryTrade(CTORATstpTradeField *pTradeField, CTORATstpRspInfoField *pRspInfoField, int nRequestID, bool bIsLast)  
+void StockApi::OnRspQryTrade(CTORATstpTradeField *pTradeField, CTORATstpRspInfoField *pRspInfoField, int nRequestID, bool bIsLast)  
 {
 	Task task = Task();
 	task.task_name = ONRSPQRYTRADE;
@@ -981,7 +981,7 @@ void ToraStockApi::OnRspQryTrade(CTORATstpTradeField *pTradeField, CTORATstpRspI
 	this->task_queue.push(task);
 };
 
-void ToraStockApi::OnRspQryTradingAccount(CTORATstpTradingAccountField *pTradingAccountField, CTORATstpRspInfoField *pRspInfoField, int nRequestID, bool bIsLast)  
+void StockApi::OnRspQryTradingAccount(CTORATstpTradingAccountField *pTradingAccountField, CTORATstpRspInfoField *pRspInfoField, int nRequestID, bool bIsLast)  
 {
 	Task task = Task();
 	task.task_name = ONRSPQRYTRADINGACCOUNT;
@@ -1002,7 +1002,7 @@ void ToraStockApi::OnRspQryTradingAccount(CTORATstpTradingAccountField *pTrading
 	this->task_queue.push(task);
 };
 
-void ToraStockApi::OnRspQryPosition(CTORATstpPositionField *pPositionField, CTORATstpRspInfoField *pRspInfoField, int nRequestID, bool bIsLast)  
+void StockApi::OnRspQryPosition(CTORATstpPositionField *pPositionField, CTORATstpRspInfoField *pRspInfoField, int nRequestID, bool bIsLast)  
 {
 	Task task = Task();
 	task.task_name = ONRSPQRYPOSITION;
@@ -1023,7 +1023,7 @@ void ToraStockApi::OnRspQryPosition(CTORATstpPositionField *pPositionField, CTOR
 	this->task_queue.push(task);
 };
 
-void ToraStockApi::OnRspQryTradingFee(CTORATstpTradingFeeField *pTradingFeeField, CTORATstpRspInfoField *pRspInfoField, int nRequestID, bool bIsLast)  
+void StockApi::OnRspQryTradingFee(CTORATstpTradingFeeField *pTradingFeeField, CTORATstpRspInfoField *pRspInfoField, int nRequestID, bool bIsLast)  
 {
 	Task task = Task();
 	task.task_name = ONRSPQRYTRADINGFEE;
@@ -1044,7 +1044,7 @@ void ToraStockApi::OnRspQryTradingFee(CTORATstpTradingFeeField *pTradingFeeField
 	this->task_queue.push(task);
 };
 
-void ToraStockApi::OnRspQryInvestorTradingFee(CTORATstpInvestorTradingFeeField *pInvestorTradingFeeField, CTORATstpRspInfoField *pRspInfoField, int nRequestID, bool bIsLast)  
+void StockApi::OnRspQryInvestorTradingFee(CTORATstpInvestorTradingFeeField *pInvestorTradingFeeField, CTORATstpRspInfoField *pRspInfoField, int nRequestID, bool bIsLast)  
 {
 	Task task = Task();
 	task.task_name = ONRSPQRYINVESTORTRADINGFEE;
@@ -1065,7 +1065,7 @@ void ToraStockApi::OnRspQryInvestorTradingFee(CTORATstpInvestorTradingFeeField *
 	this->task_queue.push(task);
 };
 
-void ToraStockApi::OnRspQryIPOQuota(CTORATstpIPOQuotaField *pIPOQuotaField, CTORATstpRspInfoField *pRspInfoField, int nRequestID, bool bIsLast)  
+void StockApi::OnRspQryIPOQuota(CTORATstpIPOQuotaField *pIPOQuotaField, CTORATstpRspInfoField *pRspInfoField, int nRequestID, bool bIsLast)  
 {
 	Task task = Task();
 	task.task_name = ONRSPQRYIPOQUOTA;
@@ -1086,7 +1086,7 @@ void ToraStockApi::OnRspQryIPOQuota(CTORATstpIPOQuotaField *pIPOQuotaField, CTOR
 	this->task_queue.push(task);
 };
 
-void ToraStockApi::OnRspQryOrderFundDetail(CTORATstpOrderFundDetailField *pOrderFundDetailField, CTORATstpRspInfoField *pRspInfoField, int nRequestID, bool bIsLast)  
+void StockApi::OnRspQryOrderFundDetail(CTORATstpOrderFundDetailField *pOrderFundDetailField, CTORATstpRspInfoField *pRspInfoField, int nRequestID, bool bIsLast)  
 {
 	Task task = Task();
 	task.task_name = ONRSPQRYORDERFUNDDETAIL;
@@ -1107,7 +1107,7 @@ void ToraStockApi::OnRspQryOrderFundDetail(CTORATstpOrderFundDetailField *pOrder
 	this->task_queue.push(task);
 };
 
-void ToraStockApi::OnRspQryFundTransferDetail(CTORATstpFundTransferDetailField *pFundTransferDetailField, CTORATstpRspInfoField *pRspInfoField, int nRequestID, bool bIsLast)  
+void StockApi::OnRspQryFundTransferDetail(CTORATstpFundTransferDetailField *pFundTransferDetailField, CTORATstpRspInfoField *pRspInfoField, int nRequestID, bool bIsLast)  
 {
 	Task task = Task();
 	task.task_name = ONRSPQRYFUNDTRANSFERDETAIL;
@@ -1128,7 +1128,7 @@ void ToraStockApi::OnRspQryFundTransferDetail(CTORATstpFundTransferDetailField *
 	this->task_queue.push(task);
 };
 
-void ToraStockApi::OnRspQryPositionTransferDetail(CTORATstpPositionTransferDetailField *pPositionTransferDetailField, CTORATstpRspInfoField *pRspInfoField, int nRequestID, bool bIsLast)  
+void StockApi::OnRspQryPositionTransferDetail(CTORATstpPositionTransferDetailField *pPositionTransferDetailField, CTORATstpRspInfoField *pRspInfoField, int nRequestID, bool bIsLast)  
 {
 	Task task = Task();
 	task.task_name = ONRSPQRYPOSITIONTRANSFERDETAIL;
@@ -1149,7 +1149,7 @@ void ToraStockApi::OnRspQryPositionTransferDetail(CTORATstpPositionTransferDetai
 	this->task_queue.push(task);
 };
 
-void ToraStockApi::OnRspQryPeripheryPositionTransferDetail(CTORATstpPeripheryPositionTransferDetailField *pPeripheryPositionTransferDetailField, CTORATstpRspInfoField *pRspInfoField, int nRequestID, bool bIsLast)  
+void StockApi::OnRspQryPeripheryPositionTransferDetail(CTORATstpPeripheryPositionTransferDetailField *pPeripheryPositionTransferDetailField, CTORATstpRspInfoField *pRspInfoField, int nRequestID, bool bIsLast)  
 {
 	Task task = Task();
 	task.task_name = ONRSPQRYPERIPHERYPOSITIONTRANSFERDETAIL;
@@ -1170,7 +1170,7 @@ void ToraStockApi::OnRspQryPeripheryPositionTransferDetail(CTORATstpPeripheryPos
 	this->task_queue.push(task);
 };
 
-void ToraStockApi::OnRspQryPeripheryFundTransferDetail(CTORATstpPeripheryFundTransferDetailField *pPeripheryFundTransferDetailField, CTORATstpRspInfoField *pRspInfoField, int nRequestID, bool bIsLast)  
+void StockApi::OnRspQryPeripheryFundTransferDetail(CTORATstpPeripheryFundTransferDetailField *pPeripheryFundTransferDetailField, CTORATstpRspInfoField *pRspInfoField, int nRequestID, bool bIsLast)  
 {
 	Task task = Task();
 	task.task_name = ONRSPQRYPERIPHERYFUNDTRANSFERDETAIL;
@@ -1191,7 +1191,7 @@ void ToraStockApi::OnRspQryPeripheryFundTransferDetail(CTORATstpPeripheryFundTra
 	this->task_queue.push(task);
 };
 
-void ToraStockApi::OnRspQryBondConversionInfo(CTORATstpBondConversionInfoField *pBondConversionInfoField, CTORATstpRspInfoField *pRspInfoField, int nRequestID, bool bIsLast)  
+void StockApi::OnRspQryBondConversionInfo(CTORATstpBondConversionInfoField *pBondConversionInfoField, CTORATstpRspInfoField *pRspInfoField, int nRequestID, bool bIsLast)  
 {
 	Task task = Task();
 	task.task_name = ONRSPQRYBONDCONVERSIONINFO;
@@ -1212,7 +1212,7 @@ void ToraStockApi::OnRspQryBondConversionInfo(CTORATstpBondConversionInfoField *
 	this->task_queue.push(task);
 };
 
-void ToraStockApi::OnRspQryBondPutbackInfo(CTORATstpBondPutbackInfoField *pBondPutbackInfoField, CTORATstpRspInfoField *pRspInfoField, int nRequestID, bool bIsLast)  
+void StockApi::OnRspQryBondPutbackInfo(CTORATstpBondPutbackInfoField *pBondPutbackInfoField, CTORATstpRspInfoField *pRspInfoField, int nRequestID, bool bIsLast)  
 {
 	Task task = Task();
 	task.task_name = ONRSPQRYBONDPUTBACKINFO;
@@ -1233,7 +1233,7 @@ void ToraStockApi::OnRspQryBondPutbackInfo(CTORATstpBondPutbackInfoField *pBondP
 	this->task_queue.push(task);
 };
 
-void ToraStockApi::OnRspQryInvestorCondOrderLimitParam(CTORATstpInvestorCondOrderLimitParamField *pInvestorCondOrderLimitParamField, CTORATstpRspInfoField *pRspInfoField, int nRequestID, bool bIsLast)  
+void StockApi::OnRspQryInvestorCondOrderLimitParam(CTORATstpInvestorCondOrderLimitParamField *pInvestorCondOrderLimitParamField, CTORATstpRspInfoField *pRspInfoField, int nRequestID, bool bIsLast)  
 {
 	Task task = Task();
 	task.task_name = ONRSPQRYINVESTORCONDORDERLIMITPARAM;
@@ -1254,7 +1254,7 @@ void ToraStockApi::OnRspQryInvestorCondOrderLimitParam(CTORATstpInvestorCondOrde
 	this->task_queue.push(task);
 };
 
-void ToraStockApi::OnRspQryConditionOrder(CTORATstpConditionOrderField *pConditionOrderField, CTORATstpRspInfoField *pRspInfoField, int nRequestID, bool bIsLast)  
+void StockApi::OnRspQryConditionOrder(CTORATstpConditionOrderField *pConditionOrderField, CTORATstpRspInfoField *pRspInfoField, int nRequestID, bool bIsLast)  
 {
 	Task task = Task();
 	task.task_name = ONRSPQRYCONDITIONORDER;
@@ -1275,7 +1275,7 @@ void ToraStockApi::OnRspQryConditionOrder(CTORATstpConditionOrderField *pConditi
 	this->task_queue.push(task);
 };
 
-void ToraStockApi::OnRspQryCondOrderAction(CTORATstpCondOrderActionField *pCondOrderActionField, CTORATstpRspInfoField *pRspInfoField, int nRequestID, bool bIsLast)  
+void StockApi::OnRspQryCondOrderAction(CTORATstpCondOrderActionField *pCondOrderActionField, CTORATstpRspInfoField *pRspInfoField, int nRequestID, bool bIsLast)  
 {
 	Task task = Task();
 	task.task_name = ONRSPQRYCONDORDERACTION;
@@ -1296,7 +1296,7 @@ void ToraStockApi::OnRspQryCondOrderAction(CTORATstpCondOrderActionField *pCondO
 	this->task_queue.push(task);
 };
 
-void ToraStockApi::OnRspQryTradingNotice(CTORATstpTradingNoticeField *pTradingNoticeField, CTORATstpRspInfoField *pRspInfoField, int nRequestID, bool bIsLast)  
+void StockApi::OnRspQryTradingNotice(CTORATstpTradingNoticeField *pTradingNoticeField, CTORATstpRspInfoField *pRspInfoField, int nRequestID, bool bIsLast)  
 {
 	Task task = Task();
 	task.task_name = ONRSPQRYTRADINGNOTICE;
@@ -1317,7 +1317,7 @@ void ToraStockApi::OnRspQryTradingNotice(CTORATstpTradingNoticeField *pTradingNo
 	this->task_queue.push(task);
 };
 
-void ToraStockApi::OnRspQryIPONumberResult(CTORATstpIPONumberResultField *pIPONumberResultField, CTORATstpRspInfoField *pRspInfoField, int nRequestID, bool bIsLast)  
+void StockApi::OnRspQryIPONumberResult(CTORATstpIPONumberResultField *pIPONumberResultField, CTORATstpRspInfoField *pRspInfoField, int nRequestID, bool bIsLast)  
 {
 	Task task = Task();
 	task.task_name = ONRSPQRYIPONUMBERRESULT;
@@ -1338,7 +1338,7 @@ void ToraStockApi::OnRspQryIPONumberResult(CTORATstpIPONumberResultField *pIPONu
 	this->task_queue.push(task);
 };
 
-void ToraStockApi::OnRspQryIPOMatchNumberResult(CTORATstpIPOMatchNumberResultField *pIPOMatchNumberResultField, CTORATstpRspInfoField *pRspInfoField, int nRequestID, bool bIsLast)  
+void StockApi::OnRspQryIPOMatchNumberResult(CTORATstpIPOMatchNumberResultField *pIPOMatchNumberResultField, CTORATstpRspInfoField *pRspInfoField, int nRequestID, bool bIsLast)  
 {
 	Task task = Task();
 	task.task_name = ONRSPQRYIPOMATCHNUMBERRESULT;
@@ -1359,7 +1359,7 @@ void ToraStockApi::OnRspQryIPOMatchNumberResult(CTORATstpIPOMatchNumberResultFie
 	this->task_queue.push(task);
 };
 
-void ToraStockApi::OnRspQryShareholderSpecPrivilege(CTORATstpShareholderSpecPrivilegeField *pShareholderSpecPrivilegeField, CTORATstpRspInfoField *pRspInfoField, int nRequestID, bool bIsLast)  
+void StockApi::OnRspQryShareholderSpecPrivilege(CTORATstpShareholderSpecPrivilegeField *pShareholderSpecPrivilegeField, CTORATstpRspInfoField *pRspInfoField, int nRequestID, bool bIsLast)  
 {
 	Task task = Task();
 	task.task_name = ONRSPQRYSHAREHOLDERSPECPRIVILEGE;
@@ -1380,7 +1380,7 @@ void ToraStockApi::OnRspQryShareholderSpecPrivilege(CTORATstpShareholderSpecPriv
 	this->task_queue.push(task);
 };
 
-void ToraStockApi::OnRspQryMarket(CTORATstpMarketField *pMarketField, CTORATstpRspInfoField *pRspInfoField, int nRequestID, bool bIsLast)  
+void StockApi::OnRspQryMarket(CTORATstpMarketField *pMarketField, CTORATstpRspInfoField *pRspInfoField, int nRequestID, bool bIsLast)  
 {
 	Task task = Task();
 	task.task_name = ONRSPQRYMARKET;
@@ -1401,7 +1401,7 @@ void ToraStockApi::OnRspQryMarket(CTORATstpMarketField *pMarketField, CTORATstpR
 	this->task_queue.push(task);
 };
 
-void ToraStockApi::OnRspQryETFFile(CTORATstpETFFileField *pETFFileField, CTORATstpRspInfoField *pRspInfoField, int nRequestID, bool bIsLast)  
+void StockApi::OnRspQryETFFile(CTORATstpETFFileField *pETFFileField, CTORATstpRspInfoField *pRspInfoField, int nRequestID, bool bIsLast)  
 {
 	Task task = Task();
 	task.task_name = ONRSPQRYETFFILE;
@@ -1422,7 +1422,7 @@ void ToraStockApi::OnRspQryETFFile(CTORATstpETFFileField *pETFFileField, CTORATs
 	this->task_queue.push(task);
 };
 
-void ToraStockApi::OnRspQryETFBasket(CTORATstpETFBasketField *pETFBasketField, CTORATstpRspInfoField *pRspInfoField, int nRequestID, bool bIsLast)  
+void StockApi::OnRspQryETFBasket(CTORATstpETFBasketField *pETFBasketField, CTORATstpRspInfoField *pRspInfoField, int nRequestID, bool bIsLast)  
 {
 	Task task = Task();
 	task.task_name = ONRSPQRYETFBASKET;
@@ -1443,7 +1443,7 @@ void ToraStockApi::OnRspQryETFBasket(CTORATstpETFBasketField *pETFBasketField, C
 	this->task_queue.push(task);
 };
 
-void ToraStockApi::OnRspQryInvestorPositionLimit(CTORATstpInvestorPositionLimitField *pInvestorPositionLimitField, CTORATstpRspInfoField *pRspInfoField, int nRequestID, bool bIsLast)  
+void StockApi::OnRspQryInvestorPositionLimit(CTORATstpInvestorPositionLimitField *pInvestorPositionLimitField, CTORATstpRspInfoField *pRspInfoField, int nRequestID, bool bIsLast)  
 {
 	Task task = Task();
 	task.task_name = ONRSPQRYINVESTORPOSITIONLIMIT;
@@ -1464,7 +1464,7 @@ void ToraStockApi::OnRspQryInvestorPositionLimit(CTORATstpInvestorPositionLimitF
 	this->task_queue.push(task);
 };
 
-void ToraStockApi::OnRspQrySZSEImcParams(CTORATstpSZSEImcParamsField *pSZSEImcParamsField, CTORATstpRspInfoField *pRspInfoField, int nRequestID, bool bIsLast)  
+void StockApi::OnRspQrySZSEImcParams(CTORATstpSZSEImcParamsField *pSZSEImcParamsField, CTORATstpRspInfoField *pRspInfoField, int nRequestID, bool bIsLast)  
 {
 	Task task = Task();
 	task.task_name = ONRSPQRYSZSEIMCPARAMS;
@@ -1485,7 +1485,7 @@ void ToraStockApi::OnRspQrySZSEImcParams(CTORATstpSZSEImcParamsField *pSZSEImcPa
 	this->task_queue.push(task);
 };
 
-void ToraStockApi::OnRspQrySZSEImcExchangeRate(CTORATstpSZSEImcExchangeRateField *pSZSEImcExchangeRateField, CTORATstpRspInfoField *pRspInfoField, int nRequestID, bool bIsLast)  
+void StockApi::OnRspQrySZSEImcExchangeRate(CTORATstpSZSEImcExchangeRateField *pSZSEImcExchangeRateField, CTORATstpRspInfoField *pRspInfoField, int nRequestID, bool bIsLast)  
 {
 	Task task = Task();
 	task.task_name = ONRSPQRYSZSEIMCEXCHANGERATE;
@@ -1506,7 +1506,7 @@ void ToraStockApi::OnRspQrySZSEImcExchangeRate(CTORATstpSZSEImcExchangeRateField
 	this->task_queue.push(task);
 };
 
-void ToraStockApi::OnRspQrySZSEHKPriceTickInfo(CTORATstpSZSEHKPriceTickInfoField *pSZSEHKPriceTickInfoField, CTORATstpRspInfoField *pRspInfoField, int nRequestID, bool bIsLast)  
+void StockApi::OnRspQrySZSEHKPriceTickInfo(CTORATstpSZSEHKPriceTickInfoField *pSZSEHKPriceTickInfoField, CTORATstpRspInfoField *pRspInfoField, int nRequestID, bool bIsLast)  
 {
 	Task task = Task();
 	task.task_name = ONRSPQRYSZSEHKPRICETICKINFO;
@@ -1527,7 +1527,7 @@ void ToraStockApi::OnRspQrySZSEHKPriceTickInfo(CTORATstpSZSEHKPriceTickInfoField
 	this->task_queue.push(task);
 };
 
-void ToraStockApi::OnRspQryLofFundInfo(CTORATstpLofFundInfoField *pLofFundInfoField, CTORATstpRspInfoField *pRspInfoField, int nRequestID, bool bIsLast)  
+void StockApi::OnRspQryLofFundInfo(CTORATstpLofFundInfoField *pLofFundInfoField, CTORATstpRspInfoField *pRspInfoField, int nRequestID, bool bIsLast)  
 {
 	Task task = Task();
 	task.task_name = ONRSPQRYLOFFUNDINFO;
@@ -1548,7 +1548,7 @@ void ToraStockApi::OnRspQryLofFundInfo(CTORATstpLofFundInfoField *pLofFundInfoFi
 	this->task_queue.push(task);
 };
 
-void ToraStockApi::OnRspQryPledgePosition(CTORATstpPledgePositionField *pPledgePositionField, CTORATstpRspInfoField *pRspInfoField, int nRequestID, bool bIsLast)  
+void StockApi::OnRspQryPledgePosition(CTORATstpPledgePositionField *pPledgePositionField, CTORATstpRspInfoField *pRspInfoField, int nRequestID, bool bIsLast)  
 {
 	Task task = Task();
 	task.task_name = ONRSPQRYPLEDGEPOSITION;
@@ -1569,7 +1569,7 @@ void ToraStockApi::OnRspQryPledgePosition(CTORATstpPledgePositionField *pPledgeP
 	this->task_queue.push(task);
 };
 
-void ToraStockApi::OnRspQryPledgeInfo(CTORATstpPledgeInfoField *pPledgeInfoField, CTORATstpRspInfoField *pRspInfoField, int nRequestID, bool bIsLast)  
+void StockApi::OnRspQryPledgeInfo(CTORATstpPledgeInfoField *pPledgeInfoField, CTORATstpRspInfoField *pRspInfoField, int nRequestID, bool bIsLast)  
 {
 	Task task = Task();
 	task.task_name = ONRSPQRYPLEDGEINFO;
@@ -1590,7 +1590,7 @@ void ToraStockApi::OnRspQryPledgeInfo(CTORATstpPledgeInfoField *pPledgeInfoField
 	this->task_queue.push(task);
 };
 
-void ToraStockApi::OnRspQrySystemNodeInfo(CTORATstpSystemNodeInfoField *pSystemNodeInfoField, CTORATstpRspInfoField *pRspInfoField, int nRequestID, bool bIsLast)  
+void StockApi::OnRspQrySystemNodeInfo(CTORATstpSystemNodeInfoField *pSystemNodeInfoField, CTORATstpRspInfoField *pRspInfoField, int nRequestID, bool bIsLast)  
 {
 	Task task = Task();
 	task.task_name = ONRSPQRYSYSTEMNODEINFO;
@@ -1611,7 +1611,7 @@ void ToraStockApi::OnRspQrySystemNodeInfo(CTORATstpSystemNodeInfoField *pSystemN
 	this->task_queue.push(task);
 };
 
-void ToraStockApi::OnRspQryStandardBondPosition(CTORATstpStandardBondPositionField *pStandardBondPositionField, CTORATstpRspInfoField *pRspInfoField, int nRequestID, bool bIsLast)  
+void StockApi::OnRspQryStandardBondPosition(CTORATstpStandardBondPositionField *pStandardBondPositionField, CTORATstpRspInfoField *pRspInfoField, int nRequestID, bool bIsLast)  
 {
 	Task task = Task();
 	task.task_name = ONRSPQRYSTANDARDBONDPOSITION;
@@ -1632,7 +1632,7 @@ void ToraStockApi::OnRspQryStandardBondPosition(CTORATstpStandardBondPositionFie
 	this->task_queue.push(task);
 };
 
-void ToraStockApi::OnRspQryPrematurityRepoOrder(CTORATstpPrematurityRepoOrderField *pPrematurityRepoOrderField, CTORATstpRspInfoField *pRspInfoField, int nRequestID, bool bIsLast)  
+void StockApi::OnRspQryPrematurityRepoOrder(CTORATstpPrematurityRepoOrderField *pPrematurityRepoOrderField, CTORATstpRspInfoField *pRspInfoField, int nRequestID, bool bIsLast)  
 {
 	Task task = Task();
 	task.task_name = ONRSPQRYPREMATURITYREPOORDER;
@@ -1653,7 +1653,7 @@ void ToraStockApi::OnRspQryPrematurityRepoOrder(CTORATstpPrematurityRepoOrderFie
 	this->task_queue.push(task);
 };
 
-void ToraStockApi::OnRspQryNegoOrder(CTORATstpNegoOrderField *pNegoOrderField, CTORATstpRspInfoField *pRspInfoField, int nRequestID, bool bIsLast)  
+void StockApi::OnRspQryNegoOrder(CTORATstpNegoOrderField *pNegoOrderField, CTORATstpRspInfoField *pRspInfoField, int nRequestID, bool bIsLast)  
 {
 	Task task = Task();
 	task.task_name = ONRSPQRYNEGOORDER;
@@ -1674,7 +1674,7 @@ void ToraStockApi::OnRspQryNegoOrder(CTORATstpNegoOrderField *pNegoOrderField, C
 	this->task_queue.push(task);
 };
 
-void ToraStockApi::OnRspQryNegoOrderAction(CTORATstpNegoOrderActionField *pNegoOrderActionField, CTORATstpRspInfoField *pRspInfoField, int nRequestID, bool bIsLast)  
+void StockApi::OnRspQryNegoOrderAction(CTORATstpNegoOrderActionField *pNegoOrderActionField, CTORATstpRspInfoField *pRspInfoField, int nRequestID, bool bIsLast)  
 {
 	Task task = Task();
 	task.task_name = ONRSPQRYNEGOORDERACTION;
@@ -1695,7 +1695,7 @@ void ToraStockApi::OnRspQryNegoOrderAction(CTORATstpNegoOrderActionField *pNegoO
 	this->task_queue.push(task);
 };
 
-void ToraStockApi::OnRspQryNegoTrade(CTORATstpNegoTradeField *pNegoTradeField, CTORATstpRspInfoField *pRspInfoField, int nRequestID, bool bIsLast)  
+void StockApi::OnRspQryNegoTrade(CTORATstpNegoTradeField *pNegoTradeField, CTORATstpRspInfoField *pRspInfoField, int nRequestID, bool bIsLast)  
 {
 	Task task = Task();
 	task.task_name = ONRSPQRYNEGOTRADE;
@@ -1716,7 +1716,7 @@ void ToraStockApi::OnRspQryNegoTrade(CTORATstpNegoTradeField *pNegoTradeField, C
 	this->task_queue.push(task);
 };
 
-void ToraStockApi::OnRspQryNegotiationParam(CTORATstpNegotiationParamField *pNegotiationParamField, CTORATstpRspInfoField *pRspInfoField, int nRequestID, bool bIsLast)  
+void StockApi::OnRspQryNegotiationParam(CTORATstpNegotiationParamField *pNegotiationParamField, CTORATstpRspInfoField *pRspInfoField, int nRequestID, bool bIsLast)  
 {
 	Task task = Task();
 	task.task_name = ONRSPQRYNEGOTIATIONPARAM;

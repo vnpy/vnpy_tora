@@ -2,7 +2,7 @@ void onFrontConnected() override
 {
 	try
 	{
-		PYBIND11_OVERLOAD(void, ToraMdApi, onFrontConnected);
+		PYBIND11_OVERLOAD(void, MdApi, onFrontConnected);
 	}
 	catch (const error_already_set &e)
 	{
@@ -14,7 +14,7 @@ void onFrontDisconnected(int nReason) override
 {
 	try
 	{
-		PYBIND11_OVERLOAD(void, ToraMdApi, onFrontDisconnected, nReason);
+		PYBIND11_OVERLOAD(void, MdApi, onFrontDisconnected, nReason);
 	}
 	catch (const error_already_set &e)
 	{
@@ -26,7 +26,7 @@ void onRspGetConnectionInfo(const dict &data, const dict &error, int nRequestID)
 {
 	try
 	{
-		PYBIND11_OVERLOAD(void, ToraMdApi, onRspGetConnectionInfo, data, error, nRequestID);
+		PYBIND11_OVERLOAD(void, MdApi, onRspGetConnectionInfo, data, error, nRequestID);
 	}
 	catch (const error_already_set &e)
 	{
@@ -38,7 +38,7 @@ void onRspUserLogin(const dict &data, const dict &error, int nRequestID) overrid
 {
 	try
 	{
-		PYBIND11_OVERLOAD(void, ToraMdApi, onRspUserLogin, data, error, nRequestID);
+		PYBIND11_OVERLOAD(void, MdApi, onRspUserLogin, data, error, nRequestID);
 	}
 	catch (const error_already_set &e)
 	{
@@ -50,7 +50,7 @@ void onRspUserLogout(const dict &data, const dict &error, int nRequestID) overri
 {
 	try
 	{
-		PYBIND11_OVERLOAD(void, ToraMdApi, onRspUserLogout, data, error, nRequestID);
+		PYBIND11_OVERLOAD(void, MdApi, onRspUserLogout, data, error, nRequestID);
 	}
 	catch (const error_already_set &e)
 	{
@@ -62,7 +62,7 @@ void onRspSubMarketData(const dict &data, const dict &error) override
 {
 	try
 	{
-		PYBIND11_OVERLOAD(void, ToraMdApi, onRspSubMarketData, data, error);
+		PYBIND11_OVERLOAD(void, MdApi, onRspSubMarketData, data, error);
 	}
 	catch (const error_already_set &e)
 	{
@@ -74,7 +74,7 @@ void onRspUnSubMarketData(const dict &data, const dict &error) override
 {
 	try
 	{
-		PYBIND11_OVERLOAD(void, ToraMdApi, onRspUnSubMarketData, data, error);
+		PYBIND11_OVERLOAD(void, MdApi, onRspUnSubMarketData, data, error);
 	}
 	catch (const error_already_set &e)
 	{
@@ -86,7 +86,7 @@ void onRspSubPHMarketData(const dict &data, const dict &error) override
 {
 	try
 	{
-		PYBIND11_OVERLOAD(void, ToraMdApi, onRspSubPHMarketData, data, error);
+		PYBIND11_OVERLOAD(void, MdApi, onRspSubPHMarketData, data, error);
 	}
 	catch (const error_already_set &e)
 	{
@@ -98,7 +98,7 @@ void onRspUnSubPHMarketData(const dict &data, const dict &error) override
 {
 	try
 	{
-		PYBIND11_OVERLOAD(void, ToraMdApi, onRspUnSubPHMarketData, data, error);
+		PYBIND11_OVERLOAD(void, MdApi, onRspUnSubPHMarketData, data, error);
 	}
 	catch (const error_already_set &e)
 	{
@@ -110,7 +110,7 @@ void onRspSubSpecialMarketData(const dict &data, const dict &error) override
 {
 	try
 	{
-		PYBIND11_OVERLOAD(void, ToraMdApi, onRspSubSpecialMarketData, data, error);
+		PYBIND11_OVERLOAD(void, MdApi, onRspSubSpecialMarketData, data, error);
 	}
 	catch (const error_already_set &e)
 	{
@@ -122,7 +122,7 @@ void onRspUnSubSpecialMarketData(const dict &data, const dict &error) override
 {
 	try
 	{
-		PYBIND11_OVERLOAD(void, ToraMdApi, onRspUnSubSpecialMarketData, data, error);
+		PYBIND11_OVERLOAD(void, MdApi, onRspUnSubSpecialMarketData, data, error);
 	}
 	catch (const error_already_set &e)
 	{
@@ -134,7 +134,7 @@ void onRspSubSimplifyMarketData(const dict &data, const dict &error) override
 {
 	try
 	{
-		PYBIND11_OVERLOAD(void, ToraMdApi, onRspSubSimplifyMarketData, data, error);
+		PYBIND11_OVERLOAD(void, MdApi, onRspSubSimplifyMarketData, data, error);
 	}
 	catch (const error_already_set &e)
 	{
@@ -146,7 +146,7 @@ void onRspUnSubSimplifyMarketData(const dict &data, const dict &error) override
 {
 	try
 	{
-		PYBIND11_OVERLOAD(void, ToraMdApi, onRspUnSubSimplifyMarketData, data, error);
+		PYBIND11_OVERLOAD(void, MdApi, onRspUnSubSimplifyMarketData, data, error);
 	}
 	catch (const error_already_set &e)
 	{
@@ -158,7 +158,7 @@ void onRspSubSecurityStatus(const dict &data, const dict &error) override
 {
 	try
 	{
-		PYBIND11_OVERLOAD(void, ToraMdApi, onRspSubSecurityStatus, data, error);
+		PYBIND11_OVERLOAD(void, MdApi, onRspSubSecurityStatus, data, error);
 	}
 	catch (const error_already_set &e)
 	{
@@ -170,7 +170,7 @@ void onRspUnSubSecurityStatus(const dict &data, const dict &error) override
 {
 	try
 	{
-		PYBIND11_OVERLOAD(void, ToraMdApi, onRspUnSubSecurityStatus, data, error);
+		PYBIND11_OVERLOAD(void, MdApi, onRspUnSubSecurityStatus, data, error);
 	}
 	catch (const error_already_set &e)
 	{
@@ -182,7 +182,7 @@ void onRspSubMarketStatus(const dict &data, const dict &error) override
 {
 	try
 	{
-		PYBIND11_OVERLOAD(void, ToraMdApi, onRspSubMarketStatus, data, error);
+		PYBIND11_OVERLOAD(void, MdApi, onRspSubMarketStatus, data, error);
 	}
 	catch (const error_already_set &e)
 	{
@@ -194,7 +194,7 @@ void onRspUnSubMarketStatus(const dict &data, const dict &error) override
 {
 	try
 	{
-		PYBIND11_OVERLOAD(void, ToraMdApi, onRspUnSubMarketStatus, data, error);
+		PYBIND11_OVERLOAD(void, MdApi, onRspUnSubMarketStatus, data, error);
 	}
 	catch (const error_already_set &e)
 	{
@@ -206,7 +206,7 @@ void onRspSubImcParams(const dict &data, const dict &error) override
 {
 	try
 	{
-		PYBIND11_OVERLOAD(void, ToraMdApi, onRspSubImcParams, data, error);
+		PYBIND11_OVERLOAD(void, MdApi, onRspSubImcParams, data, error);
 	}
 	catch (const error_already_set &e)
 	{
@@ -218,7 +218,7 @@ void onRspUnSubImcParams(const dict &data, const dict &error) override
 {
 	try
 	{
-		PYBIND11_OVERLOAD(void, ToraMdApi, onRspUnSubImcParams, data, error);
+		PYBIND11_OVERLOAD(void, MdApi, onRspUnSubImcParams, data, error);
 	}
 	catch (const error_already_set &e)
 	{
@@ -230,7 +230,7 @@ void onRspInquiryMarketDataMirror(const dict &data, const dict &error, int nRequ
 {
 	try
 	{
-		PYBIND11_OVERLOAD(void, ToraMdApi, onRspInquiryMarketDataMirror, data, error, nRequestID, last);
+		PYBIND11_OVERLOAD(void, MdApi, onRspInquiryMarketDataMirror, data, error, nRequestID, last);
 	}
 	catch (const error_already_set &e)
 	{
@@ -242,7 +242,7 @@ void onRspInquiryPHMarketDataMirror(const dict &data, const dict &error, int nRe
 {
 	try
 	{
-		PYBIND11_OVERLOAD(void, ToraMdApi, onRspInquiryPHMarketDataMirror, data, error, nRequestID, last);
+		PYBIND11_OVERLOAD(void, MdApi, onRspInquiryPHMarketDataMirror, data, error, nRequestID, last);
 	}
 	catch (const error_already_set &e)
 	{
@@ -254,7 +254,7 @@ void onRspInquirySpecialMarketDataMirror(const dict &data, const dict &error, in
 {
 	try
 	{
-		PYBIND11_OVERLOAD(void, ToraMdApi, onRspInquirySpecialMarketDataMirror, data, error, nRequestID, last);
+		PYBIND11_OVERLOAD(void, MdApi, onRspInquirySpecialMarketDataMirror, data, error, nRequestID, last);
 	}
 	catch (const error_already_set &e)
 	{
@@ -266,7 +266,7 @@ void onRspSubSPMarketData(const dict &data, const dict &error) override
 {
 	try
 	{
-		PYBIND11_OVERLOAD(void, ToraMdApi, onRspSubSPMarketData, data, error);
+		PYBIND11_OVERLOAD(void, MdApi, onRspSubSPMarketData, data, error);
 	}
 	catch (const error_already_set &e)
 	{
@@ -278,7 +278,7 @@ void onRspUnSubSPMarketData(const dict &data, const dict &error) override
 {
 	try
 	{
-		PYBIND11_OVERLOAD(void, ToraMdApi, onRspUnSubSPMarketData, data, error);
+		PYBIND11_OVERLOAD(void, MdApi, onRspUnSubSPMarketData, data, error);
 	}
 	catch (const error_already_set &e)
 	{
@@ -290,7 +290,7 @@ void onRspSubSPSimplifyMarketData(const dict &data, const dict &error) override
 {
 	try
 	{
-		PYBIND11_OVERLOAD(void, ToraMdApi, onRspSubSPSimplifyMarketData, data, error);
+		PYBIND11_OVERLOAD(void, MdApi, onRspSubSPSimplifyMarketData, data, error);
 	}
 	catch (const error_already_set &e)
 	{
@@ -302,7 +302,7 @@ void onRspUnSubSPSimplifyMarketData(const dict &data, const dict &error) overrid
 {
 	try
 	{
-		PYBIND11_OVERLOAD(void, ToraMdApi, onRspUnSubSPSimplifyMarketData, data, error);
+		PYBIND11_OVERLOAD(void, MdApi, onRspUnSubSPSimplifyMarketData, data, error);
 	}
 	catch (const error_already_set &e)
 	{
@@ -314,7 +314,7 @@ void onRspSubSPSecurityStatus(const dict &data, const dict &error) override
 {
 	try
 	{
-		PYBIND11_OVERLOAD(void, ToraMdApi, onRspSubSPSecurityStatus, data, error);
+		PYBIND11_OVERLOAD(void, MdApi, onRspSubSPSecurityStatus, data, error);
 	}
 	catch (const error_already_set &e)
 	{
@@ -326,7 +326,7 @@ void onRspUnSubSPSecurityStatus(const dict &data, const dict &error) override
 {
 	try
 	{
-		PYBIND11_OVERLOAD(void, ToraMdApi, onRspUnSubSPSecurityStatus, data, error);
+		PYBIND11_OVERLOAD(void, MdApi, onRspUnSubSPSecurityStatus, data, error);
 	}
 	catch (const error_already_set &e)
 	{
@@ -338,7 +338,7 @@ void onRspSubSPMarketStatus(const dict &data, const dict &error) override
 {
 	try
 	{
-		PYBIND11_OVERLOAD(void, ToraMdApi, onRspSubSPMarketStatus, data, error);
+		PYBIND11_OVERLOAD(void, MdApi, onRspSubSPMarketStatus, data, error);
 	}
 	catch (const error_already_set &e)
 	{
@@ -350,7 +350,7 @@ void onRspUnSubSPMarketStatus(const dict &data, const dict &error) override
 {
 	try
 	{
-		PYBIND11_OVERLOAD(void, ToraMdApi, onRspUnSubSPMarketStatus, data, error);
+		PYBIND11_OVERLOAD(void, MdApi, onRspUnSubSPMarketStatus, data, error);
 	}
 	catch (const error_already_set &e)
 	{
@@ -362,7 +362,7 @@ void onRspInquirySPMarketDataMirror(const dict &data, const dict &error, int nRe
 {
 	try
 	{
-		PYBIND11_OVERLOAD(void, ToraMdApi, onRspInquirySPMarketDataMirror, data, error, nRequestID, last);
+		PYBIND11_OVERLOAD(void, MdApi, onRspInquirySPMarketDataMirror, data, error, nRequestID, last);
 	}
 	catch (const error_already_set &e)
 	{
@@ -374,7 +374,7 @@ void onRtnMarketData(const dict &data) override
 {
 	try
 	{
-		PYBIND11_OVERLOAD(void, ToraMdApi, onRtnMarketData, data);
+		PYBIND11_OVERLOAD(void, MdApi, onRtnMarketData, data);
 	}
 	catch (const error_already_set &e)
 	{
@@ -386,7 +386,7 @@ void onRtnPHMarketData(const dict &data) override
 {
 	try
 	{
-		PYBIND11_OVERLOAD(void, ToraMdApi, onRtnPHMarketData, data);
+		PYBIND11_OVERLOAD(void, MdApi, onRtnPHMarketData, data);
 	}
 	catch (const error_already_set &e)
 	{
@@ -398,7 +398,7 @@ void onRtnSpecialMarketData(const dict &data) override
 {
 	try
 	{
-		PYBIND11_OVERLOAD(void, ToraMdApi, onRtnSpecialMarketData, data);
+		PYBIND11_OVERLOAD(void, MdApi, onRtnSpecialMarketData, data);
 	}
 	catch (const error_already_set &e)
 	{
@@ -410,7 +410,7 @@ void onRtnSimplifyMarketData(const dict &data) override
 {
 	try
 	{
-		PYBIND11_OVERLOAD(void, ToraMdApi, onRtnSimplifyMarketData, data);
+		PYBIND11_OVERLOAD(void, MdApi, onRtnSimplifyMarketData, data);
 	}
 	catch (const error_already_set &e)
 	{
@@ -422,7 +422,7 @@ void onRtnSecurityStatus(const dict &data) override
 {
 	try
 	{
-		PYBIND11_OVERLOAD(void, ToraMdApi, onRtnSecurityStatus, data);
+		PYBIND11_OVERLOAD(void, MdApi, onRtnSecurityStatus, data);
 	}
 	catch (const error_already_set &e)
 	{
@@ -434,7 +434,7 @@ void onRtnMarketStatus(const dict &data) override
 {
 	try
 	{
-		PYBIND11_OVERLOAD(void, ToraMdApi, onRtnMarketStatus, data);
+		PYBIND11_OVERLOAD(void, MdApi, onRtnMarketStatus, data);
 	}
 	catch (const error_already_set &e)
 	{
@@ -446,7 +446,7 @@ void onRtnImcParams(const dict &data) override
 {
 	try
 	{
-		PYBIND11_OVERLOAD(void, ToraMdApi, onRtnImcParams, data);
+		PYBIND11_OVERLOAD(void, MdApi, onRtnImcParams, data);
 	}
 	catch (const error_already_set &e)
 	{
@@ -458,7 +458,7 @@ void onRtnSPMarketData(const dict &data) override
 {
 	try
 	{
-		PYBIND11_OVERLOAD(void, ToraMdApi, onRtnSPMarketData, data);
+		PYBIND11_OVERLOAD(void, MdApi, onRtnSPMarketData, data);
 	}
 	catch (const error_already_set &e)
 	{
@@ -470,7 +470,7 @@ void onRtnSPSimplifyMarketData(const dict &data) override
 {
 	try
 	{
-		PYBIND11_OVERLOAD(void, ToraMdApi, onRtnSPSimplifyMarketData, data);
+		PYBIND11_OVERLOAD(void, MdApi, onRtnSPSimplifyMarketData, data);
 	}
 	catch (const error_already_set &e)
 	{
@@ -482,7 +482,7 @@ void onRtnSPSecurityStatus(const dict &data) override
 {
 	try
 	{
-		PYBIND11_OVERLOAD(void, ToraMdApi, onRtnSPSecurityStatus, data);
+		PYBIND11_OVERLOAD(void, MdApi, onRtnSPSecurityStatus, data);
 	}
 	catch (const error_already_set &e)
 	{
@@ -494,7 +494,7 @@ void onRtnSPMarketStatus(const dict &data) override
 {
 	try
 	{
-		PYBIND11_OVERLOAD(void, ToraMdApi, onRtnSPMarketStatus, data);
+		PYBIND11_OVERLOAD(void, MdApi, onRtnSPMarketStatus, data);
 	}
 	catch (const error_already_set &e)
 	{
@@ -506,7 +506,7 @@ void onRspSubRapidMarketData(const dict &data, const dict &error) override
 {
 	try
 	{
-		PYBIND11_OVERLOAD(void, ToraMdApi, onRspSubRapidMarketData, data, error);
+		PYBIND11_OVERLOAD(void, MdApi, onRspSubRapidMarketData, data, error);
 	}
 	catch (const error_already_set &e)
 	{
@@ -518,7 +518,7 @@ void onRspUnSubRapidMarketData(const dict &data, const dict &error) override
 {
 	try
 	{
-		PYBIND11_OVERLOAD(void, ToraMdApi, onRspUnSubRapidMarketData, data, error);
+		PYBIND11_OVERLOAD(void, MdApi, onRspUnSubRapidMarketData, data, error);
 	}
 	catch (const error_already_set &e)
 	{
@@ -530,7 +530,7 @@ void onRtnRapidMarketData(const dict &data) override
 {
 	try
 	{
-		PYBIND11_OVERLOAD(void, ToraMdApi, onRtnRapidMarketData, data);
+		PYBIND11_OVERLOAD(void, MdApi, onRtnRapidMarketData, data);
 	}
 	catch (const error_already_set &e)
 	{

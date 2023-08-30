@@ -2,7 +2,7 @@ void onFrontConnected() override
 {
 	try
 	{
-		PYBIND11_OVERLOAD(void, ToraStockApi, onFrontConnected);
+		PYBIND11_OVERLOAD(void, StockApi, onFrontConnected);
 	}
 	catch (const error_already_set &e)
 	{
@@ -14,7 +14,7 @@ void onFrontDisconnected(int nReason) override
 {
 	try
 	{
-		PYBIND11_OVERLOAD(void, ToraStockApi, onFrontDisconnected, nReason);
+		PYBIND11_OVERLOAD(void, StockApi, onFrontDisconnected, nReason);
 	}
 	catch (const error_already_set &e)
 	{
@@ -26,7 +26,7 @@ void onRspError(const dict &error, int nRequestID, bool last) override
 {
 	try
 	{
-		PYBIND11_OVERLOAD(void, ToraStockApi, onRspError, error, nRequestID, last);
+		PYBIND11_OVERLOAD(void, StockApi, onRspError, error, nRequestID, last);
 	}
 	catch (const error_already_set &e)
 	{
@@ -38,7 +38,7 @@ void onRspGetConnectionInfo(const dict &data, const dict &error, int nRequestID)
 {
 	try
 	{
-		PYBIND11_OVERLOAD(void, ToraStockApi, onRspGetConnectionInfo, data, error, nRequestID);
+		PYBIND11_OVERLOAD(void, StockApi, onRspGetConnectionInfo, data, error, nRequestID);
 	}
 	catch (const error_already_set &e)
 	{
@@ -50,7 +50,7 @@ void onRspUserLogin(const dict &data, const dict &error, int nRequestID) overrid
 {
 	try
 	{
-		PYBIND11_OVERLOAD(void, ToraStockApi, onRspUserLogin, data, error, nRequestID);
+		PYBIND11_OVERLOAD(void, StockApi, onRspUserLogin, data, error, nRequestID);
 	}
 	catch (const error_already_set &e)
 	{
@@ -62,7 +62,7 @@ void onRspUserLogout(const dict &data, const dict &error, int nRequestID) overri
 {
 	try
 	{
-		PYBIND11_OVERLOAD(void, ToraStockApi, onRspUserLogout, data, error, nRequestID);
+		PYBIND11_OVERLOAD(void, StockApi, onRspUserLogout, data, error, nRequestID);
 	}
 	catch (const error_already_set &e)
 	{
@@ -74,7 +74,7 @@ void onRspUserPasswordUpdate(const dict &data, const dict &error, int nRequestID
 {
 	try
 	{
-		PYBIND11_OVERLOAD(void, ToraStockApi, onRspUserPasswordUpdate, data, error, nRequestID);
+		PYBIND11_OVERLOAD(void, StockApi, onRspUserPasswordUpdate, data, error, nRequestID);
 	}
 	catch (const error_already_set &e)
 	{
@@ -86,7 +86,7 @@ void onRspInputDeviceSerial(const dict &data, const dict &error, int nRequestID)
 {
 	try
 	{
-		PYBIND11_OVERLOAD(void, ToraStockApi, onRspInputDeviceSerial, data, error, nRequestID);
+		PYBIND11_OVERLOAD(void, StockApi, onRspInputDeviceSerial, data, error, nRequestID);
 	}
 	catch (const error_already_set &e)
 	{
@@ -98,7 +98,7 @@ void onRspOrderInsert(const dict &data, const dict &error, int nRequestID) overr
 {
 	try
 	{
-		PYBIND11_OVERLOAD(void, ToraStockApi, onRspOrderInsert, data, error, nRequestID);
+		PYBIND11_OVERLOAD(void, StockApi, onRspOrderInsert, data, error, nRequestID);
 	}
 	catch (const error_already_set &e)
 	{
@@ -110,7 +110,7 @@ void onRtnOrder(const dict &data) override
 {
 	try
 	{
-		PYBIND11_OVERLOAD(void, ToraStockApi, onRtnOrder, data);
+		PYBIND11_OVERLOAD(void, StockApi, onRtnOrder, data);
 	}
 	catch (const error_already_set &e)
 	{
@@ -122,7 +122,7 @@ void onErrRtnOrderInsert(const dict &data, const dict &error, int nRequestID) ov
 {
 	try
 	{
-		PYBIND11_OVERLOAD(void, ToraStockApi, onErrRtnOrderInsert, data, error, nRequestID);
+		PYBIND11_OVERLOAD(void, StockApi, onErrRtnOrderInsert, data, error, nRequestID);
 	}
 	catch (const error_already_set &e)
 	{
@@ -134,7 +134,7 @@ void onRtnTrade(const dict &data) override
 {
 	try
 	{
-		PYBIND11_OVERLOAD(void, ToraStockApi, onRtnTrade, data);
+		PYBIND11_OVERLOAD(void, StockApi, onRtnTrade, data);
 	}
 	catch (const error_already_set &e)
 	{
@@ -146,7 +146,7 @@ void onRspOrderAction(const dict &data, const dict &error, int nRequestID) overr
 {
 	try
 	{
-		PYBIND11_OVERLOAD(void, ToraStockApi, onRspOrderAction, data, error, nRequestID);
+		PYBIND11_OVERLOAD(void, StockApi, onRspOrderAction, data, error, nRequestID);
 	}
 	catch (const error_already_set &e)
 	{
@@ -158,7 +158,7 @@ void onErrRtnOrderAction(const dict &data, const dict &error, int nRequestID) ov
 {
 	try
 	{
-		PYBIND11_OVERLOAD(void, ToraStockApi, onErrRtnOrderAction, data, error, nRequestID);
+		PYBIND11_OVERLOAD(void, StockApi, onErrRtnOrderAction, data, error, nRequestID);
 	}
 	catch (const error_already_set &e)
 	{
@@ -170,7 +170,7 @@ void onRspCondOrderInsert(const dict &data, const dict &error, int nRequestID) o
 {
 	try
 	{
-		PYBIND11_OVERLOAD(void, ToraStockApi, onRspCondOrderInsert, data, error, nRequestID);
+		PYBIND11_OVERLOAD(void, StockApi, onRspCondOrderInsert, data, error, nRequestID);
 	}
 	catch (const error_already_set &e)
 	{
@@ -182,7 +182,7 @@ void onRtnCondOrder(const dict &data) override
 {
 	try
 	{
-		PYBIND11_OVERLOAD(void, ToraStockApi, onRtnCondOrder, data);
+		PYBIND11_OVERLOAD(void, StockApi, onRtnCondOrder, data);
 	}
 	catch (const error_already_set &e)
 	{
@@ -194,7 +194,7 @@ void onErrRtnCondOrderInsert(const dict &data, const dict &error, int nRequestID
 {
 	try
 	{
-		PYBIND11_OVERLOAD(void, ToraStockApi, onErrRtnCondOrderInsert, data, error, nRequestID);
+		PYBIND11_OVERLOAD(void, StockApi, onErrRtnCondOrderInsert, data, error, nRequestID);
 	}
 	catch (const error_already_set &e)
 	{
@@ -206,7 +206,7 @@ void onRspCondOrderAction(const dict &data, const dict &error, int nRequestID) o
 {
 	try
 	{
-		PYBIND11_OVERLOAD(void, ToraStockApi, onRspCondOrderAction, data, error, nRequestID);
+		PYBIND11_OVERLOAD(void, StockApi, onRspCondOrderAction, data, error, nRequestID);
 	}
 	catch (const error_already_set &e)
 	{
@@ -218,7 +218,7 @@ void onErrRtnCondOrderAction(const dict &data, const dict &error, int nRequestID
 {
 	try
 	{
-		PYBIND11_OVERLOAD(void, ToraStockApi, onErrRtnCondOrderAction, data, error, nRequestID);
+		PYBIND11_OVERLOAD(void, StockApi, onErrRtnCondOrderAction, data, error, nRequestID);
 	}
 	catch (const error_already_set &e)
 	{
@@ -230,7 +230,7 @@ void onRspNegoOrderInsert(const dict &data, const dict &error, int nRequestID) o
 {
 	try
 	{
-		PYBIND11_OVERLOAD(void, ToraStockApi, onRspNegoOrderInsert, data, error, nRequestID);
+		PYBIND11_OVERLOAD(void, StockApi, onRspNegoOrderInsert, data, error, nRequestID);
 	}
 	catch (const error_already_set &e)
 	{
@@ -242,7 +242,7 @@ void onRtnNegoOrder(const dict &data) override
 {
 	try
 	{
-		PYBIND11_OVERLOAD(void, ToraStockApi, onRtnNegoOrder, data);
+		PYBIND11_OVERLOAD(void, StockApi, onRtnNegoOrder, data);
 	}
 	catch (const error_already_set &e)
 	{
@@ -254,7 +254,7 @@ void onErrRtnNegoOrderInsert(const dict &data, const dict &error, int nRequestID
 {
 	try
 	{
-		PYBIND11_OVERLOAD(void, ToraStockApi, onErrRtnNegoOrderInsert, data, error, nRequestID);
+		PYBIND11_OVERLOAD(void, StockApi, onErrRtnNegoOrderInsert, data, error, nRequestID);
 	}
 	catch (const error_already_set &e)
 	{
@@ -266,7 +266,7 @@ void onRtnNegoTrade(const dict &data) override
 {
 	try
 	{
-		PYBIND11_OVERLOAD(void, ToraStockApi, onRtnNegoTrade, data);
+		PYBIND11_OVERLOAD(void, StockApi, onRtnNegoTrade, data);
 	}
 	catch (const error_already_set &e)
 	{
@@ -278,7 +278,7 @@ void onRspNegoOrderAction(const dict &data, const dict &error, int nRequestID) o
 {
 	try
 	{
-		PYBIND11_OVERLOAD(void, ToraStockApi, onRspNegoOrderAction, data, error, nRequestID);
+		PYBIND11_OVERLOAD(void, StockApi, onRspNegoOrderAction, data, error, nRequestID);
 	}
 	catch (const error_already_set &e)
 	{
@@ -290,7 +290,7 @@ void onErrRtnNegoOrderAction(const dict &data, const dict &error, int nRequestID
 {
 	try
 	{
-		PYBIND11_OVERLOAD(void, ToraStockApi, onErrRtnNegoOrderAction, data, error, nRequestID);
+		PYBIND11_OVERLOAD(void, StockApi, onErrRtnNegoOrderAction, data, error, nRequestID);
 	}
 	catch (const error_already_set &e)
 	{
@@ -302,7 +302,7 @@ void onRspOrderInsertEx(const dict &data, const dict &error, int nRequestID) ove
 {
 	try
 	{
-		PYBIND11_OVERLOAD(void, ToraStockApi, onRspOrderInsertEx, data, error, nRequestID);
+		PYBIND11_OVERLOAD(void, StockApi, onRspOrderInsertEx, data, error, nRequestID);
 	}
 	catch (const error_already_set &e)
 	{
@@ -314,7 +314,7 @@ void onRspOrderActionEx(const dict &data, const dict &error, int nRequestID) ove
 {
 	try
 	{
-		PYBIND11_OVERLOAD(void, ToraStockApi, onRspOrderActionEx, data, error, nRequestID);
+		PYBIND11_OVERLOAD(void, StockApi, onRspOrderActionEx, data, error, nRequestID);
 	}
 	catch (const error_already_set &e)
 	{
@@ -326,7 +326,7 @@ void onRtnMarketStatus(const dict &data) override
 {
 	try
 	{
-		PYBIND11_OVERLOAD(void, ToraStockApi, onRtnMarketStatus, data);
+		PYBIND11_OVERLOAD(void, StockApi, onRtnMarketStatus, data);
 	}
 	catch (const error_already_set &e)
 	{
@@ -338,7 +338,7 @@ void onRspTransferFund(const dict &data, const dict &error, int nRequestID) over
 {
 	try
 	{
-		PYBIND11_OVERLOAD(void, ToraStockApi, onRspTransferFund, data, error, nRequestID);
+		PYBIND11_OVERLOAD(void, StockApi, onRspTransferFund, data, error, nRequestID);
 	}
 	catch (const error_already_set &e)
 	{
@@ -350,7 +350,7 @@ void onErrRtnTransferFund(const dict &data, const dict &error, int nRequestID) o
 {
 	try
 	{
-		PYBIND11_OVERLOAD(void, ToraStockApi, onErrRtnTransferFund, data, error, nRequestID);
+		PYBIND11_OVERLOAD(void, StockApi, onErrRtnTransferFund, data, error, nRequestID);
 	}
 	catch (const error_already_set &e)
 	{
@@ -362,7 +362,7 @@ void onRtnTransferFund(const dict &data) override
 {
 	try
 	{
-		PYBIND11_OVERLOAD(void, ToraStockApi, onRtnTransferFund, data);
+		PYBIND11_OVERLOAD(void, StockApi, onRtnTransferFund, data);
 	}
 	catch (const error_already_set &e)
 	{
@@ -374,7 +374,7 @@ void onRspTransferPosition(const dict &data, const dict &error, int nRequestID) 
 {
 	try
 	{
-		PYBIND11_OVERLOAD(void, ToraStockApi, onRspTransferPosition, data, error, nRequestID);
+		PYBIND11_OVERLOAD(void, StockApi, onRspTransferPosition, data, error, nRequestID);
 	}
 	catch (const error_already_set &e)
 	{
@@ -386,7 +386,7 @@ void onErrRtnTransferPosition(const dict &data, const dict &error, int nRequestI
 {
 	try
 	{
-		PYBIND11_OVERLOAD(void, ToraStockApi, onErrRtnTransferPosition, data, error, nRequestID);
+		PYBIND11_OVERLOAD(void, StockApi, onErrRtnTransferPosition, data, error, nRequestID);
 	}
 	catch (const error_already_set &e)
 	{
@@ -398,7 +398,7 @@ void onRtnTransferPosition(const dict &data) override
 {
 	try
 	{
-		PYBIND11_OVERLOAD(void, ToraStockApi, onRtnTransferPosition, data);
+		PYBIND11_OVERLOAD(void, StockApi, onRtnTransferPosition, data);
 	}
 	catch (const error_already_set &e)
 	{
@@ -410,7 +410,7 @@ void onRtnPeripheryTransferPosition(const dict &data) override
 {
 	try
 	{
-		PYBIND11_OVERLOAD(void, ToraStockApi, onRtnPeripheryTransferPosition, data);
+		PYBIND11_OVERLOAD(void, StockApi, onRtnPeripheryTransferPosition, data);
 	}
 	catch (const error_already_set &e)
 	{
@@ -422,7 +422,7 @@ void onRtnPeripheryTransferFund(const dict &data) override
 {
 	try
 	{
-		PYBIND11_OVERLOAD(void, ToraStockApi, onRtnPeripheryTransferFund, data);
+		PYBIND11_OVERLOAD(void, StockApi, onRtnPeripheryTransferFund, data);
 	}
 	catch (const error_already_set &e)
 	{
@@ -434,7 +434,7 @@ void onRspInquiryJZFund(const dict &data, const dict &error, int nRequestID) ove
 {
 	try
 	{
-		PYBIND11_OVERLOAD(void, ToraStockApi, onRspInquiryJZFund, data, error, nRequestID);
+		PYBIND11_OVERLOAD(void, StockApi, onRspInquiryJZFund, data, error, nRequestID);
 	}
 	catch (const error_already_set &e)
 	{
@@ -446,7 +446,7 @@ void onRspInquiryBankAccountFund(const dict &data, const dict &error, int nReque
 {
 	try
 	{
-		PYBIND11_OVERLOAD(void, ToraStockApi, onRspInquiryBankAccountFund, data, error, nRequestID);
+		PYBIND11_OVERLOAD(void, StockApi, onRspInquiryBankAccountFund, data, error, nRequestID);
 	}
 	catch (const error_already_set &e)
 	{
@@ -458,7 +458,7 @@ void onRtnTradingNotice(const dict &data) override
 {
 	try
 	{
-		PYBIND11_OVERLOAD(void, ToraStockApi, onRtnTradingNotice, data);
+		PYBIND11_OVERLOAD(void, StockApi, onRtnTradingNotice, data);
 	}
 	catch (const error_already_set &e)
 	{
@@ -470,7 +470,7 @@ void onRspInquiryMaxOrderVolume(const dict &data, const dict &error, int nReques
 {
 	try
 	{
-		PYBIND11_OVERLOAD(void, ToraStockApi, onRspInquiryMaxOrderVolume, data, error, nRequestID);
+		PYBIND11_OVERLOAD(void, StockApi, onRspInquiryMaxOrderVolume, data, error, nRequestID);
 	}
 	catch (const error_already_set &e)
 	{
@@ -482,7 +482,7 @@ void onRspInquiryTradeConcentration(const dict &data, const dict &error, int nRe
 {
 	try
 	{
-		PYBIND11_OVERLOAD(void, ToraStockApi, onRspInquiryTradeConcentration, data, error, nRequestID);
+		PYBIND11_OVERLOAD(void, StockApi, onRspInquiryTradeConcentration, data, error, nRequestID);
 	}
 	catch (const error_already_set &e)
 	{
@@ -494,7 +494,7 @@ void onRspModifyOpenPosCost(const dict &data, const dict &error, int nRequestID)
 {
 	try
 	{
-		PYBIND11_OVERLOAD(void, ToraStockApi, onRspModifyOpenPosCost, data, error, nRequestID);
+		PYBIND11_OVERLOAD(void, StockApi, onRspModifyOpenPosCost, data, error, nRequestID);
 	}
 	catch (const error_already_set &e)
 	{
@@ -506,7 +506,7 @@ void onRspInputNodeFundAssignment(const dict &data, const dict &error, int nRequ
 {
 	try
 	{
-		PYBIND11_OVERLOAD(void, ToraStockApi, onRspInputNodeFundAssignment, data, error, nRequestID);
+		PYBIND11_OVERLOAD(void, StockApi, onRspInputNodeFundAssignment, data, error, nRequestID);
 	}
 	catch (const error_already_set &e)
 	{
@@ -518,7 +518,7 @@ void onRspInquiryNodeFundAssignment(const dict &data, const dict &error, int nRe
 {
 	try
 	{
-		PYBIND11_OVERLOAD(void, ToraStockApi, onRspInquiryNodeFundAssignment, data, error, nRequestID);
+		PYBIND11_OVERLOAD(void, StockApi, onRspInquiryNodeFundAssignment, data, error, nRequestID);
 	}
 	catch (const error_already_set &e)
 	{
@@ -530,7 +530,7 @@ void onRspQryExchange(const dict &data, const dict &error, int nRequestID, bool 
 {
 	try
 	{
-		PYBIND11_OVERLOAD(void, ToraStockApi, onRspQryExchange, data, error, nRequestID, last);
+		PYBIND11_OVERLOAD(void, StockApi, onRspQryExchange, data, error, nRequestID, last);
 	}
 	catch (const error_already_set &e)
 	{
@@ -542,7 +542,7 @@ void onRspQrySecurity(const dict &data, const dict &error, int nRequestID, bool 
 {
 	try
 	{
-		PYBIND11_OVERLOAD(void, ToraStockApi, onRspQrySecurity, data, error, nRequestID, last);
+		PYBIND11_OVERLOAD(void, StockApi, onRspQrySecurity, data, error, nRequestID, last);
 	}
 	catch (const error_already_set &e)
 	{
@@ -554,7 +554,7 @@ void onRspQryIPOInfo(const dict &data, const dict &error, int nRequestID, bool l
 {
 	try
 	{
-		PYBIND11_OVERLOAD(void, ToraStockApi, onRspQryIPOInfo, data, error, nRequestID, last);
+		PYBIND11_OVERLOAD(void, StockApi, onRspQryIPOInfo, data, error, nRequestID, last);
 	}
 	catch (const error_already_set &e)
 	{
@@ -566,7 +566,7 @@ void onRspQryUser(const dict &data, const dict &error, int nRequestID, bool last
 {
 	try
 	{
-		PYBIND11_OVERLOAD(void, ToraStockApi, onRspQryUser, data, error, nRequestID, last);
+		PYBIND11_OVERLOAD(void, StockApi, onRspQryUser, data, error, nRequestID, last);
 	}
 	catch (const error_already_set &e)
 	{
@@ -578,7 +578,7 @@ void onRspQryInvestor(const dict &data, const dict &error, int nRequestID, bool 
 {
 	try
 	{
-		PYBIND11_OVERLOAD(void, ToraStockApi, onRspQryInvestor, data, error, nRequestID, last);
+		PYBIND11_OVERLOAD(void, StockApi, onRspQryInvestor, data, error, nRequestID, last);
 	}
 	catch (const error_already_set &e)
 	{
@@ -590,7 +590,7 @@ void onRspQryShareholderAccount(const dict &data, const dict &error, int nReques
 {
 	try
 	{
-		PYBIND11_OVERLOAD(void, ToraStockApi, onRspQryShareholderAccount, data, error, nRequestID, last);
+		PYBIND11_OVERLOAD(void, StockApi, onRspQryShareholderAccount, data, error, nRequestID, last);
 	}
 	catch (const error_already_set &e)
 	{
@@ -602,7 +602,7 @@ void onRspQryRationalInfo(const dict &data, const dict &error, int nRequestID, b
 {
 	try
 	{
-		PYBIND11_OVERLOAD(void, ToraStockApi, onRspQryRationalInfo, data, error, nRequestID, last);
+		PYBIND11_OVERLOAD(void, StockApi, onRspQryRationalInfo, data, error, nRequestID, last);
 	}
 	catch (const error_already_set &e)
 	{
@@ -614,7 +614,7 @@ void onRspQryOrder(const dict &data, const dict &error, int nRequestID, bool las
 {
 	try
 	{
-		PYBIND11_OVERLOAD(void, ToraStockApi, onRspQryOrder, data, error, nRequestID, last);
+		PYBIND11_OVERLOAD(void, StockApi, onRspQryOrder, data, error, nRequestID, last);
 	}
 	catch (const error_already_set &e)
 	{
@@ -626,7 +626,7 @@ void onRspQryOrderAction(const dict &data, const dict &error, int nRequestID, bo
 {
 	try
 	{
-		PYBIND11_OVERLOAD(void, ToraStockApi, onRspQryOrderAction, data, error, nRequestID, last);
+		PYBIND11_OVERLOAD(void, StockApi, onRspQryOrderAction, data, error, nRequestID, last);
 	}
 	catch (const error_already_set &e)
 	{
@@ -638,7 +638,7 @@ void onRspQryTrade(const dict &data, const dict &error, int nRequestID, bool las
 {
 	try
 	{
-		PYBIND11_OVERLOAD(void, ToraStockApi, onRspQryTrade, data, error, nRequestID, last);
+		PYBIND11_OVERLOAD(void, StockApi, onRspQryTrade, data, error, nRequestID, last);
 	}
 	catch (const error_already_set &e)
 	{
@@ -650,7 +650,7 @@ void onRspQryTradingAccount(const dict &data, const dict &error, int nRequestID,
 {
 	try
 	{
-		PYBIND11_OVERLOAD(void, ToraStockApi, onRspQryTradingAccount, data, error, nRequestID, last);
+		PYBIND11_OVERLOAD(void, StockApi, onRspQryTradingAccount, data, error, nRequestID, last);
 	}
 	catch (const error_already_set &e)
 	{
@@ -662,7 +662,7 @@ void onRspQryPosition(const dict &data, const dict &error, int nRequestID, bool 
 {
 	try
 	{
-		PYBIND11_OVERLOAD(void, ToraStockApi, onRspQryPosition, data, error, nRequestID, last);
+		PYBIND11_OVERLOAD(void, StockApi, onRspQryPosition, data, error, nRequestID, last);
 	}
 	catch (const error_already_set &e)
 	{
@@ -674,7 +674,7 @@ void onRspQryTradingFee(const dict &data, const dict &error, int nRequestID, boo
 {
 	try
 	{
-		PYBIND11_OVERLOAD(void, ToraStockApi, onRspQryTradingFee, data, error, nRequestID, last);
+		PYBIND11_OVERLOAD(void, StockApi, onRspQryTradingFee, data, error, nRequestID, last);
 	}
 	catch (const error_already_set &e)
 	{
@@ -686,7 +686,7 @@ void onRspQryInvestorTradingFee(const dict &data, const dict &error, int nReques
 {
 	try
 	{
-		PYBIND11_OVERLOAD(void, ToraStockApi, onRspQryInvestorTradingFee, data, error, nRequestID, last);
+		PYBIND11_OVERLOAD(void, StockApi, onRspQryInvestorTradingFee, data, error, nRequestID, last);
 	}
 	catch (const error_already_set &e)
 	{
@@ -698,7 +698,7 @@ void onRspQryIPOQuota(const dict &data, const dict &error, int nRequestID, bool 
 {
 	try
 	{
-		PYBIND11_OVERLOAD(void, ToraStockApi, onRspQryIPOQuota, data, error, nRequestID, last);
+		PYBIND11_OVERLOAD(void, StockApi, onRspQryIPOQuota, data, error, nRequestID, last);
 	}
 	catch (const error_already_set &e)
 	{
@@ -710,7 +710,7 @@ void onRspQryOrderFundDetail(const dict &data, const dict &error, int nRequestID
 {
 	try
 	{
-		PYBIND11_OVERLOAD(void, ToraStockApi, onRspQryOrderFundDetail, data, error, nRequestID, last);
+		PYBIND11_OVERLOAD(void, StockApi, onRspQryOrderFundDetail, data, error, nRequestID, last);
 	}
 	catch (const error_already_set &e)
 	{
@@ -722,7 +722,7 @@ void onRspQryFundTransferDetail(const dict &data, const dict &error, int nReques
 {
 	try
 	{
-		PYBIND11_OVERLOAD(void, ToraStockApi, onRspQryFundTransferDetail, data, error, nRequestID, last);
+		PYBIND11_OVERLOAD(void, StockApi, onRspQryFundTransferDetail, data, error, nRequestID, last);
 	}
 	catch (const error_already_set &e)
 	{
@@ -734,7 +734,7 @@ void onRspQryPositionTransferDetail(const dict &data, const dict &error, int nRe
 {
 	try
 	{
-		PYBIND11_OVERLOAD(void, ToraStockApi, onRspQryPositionTransferDetail, data, error, nRequestID, last);
+		PYBIND11_OVERLOAD(void, StockApi, onRspQryPositionTransferDetail, data, error, nRequestID, last);
 	}
 	catch (const error_already_set &e)
 	{
@@ -746,7 +746,7 @@ void onRspQryPeripheryPositionTransferDetail(const dict &data, const dict &error
 {
 	try
 	{
-		PYBIND11_OVERLOAD(void, ToraStockApi, onRspQryPeripheryPositionTransferDetail, data, error, nRequestID, last);
+		PYBIND11_OVERLOAD(void, StockApi, onRspQryPeripheryPositionTransferDetail, data, error, nRequestID, last);
 	}
 	catch (const error_already_set &e)
 	{
@@ -758,7 +758,7 @@ void onRspQryPeripheryFundTransferDetail(const dict &data, const dict &error, in
 {
 	try
 	{
-		PYBIND11_OVERLOAD(void, ToraStockApi, onRspQryPeripheryFundTransferDetail, data, error, nRequestID, last);
+		PYBIND11_OVERLOAD(void, StockApi, onRspQryPeripheryFundTransferDetail, data, error, nRequestID, last);
 	}
 	catch (const error_already_set &e)
 	{
@@ -770,7 +770,7 @@ void onRspQryBondConversionInfo(const dict &data, const dict &error, int nReques
 {
 	try
 	{
-		PYBIND11_OVERLOAD(void, ToraStockApi, onRspQryBondConversionInfo, data, error, nRequestID, last);
+		PYBIND11_OVERLOAD(void, StockApi, onRspQryBondConversionInfo, data, error, nRequestID, last);
 	}
 	catch (const error_already_set &e)
 	{
@@ -782,7 +782,7 @@ void onRspQryBondPutbackInfo(const dict &data, const dict &error, int nRequestID
 {
 	try
 	{
-		PYBIND11_OVERLOAD(void, ToraStockApi, onRspQryBondPutbackInfo, data, error, nRequestID, last);
+		PYBIND11_OVERLOAD(void, StockApi, onRspQryBondPutbackInfo, data, error, nRequestID, last);
 	}
 	catch (const error_already_set &e)
 	{
@@ -794,7 +794,7 @@ void onRspQryInvestorCondOrderLimitParam(const dict &data, const dict &error, in
 {
 	try
 	{
-		PYBIND11_OVERLOAD(void, ToraStockApi, onRspQryInvestorCondOrderLimitParam, data, error, nRequestID, last);
+		PYBIND11_OVERLOAD(void, StockApi, onRspQryInvestorCondOrderLimitParam, data, error, nRequestID, last);
 	}
 	catch (const error_already_set &e)
 	{
@@ -806,7 +806,7 @@ void onRspQryConditionOrder(const dict &data, const dict &error, int nRequestID,
 {
 	try
 	{
-		PYBIND11_OVERLOAD(void, ToraStockApi, onRspQryConditionOrder, data, error, nRequestID, last);
+		PYBIND11_OVERLOAD(void, StockApi, onRspQryConditionOrder, data, error, nRequestID, last);
 	}
 	catch (const error_already_set &e)
 	{
@@ -818,7 +818,7 @@ void onRspQryCondOrderAction(const dict &data, const dict &error, int nRequestID
 {
 	try
 	{
-		PYBIND11_OVERLOAD(void, ToraStockApi, onRspQryCondOrderAction, data, error, nRequestID, last);
+		PYBIND11_OVERLOAD(void, StockApi, onRspQryCondOrderAction, data, error, nRequestID, last);
 	}
 	catch (const error_already_set &e)
 	{
@@ -830,7 +830,7 @@ void onRspQryTradingNotice(const dict &data, const dict &error, int nRequestID, 
 {
 	try
 	{
-		PYBIND11_OVERLOAD(void, ToraStockApi, onRspQryTradingNotice, data, error, nRequestID, last);
+		PYBIND11_OVERLOAD(void, StockApi, onRspQryTradingNotice, data, error, nRequestID, last);
 	}
 	catch (const error_already_set &e)
 	{
@@ -842,7 +842,7 @@ void onRspQryIPONumberResult(const dict &data, const dict &error, int nRequestID
 {
 	try
 	{
-		PYBIND11_OVERLOAD(void, ToraStockApi, onRspQryIPONumberResult, data, error, nRequestID, last);
+		PYBIND11_OVERLOAD(void, StockApi, onRspQryIPONumberResult, data, error, nRequestID, last);
 	}
 	catch (const error_already_set &e)
 	{
@@ -854,7 +854,7 @@ void onRspQryIPOMatchNumberResult(const dict &data, const dict &error, int nRequ
 {
 	try
 	{
-		PYBIND11_OVERLOAD(void, ToraStockApi, onRspQryIPOMatchNumberResult, data, error, nRequestID, last);
+		PYBIND11_OVERLOAD(void, StockApi, onRspQryIPOMatchNumberResult, data, error, nRequestID, last);
 	}
 	catch (const error_already_set &e)
 	{
@@ -866,7 +866,7 @@ void onRspQryShareholderSpecPrivilege(const dict &data, const dict &error, int n
 {
 	try
 	{
-		PYBIND11_OVERLOAD(void, ToraStockApi, onRspQryShareholderSpecPrivilege, data, error, nRequestID, last);
+		PYBIND11_OVERLOAD(void, StockApi, onRspQryShareholderSpecPrivilege, data, error, nRequestID, last);
 	}
 	catch (const error_already_set &e)
 	{
@@ -878,7 +878,7 @@ void onRspQryMarket(const dict &data, const dict &error, int nRequestID, bool la
 {
 	try
 	{
-		PYBIND11_OVERLOAD(void, ToraStockApi, onRspQryMarket, data, error, nRequestID, last);
+		PYBIND11_OVERLOAD(void, StockApi, onRspQryMarket, data, error, nRequestID, last);
 	}
 	catch (const error_already_set &e)
 	{
@@ -890,7 +890,7 @@ void onRspQryETFFile(const dict &data, const dict &error, int nRequestID, bool l
 {
 	try
 	{
-		PYBIND11_OVERLOAD(void, ToraStockApi, onRspQryETFFile, data, error, nRequestID, last);
+		PYBIND11_OVERLOAD(void, StockApi, onRspQryETFFile, data, error, nRequestID, last);
 	}
 	catch (const error_already_set &e)
 	{
@@ -902,7 +902,7 @@ void onRspQryETFBasket(const dict &data, const dict &error, int nRequestID, bool
 {
 	try
 	{
-		PYBIND11_OVERLOAD(void, ToraStockApi, onRspQryETFBasket, data, error, nRequestID, last);
+		PYBIND11_OVERLOAD(void, StockApi, onRspQryETFBasket, data, error, nRequestID, last);
 	}
 	catch (const error_already_set &e)
 	{
@@ -914,7 +914,7 @@ void onRspQryInvestorPositionLimit(const dict &data, const dict &error, int nReq
 {
 	try
 	{
-		PYBIND11_OVERLOAD(void, ToraStockApi, onRspQryInvestorPositionLimit, data, error, nRequestID, last);
+		PYBIND11_OVERLOAD(void, StockApi, onRspQryInvestorPositionLimit, data, error, nRequestID, last);
 	}
 	catch (const error_already_set &e)
 	{
@@ -926,7 +926,7 @@ void onRspQrySZSEImcParams(const dict &data, const dict &error, int nRequestID, 
 {
 	try
 	{
-		PYBIND11_OVERLOAD(void, ToraStockApi, onRspQrySZSEImcParams, data, error, nRequestID, last);
+		PYBIND11_OVERLOAD(void, StockApi, onRspQrySZSEImcParams, data, error, nRequestID, last);
 	}
 	catch (const error_already_set &e)
 	{
@@ -938,7 +938,7 @@ void onRspQrySZSEImcExchangeRate(const dict &data, const dict &error, int nReque
 {
 	try
 	{
-		PYBIND11_OVERLOAD(void, ToraStockApi, onRspQrySZSEImcExchangeRate, data, error, nRequestID, last);
+		PYBIND11_OVERLOAD(void, StockApi, onRspQrySZSEImcExchangeRate, data, error, nRequestID, last);
 	}
 	catch (const error_already_set &e)
 	{
@@ -950,7 +950,7 @@ void onRspQrySZSEHKPriceTickInfo(const dict &data, const dict &error, int nReque
 {
 	try
 	{
-		PYBIND11_OVERLOAD(void, ToraStockApi, onRspQrySZSEHKPriceTickInfo, data, error, nRequestID, last);
+		PYBIND11_OVERLOAD(void, StockApi, onRspQrySZSEHKPriceTickInfo, data, error, nRequestID, last);
 	}
 	catch (const error_already_set &e)
 	{
@@ -962,7 +962,7 @@ void onRspQryLofFundInfo(const dict &data, const dict &error, int nRequestID, bo
 {
 	try
 	{
-		PYBIND11_OVERLOAD(void, ToraStockApi, onRspQryLofFundInfo, data, error, nRequestID, last);
+		PYBIND11_OVERLOAD(void, StockApi, onRspQryLofFundInfo, data, error, nRequestID, last);
 	}
 	catch (const error_already_set &e)
 	{
@@ -974,7 +974,7 @@ void onRspQryPledgePosition(const dict &data, const dict &error, int nRequestID,
 {
 	try
 	{
-		PYBIND11_OVERLOAD(void, ToraStockApi, onRspQryPledgePosition, data, error, nRequestID, last);
+		PYBIND11_OVERLOAD(void, StockApi, onRspQryPledgePosition, data, error, nRequestID, last);
 	}
 	catch (const error_already_set &e)
 	{
@@ -986,7 +986,7 @@ void onRspQryPledgeInfo(const dict &data, const dict &error, int nRequestID, boo
 {
 	try
 	{
-		PYBIND11_OVERLOAD(void, ToraStockApi, onRspQryPledgeInfo, data, error, nRequestID, last);
+		PYBIND11_OVERLOAD(void, StockApi, onRspQryPledgeInfo, data, error, nRequestID, last);
 	}
 	catch (const error_already_set &e)
 	{
@@ -998,7 +998,7 @@ void onRspQrySystemNodeInfo(const dict &data, const dict &error, int nRequestID,
 {
 	try
 	{
-		PYBIND11_OVERLOAD(void, ToraStockApi, onRspQrySystemNodeInfo, data, error, nRequestID, last);
+		PYBIND11_OVERLOAD(void, StockApi, onRspQrySystemNodeInfo, data, error, nRequestID, last);
 	}
 	catch (const error_already_set &e)
 	{
@@ -1010,7 +1010,7 @@ void onRspQryStandardBondPosition(const dict &data, const dict &error, int nRequ
 {
 	try
 	{
-		PYBIND11_OVERLOAD(void, ToraStockApi, onRspQryStandardBondPosition, data, error, nRequestID, last);
+		PYBIND11_OVERLOAD(void, StockApi, onRspQryStandardBondPosition, data, error, nRequestID, last);
 	}
 	catch (const error_already_set &e)
 	{
@@ -1022,7 +1022,7 @@ void onRspQryPrematurityRepoOrder(const dict &data, const dict &error, int nRequ
 {
 	try
 	{
-		PYBIND11_OVERLOAD(void, ToraStockApi, onRspQryPrematurityRepoOrder, data, error, nRequestID, last);
+		PYBIND11_OVERLOAD(void, StockApi, onRspQryPrematurityRepoOrder, data, error, nRequestID, last);
 	}
 	catch (const error_already_set &e)
 	{
@@ -1034,7 +1034,7 @@ void onRspQryNegoOrder(const dict &data, const dict &error, int nRequestID, bool
 {
 	try
 	{
-		PYBIND11_OVERLOAD(void, ToraStockApi, onRspQryNegoOrder, data, error, nRequestID, last);
+		PYBIND11_OVERLOAD(void, StockApi, onRspQryNegoOrder, data, error, nRequestID, last);
 	}
 	catch (const error_already_set &e)
 	{
@@ -1046,7 +1046,7 @@ void onRspQryNegoOrderAction(const dict &data, const dict &error, int nRequestID
 {
 	try
 	{
-		PYBIND11_OVERLOAD(void, ToraStockApi, onRspQryNegoOrderAction, data, error, nRequestID, last);
+		PYBIND11_OVERLOAD(void, StockApi, onRspQryNegoOrderAction, data, error, nRequestID, last);
 	}
 	catch (const error_already_set &e)
 	{
@@ -1058,7 +1058,7 @@ void onRspQryNegoTrade(const dict &data, const dict &error, int nRequestID, bool
 {
 	try
 	{
-		PYBIND11_OVERLOAD(void, ToraStockApi, onRspQryNegoTrade, data, error, nRequestID, last);
+		PYBIND11_OVERLOAD(void, StockApi, onRspQryNegoTrade, data, error, nRequestID, last);
 	}
 	catch (const error_already_set &e)
 	{
@@ -1070,7 +1070,7 @@ void onRspQryNegotiationParam(const dict &data, const dict &error, int nRequestI
 {
 	try
 	{
-		PYBIND11_OVERLOAD(void, ToraStockApi, onRspQryNegotiationParam, data, error, nRequestID, last);
+		PYBIND11_OVERLOAD(void, StockApi, onRspQryNegotiationParam, data, error, nRequestID, last);
 	}
 	catch (const error_already_set &e)
 	{

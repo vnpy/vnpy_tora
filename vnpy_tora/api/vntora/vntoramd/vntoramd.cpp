@@ -8,14 +8,14 @@
 ///C++的回调函数将数据保存到队列中
 ///-------------------------------------------------------------------------------------
 
-void ToraMdApi::OnFrontConnected()
+void MdApi::OnFrontConnected()
 {
 	Task task = Task();
 	task.task_name = ONFRONTCONNECTED;
 	this->task_queue.push(task);
 };
 
-void ToraMdApi::OnFrontDisconnected(int nReason)
+void MdApi::OnFrontDisconnected(int nReason)
 {
 	Task task = Task();
 	task.task_name = ONFRONTDISCONNECTED;
@@ -23,7 +23,7 @@ void ToraMdApi::OnFrontDisconnected(int nReason)
 	this->task_queue.push(task);
 };
 
-void ToraMdApi::OnRspGetConnectionInfo(CTORATstpConnectionInfoField* pConnectionInfoField, CTORATstpRspInfoField* pRspInfoField, int nRequestID)
+void MdApi::OnRspGetConnectionInfo(CTORATstpConnectionInfoField* pConnectionInfoField, CTORATstpRspInfoField* pRspInfoField, int nRequestID)
 {
 	Task task = Task();
 	task.task_name = ONRSPGETCONNECTIONINFO;
@@ -43,7 +43,7 @@ void ToraMdApi::OnRspGetConnectionInfo(CTORATstpConnectionInfoField* pConnection
 	this->task_queue.push(task);
 };
 
-void ToraMdApi::OnRspUserLogin(CTORATstpRspUserLoginField* pRspUserLoginField, CTORATstpRspInfoField* pRspInfoField, int nRequestID)
+void MdApi::OnRspUserLogin(CTORATstpRspUserLoginField* pRspUserLoginField, CTORATstpRspInfoField* pRspInfoField, int nRequestID)
 {
 	Task task = Task();
 	task.task_name = ONRSPUSERLOGIN;
@@ -63,7 +63,7 @@ void ToraMdApi::OnRspUserLogin(CTORATstpRspUserLoginField* pRspUserLoginField, C
 	this->task_queue.push(task);
 };
 
-void ToraMdApi::OnRspUserLogout(CTORATstpUserLogoutField* pUserLogoutField, CTORATstpRspInfoField* pRspInfoField, int nRequestID)
+void MdApi::OnRspUserLogout(CTORATstpUserLogoutField* pUserLogoutField, CTORATstpRspInfoField* pRspInfoField, int nRequestID)
 {
 	Task task = Task();
 	task.task_name = ONRSPUSERLOGOUT;
@@ -83,7 +83,7 @@ void ToraMdApi::OnRspUserLogout(CTORATstpUserLogoutField* pUserLogoutField, CTOR
 	this->task_queue.push(task);
 };
 
-void ToraMdApi::OnRspSubMarketData(CTORATstpSpecificSecurityField* pSpecificSecurityField, CTORATstpRspInfoField* pRspInfoField)
+void MdApi::OnRspSubMarketData(CTORATstpSpecificSecurityField* pSpecificSecurityField, CTORATstpRspInfoField* pRspInfoField)
 {
 	Task task = Task();
 	task.task_name = ONRSPSUBMARKETDATA;
@@ -102,7 +102,7 @@ void ToraMdApi::OnRspSubMarketData(CTORATstpSpecificSecurityField* pSpecificSecu
 	this->task_queue.push(task);
 };
 
-void ToraMdApi::OnRspUnSubMarketData(CTORATstpSpecificSecurityField* pSpecificSecurityField, CTORATstpRspInfoField* pRspInfoField)
+void MdApi::OnRspUnSubMarketData(CTORATstpSpecificSecurityField* pSpecificSecurityField, CTORATstpRspInfoField* pRspInfoField)
 {
 	Task task = Task();
 	task.task_name = ONRSPUNSUBMARKETDATA;
@@ -121,7 +121,7 @@ void ToraMdApi::OnRspUnSubMarketData(CTORATstpSpecificSecurityField* pSpecificSe
 	this->task_queue.push(task);
 };
 
-void ToraMdApi::OnRspSubPHMarketData(CTORATstpSpecificSecurityField* pSpecificSecurityField, CTORATstpRspInfoField* pRspInfoField)
+void MdApi::OnRspSubPHMarketData(CTORATstpSpecificSecurityField* pSpecificSecurityField, CTORATstpRspInfoField* pRspInfoField)
 {
 	Task task = Task();
 	task.task_name = ONRSPSUBPHMARKETDATA;
@@ -140,7 +140,7 @@ void ToraMdApi::OnRspSubPHMarketData(CTORATstpSpecificSecurityField* pSpecificSe
 	this->task_queue.push(task);
 };
 
-void ToraMdApi::OnRspUnSubPHMarketData(CTORATstpSpecificSecurityField* pSpecificSecurityField, CTORATstpRspInfoField* pRspInfoField)
+void MdApi::OnRspUnSubPHMarketData(CTORATstpSpecificSecurityField* pSpecificSecurityField, CTORATstpRspInfoField* pRspInfoField)
 {
 	Task task = Task();
 	task.task_name = ONRSPUNSUBPHMARKETDATA;
@@ -159,7 +159,7 @@ void ToraMdApi::OnRspUnSubPHMarketData(CTORATstpSpecificSecurityField* pSpecific
 	this->task_queue.push(task);
 };
 
-void ToraMdApi::OnRspSubSpecialMarketData(CTORATstpSpecificSecurityField* pSpecificSecurityField, CTORATstpRspInfoField* pRspInfoField)
+void MdApi::OnRspSubSpecialMarketData(CTORATstpSpecificSecurityField* pSpecificSecurityField, CTORATstpRspInfoField* pRspInfoField)
 {
 	Task task = Task();
 	task.task_name = ONRSPSUBSPECIALMARKETDATA;
@@ -178,7 +178,7 @@ void ToraMdApi::OnRspSubSpecialMarketData(CTORATstpSpecificSecurityField* pSpeci
 	this->task_queue.push(task);
 };
 
-void ToraMdApi::OnRspUnSubSpecialMarketData(CTORATstpSpecificSecurityField* pSpecificSecurityField, CTORATstpRspInfoField* pRspInfoField)
+void MdApi::OnRspUnSubSpecialMarketData(CTORATstpSpecificSecurityField* pSpecificSecurityField, CTORATstpRspInfoField* pRspInfoField)
 {
 	Task task = Task();
 	task.task_name = ONRSPUNSUBSPECIALMARKETDATA;
@@ -197,7 +197,7 @@ void ToraMdApi::OnRspUnSubSpecialMarketData(CTORATstpSpecificSecurityField* pSpe
 	this->task_queue.push(task);
 };
 
-void ToraMdApi::OnRspSubSimplifyMarketData(CTORATstpSpecificSecurityField* pSpecificSecurityField, CTORATstpRspInfoField* pRspInfoField)
+void MdApi::OnRspSubSimplifyMarketData(CTORATstpSpecificSecurityField* pSpecificSecurityField, CTORATstpRspInfoField* pRspInfoField)
 {
 	Task task = Task();
 	task.task_name = ONRSPSUBSIMPLIFYMARKETDATA;
@@ -216,7 +216,7 @@ void ToraMdApi::OnRspSubSimplifyMarketData(CTORATstpSpecificSecurityField* pSpec
 	this->task_queue.push(task);
 };
 
-void ToraMdApi::OnRspUnSubSimplifyMarketData(CTORATstpSpecificSecurityField* pSpecificSecurityField, CTORATstpRspInfoField* pRspInfoField)
+void MdApi::OnRspUnSubSimplifyMarketData(CTORATstpSpecificSecurityField* pSpecificSecurityField, CTORATstpRspInfoField* pRspInfoField)
 {
 	Task task = Task();
 	task.task_name = ONRSPUNSUBSIMPLIFYMARKETDATA;
@@ -235,7 +235,7 @@ void ToraMdApi::OnRspUnSubSimplifyMarketData(CTORATstpSpecificSecurityField* pSp
 	this->task_queue.push(task);
 };
 
-void ToraMdApi::OnRspSubSecurityStatus(CTORATstpSpecificSecurityField* pSpecificSecurityField, CTORATstpRspInfoField* pRspInfoField)
+void MdApi::OnRspSubSecurityStatus(CTORATstpSpecificSecurityField* pSpecificSecurityField, CTORATstpRspInfoField* pRspInfoField)
 {
 	Task task = Task();
 	task.task_name = ONRSPSUBSECURITYSTATUS;
@@ -254,7 +254,7 @@ void ToraMdApi::OnRspSubSecurityStatus(CTORATstpSpecificSecurityField* pSpecific
 	this->task_queue.push(task);
 };
 
-void ToraMdApi::OnRspUnSubSecurityStatus(CTORATstpSpecificSecurityField* pSpecificSecurityField, CTORATstpRspInfoField* pRspInfoField)
+void MdApi::OnRspUnSubSecurityStatus(CTORATstpSpecificSecurityField* pSpecificSecurityField, CTORATstpRspInfoField* pRspInfoField)
 {
 	Task task = Task();
 	task.task_name = ONRSPUNSUBSECURITYSTATUS;
@@ -273,7 +273,7 @@ void ToraMdApi::OnRspUnSubSecurityStatus(CTORATstpSpecificSecurityField* pSpecif
 	this->task_queue.push(task);
 };
 
-void ToraMdApi::OnRspSubMarketStatus(CTORATstpSpecificMarketField* pSpecificMarketField, CTORATstpRspInfoField* pRspInfoField)
+void MdApi::OnRspSubMarketStatus(CTORATstpSpecificMarketField* pSpecificMarketField, CTORATstpRspInfoField* pRspInfoField)
 {
 	Task task = Task();
 	task.task_name = ONRSPSUBMARKETSTATUS;
@@ -292,7 +292,7 @@ void ToraMdApi::OnRspSubMarketStatus(CTORATstpSpecificMarketField* pSpecificMark
 	this->task_queue.push(task);
 };
 
-void ToraMdApi::OnRspUnSubMarketStatus(CTORATstpSpecificMarketField* pSpecificMarketField, CTORATstpRspInfoField* pRspInfoField)
+void MdApi::OnRspUnSubMarketStatus(CTORATstpSpecificMarketField* pSpecificMarketField, CTORATstpRspInfoField* pRspInfoField)
 {
 	Task task = Task();
 	task.task_name = ONRSPUNSUBMARKETSTATUS;
@@ -311,7 +311,7 @@ void ToraMdApi::OnRspUnSubMarketStatus(CTORATstpSpecificMarketField* pSpecificMa
 	this->task_queue.push(task);
 };
 
-void ToraMdApi::OnRspSubImcParams(CTORATstpSpecificMarketField* pSpecificMarketField, CTORATstpRspInfoField* pRspInfoField)
+void MdApi::OnRspSubImcParams(CTORATstpSpecificMarketField* pSpecificMarketField, CTORATstpRspInfoField* pRspInfoField)
 {
 	Task task = Task();
 	task.task_name = ONRSPSUBIMCPARAMS;
@@ -330,7 +330,7 @@ void ToraMdApi::OnRspSubImcParams(CTORATstpSpecificMarketField* pSpecificMarketF
 	this->task_queue.push(task);
 };
 
-void ToraMdApi::OnRspUnSubImcParams(CTORATstpSpecificMarketField* pSpecificMarketField, CTORATstpRspInfoField* pRspInfoField)
+void MdApi::OnRspUnSubImcParams(CTORATstpSpecificMarketField* pSpecificMarketField, CTORATstpRspInfoField* pRspInfoField)
 {
 	Task task = Task();
 	task.task_name = ONRSPUNSUBIMCPARAMS;
@@ -349,7 +349,7 @@ void ToraMdApi::OnRspUnSubImcParams(CTORATstpSpecificMarketField* pSpecificMarke
 	this->task_queue.push(task);
 };
 
-void ToraMdApi::OnRspInquiryMarketDataMirror(CTORATstpMarketDataField* pMarketDataField, CTORATstpRspInfoField* pRspInfoField, int nRequestID, bool bIsLast)
+void MdApi::OnRspInquiryMarketDataMirror(CTORATstpMarketDataField* pMarketDataField, CTORATstpRspInfoField* pRspInfoField, int nRequestID, bool bIsLast)
 {
 	Task task = Task();
 	task.task_name = ONRSPINQUIRYMARKETDATAMIRROR;
@@ -370,7 +370,7 @@ void ToraMdApi::OnRspInquiryMarketDataMirror(CTORATstpMarketDataField* pMarketDa
 	this->task_queue.push(task);
 };
 
-void ToraMdApi::OnRspInquiryPHMarketDataMirror(CTORATstpPHMarketDataField* pPHMarketDataField, CTORATstpRspInfoField* pRspInfoField, int nRequestID, bool bIsLast)
+void MdApi::OnRspInquiryPHMarketDataMirror(CTORATstpPHMarketDataField* pPHMarketDataField, CTORATstpRspInfoField* pRspInfoField, int nRequestID, bool bIsLast)
 {
 	Task task = Task();
 	task.task_name = ONRSPINQUIRYPHMARKETDATAMIRROR;
@@ -391,7 +391,7 @@ void ToraMdApi::OnRspInquiryPHMarketDataMirror(CTORATstpPHMarketDataField* pPHMa
 	this->task_queue.push(task);
 };
 
-void ToraMdApi::OnRspInquirySpecialMarketDataMirror(CTORATstpSpecialMarketDataField* pMarketDataField, CTORATstpRspInfoField* pRspInfoField, int nRequestID, bool bIsLast)
+void MdApi::OnRspInquirySpecialMarketDataMirror(CTORATstpSpecialMarketDataField* pMarketDataField, CTORATstpRspInfoField* pRspInfoField, int nRequestID, bool bIsLast)
 {
 	Task task = Task();
 	task.task_name = ONRSPINQUIRYSPECIALMARKETDATAMIRROR;
@@ -412,7 +412,7 @@ void ToraMdApi::OnRspInquirySpecialMarketDataMirror(CTORATstpSpecialMarketDataFi
 	this->task_queue.push(task);
 };
 
-void ToraMdApi::OnRspSubSPMarketData(CTORATstpSpecificSecurityField* pSpecificSecurityField, CTORATstpRspInfoField* pRspInfoField)
+void MdApi::OnRspSubSPMarketData(CTORATstpSpecificSecurityField* pSpecificSecurityField, CTORATstpRspInfoField* pRspInfoField)
 {
 	Task task = Task();
 	task.task_name = ONRSPSUBSPMARKETDATA;
@@ -431,7 +431,7 @@ void ToraMdApi::OnRspSubSPMarketData(CTORATstpSpecificSecurityField* pSpecificSe
 	this->task_queue.push(task);
 };
 
-void ToraMdApi::OnRspUnSubSPMarketData(CTORATstpSpecificSecurityField* pSpecificSecurityField, CTORATstpRspInfoField* pRspInfoField)
+void MdApi::OnRspUnSubSPMarketData(CTORATstpSpecificSecurityField* pSpecificSecurityField, CTORATstpRspInfoField* pRspInfoField)
 {
 	Task task = Task();
 	task.task_name = ONRSPUNSUBSPMARKETDATA;
@@ -450,7 +450,7 @@ void ToraMdApi::OnRspUnSubSPMarketData(CTORATstpSpecificSecurityField* pSpecific
 	this->task_queue.push(task);
 };
 
-void ToraMdApi::OnRspSubSPSimplifyMarketData(CTORATstpSpecificSecurityField* pSpecificSecurityField, CTORATstpRspInfoField* pRspInfoField)
+void MdApi::OnRspSubSPSimplifyMarketData(CTORATstpSpecificSecurityField* pSpecificSecurityField, CTORATstpRspInfoField* pRspInfoField)
 {
 	Task task = Task();
 	task.task_name = ONRSPSUBSPSIMPLIFYMARKETDATA;
@@ -469,7 +469,7 @@ void ToraMdApi::OnRspSubSPSimplifyMarketData(CTORATstpSpecificSecurityField* pSp
 	this->task_queue.push(task);
 };
 
-void ToraMdApi::OnRspUnSubSPSimplifyMarketData(CTORATstpSpecificSecurityField* pSpecificSecurityField, CTORATstpRspInfoField* pRspInfoField)
+void MdApi::OnRspUnSubSPSimplifyMarketData(CTORATstpSpecificSecurityField* pSpecificSecurityField, CTORATstpRspInfoField* pRspInfoField)
 {
 	Task task = Task();
 	task.task_name = ONRSPUNSUBSPSIMPLIFYMARKETDATA;
@@ -488,7 +488,7 @@ void ToraMdApi::OnRspUnSubSPSimplifyMarketData(CTORATstpSpecificSecurityField* p
 	this->task_queue.push(task);
 };
 
-void ToraMdApi::OnRspSubSPSecurityStatus(CTORATstpSpecificSecurityField* pSpecificSecurityField, CTORATstpRspInfoField* pRspInfoField)
+void MdApi::OnRspSubSPSecurityStatus(CTORATstpSpecificSecurityField* pSpecificSecurityField, CTORATstpRspInfoField* pRspInfoField)
 {
 	Task task = Task();
 	task.task_name = ONRSPSUBSPSECURITYSTATUS;
@@ -507,7 +507,7 @@ void ToraMdApi::OnRspSubSPSecurityStatus(CTORATstpSpecificSecurityField* pSpecif
 	this->task_queue.push(task);
 };
 
-void ToraMdApi::OnRspUnSubSPSecurityStatus(CTORATstpSpecificSecurityField* pSpecificSecurityField, CTORATstpRspInfoField* pRspInfoField)
+void MdApi::OnRspUnSubSPSecurityStatus(CTORATstpSpecificSecurityField* pSpecificSecurityField, CTORATstpRspInfoField* pRspInfoField)
 {
 	Task task = Task();
 	task.task_name = ONRSPUNSUBSPSECURITYSTATUS;
@@ -526,7 +526,7 @@ void ToraMdApi::OnRspUnSubSPSecurityStatus(CTORATstpSpecificSecurityField* pSpec
 	this->task_queue.push(task);
 };
 
-void ToraMdApi::OnRspSubSPMarketStatus(CTORATstpSpecificMarketField* pSpecificMarketField, CTORATstpRspInfoField* pRspInfoField)
+void MdApi::OnRspSubSPMarketStatus(CTORATstpSpecificMarketField* pSpecificMarketField, CTORATstpRspInfoField* pRspInfoField)
 {
 	Task task = Task();
 	task.task_name = ONRSPSUBSPMARKETSTATUS;
@@ -545,7 +545,7 @@ void ToraMdApi::OnRspSubSPMarketStatus(CTORATstpSpecificMarketField* pSpecificMa
 	this->task_queue.push(task);
 };
 
-void ToraMdApi::OnRspUnSubSPMarketStatus(CTORATstpSpecificMarketField* pSpecificMarketField, CTORATstpRspInfoField* pRspInfoField)
+void MdApi::OnRspUnSubSPMarketStatus(CTORATstpSpecificMarketField* pSpecificMarketField, CTORATstpRspInfoField* pRspInfoField)
 {
 	Task task = Task();
 	task.task_name = ONRSPUNSUBSPMARKETSTATUS;
@@ -564,7 +564,7 @@ void ToraMdApi::OnRspUnSubSPMarketStatus(CTORATstpSpecificMarketField* pSpecific
 	this->task_queue.push(task);
 };
 
-void ToraMdApi::OnRspInquirySPMarketDataMirror(CTORATstpMarketDataField* pMarketDataField, CTORATstpRspInfoField* pRspInfoField, int nRequestID, bool bIsLast)
+void MdApi::OnRspInquirySPMarketDataMirror(CTORATstpMarketDataField* pMarketDataField, CTORATstpRspInfoField* pRspInfoField, int nRequestID, bool bIsLast)
 {
 	Task task = Task();
 	task.task_name = ONRSPINQUIRYSPMARKETDATAMIRROR;
@@ -585,7 +585,7 @@ void ToraMdApi::OnRspInquirySPMarketDataMirror(CTORATstpMarketDataField* pMarket
 	this->task_queue.push(task);
 };
 
-void ToraMdApi::OnRtnMarketData(CTORATstpMarketDataField* pMarketDataField)
+void MdApi::OnRtnMarketData(CTORATstpMarketDataField* pMarketDataField)
 {
 	Task task = Task();
 	task.task_name = ONRTNMARKETDATA;
@@ -598,7 +598,7 @@ void ToraMdApi::OnRtnMarketData(CTORATstpMarketDataField* pMarketDataField)
 	this->task_queue.push(task);
 };
 
-void ToraMdApi::OnRtnPHMarketData(CTORATstpPHMarketDataField* pPHMarketDataField)
+void MdApi::OnRtnPHMarketData(CTORATstpPHMarketDataField* pPHMarketDataField)
 {
 	Task task = Task();
 	task.task_name = ONRTNPHMARKETDATA;
@@ -611,7 +611,7 @@ void ToraMdApi::OnRtnPHMarketData(CTORATstpPHMarketDataField* pPHMarketDataField
 	this->task_queue.push(task);
 };
 
-void ToraMdApi::OnRtnSpecialMarketData(CTORATstpSpecialMarketDataField* pSpecialMarketDataField)
+void MdApi::OnRtnSpecialMarketData(CTORATstpSpecialMarketDataField* pSpecialMarketDataField)
 {
 	Task task = Task();
 	task.task_name = ONRTNSPECIALMARKETDATA;
@@ -624,7 +624,7 @@ void ToraMdApi::OnRtnSpecialMarketData(CTORATstpSpecialMarketDataField* pSpecial
 	this->task_queue.push(task);
 };
 
-void ToraMdApi::OnRtnSimplifyMarketData(CTORATstpSimplifyMarketDataField* pSimplifyMarketDataField)
+void MdApi::OnRtnSimplifyMarketData(CTORATstpSimplifyMarketDataField* pSimplifyMarketDataField)
 {
 	Task task = Task();
 	task.task_name = ONRTNSIMPLIFYMARKETDATA;
@@ -637,7 +637,7 @@ void ToraMdApi::OnRtnSimplifyMarketData(CTORATstpSimplifyMarketDataField* pSimpl
 	this->task_queue.push(task);
 };
 
-void ToraMdApi::OnRtnSecurityStatus(CTORATstpSecurityStatusField* pSecurityStatusField)
+void MdApi::OnRtnSecurityStatus(CTORATstpSecurityStatusField* pSecurityStatusField)
 {
 	Task task = Task();
 	task.task_name = ONRTNSECURITYSTATUS;
@@ -650,7 +650,7 @@ void ToraMdApi::OnRtnSecurityStatus(CTORATstpSecurityStatusField* pSecurityStatu
 	this->task_queue.push(task);
 };
 
-void ToraMdApi::OnRtnMarketStatus(CTORATstpMarketStatusField* pMarketStatusField)
+void MdApi::OnRtnMarketStatus(CTORATstpMarketStatusField* pMarketStatusField)
 {
 	Task task = Task();
 	task.task_name = ONRTNMARKETSTATUS;
@@ -663,7 +663,7 @@ void ToraMdApi::OnRtnMarketStatus(CTORATstpMarketStatusField* pMarketStatusField
 	this->task_queue.push(task);
 };
 
-void ToraMdApi::OnRtnImcParams(CTORATstpImcParamsField* pImcParamsField)
+void MdApi::OnRtnImcParams(CTORATstpImcParamsField* pImcParamsField)
 {
 	Task task = Task();
 	task.task_name = ONRTNIMCPARAMS;
@@ -676,7 +676,7 @@ void ToraMdApi::OnRtnImcParams(CTORATstpImcParamsField* pImcParamsField)
 	this->task_queue.push(task);
 };
 
-void ToraMdApi::OnRtnSPMarketData(CTORATstpMarketDataField* pMarketDataField)
+void MdApi::OnRtnSPMarketData(CTORATstpMarketDataField* pMarketDataField)
 {
 	Task task = Task();
 	task.task_name = ONRTNSPMARKETDATA;
@@ -689,7 +689,7 @@ void ToraMdApi::OnRtnSPMarketData(CTORATstpMarketDataField* pMarketDataField)
 	this->task_queue.push(task);
 };
 
-void ToraMdApi::OnRtnSPSimplifyMarketData(CTORATstpSimplifyMarketDataField* pSimplifyMarketDataField)
+void MdApi::OnRtnSPSimplifyMarketData(CTORATstpSimplifyMarketDataField* pSimplifyMarketDataField)
 {
 	Task task = Task();
 	task.task_name = ONRTNSPSIMPLIFYMARKETDATA;
@@ -702,7 +702,7 @@ void ToraMdApi::OnRtnSPSimplifyMarketData(CTORATstpSimplifyMarketDataField* pSim
 	this->task_queue.push(task);
 };
 
-void ToraMdApi::OnRtnSPSecurityStatus(CTORATstpSecurityStatusField* pSecurityStatusField)
+void MdApi::OnRtnSPSecurityStatus(CTORATstpSecurityStatusField* pSecurityStatusField)
 {
 	Task task = Task();
 	task.task_name = ONRTNSPSECURITYSTATUS;
@@ -715,7 +715,7 @@ void ToraMdApi::OnRtnSPSecurityStatus(CTORATstpSecurityStatusField* pSecuritySta
 	this->task_queue.push(task);
 };
 
-void ToraMdApi::OnRtnSPMarketStatus(CTORATstpMarketStatusField* pMarketStatusField)
+void MdApi::OnRtnSPMarketStatus(CTORATstpMarketStatusField* pMarketStatusField)
 {
 	Task task = Task();
 	task.task_name = ONRTNSPMARKETSTATUS;
@@ -728,7 +728,7 @@ void ToraMdApi::OnRtnSPMarketStatus(CTORATstpMarketStatusField* pMarketStatusFie
 	this->task_queue.push(task);
 };
 
-void ToraMdApi::OnRspSubRapidMarketData(CTORATstpSpecificSecurityField* pSpecificSecurityField, CTORATstpRspInfoField* pRspInfoField)
+void MdApi::OnRspSubRapidMarketData(CTORATstpSpecificSecurityField* pSpecificSecurityField, CTORATstpRspInfoField* pRspInfoField)
 {
 	Task task = Task();
 	task.task_name = ONRSPSUBRAPIDMARKETDATA;
@@ -747,7 +747,7 @@ void ToraMdApi::OnRspSubRapidMarketData(CTORATstpSpecificSecurityField* pSpecifi
 	this->task_queue.push(task);
 };
 
-void ToraMdApi::OnRspUnSubRapidMarketData(CTORATstpSpecificSecurityField* pSpecificSecurityField, CTORATstpRspInfoField* pRspInfoField)
+void MdApi::OnRspUnSubRapidMarketData(CTORATstpSpecificSecurityField* pSpecificSecurityField, CTORATstpRspInfoField* pRspInfoField)
 {
 	Task task = Task();
 	task.task_name = ONRSPUNSUBRAPIDMARKETDATA;
@@ -766,7 +766,7 @@ void ToraMdApi::OnRspUnSubRapidMarketData(CTORATstpSpecificSecurityField* pSpeci
 	this->task_queue.push(task);
 };
 
-void ToraMdApi::OnRtnRapidMarketData(CTORATstpRapidMarketDataField* pRapidMarketDataField)
+void MdApi::OnRtnRapidMarketData(CTORATstpRapidMarketDataField* pRapidMarketDataField)
 {
 	Task task = Task();
 	task.task_name = ONRTNRAPIDMARKETDATA;
@@ -783,7 +783,7 @@ void ToraMdApi::OnRtnRapidMarketData(CTORATstpRapidMarketDataField* pRapidMarket
 ///工作线程从队列中取出数据，转化为python对象后，进行推送
 ///-------------------------------------------------------------------------------------
 
-void ToraMdApi::processTask()
+void MdApi::processTask()
 {
 	try
 	{
@@ -1070,19 +1070,19 @@ void ToraMdApi::processTask()
 	}
 };
 
-void ToraMdApi::processFrontConnected(Task* task)
+void MdApi::processFrontConnected(Task* task)
 {
 	gil_scoped_acquire acquire;
 	this->onFrontConnected();
 };
 
-void ToraMdApi::processFrontDisconnected(Task* task)
+void MdApi::processFrontDisconnected(Task* task)
 {
 	gil_scoped_acquire acquire;
 	this->onFrontDisconnected(task->task_id);
 };
 
-void ToraMdApi::processRspGetConnectionInfo(Task* task)
+void MdApi::processRspGetConnectionInfo(Task* task)
 {
 	gil_scoped_acquire acquire;
 	dict data;
@@ -1107,7 +1107,7 @@ void ToraMdApi::processRspGetConnectionInfo(Task* task)
 	this->onRspGetConnectionInfo(data, error, task->task_id);
 };
 
-void ToraMdApi::processRspUserLogin(Task* task)
+void MdApi::processRspUserLogin(Task* task)
 {
 	gil_scoped_acquire acquire;
 	dict data;
@@ -1149,7 +1149,7 @@ void ToraMdApi::processRspUserLogin(Task* task)
 	this->onRspUserLogin(data, error, task->task_id);
 };
 
-void ToraMdApi::processRspUserLogout(Task* task)
+void MdApi::processRspUserLogout(Task* task)
 {
 	gil_scoped_acquire acquire;
 	dict data;
@@ -1170,7 +1170,7 @@ void ToraMdApi::processRspUserLogout(Task* task)
 	this->onRspUserLogout(data, error, task->task_id);
 };
 
-void ToraMdApi::processRspSubMarketData(Task* task)
+void MdApi::processRspSubMarketData(Task* task)
 {
 	gil_scoped_acquire acquire;
 	dict data;
@@ -1192,7 +1192,7 @@ void ToraMdApi::processRspSubMarketData(Task* task)
 	this->onRspSubMarketData(data, error);
 };
 
-void ToraMdApi::processRspUnSubMarketData(Task* task)
+void MdApi::processRspUnSubMarketData(Task* task)
 {
 	gil_scoped_acquire acquire;
 	dict data;
@@ -1214,7 +1214,7 @@ void ToraMdApi::processRspUnSubMarketData(Task* task)
 	this->onRspUnSubMarketData(data, error);
 };
 
-void ToraMdApi::processRspSubPHMarketData(Task* task)
+void MdApi::processRspSubPHMarketData(Task* task)
 {
 	gil_scoped_acquire acquire;
 	dict data;
@@ -1236,7 +1236,7 @@ void ToraMdApi::processRspSubPHMarketData(Task* task)
 	this->onRspSubPHMarketData(data, error);
 };
 
-void ToraMdApi::processRspUnSubPHMarketData(Task* task)
+void MdApi::processRspUnSubPHMarketData(Task* task)
 {
 	gil_scoped_acquire acquire;
 	dict data;
@@ -1258,7 +1258,7 @@ void ToraMdApi::processRspUnSubPHMarketData(Task* task)
 	this->onRspUnSubPHMarketData(data, error);
 };
 
-void ToraMdApi::processRspSubSpecialMarketData(Task* task)
+void MdApi::processRspSubSpecialMarketData(Task* task)
 {
 	gil_scoped_acquire acquire;
 	dict data;
@@ -1280,7 +1280,7 @@ void ToraMdApi::processRspSubSpecialMarketData(Task* task)
 	this->onRspSubSpecialMarketData(data, error);
 };
 
-void ToraMdApi::processRspUnSubSpecialMarketData(Task* task)
+void MdApi::processRspUnSubSpecialMarketData(Task* task)
 {
 	gil_scoped_acquire acquire;
 	dict data;
@@ -1302,7 +1302,7 @@ void ToraMdApi::processRspUnSubSpecialMarketData(Task* task)
 	this->onRspUnSubSpecialMarketData(data, error);
 };
 
-void ToraMdApi::processRspSubSimplifyMarketData(Task* task)
+void MdApi::processRspSubSimplifyMarketData(Task* task)
 {
 	gil_scoped_acquire acquire;
 	dict data;
@@ -1324,7 +1324,7 @@ void ToraMdApi::processRspSubSimplifyMarketData(Task* task)
 	this->onRspSubSimplifyMarketData(data, error);
 };
 
-void ToraMdApi::processRspUnSubSimplifyMarketData(Task* task)
+void MdApi::processRspUnSubSimplifyMarketData(Task* task)
 {
 	gil_scoped_acquire acquire;
 	dict data;
@@ -1346,7 +1346,7 @@ void ToraMdApi::processRspUnSubSimplifyMarketData(Task* task)
 	this->onRspUnSubSimplifyMarketData(data, error);
 };
 
-void ToraMdApi::processRspSubSecurityStatus(Task* task)
+void MdApi::processRspSubSecurityStatus(Task* task)
 {
 	gil_scoped_acquire acquire;
 	dict data;
@@ -1368,7 +1368,7 @@ void ToraMdApi::processRspSubSecurityStatus(Task* task)
 	this->onRspSubSecurityStatus(data, error);
 };
 
-void ToraMdApi::processRspUnSubSecurityStatus(Task* task)
+void MdApi::processRspUnSubSecurityStatus(Task* task)
 {
 	gil_scoped_acquire acquire;
 	dict data;
@@ -1390,7 +1390,7 @@ void ToraMdApi::processRspUnSubSecurityStatus(Task* task)
 	this->onRspUnSubSecurityStatus(data, error);
 };
 
-void ToraMdApi::processRspSubMarketStatus(Task* task)
+void MdApi::processRspSubMarketStatus(Task* task)
 {
 	gil_scoped_acquire acquire;
 	dict data;
@@ -1411,7 +1411,7 @@ void ToraMdApi::processRspSubMarketStatus(Task* task)
 	this->onRspSubMarketStatus(data, error);
 };
 
-void ToraMdApi::processRspUnSubMarketStatus(Task* task)
+void MdApi::processRspUnSubMarketStatus(Task* task)
 {
 	gil_scoped_acquire acquire;
 	dict data;
@@ -1432,7 +1432,7 @@ void ToraMdApi::processRspUnSubMarketStatus(Task* task)
 	this->onRspUnSubMarketStatus(data, error);
 };
 
-void ToraMdApi::processRspSubImcParams(Task* task)
+void MdApi::processRspSubImcParams(Task* task)
 {
 	gil_scoped_acquire acquire;
 	dict data;
@@ -1453,7 +1453,7 @@ void ToraMdApi::processRspSubImcParams(Task* task)
 	this->onRspSubImcParams(data, error);
 };
 
-void ToraMdApi::processRspUnSubImcParams(Task* task)
+void MdApi::processRspUnSubImcParams(Task* task)
 {
 	gil_scoped_acquire acquire;
 	dict data;
@@ -1474,7 +1474,7 @@ void ToraMdApi::processRspUnSubImcParams(Task* task)
 	this->onRspUnSubImcParams(data, error);
 };
 
-void ToraMdApi::processRspInquiryMarketDataMirror(Task* task)
+void MdApi::processRspInquiryMarketDataMirror(Task* task)
 {
 	gil_scoped_acquire acquire;
 	dict data;
@@ -1541,7 +1541,7 @@ void ToraMdApi::processRspInquiryMarketDataMirror(Task* task)
 	this->onRspInquiryMarketDataMirror(data, error, task->task_id, task->task_last);
 };
 
-void ToraMdApi::processRspInquiryPHMarketDataMirror(Task* task)
+void MdApi::processRspInquiryPHMarketDataMirror(Task* task)
 {
 	gil_scoped_acquire acquire;
 	dict data;
@@ -1576,7 +1576,7 @@ void ToraMdApi::processRspInquiryPHMarketDataMirror(Task* task)
 	this->onRspInquiryPHMarketDataMirror(data, error, task->task_id, task->task_last);
 };
 
-void ToraMdApi::processRspInquirySpecialMarketDataMirror(Task* task)
+void MdApi::processRspInquirySpecialMarketDataMirror(Task* task)
 {
 	gil_scoped_acquire acquire;
 	dict data;
@@ -1604,7 +1604,7 @@ void ToraMdApi::processRspInquirySpecialMarketDataMirror(Task* task)
 	this->onRspInquirySpecialMarketDataMirror(data, error, task->task_id, task->task_last);
 };
 
-void ToraMdApi::processRspSubSPMarketData(Task* task)
+void MdApi::processRspSubSPMarketData(Task* task)
 {
 	gil_scoped_acquire acquire;
 	dict data;
@@ -1626,7 +1626,7 @@ void ToraMdApi::processRspSubSPMarketData(Task* task)
 	this->onRspSubSPMarketData(data, error);
 };
 
-void ToraMdApi::processRspUnSubSPMarketData(Task* task)
+void MdApi::processRspUnSubSPMarketData(Task* task)
 {
 	gil_scoped_acquire acquire;
 	dict data;
@@ -1648,7 +1648,7 @@ void ToraMdApi::processRspUnSubSPMarketData(Task* task)
 	this->onRspUnSubSPMarketData(data, error);
 };
 
-void ToraMdApi::processRspSubSPSimplifyMarketData(Task* task)
+void MdApi::processRspSubSPSimplifyMarketData(Task* task)
 {
 	gil_scoped_acquire acquire;
 	dict data;
@@ -1670,7 +1670,7 @@ void ToraMdApi::processRspSubSPSimplifyMarketData(Task* task)
 	this->onRspSubSPSimplifyMarketData(data, error);
 };
 
-void ToraMdApi::processRspUnSubSPSimplifyMarketData(Task* task)
+void MdApi::processRspUnSubSPSimplifyMarketData(Task* task)
 {
 	gil_scoped_acquire acquire;
 	dict data;
@@ -1692,7 +1692,7 @@ void ToraMdApi::processRspUnSubSPSimplifyMarketData(Task* task)
 	this->onRspUnSubSPSimplifyMarketData(data, error);
 };
 
-void ToraMdApi::processRspSubSPSecurityStatus(Task* task)
+void MdApi::processRspSubSPSecurityStatus(Task* task)
 {
 	gil_scoped_acquire acquire;
 	dict data;
@@ -1714,7 +1714,7 @@ void ToraMdApi::processRspSubSPSecurityStatus(Task* task)
 	this->onRspSubSPSecurityStatus(data, error);
 };
 
-void ToraMdApi::processRspUnSubSPSecurityStatus(Task* task)
+void MdApi::processRspUnSubSPSecurityStatus(Task* task)
 {
 	gil_scoped_acquire acquire;
 	dict data;
@@ -1736,7 +1736,7 @@ void ToraMdApi::processRspUnSubSPSecurityStatus(Task* task)
 	this->onRspUnSubSPSecurityStatus(data, error);
 };
 
-void ToraMdApi::processRspSubSPMarketStatus(Task* task)
+void MdApi::processRspSubSPMarketStatus(Task* task)
 {
 	gil_scoped_acquire acquire;
 	dict data;
@@ -1757,7 +1757,7 @@ void ToraMdApi::processRspSubSPMarketStatus(Task* task)
 	this->onRspSubSPMarketStatus(data, error);
 };
 
-void ToraMdApi::processRspUnSubSPMarketStatus(Task* task)
+void MdApi::processRspUnSubSPMarketStatus(Task* task)
 {
 	gil_scoped_acquire acquire;
 	dict data;
@@ -1778,7 +1778,7 @@ void ToraMdApi::processRspUnSubSPMarketStatus(Task* task)
 	this->onRspUnSubSPMarketStatus(data, error);
 };
 
-void ToraMdApi::processRspInquirySPMarketDataMirror(Task* task)
+void MdApi::processRspInquirySPMarketDataMirror(Task* task)
 {
 	gil_scoped_acquire acquire;
 	dict data;
@@ -1845,7 +1845,7 @@ void ToraMdApi::processRspInquirySPMarketDataMirror(Task* task)
 	this->onRspInquirySPMarketDataMirror(data, error, task->task_id, task->task_last);
 };
 
-void ToraMdApi::processRtnMarketData(Task* task)
+void MdApi::processRtnMarketData(Task* task)
 {
 	gil_scoped_acquire acquire;
 	dict data;
@@ -1904,7 +1904,7 @@ void ToraMdApi::processRtnMarketData(Task* task)
 	this->onRtnMarketData(data);
 };
 
-void ToraMdApi::processRtnPHMarketData(Task* task)
+void MdApi::processRtnPHMarketData(Task* task)
 {
 	gil_scoped_acquire acquire;
 	dict data;
@@ -1931,7 +1931,7 @@ void ToraMdApi::processRtnPHMarketData(Task* task)
 	this->onRtnPHMarketData(data);
 };
 
-void ToraMdApi::processRtnSpecialMarketData(Task* task)
+void MdApi::processRtnSpecialMarketData(Task* task)
 {
 	gil_scoped_acquire acquire;
 	dict data;
@@ -1951,7 +1951,7 @@ void ToraMdApi::processRtnSpecialMarketData(Task* task)
 	this->onRtnSpecialMarketData(data);
 };
 
-void ToraMdApi::processRtnSimplifyMarketData(Task* task)
+void MdApi::processRtnSimplifyMarketData(Task* task)
 {
 	gil_scoped_acquire acquire;
 	dict data;
@@ -1977,7 +1977,7 @@ void ToraMdApi::processRtnSimplifyMarketData(Task* task)
 	this->onRtnSimplifyMarketData(data);
 };
 
-void ToraMdApi::processRtnSecurityStatus(Task* task)
+void MdApi::processRtnSecurityStatus(Task* task)
 {
 	gil_scoped_acquire acquire;
 	dict data;
@@ -2012,7 +2012,7 @@ void ToraMdApi::processRtnSecurityStatus(Task* task)
 	this->onRtnSecurityStatus(data);
 };
 
-void ToraMdApi::processRtnMarketStatus(Task* task)
+void MdApi::processRtnMarketStatus(Task* task)
 {
 	gil_scoped_acquire acquire;
 	dict data;
@@ -2026,7 +2026,7 @@ void ToraMdApi::processRtnMarketStatus(Task* task)
 	this->onRtnMarketStatus(data);
 };
 
-void ToraMdApi::processRtnImcParams(Task* task)
+void MdApi::processRtnImcParams(Task* task)
 {
 	gil_scoped_acquire acquire;
 	dict data;
@@ -2043,7 +2043,7 @@ void ToraMdApi::processRtnImcParams(Task* task)
 	this->onRtnImcParams(data);
 };
 
-void ToraMdApi::processRtnSPMarketData(Task* task)
+void MdApi::processRtnSPMarketData(Task* task)
 {
 	gil_scoped_acquire acquire;
 	dict data;
@@ -2102,7 +2102,7 @@ void ToraMdApi::processRtnSPMarketData(Task* task)
 	this->onRtnSPMarketData(data);
 };
 
-void ToraMdApi::processRtnSPSimplifyMarketData(Task* task)
+void MdApi::processRtnSPSimplifyMarketData(Task* task)
 {
 	gil_scoped_acquire acquire;
 	dict data;
@@ -2128,7 +2128,7 @@ void ToraMdApi::processRtnSPSimplifyMarketData(Task* task)
 	this->onRtnSPSimplifyMarketData(data);
 };
 
-void ToraMdApi::processRtnSPSecurityStatus(Task* task)
+void MdApi::processRtnSPSecurityStatus(Task* task)
 {
 	gil_scoped_acquire acquire;
 	dict data;
@@ -2163,7 +2163,7 @@ void ToraMdApi::processRtnSPSecurityStatus(Task* task)
 	this->onRtnSPSecurityStatus(data);
 };
 
-void ToraMdApi::processRtnSPMarketStatus(Task* task)
+void MdApi::processRtnSPMarketStatus(Task* task)
 {
 	gil_scoped_acquire acquire;
 	dict data;
@@ -2177,7 +2177,7 @@ void ToraMdApi::processRtnSPMarketStatus(Task* task)
 	this->onRtnSPMarketStatus(data);
 };
 
-void ToraMdApi::processRspSubRapidMarketData(Task* task)
+void MdApi::processRspSubRapidMarketData(Task* task)
 {
 	gil_scoped_acquire acquire;
 	dict data;
@@ -2199,7 +2199,7 @@ void ToraMdApi::processRspSubRapidMarketData(Task* task)
 	this->onRspSubRapidMarketData(data, error);
 };
 
-void ToraMdApi::processRspUnSubRapidMarketData(Task* task)
+void MdApi::processRspUnSubRapidMarketData(Task* task)
 {
 	gil_scoped_acquire acquire;
 	dict data;
@@ -2221,7 +2221,7 @@ void ToraMdApi::processRspUnSubRapidMarketData(Task* task)
 	this->onRspUnSubRapidMarketData(data, error);
 };
 
-void ToraMdApi::processRtnRapidMarketData(Task* task)
+void MdApi::processRtnRapidMarketData(Task* task)
 {
 	gil_scoped_acquire acquire;
 	dict data;
@@ -2315,43 +2315,43 @@ void ToraMdApi::processRtnRapidMarketData(Task* task)
 ///主动函数
 ///-------------------------------------------------------------------------------------
 
-void ToraMdApi::createTstpXMdApi()
+void MdApi::createTstpXMdApi()
 {
 	this->api = CTORATstpXMdApi::CreateTstpXMdApi();
 	this->api->RegisterSpi(this);
 
 	this->active = true;
-	this->task_thread = thread(&ToraMdApi::processTask, this);
+	this->task_thread = thread(&MdApi::processTask, this);
 
 };
 
-void ToraMdApi::init()
+void MdApi::init()
 {
 	this->api->Init();
 };
 
-void ToraMdApi::registerFront(string pszFrontAddress)
+void MdApi::registerFront(string pszFrontAddress)
 {
 	this->api->RegisterFront((char*)pszFrontAddress.c_str());
 };
 
-int ToraMdApi::join()
+int MdApi::join()
 {
 	int i = this->api->Join();
 	return i;
 };
 
-void ToraMdApi::release()
+void MdApi::release()
 {
 	this->api->Release();
 };
 
-string ToraMdApi::getApiVersion()
+string MdApi::getApiVersion()
 {
 	return this->api->GetApiVersion();
 };
 
-int ToraMdApi::exit()
+int MdApi::exit()
 {
 	this->active = false;
 	this->task_queue.terminate();
@@ -2363,12 +2363,12 @@ int ToraMdApi::exit()
 	return 1;
 };
 
-void ToraMdApi::registerNameServer(string pszNsAddress)
+void MdApi::registerNameServer(string pszNsAddress)
 {
 	this->api->RegisterNameServer((char*)pszNsAddress.c_str());
 }
 
-void ToraMdApi::registerFensUserInfo(const dict& req)
+void MdApi::registerFensUserInfo(const dict& req)
 {
 	CTORATstpFensUserInfoField myreq = CTORATstpFensUserInfoField();
 	memset(&myreq, 0, sizeof(myreq));
@@ -2381,28 +2381,28 @@ void ToraMdApi::registerFensUserInfo(const dict& req)
 	this->api->RegisterFensUserInfo(&myreq);
 }
 
-void ToraMdApi::registerMulticast(string pszMulticastAddress, string pszInterfaceIP, string pszSourceIp)
+void MdApi::registerMulticast(string pszMulticastAddress, string pszInterfaceIP, string pszSourceIp)
 {
 	this->api->RegisterMulticast((char*)pszMulticastAddress.c_str(), (char*)pszInterfaceIP.c_str(), (char*)pszSourceIp.c_str());
 }
 
-void ToraMdApi::registerDeriveServer(string pszDeriveAddress)
+void MdApi::registerDeriveServer(string pszDeriveAddress)
 {
 	this->api->RegisterDeriveServer((char*)pszDeriveAddress.c_str());
 }
 
-void ToraMdApi::registerDeriveMulticast(string pszMulticastAddress, string pszInterfaceIP, string pszSourceIp)
+void MdApi::registerDeriveMulticast(string pszMulticastAddress, string pszInterfaceIP, string pszSourceIp)
 {
 	this->api->RegisterDeriveMulticast((char*)pszMulticastAddress.c_str(), (char*)pszInterfaceIP.c_str(), (char*)pszSourceIp.c_str());
 }
 
-int ToraMdApi::reqGetConnectionInfo(int nRequestID)
+int MdApi::reqGetConnectionInfo(int nRequestID)
 {
 	int i = this->api->ReqGetConnectionInfo(nRequestID);
 	return i;
 };
 
-int ToraMdApi::reqUserLogin(const dict& req, int nRequestID)
+int MdApi::reqUserLogin(const dict& req, int nRequestID)
 {
 	CTORATstpReqUserLoginField myreq = CTORATstpReqUserLoginField();
 	memset(&myreq, 0, sizeof(myreq));
@@ -2426,7 +2426,7 @@ int ToraMdApi::reqUserLogin(const dict& req, int nRequestID)
 	return i;
 };
 
-int ToraMdApi::reqUserLogout(const dict& req, int nRequestID)
+int MdApi::reqUserLogout(const dict& req, int nRequestID)
 {
 	CTORATstpUserLogoutField myreq = CTORATstpUserLogoutField();
 	memset(&myreq, 0, sizeof(myreq));
@@ -2435,91 +2435,91 @@ int ToraMdApi::reqUserLogout(const dict& req, int nRequestID)
 	return i;
 };
 
-int ToraMdApi::subscribeMarketData(string ppSecurityID, int nCount, string ExchangeID)
+int MdApi::subscribeMarketData(string ppSecurityID, int nCount, string ExchangeID)
 {
 	int i = this->api->SubscribeMarketData((char**)ppSecurityID.c_str(), nCount, (char)ExchangeID.c_str());
 	return i;
 };
 
-int ToraMdApi::unSubscribeMarketData(string ppSecurityID, int nCount, string ExchangeID)
+int MdApi::unSubscribeMarketData(string ppSecurityID, int nCount, string ExchangeID)
 {
 	int i = this->api->UnSubscribeMarketData((char**)ppSecurityID.c_str(), nCount, (char)ExchangeID.c_str());
 	return i;
 };
 
-int ToraMdApi::subscribePHMarketData(string ppSecurityID, int nCount, string ExchangeID)
+int MdApi::subscribePHMarketData(string ppSecurityID, int nCount, string ExchangeID)
 {
 	int i = this->api->SubscribePHMarketData((char**)ppSecurityID.c_str(), nCount, (char)ExchangeID.c_str());
 	return i;
 };
 
-int ToraMdApi::unSubscribePHMarketData(string ppSecurityID, int nCount, string ExchangeID)
+int MdApi::unSubscribePHMarketData(string ppSecurityID, int nCount, string ExchangeID)
 {
 	int i = this->api->UnSubscribePHMarketData((char**)ppSecurityID.c_str(), nCount, (char)ExchangeID.c_str());
 	return i;
 };
 
-int ToraMdApi::subscribeSpecialMarketData(string ppSecurityID, int nCount, string ExchangeID)
+int MdApi::subscribeSpecialMarketData(string ppSecurityID, int nCount, string ExchangeID)
 {
 	int i = this->api->SubscribeSpecialMarketData((char**)ppSecurityID.c_str(), nCount, (char)ExchangeID.c_str());
 	return i;
 };
 
-int ToraMdApi::unSubscribeSpecialMarketData(string ppSecurityID, int nCount, string ExchangeID)
+int MdApi::unSubscribeSpecialMarketData(string ppSecurityID, int nCount, string ExchangeID)
 {
 	int i = this->api->UnSubscribeSpecialMarketData((char**)ppSecurityID.c_str(), nCount, (char)ExchangeID.c_str());
 	return i;
 };
 
-int ToraMdApi::subscribeSimplifyMarketData(string ppSecurityID, int nCount, string ExchangeID)
+int MdApi::subscribeSimplifyMarketData(string ppSecurityID, int nCount, string ExchangeID)
 {
 	int i = this->api->SubscribeSimplifyMarketData((char**)ppSecurityID.c_str(), nCount, (char)ExchangeID.c_str());
 	return i;
 };
 
-int ToraMdApi::unSubscribeSimplifyMarketData(string ppSecurityID, int nCount, string ExchangeID)
+int MdApi::unSubscribeSimplifyMarketData(string ppSecurityID, int nCount, string ExchangeID)
 {
 	int i = this->api->UnSubscribeSimplifyMarketData((char**)ppSecurityID.c_str(), nCount, (char)ExchangeID.c_str());
 	return i;
 };
 
-int ToraMdApi::subscribeSecurityStatus(string ppSecurityID, int nCount, string ExchangeID)
+int MdApi::subscribeSecurityStatus(string ppSecurityID, int nCount, string ExchangeID)
 {
 	int i = this->api->SubscribeSecurityStatus((char**)ppSecurityID.c_str(), nCount, (char)ExchangeID.c_str());
 	return i;
 };
 
-int ToraMdApi::unSubscribeSecurityStatus(string ppSecurityID, int nCount, string ExchangeID)
+int MdApi::unSubscribeSecurityStatus(string ppSecurityID, int nCount, string ExchangeID)
 {
 	int i = this->api->UnSubscribeSecurityStatus((char**)ppSecurityID.c_str(), nCount, (char)ExchangeID.c_str());
 	return i;
 };
 
-int ToraMdApi::subscribeMarketStatus(string MarketID)
+int MdApi::subscribeMarketStatus(string MarketID)
 {
 	int i = this->api->SubscribeMarketStatus((char)MarketID.c_str());
 	return i;
 };
 
-int ToraMdApi::unSubscribeMarketStatus(string MarketID)
+int MdApi::unSubscribeMarketStatus(string MarketID)
 {
 	int i = this->api->UnSubscribeMarketStatus((char)MarketID.c_str());
 	return i;
 };
 
-int ToraMdApi::subscribeImcParams(string MarketID)
+int MdApi::subscribeImcParams(string MarketID)
 {
 	int i = this->api->SubscribeImcParams((char)MarketID.c_str());
 	return i;
 };
 
-int ToraMdApi::unSubscribeImcParams(string MarketID)
+int MdApi::unSubscribeImcParams(string MarketID)
 {
 	int i = this->api->UnSubscribeImcParams((char)MarketID.c_str());
 	return i;
 };
 
-int ToraMdApi::reqInquiryMarketDataMirror(const dict& req, int nRequestID)
+int MdApi::reqInquiryMarketDataMirror(const dict& req, int nRequestID)
 {
 	CTORATstpInquiryMarketDataField myreq = CTORATstpInquiryMarketDataField();
 	memset(&myreq, 0, sizeof(myreq));
@@ -2529,7 +2529,7 @@ int ToraMdApi::reqInquiryMarketDataMirror(const dict& req, int nRequestID)
 	return i;
 };
 
-int ToraMdApi::reqInquiryPHMarketDataMirror(const dict& req, int nRequestID)
+int MdApi::reqInquiryPHMarketDataMirror(const dict& req, int nRequestID)
 {
 	CTORATstpInquiryMarketDataField myreq = CTORATstpInquiryMarketDataField();
 	memset(&myreq, 0, sizeof(myreq));
@@ -2539,7 +2539,7 @@ int ToraMdApi::reqInquiryPHMarketDataMirror(const dict& req, int nRequestID)
 	return i;
 };
 
-int ToraMdApi::reqInquirySpecialMarketDataMirror(const dict& req, int nRequestID)
+int MdApi::reqInquirySpecialMarketDataMirror(const dict& req, int nRequestID)
 {
 	CTORATstpInquirySpecialMarketDataField myreq = CTORATstpInquirySpecialMarketDataField();
 	memset(&myreq, 0, sizeof(myreq));
@@ -2549,55 +2549,55 @@ int ToraMdApi::reqInquirySpecialMarketDataMirror(const dict& req, int nRequestID
 	return i;
 };
 
-int ToraMdApi::subscribeSPMarketData(string ppSecurityID, int nCount, string ExchangeID)
+int MdApi::subscribeSPMarketData(string ppSecurityID, int nCount, string ExchangeID)
 {
 	int i = this->api->SubscribeSPMarketData((char**)ppSecurityID.c_str(), nCount, (char)ExchangeID.c_str());
 	return i;
 };
 
-int ToraMdApi::unSubscribeSPMarketData(string ppSecurityID, int nCount, string ExchangeID)
+int MdApi::unSubscribeSPMarketData(string ppSecurityID, int nCount, string ExchangeID)
 {
 	int i = this->api->UnSubscribeSPMarketData((char**)ppSecurityID.c_str(), nCount, (char)ExchangeID.c_str());
 	return i;
 };
 
-int ToraMdApi::subscribeSPSimplifyMarketData(string ppSecurityID, int nCount, string ExchangeID)
+int MdApi::subscribeSPSimplifyMarketData(string ppSecurityID, int nCount, string ExchangeID)
 {
 	int i = this->api->SubscribeSPSimplifyMarketData((char**)ppSecurityID.c_str(), nCount, (char)ExchangeID.c_str());
 	return i;
 };
 
-int ToraMdApi::unSubscribeSPSimplifyMarketData(string ppSecurityID, int nCount, string ExchangeID)
+int MdApi::unSubscribeSPSimplifyMarketData(string ppSecurityID, int nCount, string ExchangeID)
 {
 	int i = this->api->UnSubscribeSPSimplifyMarketData((char**)ppSecurityID.c_str(), nCount, (char)ExchangeID.c_str());
 	return i;
 };
 
-int ToraMdApi::subscribeSPSecurityStatus(string ppSecurityID, int nCount, string ExchangeID)
+int MdApi::subscribeSPSecurityStatus(string ppSecurityID, int nCount, string ExchangeID)
 {
 	int i = this->api->SubscribeSPSecurityStatus((char**)ppSecurityID.c_str(), nCount, (char)ExchangeID.c_str());
 	return i;
 };
 
-int ToraMdApi::unSubscribeSPSecurityStatus(string ppSecurityID, int nCount, string ExchangeID)
+int MdApi::unSubscribeSPSecurityStatus(string ppSecurityID, int nCount, string ExchangeID)
 {
 	int i = this->api->UnSubscribeSPSecurityStatus((char**)ppSecurityID.c_str(), nCount, (char)ExchangeID.c_str());
 	return i;
 };
 
-int ToraMdApi::subscribeSPMarketStatus(string MarketID)
+int MdApi::subscribeSPMarketStatus(string MarketID)
 {
 	int i = this->api->SubscribeSPMarketStatus((char)MarketID.c_str());
 	return i;
 };
 
-int ToraMdApi::unSubscribeSPMarketStatus(string MarketID)
+int MdApi::unSubscribeSPMarketStatus(string MarketID)
 {
 	int i = this->api->UnSubscribeSPMarketStatus((char)MarketID.c_str());
 	return i;
 };
 
-int ToraMdApi::reqInquirySPMarketDataMirror(const dict& req, int nRequestID)
+int MdApi::reqInquirySPMarketDataMirror(const dict& req, int nRequestID)
 {
 	CTORATstpInquiryMarketDataField myreq = CTORATstpInquiryMarketDataField();
 	memset(&myreq, 0, sizeof(myreq));
@@ -2607,13 +2607,13 @@ int ToraMdApi::reqInquirySPMarketDataMirror(const dict& req, int nRequestID)
 	return i;
 };
 
-int ToraMdApi::subscribeRapidMarketData(string ppSecurityID, int nCount, string ExchangeID)
+int MdApi::subscribeRapidMarketData(string ppSecurityID, int nCount, string ExchangeID)
 {
 	int i = this->api->SubscribeRapidMarketData((char**)ppSecurityID.c_str(), nCount, (char)ExchangeID.c_str());
 	return i;
 };
 
-int ToraMdApi::unSubscribeRapidMarketData(string ppSecurityID, int nCount, string ExchangeID)
+int MdApi::unSubscribeRapidMarketData(string ppSecurityID, int nCount, string ExchangeID)
 {
 	int i = this->api->UnSubscribeRapidMarketData((char**)ppSecurityID.c_str(), nCount, (char)ExchangeID.c_str());
 	return i;
@@ -2623,15 +2623,15 @@ int ToraMdApi::unSubscribeRapidMarketData(string ppSecurityID, int nCount, strin
 ///pybind11封装
 ///-------------------------------------------------------------------------------------
 
-class PyMdApi : public ToraMdApi
+class PyMdApi : public MdApi
 {
 public:
-	using ToraMdApi::ToraMdApi;
+	using MdApi::MdApi;
 	void onFrontConnected() override
 	{
 		try
 		{
-			PYBIND11_OVERLOAD(void, ToraMdApi, onFrontConnected);
+			PYBIND11_OVERLOAD(void, MdApi, onFrontConnected);
 		}
 		catch (const error_already_set& e)
 		{
@@ -2643,7 +2643,7 @@ public:
 	{
 		try
 		{
-			PYBIND11_OVERLOAD(void, ToraMdApi, onFrontDisconnected, nReason);
+			PYBIND11_OVERLOAD(void, MdApi, onFrontDisconnected, nReason);
 		}
 		catch (const error_already_set& e)
 		{
@@ -2655,7 +2655,7 @@ public:
 	{
 		try
 		{
-			PYBIND11_OVERLOAD(void, ToraMdApi, onRspGetConnectionInfo, data, error, nRequestID);
+			PYBIND11_OVERLOAD(void, MdApi, onRspGetConnectionInfo, data, error, nRequestID);
 		}
 		catch (const error_already_set& e)
 		{
@@ -2667,7 +2667,7 @@ public:
 	{
 		try
 		{
-			PYBIND11_OVERLOAD(void, ToraMdApi, onRspUserLogin, data, error, nRequestID);
+			PYBIND11_OVERLOAD(void, MdApi, onRspUserLogin, data, error, nRequestID);
 		}
 		catch (const error_already_set& e)
 		{
@@ -2679,7 +2679,7 @@ public:
 	{
 		try
 		{
-			PYBIND11_OVERLOAD(void, ToraMdApi, onRspUserLogout, data, error, nRequestID);
+			PYBIND11_OVERLOAD(void, MdApi, onRspUserLogout, data, error, nRequestID);
 		}
 		catch (const error_already_set& e)
 		{
@@ -2691,7 +2691,7 @@ public:
 	{
 		try
 		{
-			PYBIND11_OVERLOAD(void, ToraMdApi, onRspSubMarketData, data, error);
+			PYBIND11_OVERLOAD(void, MdApi, onRspSubMarketData, data, error);
 		}
 		catch (const error_already_set& e)
 		{
@@ -2703,7 +2703,7 @@ public:
 	{
 		try
 		{
-			PYBIND11_OVERLOAD(void, ToraMdApi, onRspUnSubMarketData, data, error);
+			PYBIND11_OVERLOAD(void, MdApi, onRspUnSubMarketData, data, error);
 		}
 		catch (const error_already_set& e)
 		{
@@ -2715,7 +2715,7 @@ public:
 	{
 		try
 		{
-			PYBIND11_OVERLOAD(void, ToraMdApi, onRspSubPHMarketData, data, error);
+			PYBIND11_OVERLOAD(void, MdApi, onRspSubPHMarketData, data, error);
 		}
 		catch (const error_already_set& e)
 		{
@@ -2727,7 +2727,7 @@ public:
 	{
 		try
 		{
-			PYBIND11_OVERLOAD(void, ToraMdApi, onRspUnSubPHMarketData, data, error);
+			PYBIND11_OVERLOAD(void, MdApi, onRspUnSubPHMarketData, data, error);
 		}
 		catch (const error_already_set& e)
 		{
@@ -2739,7 +2739,7 @@ public:
 	{
 		try
 		{
-			PYBIND11_OVERLOAD(void, ToraMdApi, onRspSubSpecialMarketData, data, error);
+			PYBIND11_OVERLOAD(void, MdApi, onRspSubSpecialMarketData, data, error);
 		}
 		catch (const error_already_set& e)
 		{
@@ -2751,7 +2751,7 @@ public:
 	{
 		try
 		{
-			PYBIND11_OVERLOAD(void, ToraMdApi, onRspUnSubSpecialMarketData, data, error);
+			PYBIND11_OVERLOAD(void, MdApi, onRspUnSubSpecialMarketData, data, error);
 		}
 		catch (const error_already_set& e)
 		{
@@ -2763,7 +2763,7 @@ public:
 	{
 		try
 		{
-			PYBIND11_OVERLOAD(void, ToraMdApi, onRspSubSimplifyMarketData, data, error);
+			PYBIND11_OVERLOAD(void, MdApi, onRspSubSimplifyMarketData, data, error);
 		}
 		catch (const error_already_set& e)
 		{
@@ -2775,7 +2775,7 @@ public:
 	{
 		try
 		{
-			PYBIND11_OVERLOAD(void, ToraMdApi, onRspUnSubSimplifyMarketData, data, error);
+			PYBIND11_OVERLOAD(void, MdApi, onRspUnSubSimplifyMarketData, data, error);
 		}
 		catch (const error_already_set& e)
 		{
@@ -2787,7 +2787,7 @@ public:
 	{
 		try
 		{
-			PYBIND11_OVERLOAD(void, ToraMdApi, onRspSubSecurityStatus, data, error);
+			PYBIND11_OVERLOAD(void, MdApi, onRspSubSecurityStatus, data, error);
 		}
 		catch (const error_already_set& e)
 		{
@@ -2799,7 +2799,7 @@ public:
 	{
 		try
 		{
-			PYBIND11_OVERLOAD(void, ToraMdApi, onRspUnSubSecurityStatus, data, error);
+			PYBIND11_OVERLOAD(void, MdApi, onRspUnSubSecurityStatus, data, error);
 		}
 		catch (const error_already_set& e)
 		{
@@ -2811,7 +2811,7 @@ public:
 	{
 		try
 		{
-			PYBIND11_OVERLOAD(void, ToraMdApi, onRspSubMarketStatus, data, error);
+			PYBIND11_OVERLOAD(void, MdApi, onRspSubMarketStatus, data, error);
 		}
 		catch (const error_already_set& e)
 		{
@@ -2823,7 +2823,7 @@ public:
 	{
 		try
 		{
-			PYBIND11_OVERLOAD(void, ToraMdApi, onRspUnSubMarketStatus, data, error);
+			PYBIND11_OVERLOAD(void, MdApi, onRspUnSubMarketStatus, data, error);
 		}
 		catch (const error_already_set& e)
 		{
@@ -2835,7 +2835,7 @@ public:
 	{
 		try
 		{
-			PYBIND11_OVERLOAD(void, ToraMdApi, onRspSubImcParams, data, error);
+			PYBIND11_OVERLOAD(void, MdApi, onRspSubImcParams, data, error);
 		}
 		catch (const error_already_set& e)
 		{
@@ -2847,7 +2847,7 @@ public:
 	{
 		try
 		{
-			PYBIND11_OVERLOAD(void, ToraMdApi, onRspUnSubImcParams, data, error);
+			PYBIND11_OVERLOAD(void, MdApi, onRspUnSubImcParams, data, error);
 		}
 		catch (const error_already_set& e)
 		{
@@ -2859,7 +2859,7 @@ public:
 	{
 		try
 		{
-			PYBIND11_OVERLOAD(void, ToraMdApi, onRspInquiryMarketDataMirror, data, error, nRequestID, last);
+			PYBIND11_OVERLOAD(void, MdApi, onRspInquiryMarketDataMirror, data, error, nRequestID, last);
 		}
 		catch (const error_already_set& e)
 		{
@@ -2871,7 +2871,7 @@ public:
 	{
 		try
 		{
-			PYBIND11_OVERLOAD(void, ToraMdApi, onRspInquiryPHMarketDataMirror, data, error, nRequestID, last);
+			PYBIND11_OVERLOAD(void, MdApi, onRspInquiryPHMarketDataMirror, data, error, nRequestID, last);
 		}
 		catch (const error_already_set& e)
 		{
@@ -2883,7 +2883,7 @@ public:
 	{
 		try
 		{
-			PYBIND11_OVERLOAD(void, ToraMdApi, onRspInquirySpecialMarketDataMirror, data, error, nRequestID, last);
+			PYBIND11_OVERLOAD(void, MdApi, onRspInquirySpecialMarketDataMirror, data, error, nRequestID, last);
 		}
 		catch (const error_already_set& e)
 		{
@@ -2895,7 +2895,7 @@ public:
 	{
 		try
 		{
-			PYBIND11_OVERLOAD(void, ToraMdApi, onRspSubSPMarketData, data, error);
+			PYBIND11_OVERLOAD(void, MdApi, onRspSubSPMarketData, data, error);
 		}
 		catch (const error_already_set& e)
 		{
@@ -2907,7 +2907,7 @@ public:
 	{
 		try
 		{
-			PYBIND11_OVERLOAD(void, ToraMdApi, onRspUnSubSPMarketData, data, error);
+			PYBIND11_OVERLOAD(void, MdApi, onRspUnSubSPMarketData, data, error);
 		}
 		catch (const error_already_set& e)
 		{
@@ -2919,7 +2919,7 @@ public:
 	{
 		try
 		{
-			PYBIND11_OVERLOAD(void, ToraMdApi, onRspSubSPSimplifyMarketData, data, error);
+			PYBIND11_OVERLOAD(void, MdApi, onRspSubSPSimplifyMarketData, data, error);
 		}
 		catch (const error_already_set& e)
 		{
@@ -2931,7 +2931,7 @@ public:
 	{
 		try
 		{
-			PYBIND11_OVERLOAD(void, ToraMdApi, onRspUnSubSPSimplifyMarketData, data, error);
+			PYBIND11_OVERLOAD(void, MdApi, onRspUnSubSPSimplifyMarketData, data, error);
 		}
 		catch (const error_already_set& e)
 		{
@@ -2943,7 +2943,7 @@ public:
 	{
 		try
 		{
-			PYBIND11_OVERLOAD(void, ToraMdApi, onRspSubSPSecurityStatus, data, error);
+			PYBIND11_OVERLOAD(void, MdApi, onRspSubSPSecurityStatus, data, error);
 		}
 		catch (const error_already_set& e)
 		{
@@ -2955,7 +2955,7 @@ public:
 	{
 		try
 		{
-			PYBIND11_OVERLOAD(void, ToraMdApi, onRspUnSubSPSecurityStatus, data, error);
+			PYBIND11_OVERLOAD(void, MdApi, onRspUnSubSPSecurityStatus, data, error);
 		}
 		catch (const error_already_set& e)
 		{
@@ -2967,7 +2967,7 @@ public:
 	{
 		try
 		{
-			PYBIND11_OVERLOAD(void, ToraMdApi, onRspSubSPMarketStatus, data, error);
+			PYBIND11_OVERLOAD(void, MdApi, onRspSubSPMarketStatus, data, error);
 		}
 		catch (const error_already_set& e)
 		{
@@ -2979,7 +2979,7 @@ public:
 	{
 		try
 		{
-			PYBIND11_OVERLOAD(void, ToraMdApi, onRspUnSubSPMarketStatus, data, error);
+			PYBIND11_OVERLOAD(void, MdApi, onRspUnSubSPMarketStatus, data, error);
 		}
 		catch (const error_already_set& e)
 		{
@@ -2991,7 +2991,7 @@ public:
 	{
 		try
 		{
-			PYBIND11_OVERLOAD(void, ToraMdApi, onRspInquirySPMarketDataMirror, data, error, nRequestID, last);
+			PYBIND11_OVERLOAD(void, MdApi, onRspInquirySPMarketDataMirror, data, error, nRequestID, last);
 		}
 		catch (const error_already_set& e)
 		{
@@ -3003,7 +3003,7 @@ public:
 	{
 		try
 		{
-			PYBIND11_OVERLOAD(void, ToraMdApi, onRtnMarketData, data);
+			PYBIND11_OVERLOAD(void, MdApi, onRtnMarketData, data);
 		}
 		catch (const error_already_set& e)
 		{
@@ -3015,7 +3015,7 @@ public:
 	{
 		try
 		{
-			PYBIND11_OVERLOAD(void, ToraMdApi, onRtnPHMarketData, data);
+			PYBIND11_OVERLOAD(void, MdApi, onRtnPHMarketData, data);
 		}
 		catch (const error_already_set& e)
 		{
@@ -3027,7 +3027,7 @@ public:
 	{
 		try
 		{
-			PYBIND11_OVERLOAD(void, ToraMdApi, onRtnSpecialMarketData, data);
+			PYBIND11_OVERLOAD(void, MdApi, onRtnSpecialMarketData, data);
 		}
 		catch (const error_already_set& e)
 		{
@@ -3039,7 +3039,7 @@ public:
 	{
 		try
 		{
-			PYBIND11_OVERLOAD(void, ToraMdApi, onRtnSimplifyMarketData, data);
+			PYBIND11_OVERLOAD(void, MdApi, onRtnSimplifyMarketData, data);
 		}
 		catch (const error_already_set& e)
 		{
@@ -3051,7 +3051,7 @@ public:
 	{
 		try
 		{
-			PYBIND11_OVERLOAD(void, ToraMdApi, onRtnSecurityStatus, data);
+			PYBIND11_OVERLOAD(void, MdApi, onRtnSecurityStatus, data);
 		}
 		catch (const error_already_set& e)
 		{
@@ -3063,7 +3063,7 @@ public:
 	{
 		try
 		{
-			PYBIND11_OVERLOAD(void, ToraMdApi, onRtnMarketStatus, data);
+			PYBIND11_OVERLOAD(void, MdApi, onRtnMarketStatus, data);
 		}
 		catch (const error_already_set& e)
 		{
@@ -3075,7 +3075,7 @@ public:
 	{
 		try
 		{
-			PYBIND11_OVERLOAD(void, ToraMdApi, onRtnImcParams, data);
+			PYBIND11_OVERLOAD(void, MdApi, onRtnImcParams, data);
 		}
 		catch (const error_already_set& e)
 		{
@@ -3087,7 +3087,7 @@ public:
 	{
 		try
 		{
-			PYBIND11_OVERLOAD(void, ToraMdApi, onRtnSPMarketData, data);
+			PYBIND11_OVERLOAD(void, MdApi, onRtnSPMarketData, data);
 		}
 		catch (const error_already_set& e)
 		{
@@ -3099,7 +3099,7 @@ public:
 	{
 		try
 		{
-			PYBIND11_OVERLOAD(void, ToraMdApi, onRtnSPSimplifyMarketData, data);
+			PYBIND11_OVERLOAD(void, MdApi, onRtnSPSimplifyMarketData, data);
 		}
 		catch (const error_already_set& e)
 		{
@@ -3111,7 +3111,7 @@ public:
 	{
 		try
 		{
-			PYBIND11_OVERLOAD(void, ToraMdApi, onRtnSPSecurityStatus, data);
+			PYBIND11_OVERLOAD(void, MdApi, onRtnSPSecurityStatus, data);
 		}
 		catch (const error_already_set& e)
 		{
@@ -3123,7 +3123,7 @@ public:
 	{
 		try
 		{
-			PYBIND11_OVERLOAD(void, ToraMdApi, onRtnSPMarketStatus, data);
+			PYBIND11_OVERLOAD(void, MdApi, onRtnSPMarketStatus, data);
 		}
 		catch (const error_already_set& e)
 		{
@@ -3135,7 +3135,7 @@ public:
 	{
 		try
 		{
-			PYBIND11_OVERLOAD(void, ToraMdApi, onRspSubRapidMarketData, data, error);
+			PYBIND11_OVERLOAD(void, MdApi, onRspSubRapidMarketData, data, error);
 		}
 		catch (const error_already_set& e)
 		{
@@ -3147,7 +3147,7 @@ public:
 	{
 		try
 		{
-			PYBIND11_OVERLOAD(void, ToraMdApi, onRspUnSubRapidMarketData, data, error);
+			PYBIND11_OVERLOAD(void, MdApi, onRspUnSubRapidMarketData, data, error);
 		}
 		catch (const error_already_set& e)
 		{
@@ -3159,7 +3159,7 @@ public:
 	{
 		try
 		{
-			PYBIND11_OVERLOAD(void, ToraMdApi, onRtnRapidMarketData, data);
+			PYBIND11_OVERLOAD(void, MdApi, onRtnRapidMarketData, data);
 		}
 		catch (const error_already_set& e)
 		{
@@ -3170,98 +3170,98 @@ public:
 
 PYBIND11_MODULE(vntoramd, m)
 {
-	class_<ToraMdApi, PyMdApi> ToraMdApi(m, "ToraMdApi", module_local());
-	ToraMdApi
+	class_<MdApi, PyMdApi> MdApi(m, "MdApi", module_local());
+	MdApi
 		.def(init<>())
-		.def("createTstpXMdApi", &ToraMdApi::createTstpXMdApi)
-		.def("registerFront", &ToraMdApi::registerFront)
-		.def("init", &ToraMdApi::init)
-		.def("join", &ToraMdApi::join)
-		.def("release", &ToraMdApi::release)
-		.def("getApiVersion", &ToraMdApi::getApiVersion)
-		.def("exit", &ToraMdApi::exit)
-		.def("registerNameServer", &ToraMdApi::registerNameServer)
-		.def("registerFensUserInfo", &ToraMdApi::registerFensUserInfo)
-		.def("registerMulticast", &ToraMdApi::registerMulticast)
-		.def("registerDeriveServer", &ToraMdApi::registerDeriveServer)
-		.def("registerDeriveMulticast", &ToraMdApi::registerDeriveMulticast)
-		.def("reqGetConnectionInfo", &ToraMdApi::reqGetConnectionInfo)
-		.def("reqUserLogin", &ToraMdApi::reqUserLogin)
-		.def("reqUserLogout", &ToraMdApi::reqUserLogout)
-		.def("subscribeMarketData", &ToraMdApi::subscribeMarketData)
-		.def("unSubscribeMarketData", &ToraMdApi::unSubscribeMarketData)
-		.def("subscribePHMarketData", &ToraMdApi::subscribePHMarketData)
-		.def("unSubscribePHMarketData", &ToraMdApi::unSubscribePHMarketData)
-		.def("subscribeSpecialMarketData", &ToraMdApi::subscribeSpecialMarketData)
-		.def("unSubscribeSpecialMarketData", &ToraMdApi::unSubscribeSpecialMarketData)
-		.def("subscribeSimplifyMarketData", &ToraMdApi::subscribeSimplifyMarketData)
-		.def("unSubscribeSimplifyMarketData", &ToraMdApi::unSubscribeSimplifyMarketData)
-		.def("subscribeSecurityStatus", &ToraMdApi::subscribeSecurityStatus)
-		.def("unSubscribeSecurityStatus", &ToraMdApi::unSubscribeSecurityStatus)
-		.def("subscribeMarketStatus", &ToraMdApi::subscribeMarketStatus)
-		.def("unSubscribeMarketStatus", &ToraMdApi::unSubscribeMarketStatus)
-		.def("subscribeImcParams", &ToraMdApi::subscribeImcParams)
-		.def("unSubscribeImcParams", &ToraMdApi::unSubscribeImcParams)
-		.def("reqInquiryMarketDataMirror", &ToraMdApi::reqInquiryMarketDataMirror)
-		.def("reqInquiryPHMarketDataMirror", &ToraMdApi::reqInquiryPHMarketDataMirror)
-		.def("reqInquirySpecialMarketDataMirror", &ToraMdApi::reqInquirySpecialMarketDataMirror)
-		.def("subscribeSPMarketData", &ToraMdApi::subscribeSPMarketData)
-		.def("unSubscribeSPMarketData", &ToraMdApi::unSubscribeSPMarketData)
-		.def("subscribeSPSimplifyMarketData", &ToraMdApi::subscribeSPSimplifyMarketData)
-		.def("unSubscribeSPSimplifyMarketData", &ToraMdApi::unSubscribeSPSimplifyMarketData)
-		.def("subscribeSPSecurityStatus", &ToraMdApi::subscribeSPSecurityStatus)
-		.def("unSubscribeSPSecurityStatus", &ToraMdApi::unSubscribeSPSecurityStatus)
-		.def("subscribeSPMarketStatus", &ToraMdApi::subscribeSPMarketStatus)
-		.def("unSubscribeSPMarketStatus", &ToraMdApi::unSubscribeSPMarketStatus)
-		.def("reqInquirySPMarketDataMirror", &ToraMdApi::reqInquirySPMarketDataMirror)
-		.def("subscribeRapidMarketData", &ToraMdApi::subscribeRapidMarketData)
-		.def("unSubscribeRapidMarketData", &ToraMdApi::unSubscribeRapidMarketData)
+		.def("createTstpXMdApi", &MdApi::createTstpXMdApi)
+		.def("registerFront", &MdApi::registerFront)
+		.def("init", &MdApi::init)
+		.def("join", &MdApi::join)
+		.def("release", &MdApi::release)
+		.def("getApiVersion", &MdApi::getApiVersion)
+		.def("exit", &MdApi::exit)
+		.def("registerNameServer", &MdApi::registerNameServer)
+		.def("registerFensUserInfo", &MdApi::registerFensUserInfo)
+		.def("registerMulticast", &MdApi::registerMulticast)
+		.def("registerDeriveServer", &MdApi::registerDeriveServer)
+		.def("registerDeriveMulticast", &MdApi::registerDeriveMulticast)
+		.def("reqGetConnectionInfo", &MdApi::reqGetConnectionInfo)
+		.def("reqUserLogin", &MdApi::reqUserLogin)
+		.def("reqUserLogout", &MdApi::reqUserLogout)
+		.def("subscribeMarketData", &MdApi::subscribeMarketData)
+		.def("unSubscribeMarketData", &MdApi::unSubscribeMarketData)
+		.def("subscribePHMarketData", &MdApi::subscribePHMarketData)
+		.def("unSubscribePHMarketData", &MdApi::unSubscribePHMarketData)
+		.def("subscribeSpecialMarketData", &MdApi::subscribeSpecialMarketData)
+		.def("unSubscribeSpecialMarketData", &MdApi::unSubscribeSpecialMarketData)
+		.def("subscribeSimplifyMarketData", &MdApi::subscribeSimplifyMarketData)
+		.def("unSubscribeSimplifyMarketData", &MdApi::unSubscribeSimplifyMarketData)
+		.def("subscribeSecurityStatus", &MdApi::subscribeSecurityStatus)
+		.def("unSubscribeSecurityStatus", &MdApi::unSubscribeSecurityStatus)
+		.def("subscribeMarketStatus", &MdApi::subscribeMarketStatus)
+		.def("unSubscribeMarketStatus", &MdApi::unSubscribeMarketStatus)
+		.def("subscribeImcParams", &MdApi::subscribeImcParams)
+		.def("unSubscribeImcParams", &MdApi::unSubscribeImcParams)
+		.def("reqInquiryMarketDataMirror", &MdApi::reqInquiryMarketDataMirror)
+		.def("reqInquiryPHMarketDataMirror", &MdApi::reqInquiryPHMarketDataMirror)
+		.def("reqInquirySpecialMarketDataMirror", &MdApi::reqInquirySpecialMarketDataMirror)
+		.def("subscribeSPMarketData", &MdApi::subscribeSPMarketData)
+		.def("unSubscribeSPMarketData", &MdApi::unSubscribeSPMarketData)
+		.def("subscribeSPSimplifyMarketData", &MdApi::subscribeSPSimplifyMarketData)
+		.def("unSubscribeSPSimplifyMarketData", &MdApi::unSubscribeSPSimplifyMarketData)
+		.def("subscribeSPSecurityStatus", &MdApi::subscribeSPSecurityStatus)
+		.def("unSubscribeSPSecurityStatus", &MdApi::unSubscribeSPSecurityStatus)
+		.def("subscribeSPMarketStatus", &MdApi::subscribeSPMarketStatus)
+		.def("unSubscribeSPMarketStatus", &MdApi::unSubscribeSPMarketStatus)
+		.def("reqInquirySPMarketDataMirror", &MdApi::reqInquirySPMarketDataMirror)
+		.def("subscribeRapidMarketData", &MdApi::subscribeRapidMarketData)
+		.def("unSubscribeRapidMarketData", &MdApi::unSubscribeRapidMarketData)
 
-		.def("onFrontConnected", &ToraMdApi::onFrontConnected)
-		.def("onFrontDisconnected", &ToraMdApi::onFrontDisconnected)
-		.def("onRspGetConnectionInfo", &ToraMdApi::onRspGetConnectionInfo)
-		.def("onRspUserLogin", &ToraMdApi::onRspUserLogin)
-		.def("onRspUserLogout", &ToraMdApi::onRspUserLogout)
-		.def("onRspSubMarketData", &ToraMdApi::onRspSubMarketData)
-		.def("onRspUnSubMarketData", &ToraMdApi::onRspUnSubMarketData)
-		.def("onRspSubPHMarketData", &ToraMdApi::onRspSubPHMarketData)
-		.def("onRspUnSubPHMarketData", &ToraMdApi::onRspUnSubPHMarketData)
-		.def("onRspSubSpecialMarketData", &ToraMdApi::onRspSubSpecialMarketData)
-		.def("onRspUnSubSpecialMarketData", &ToraMdApi::onRspUnSubSpecialMarketData)
-		.def("onRspSubSimplifyMarketData", &ToraMdApi::onRspSubSimplifyMarketData)
-		.def("onRspUnSubSimplifyMarketData", &ToraMdApi::onRspUnSubSimplifyMarketData)
-		.def("onRspSubSecurityStatus", &ToraMdApi::onRspSubSecurityStatus)
-		.def("onRspUnSubSecurityStatus", &ToraMdApi::onRspUnSubSecurityStatus)
-		.def("onRspSubMarketStatus", &ToraMdApi::onRspSubMarketStatus)
-		.def("onRspUnSubMarketStatus", &ToraMdApi::onRspUnSubMarketStatus)
-		.def("onRspSubImcParams", &ToraMdApi::onRspSubImcParams)
-		.def("onRspUnSubImcParams", &ToraMdApi::onRspUnSubImcParams)
-		.def("onRspInquiryMarketDataMirror", &ToraMdApi::onRspInquiryMarketDataMirror)
-		.def("onRspInquiryPHMarketDataMirror", &ToraMdApi::onRspInquiryPHMarketDataMirror)
-		.def("onRspInquirySpecialMarketDataMirror", &ToraMdApi::onRspInquirySpecialMarketDataMirror)
-		.def("onRspSubSPMarketData", &ToraMdApi::onRspSubSPMarketData)
-		.def("onRspUnSubSPMarketData", &ToraMdApi::onRspUnSubSPMarketData)
-		.def("onRspSubSPSimplifyMarketData", &ToraMdApi::onRspSubSPSimplifyMarketData)
-		.def("onRspUnSubSPSimplifyMarketData", &ToraMdApi::onRspUnSubSPSimplifyMarketData)
-		.def("onRspSubSPSecurityStatus", &ToraMdApi::onRspSubSPSecurityStatus)
-		.def("onRspUnSubSPSecurityStatus", &ToraMdApi::onRspUnSubSPSecurityStatus)
-		.def("onRspSubSPMarketStatus", &ToraMdApi::onRspSubSPMarketStatus)
-		.def("onRspUnSubSPMarketStatus", &ToraMdApi::onRspUnSubSPMarketStatus)
-		.def("onRspInquirySPMarketDataMirror", &ToraMdApi::onRspInquirySPMarketDataMirror)
-		.def("onRtnMarketData", &ToraMdApi::onRtnMarketData)
-		.def("onRtnPHMarketData", &ToraMdApi::onRtnPHMarketData)
-		.def("onRtnSpecialMarketData", &ToraMdApi::onRtnSpecialMarketData)
-		.def("onRtnSimplifyMarketData", &ToraMdApi::onRtnSimplifyMarketData)
-		.def("onRtnSecurityStatus", &ToraMdApi::onRtnSecurityStatus)
-		.def("onRtnMarketStatus", &ToraMdApi::onRtnMarketStatus)
-		.def("onRtnImcParams", &ToraMdApi::onRtnImcParams)
-		.def("onRtnSPMarketData", &ToraMdApi::onRtnSPMarketData)
-		.def("onRtnSPSimplifyMarketData", &ToraMdApi::onRtnSPSimplifyMarketData)
-		.def("onRtnSPSecurityStatus", &ToraMdApi::onRtnSPSecurityStatus)
-		.def("onRtnSPMarketStatus", &ToraMdApi::onRtnSPMarketStatus)
-		.def("onRspSubRapidMarketData", &ToraMdApi::onRspSubRapidMarketData)
-		.def("onRspUnSubRapidMarketData", &ToraMdApi::onRspUnSubRapidMarketData)
-		.def("onRtnRapidMarketData", &ToraMdApi::onRtnRapidMarketData)
+		.def("onFrontConnected", &MdApi::onFrontConnected)
+		.def("onFrontDisconnected", &MdApi::onFrontDisconnected)
+		.def("onRspGetConnectionInfo", &MdApi::onRspGetConnectionInfo)
+		.def("onRspUserLogin", &MdApi::onRspUserLogin)
+		.def("onRspUserLogout", &MdApi::onRspUserLogout)
+		.def("onRspSubMarketData", &MdApi::onRspSubMarketData)
+		.def("onRspUnSubMarketData", &MdApi::onRspUnSubMarketData)
+		.def("onRspSubPHMarketData", &MdApi::onRspSubPHMarketData)
+		.def("onRspUnSubPHMarketData", &MdApi::onRspUnSubPHMarketData)
+		.def("onRspSubSpecialMarketData", &MdApi::onRspSubSpecialMarketData)
+		.def("onRspUnSubSpecialMarketData", &MdApi::onRspUnSubSpecialMarketData)
+		.def("onRspSubSimplifyMarketData", &MdApi::onRspSubSimplifyMarketData)
+		.def("onRspUnSubSimplifyMarketData", &MdApi::onRspUnSubSimplifyMarketData)
+		.def("onRspSubSecurityStatus", &MdApi::onRspSubSecurityStatus)
+		.def("onRspUnSubSecurityStatus", &MdApi::onRspUnSubSecurityStatus)
+		.def("onRspSubMarketStatus", &MdApi::onRspSubMarketStatus)
+		.def("onRspUnSubMarketStatus", &MdApi::onRspUnSubMarketStatus)
+		.def("onRspSubImcParams", &MdApi::onRspSubImcParams)
+		.def("onRspUnSubImcParams", &MdApi::onRspUnSubImcParams)
+		.def("onRspInquiryMarketDataMirror", &MdApi::onRspInquiryMarketDataMirror)
+		.def("onRspInquiryPHMarketDataMirror", &MdApi::onRspInquiryPHMarketDataMirror)
+		.def("onRspInquirySpecialMarketDataMirror", &MdApi::onRspInquirySpecialMarketDataMirror)
+		.def("onRspSubSPMarketData", &MdApi::onRspSubSPMarketData)
+		.def("onRspUnSubSPMarketData", &MdApi::onRspUnSubSPMarketData)
+		.def("onRspSubSPSimplifyMarketData", &MdApi::onRspSubSPSimplifyMarketData)
+		.def("onRspUnSubSPSimplifyMarketData", &MdApi::onRspUnSubSPSimplifyMarketData)
+		.def("onRspSubSPSecurityStatus", &MdApi::onRspSubSPSecurityStatus)
+		.def("onRspUnSubSPSecurityStatus", &MdApi::onRspUnSubSPSecurityStatus)
+		.def("onRspSubSPMarketStatus", &MdApi::onRspSubSPMarketStatus)
+		.def("onRspUnSubSPMarketStatus", &MdApi::onRspUnSubSPMarketStatus)
+		.def("onRspInquirySPMarketDataMirror", &MdApi::onRspInquirySPMarketDataMirror)
+		.def("onRtnMarketData", &MdApi::onRtnMarketData)
+		.def("onRtnPHMarketData", &MdApi::onRtnPHMarketData)
+		.def("onRtnSpecialMarketData", &MdApi::onRtnSpecialMarketData)
+		.def("onRtnSimplifyMarketData", &MdApi::onRtnSimplifyMarketData)
+		.def("onRtnSecurityStatus", &MdApi::onRtnSecurityStatus)
+		.def("onRtnMarketStatus", &MdApi::onRtnMarketStatus)
+		.def("onRtnImcParams", &MdApi::onRtnImcParams)
+		.def("onRtnSPMarketData", &MdApi::onRtnSPMarketData)
+		.def("onRtnSPSimplifyMarketData", &MdApi::onRtnSPSimplifyMarketData)
+		.def("onRtnSPSecurityStatus", &MdApi::onRtnSPSecurityStatus)
+		.def("onRtnSPMarketStatus", &MdApi::onRtnSPMarketStatus)
+		.def("onRspSubRapidMarketData", &MdApi::onRspSubRapidMarketData)
+		.def("onRspUnSubRapidMarketData", &MdApi::onRspUnSubRapidMarketData)
+		.def("onRtnRapidMarketData", &MdApi::onRtnRapidMarketData)
 		;
 
 }

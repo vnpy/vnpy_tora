@@ -1,10 +1,10 @@
-int ToraOptionApi::reqGetConnectionInfo(int nRequestID)
+int OptionApi::reqGetConnectionInfo(int nRequestID)
 {
 	int i = this->api->ReqGetConnectionInfo(nRequestID);
 	return i;
 };
 
-int ToraOptionApi::reqUserLogin(const dict &req, int nRequestID)
+int OptionApi::reqUserLogin(const dict &req, int nRequestID)
 {
 	CTORATstpSPReqUserLoginField myreq = CTORATstpSPReqUserLoginField();
 	memset(&myreq, 0, sizeof(myreq));
@@ -34,7 +34,7 @@ int ToraOptionApi::reqUserLogin(const dict &req, int nRequestID)
 	return i;
 };
 
-int ToraOptionApi::reqUserLogout(const dict &req, int nRequestID)
+int OptionApi::reqUserLogout(const dict &req, int nRequestID)
 {
 	CTORATstpSPUserLogoutField myreq = CTORATstpSPUserLogoutField();
 	memset(&myreq, 0, sizeof(myreq));
@@ -43,7 +43,7 @@ int ToraOptionApi::reqUserLogout(const dict &req, int nRequestID)
 	return i;
 };
 
-int ToraOptionApi::reqUserPasswordUpdate(const dict &req, int nRequestID)
+int OptionApi::reqUserPasswordUpdate(const dict &req, int nRequestID)
 {
 	CTORATstpSPUserPasswordUpdateField myreq = CTORATstpSPUserPasswordUpdateField();
 	memset(&myreq, 0, sizeof(myreq));
@@ -54,7 +54,7 @@ int ToraOptionApi::reqUserPasswordUpdate(const dict &req, int nRequestID)
 	return i;
 };
 
-int ToraOptionApi::reqInputDeviceSerial(const dict &req, int nRequestID)
+int OptionApi::reqInputDeviceSerial(const dict &req, int nRequestID)
 {
 	CTORATstpSPReqInputDeviceSerialField myreq = CTORATstpSPReqInputDeviceSerialField();
 	memset(&myreq, 0, sizeof(myreq));
@@ -66,7 +66,7 @@ int ToraOptionApi::reqInputDeviceSerial(const dict &req, int nRequestID)
 	return i;
 };
 
-int ToraOptionApi::reqOrderInsert(const dict &req, int nRequestID)
+int OptionApi::reqOrderInsert(const dict &req, int nRequestID)
 {
 	CTORATstpSPInputOrderField myreq = CTORATstpSPInputOrderField();
 	memset(&myreq, 0, sizeof(myreq));
@@ -105,7 +105,7 @@ int ToraOptionApi::reqOrderInsert(const dict &req, int nRequestID)
 	return i;
 };
 
-int ToraOptionApi::reqOrderAction(const dict &req, int nRequestID)
+int OptionApi::reqOrderAction(const dict &req, int nRequestID)
 {
 	CTORATstpSPInputOrderActionField myreq = CTORATstpSPInputOrderActionField();
 	memset(&myreq, 0, sizeof(myreq));
@@ -133,7 +133,7 @@ int ToraOptionApi::reqOrderAction(const dict &req, int nRequestID)
 	return i;
 };
 
-int ToraOptionApi::reqExerciseInsert(const dict &req, int nRequestID)
+int OptionApi::reqExerciseInsert(const dict &req, int nRequestID)
 {
 	CTORATstpSPInputExerciseField myreq = CTORATstpSPInputExerciseField();
 	memset(&myreq, 0, sizeof(myreq));
@@ -161,7 +161,7 @@ int ToraOptionApi::reqExerciseInsert(const dict &req, int nRequestID)
 	return i;
 };
 
-int ToraOptionApi::reqExerciseAction(const dict &req, int nRequestID)
+int OptionApi::reqExerciseAction(const dict &req, int nRequestID)
 {
 	CTORATstpSPInputExerciseActionField myreq = CTORATstpSPInputExerciseActionField();
 	memset(&myreq, 0, sizeof(myreq));
@@ -189,7 +189,7 @@ int ToraOptionApi::reqExerciseAction(const dict &req, int nRequestID)
 	return i;
 };
 
-int ToraOptionApi::reqLockInsert(const dict &req, int nRequestID)
+int OptionApi::reqLockInsert(const dict &req, int nRequestID)
 {
 	CTORATstpSPInputLockField myreq = CTORATstpSPInputLockField();
 	memset(&myreq, 0, sizeof(myreq));
@@ -216,7 +216,7 @@ int ToraOptionApi::reqLockInsert(const dict &req, int nRequestID)
 	return i;
 };
 
-int ToraOptionApi::reqLockAction(const dict &req, int nRequestID)
+int OptionApi::reqLockAction(const dict &req, int nRequestID)
 {
 	CTORATstpSPInputLockActionField myreq = CTORATstpSPInputLockActionField();
 	memset(&myreq, 0, sizeof(myreq));
@@ -244,7 +244,7 @@ int ToraOptionApi::reqLockAction(const dict &req, int nRequestID)
 	return i;
 };
 
-int ToraOptionApi::reqCombOrderInsert(const dict &req, int nRequestID)
+int OptionApi::reqCombOrderInsert(const dict &req, int nRequestID)
 {
 	CTORATstpSPInputCombOrderField myreq = CTORATstpSPInputCombOrderField();
 	memset(&myreq, 0, sizeof(myreq));
@@ -274,7 +274,7 @@ int ToraOptionApi::reqCombOrderInsert(const dict &req, int nRequestID)
 	return i;
 };
 
-int ToraOptionApi::reqCombOrderAction(const dict &req, int nRequestID)
+int OptionApi::reqCombOrderAction(const dict &req, int nRequestID)
 {
 	CTORATstpSPInputCombOrderActionField myreq = CTORATstpSPInputCombOrderActionField();
 	memset(&myreq, 0, sizeof(myreq));
@@ -302,7 +302,7 @@ int ToraOptionApi::reqCombOrderAction(const dict &req, int nRequestID)
 	return i;
 };
 
-int ToraOptionApi::reqCondOrderInsert(const dict &req, int nRequestID)
+int OptionApi::reqCondOrderInsert(const dict &req, int nRequestID)
 {
 	CTORATstpSPInputCondOrderField myreq = CTORATstpSPInputCondOrderField();
 	memset(&myreq, 0, sizeof(myreq));
@@ -352,7 +352,7 @@ int ToraOptionApi::reqCondOrderInsert(const dict &req, int nRequestID)
 	return i;
 };
 
-int ToraOptionApi::reqCondOrderAction(const dict &req, int nRequestID)
+int OptionApi::reqCondOrderAction(const dict &req, int nRequestID)
 {
 	CTORATstpSPInputCondOrderActionField myreq = CTORATstpSPInputCondOrderActionField();
 	memset(&myreq, 0, sizeof(myreq));
@@ -380,7 +380,7 @@ int ToraOptionApi::reqCondOrderAction(const dict &req, int nRequestID)
 	return i;
 };
 
-int ToraOptionApi::reqCombExerciseInsert(const dict &req, int nRequestID)
+int OptionApi::reqCombExerciseInsert(const dict &req, int nRequestID)
 {
 	CTORATstpSPInputCombExerciseField myreq = CTORATstpSPInputCombExerciseField();
 	memset(&myreq, 0, sizeof(myreq));
@@ -408,7 +408,7 @@ int ToraOptionApi::reqCombExerciseInsert(const dict &req, int nRequestID)
 	return i;
 };
 
-int ToraOptionApi::reqCombExerciseAction(const dict &req, int nRequestID)
+int OptionApi::reqCombExerciseAction(const dict &req, int nRequestID)
 {
 	CTORATstpSPInputCombExerciseActionField myreq = CTORATstpSPInputCombExerciseActionField();
 	memset(&myreq, 0, sizeof(myreq));
@@ -437,7 +437,7 @@ int ToraOptionApi::reqCombExerciseAction(const dict &req, int nRequestID)
 	return i;
 };
 
-int ToraOptionApi::reqInquiryMaxLockVolume(const dict &req, int nRequestID)
+int OptionApi::reqInquiryMaxLockVolume(const dict &req, int nRequestID)
 {
 	CTORATstpSPReqInquiryMaxLockVolumeField myreq = CTORATstpSPReqInquiryMaxLockVolumeField();
 	memset(&myreq, 0, sizeof(myreq));
@@ -450,7 +450,7 @@ int ToraOptionApi::reqInquiryMaxLockVolume(const dict &req, int nRequestID)
 	return i;
 };
 
-int ToraOptionApi::reqInquiryMaxCoverVolume(const dict &req, int nRequestID)
+int OptionApi::reqInquiryMaxCoverVolume(const dict &req, int nRequestID)
 {
 	CTORATstpSPReqInquiryMaxCoverVolumeField myreq = CTORATstpSPReqInquiryMaxCoverVolumeField();
 	memset(&myreq, 0, sizeof(myreq));
@@ -463,7 +463,7 @@ int ToraOptionApi::reqInquiryMaxCoverVolume(const dict &req, int nRequestID)
 	return i;
 };
 
-int ToraOptionApi::reqInquirySplitCombMarginDifference(const dict &req, int nRequestID)
+int OptionApi::reqInquirySplitCombMarginDifference(const dict &req, int nRequestID)
 {
 	CTORATstpSPReqInquirySplitCombMarginDifferenceField myreq = CTORATstpSPReqInquirySplitCombMarginDifferenceField();
 	memset(&myreq, 0, sizeof(myreq));
@@ -479,7 +479,7 @@ int ToraOptionApi::reqInquirySplitCombMarginDifference(const dict &req, int nReq
 	return i;
 };
 
-int ToraOptionApi::reqTransferFund(const dict &req, int nRequestID)
+int OptionApi::reqTransferFund(const dict &req, int nRequestID)
 {
 	CTORATstpSPInputTransferFundField myreq = CTORATstpSPInputTransferFundField();
 	memset(&myreq, 0, sizeof(myreq));
@@ -496,7 +496,7 @@ int ToraOptionApi::reqTransferFund(const dict &req, int nRequestID)
 	return i;
 };
 
-int ToraOptionApi::reqTransferStockPosition(const dict &req, int nRequestID)
+int OptionApi::reqTransferStockPosition(const dict &req, int nRequestID)
 {
 	CTORATstpSPInputTransferStockPositionField myreq = CTORATstpSPInputTransferStockPositionField();
 	memset(&myreq, 0, sizeof(myreq));
@@ -514,7 +514,7 @@ int ToraOptionApi::reqTransferStockPosition(const dict &req, int nRequestID)
 	return i;
 };
 
-int ToraOptionApi::reqInquiryJZFund(const dict &req, int nRequestID)
+int OptionApi::reqInquiryJZFund(const dict &req, int nRequestID)
 {
 	CTORATstpSPReqInquiryJZFundField myreq = CTORATstpSPReqInquiryJZFundField();
 	memset(&myreq, 0, sizeof(myreq));
@@ -525,7 +525,7 @@ int ToraOptionApi::reqInquiryJZFund(const dict &req, int nRequestID)
 	return i;
 };
 
-int ToraOptionApi::reqInquiryBankAccountFund(const dict &req, int nRequestID)
+int OptionApi::reqInquiryBankAccountFund(const dict &req, int nRequestID)
 {
 	CTORATstpSPReqInquiryBankAccountFundField myreq = CTORATstpSPReqInquiryBankAccountFundField();
 	memset(&myreq, 0, sizeof(myreq));
@@ -537,7 +537,7 @@ int ToraOptionApi::reqInquiryBankAccountFund(const dict &req, int nRequestID)
 	return i;
 };
 
-int ToraOptionApi::reqInquiryStockPosition(const dict &req, int nRequestID)
+int OptionApi::reqInquiryStockPosition(const dict &req, int nRequestID)
 {
 	CTORATstpSPReqInquiryStockPositionField myreq = CTORATstpSPReqInquiryStockPositionField();
 	memset(&myreq, 0, sizeof(myreq));
@@ -552,7 +552,7 @@ int ToraOptionApi::reqInquiryStockPosition(const dict &req, int nRequestID)
 	return i;
 };
 
-int ToraOptionApi::reqQryExchange(const dict &req, int nRequestID)
+int OptionApi::reqQryExchange(const dict &req, int nRequestID)
 {
 	CTORATstpSPQryExchangeField myreq = CTORATstpSPQryExchangeField();
 	memset(&myreq, 0, sizeof(myreq));
@@ -561,7 +561,7 @@ int ToraOptionApi::reqQryExchange(const dict &req, int nRequestID)
 	return i;
 };
 
-int ToraOptionApi::reqQryMarketData(const dict &req, int nRequestID)
+int OptionApi::reqQryMarketData(const dict &req, int nRequestID)
 {
 	CTORATstpSPQryMarketDataField myreq = CTORATstpSPQryMarketDataField();
 	memset(&myreq, 0, sizeof(myreq));
@@ -571,7 +571,7 @@ int ToraOptionApi::reqQryMarketData(const dict &req, int nRequestID)
 	return i;
 };
 
-int ToraOptionApi::reqQrySecurity(const dict &req, int nRequestID)
+int OptionApi::reqQrySecurity(const dict &req, int nRequestID)
 {
 	CTORATstpSPQrySecurityField myreq = CTORATstpSPQrySecurityField();
 	memset(&myreq, 0, sizeof(myreq));
@@ -581,7 +581,7 @@ int ToraOptionApi::reqQrySecurity(const dict &req, int nRequestID)
 	return i;
 };
 
-int ToraOptionApi::reqQryBUProxy(const dict &req, int nRequestID)
+int OptionApi::reqQryBUProxy(const dict &req, int nRequestID)
 {
 	CTORATstpSPQryBUProxyField myreq = CTORATstpSPQryBUProxyField();
 	memset(&myreq, 0, sizeof(myreq));
@@ -592,7 +592,7 @@ int ToraOptionApi::reqQryBUProxy(const dict &req, int nRequestID)
 	return i;
 };
 
-int ToraOptionApi::reqQryUser(const dict &req, int nRequestID)
+int OptionApi::reqQryUser(const dict &req, int nRequestID)
 {
 	CTORATstpSPQryUserField myreq = CTORATstpSPQryUserField();
 	memset(&myreq, 0, sizeof(myreq));
@@ -602,7 +602,7 @@ int ToraOptionApi::reqQryUser(const dict &req, int nRequestID)
 	return i;
 };
 
-int ToraOptionApi::reqQryInvestor(const dict &req, int nRequestID)
+int OptionApi::reqQryInvestor(const dict &req, int nRequestID)
 {
 	CTORATstpSPQryInvestorField myreq = CTORATstpSPQryInvestorField();
 	memset(&myreq, 0, sizeof(myreq));
@@ -611,7 +611,7 @@ int ToraOptionApi::reqQryInvestor(const dict &req, int nRequestID)
 	return i;
 };
 
-int ToraOptionApi::reqQryShareholderAccount(const dict &req, int nRequestID)
+int OptionApi::reqQryShareholderAccount(const dict &req, int nRequestID)
 {
 	CTORATstpSPQryShareholderAccountField myreq = CTORATstpSPQryShareholderAccountField();
 	memset(&myreq, 0, sizeof(myreq));
@@ -624,7 +624,7 @@ int ToraOptionApi::reqQryShareholderAccount(const dict &req, int nRequestID)
 	return i;
 };
 
-int ToraOptionApi::reqQryTradingAccount(const dict &req, int nRequestID)
+int OptionApi::reqQryTradingAccount(const dict &req, int nRequestID)
 {
 	CTORATstpSPQryTradingAccountField myreq = CTORATstpSPQryTradingAccountField();
 	memset(&myreq, 0, sizeof(myreq));
@@ -637,7 +637,7 @@ int ToraOptionApi::reqQryTradingAccount(const dict &req, int nRequestID)
 	return i;
 };
 
-int ToraOptionApi::reqQryOrder(const dict &req, int nRequestID)
+int OptionApi::reqQryOrder(const dict &req, int nRequestID)
 {
 	CTORATstpSPQryOrderField myreq = CTORATstpSPQryOrderField();
 	memset(&myreq, 0, sizeof(myreq));
@@ -658,7 +658,7 @@ int ToraOptionApi::reqQryOrder(const dict &req, int nRequestID)
 	return i;
 };
 
-int ToraOptionApi::reqQryTrade(const dict &req, int nRequestID)
+int OptionApi::reqQryTrade(const dict &req, int nRequestID)
 {
 	CTORATstpSPQryTradeField myreq = CTORATstpSPQryTradeField();
 	memset(&myreq, 0, sizeof(myreq));
@@ -675,7 +675,7 @@ int ToraOptionApi::reqQryTrade(const dict &req, int nRequestID)
 	return i;
 };
 
-int ToraOptionApi::reqQryPosition(const dict &req, int nRequestID)
+int OptionApi::reqQryPosition(const dict &req, int nRequestID)
 {
 	CTORATstpSPQryPositionField myreq = CTORATstpSPQryPositionField();
 	memset(&myreq, 0, sizeof(myreq));
@@ -691,7 +691,7 @@ int ToraOptionApi::reqQryPosition(const dict &req, int nRequestID)
 	return i;
 };
 
-int ToraOptionApi::reqQryTradingFee(const dict &req, int nRequestID)
+int OptionApi::reqQryTradingFee(const dict &req, int nRequestID)
 {
 	CTORATstpSPQryTradingFeeField myreq = CTORATstpSPQryTradingFeeField();
 	memset(&myreq, 0, sizeof(myreq));
@@ -700,7 +700,7 @@ int ToraOptionApi::reqQryTradingFee(const dict &req, int nRequestID)
 	return i;
 };
 
-int ToraOptionApi::reqQryInvestorTradingFee(const dict &req, int nRequestID)
+int OptionApi::reqQryInvestorTradingFee(const dict &req, int nRequestID)
 {
 	CTORATstpSPQryInvestorTradingFeeField myreq = CTORATstpSPQryInvestorTradingFeeField();
 	memset(&myreq, 0, sizeof(myreq));
@@ -711,7 +711,7 @@ int ToraOptionApi::reqQryInvestorTradingFee(const dict &req, int nRequestID)
 	return i;
 };
 
-int ToraOptionApi::reqQryInvestorMarginFee(const dict &req, int nRequestID)
+int OptionApi::reqQryInvestorMarginFee(const dict &req, int nRequestID)
 {
 	CTORATstpSPQryInvestorMarginFeeField myreq = CTORATstpSPQryInvestorMarginFeeField();
 	memset(&myreq, 0, sizeof(myreq));
@@ -726,7 +726,7 @@ int ToraOptionApi::reqQryInvestorMarginFee(const dict &req, int nRequestID)
 	return i;
 };
 
-int ToraOptionApi::reqQryOrderFundDetail(const dict &req, int nRequestID)
+int OptionApi::reqQryOrderFundDetail(const dict &req, int nRequestID)
 {
 	CTORATstpSPQryOrderFundDetailField myreq = CTORATstpSPQryOrderFundDetailField();
 	memset(&myreq, 0, sizeof(myreq));
@@ -739,7 +739,7 @@ int ToraOptionApi::reqQryOrderFundDetail(const dict &req, int nRequestID)
 	return i;
 };
 
-int ToraOptionApi::reqQryFundTransferDetail(const dict &req, int nRequestID)
+int OptionApi::reqQryFundTransferDetail(const dict &req, int nRequestID)
 {
 	CTORATstpSPQryFundTransferDetailField myreq = CTORATstpSPQryFundTransferDetailField();
 	memset(&myreq, 0, sizeof(myreq));
@@ -751,7 +751,7 @@ int ToraOptionApi::reqQryFundTransferDetail(const dict &req, int nRequestID)
 	return i;
 };
 
-int ToraOptionApi::reqQryPositionTransferDetail(const dict &req, int nRequestID)
+int OptionApi::reqQryPositionTransferDetail(const dict &req, int nRequestID)
 {
 	CTORATstpSPQryPositionTransferDetailField myreq = CTORATstpSPQryPositionTransferDetailField();
 	memset(&myreq, 0, sizeof(myreq));
@@ -766,7 +766,7 @@ int ToraOptionApi::reqQryPositionTransferDetail(const dict &req, int nRequestID)
 	return i;
 };
 
-int ToraOptionApi::reqQryOrderAction(const dict &req, int nRequestID)
+int OptionApi::reqQryOrderAction(const dict &req, int nRequestID)
 {
 	CTORATstpSPQryOrderActionField myreq = CTORATstpSPQryOrderActionField();
 	memset(&myreq, 0, sizeof(myreq));
@@ -785,7 +785,7 @@ int ToraOptionApi::reqQryOrderAction(const dict &req, int nRequestID)
 	return i;
 };
 
-int ToraOptionApi::reqQryStockPosition(const dict &req, int nRequestID)
+int OptionApi::reqQryStockPosition(const dict &req, int nRequestID)
 {
 	CTORATstpSPQryStockPositionField myreq = CTORATstpSPQryStockPositionField();
 	memset(&myreq, 0, sizeof(myreq));
@@ -799,7 +799,7 @@ int ToraOptionApi::reqQryStockPosition(const dict &req, int nRequestID)
 	return i;
 };
 
-int ToraOptionApi::reqQryLock(const dict &req, int nRequestID)
+int OptionApi::reqQryLock(const dict &req, int nRequestID)
 {
 	CTORATstpSPQryLockField myreq = CTORATstpSPQryLockField();
 	memset(&myreq, 0, sizeof(myreq));
@@ -820,7 +820,7 @@ int ToraOptionApi::reqQryLock(const dict &req, int nRequestID)
 	return i;
 };
 
-int ToraOptionApi::reqQryExercise(const dict &req, int nRequestID)
+int OptionApi::reqQryExercise(const dict &req, int nRequestID)
 {
 	CTORATstpSPQryExerciseField myreq = CTORATstpSPQryExerciseField();
 	memset(&myreq, 0, sizeof(myreq));
@@ -840,7 +840,7 @@ int ToraOptionApi::reqQryExercise(const dict &req, int nRequestID)
 	return i;
 };
 
-int ToraOptionApi::reqQryLockPosition(const dict &req, int nRequestID)
+int OptionApi::reqQryLockPosition(const dict &req, int nRequestID)
 {
 	CTORATstpSPQryLockPositionField myreq = CTORATstpSPQryLockPositionField();
 	memset(&myreq, 0, sizeof(myreq));
@@ -854,7 +854,7 @@ int ToraOptionApi::reqQryLockPosition(const dict &req, int nRequestID)
 	return i;
 };
 
-int ToraOptionApi::reqQryExerciseAction(const dict &req, int nRequestID)
+int OptionApi::reqQryExerciseAction(const dict &req, int nRequestID)
 {
 	CTORATstpSPQryExerciseActionField myreq = CTORATstpSPQryExerciseActionField();
 	memset(&myreq, 0, sizeof(myreq));
@@ -873,7 +873,7 @@ int ToraOptionApi::reqQryExerciseAction(const dict &req, int nRequestID)
 	return i;
 };
 
-int ToraOptionApi::reqQryLockAction(const dict &req, int nRequestID)
+int OptionApi::reqQryLockAction(const dict &req, int nRequestID)
 {
 	CTORATstpSPQryLockActionField myreq = CTORATstpSPQryLockActionField();
 	memset(&myreq, 0, sizeof(myreq));
@@ -892,7 +892,7 @@ int ToraOptionApi::reqQryLockAction(const dict &req, int nRequestID)
 	return i;
 };
 
-int ToraOptionApi::reqQryStockPositionTransferDetail(const dict &req, int nRequestID)
+int OptionApi::reqQryStockPositionTransferDetail(const dict &req, int nRequestID)
 {
 	CTORATstpSPQryStockPositionTransferDetailField myreq = CTORATstpSPQryStockPositionTransferDetailField();
 	memset(&myreq, 0, sizeof(myreq));
@@ -906,7 +906,7 @@ int ToraOptionApi::reqQryStockPositionTransferDetail(const dict &req, int nReque
 	return i;
 };
 
-int ToraOptionApi::reqQryTradingNotice(const dict &req, int nRequestID)
+int OptionApi::reqQryTradingNotice(const dict &req, int nRequestID)
 {
 	CTORATstpSPQryTradingNoticeField myreq = CTORATstpSPQryTradingNoticeField();
 	memset(&myreq, 0, sizeof(myreq));
@@ -919,7 +919,7 @@ int ToraOptionApi::reqQryTradingNotice(const dict &req, int nRequestID)
 	return i;
 };
 
-int ToraOptionApi::reqQryStockDisposal(const dict &req, int nRequestID)
+int OptionApi::reqQryStockDisposal(const dict &req, int nRequestID)
 {
 	CTORATstpSPQryStockDisposalField myreq = CTORATstpSPQryStockDisposalField();
 	memset(&myreq, 0, sizeof(myreq));
@@ -939,7 +939,7 @@ int ToraOptionApi::reqQryStockDisposal(const dict &req, int nRequestID)
 	return i;
 };
 
-int ToraOptionApi::reqQryStockDisposalAction(const dict &req, int nRequestID)
+int OptionApi::reqQryStockDisposalAction(const dict &req, int nRequestID)
 {
 	CTORATstpSPQryStockDisposalActionField myreq = CTORATstpSPQryStockDisposalActionField();
 	memset(&myreq, 0, sizeof(myreq));
@@ -958,7 +958,7 @@ int ToraOptionApi::reqQryStockDisposalAction(const dict &req, int nRequestID)
 	return i;
 };
 
-int ToraOptionApi::reqQryCondOrder(const dict &req, int nRequestID)
+int OptionApi::reqQryCondOrder(const dict &req, int nRequestID)
 {
 	CTORATstpSPQryCondOrderField myreq = CTORATstpSPQryCondOrderField();
 	memset(&myreq, 0, sizeof(myreq));
@@ -977,7 +977,7 @@ int ToraOptionApi::reqQryCondOrder(const dict &req, int nRequestID)
 	return i;
 };
 
-int ToraOptionApi::reqQryCondOrderAction(const dict &req, int nRequestID)
+int OptionApi::reqQryCondOrderAction(const dict &req, int nRequestID)
 {
 	CTORATstpSPQryCondOrderActionField myreq = CTORATstpSPQryCondOrderActionField();
 	memset(&myreq, 0, sizeof(myreq));
@@ -991,7 +991,7 @@ int ToraOptionApi::reqQryCondOrderAction(const dict &req, int nRequestID)
 	return i;
 };
 
-int ToraOptionApi::reqQryInvestorLimitPosition(const dict &req, int nRequestID)
+int OptionApi::reqQryInvestorLimitPosition(const dict &req, int nRequestID)
 {
 	CTORATstpSPQryInvestorLimitPositionField myreq = CTORATstpSPQryInvestorLimitPositionField();
 	memset(&myreq, 0, sizeof(myreq));
@@ -1002,7 +1002,7 @@ int ToraOptionApi::reqQryInvestorLimitPosition(const dict &req, int nRequestID)
 	return i;
 };
 
-int ToraOptionApi::reqQryInvestorLimitAmount(const dict &req, int nRequestID)
+int OptionApi::reqQryInvestorLimitAmount(const dict &req, int nRequestID)
 {
 	CTORATstpSPQryInvestorLimitAmountField myreq = CTORATstpSPQryInvestorLimitAmountField();
 	memset(&myreq, 0, sizeof(myreq));
@@ -1012,7 +1012,7 @@ int ToraOptionApi::reqQryInvestorLimitAmount(const dict &req, int nRequestID)
 	return i;
 };
 
-int ToraOptionApi::reqQryCombOrderAction(const dict &req, int nRequestID)
+int OptionApi::reqQryCombOrderAction(const dict &req, int nRequestID)
 {
 	CTORATstpSPQryCombOrderActionField myreq = CTORATstpSPQryCombOrderActionField();
 	memset(&myreq, 0, sizeof(myreq));
@@ -1031,7 +1031,7 @@ int ToraOptionApi::reqQryCombOrderAction(const dict &req, int nRequestID)
 	return i;
 };
 
-int ToraOptionApi::reqQryCombOrder(const dict &req, int nRequestID)
+int OptionApi::reqQryCombOrder(const dict &req, int nRequestID)
 {
 	CTORATstpSPQryCombOrderField myreq = CTORATstpSPQryCombOrderField();
 	memset(&myreq, 0, sizeof(myreq));
@@ -1053,7 +1053,7 @@ int ToraOptionApi::reqQryCombOrder(const dict &req, int nRequestID)
 	return i;
 };
 
-int ToraOptionApi::reqQryCombPosition(const dict &req, int nRequestID)
+int OptionApi::reqQryCombPosition(const dict &req, int nRequestID)
 {
 	CTORATstpSPQryCombPositionField myreq = CTORATstpSPQryCombPositionField();
 	memset(&myreq, 0, sizeof(myreq));
@@ -1068,7 +1068,7 @@ int ToraOptionApi::reqQryCombPosition(const dict &req, int nRequestID)
 	return i;
 };
 
-int ToraOptionApi::reqQryCombPosDetail(const dict &req, int nRequestID)
+int OptionApi::reqQryCombPosDetail(const dict &req, int nRequestID)
 {
 	CTORATstpSPQryCombPosDetailField myreq = CTORATstpSPQryCombPosDetailField();
 	memset(&myreq, 0, sizeof(myreq));
@@ -1085,7 +1085,7 @@ int ToraOptionApi::reqQryCombPosDetail(const dict &req, int nRequestID)
 	return i;
 };
 
-int ToraOptionApi::reqQryExerciseAppointment(const dict &req, int nRequestID)
+int OptionApi::reqQryExerciseAppointment(const dict &req, int nRequestID)
 {
 	CTORATstpSPQryExerciseAppointmentField myreq = CTORATstpSPQryExerciseAppointmentField();
 	memset(&myreq, 0, sizeof(myreq));
@@ -1101,7 +1101,7 @@ int ToraOptionApi::reqQryExerciseAppointment(const dict &req, int nRequestID)
 	return i;
 };
 
-int ToraOptionApi::reqQryInsufficientCoveredStockPosition(const dict &req, int nRequestID)
+int OptionApi::reqQryInsufficientCoveredStockPosition(const dict &req, int nRequestID)
 {
 	CTORATstpSPQryInsufficientCoveredStockPositionField myreq = CTORATstpSPQryInsufficientCoveredStockPositionField();
 	memset(&myreq, 0, sizeof(myreq));
@@ -1115,7 +1115,7 @@ int ToraOptionApi::reqQryInsufficientCoveredStockPosition(const dict &req, int n
 	return i;
 };
 
-int ToraOptionApi::reqQryCombSecurity(const dict &req, int nRequestID)
+int OptionApi::reqQryCombSecurity(const dict &req, int nRequestID)
 {
 	CTORATstpSPQryCombSecurityField myreq = CTORATstpSPQryCombSecurityField();
 	memset(&myreq, 0, sizeof(myreq));
@@ -1126,7 +1126,7 @@ int ToraOptionApi::reqQryCombSecurity(const dict &req, int nRequestID)
 	return i;
 };
 
-int ToraOptionApi::reqQryCombExercise(const dict &req, int nRequestID)
+int OptionApi::reqQryCombExercise(const dict &req, int nRequestID)
 {
 	CTORATstpSPQryCombExerciseField myreq = CTORATstpSPQryCombExerciseField();
 	memset(&myreq, 0, sizeof(myreq));
@@ -1147,7 +1147,7 @@ int ToraOptionApi::reqQryCombExercise(const dict &req, int nRequestID)
 	return i;
 };
 
-int ToraOptionApi::reqQryCombExerciseAction(const dict &req, int nRequestID)
+int OptionApi::reqQryCombExerciseAction(const dict &req, int nRequestID)
 {
 	CTORATstpSPQryCombExerciseActionField myreq = CTORATstpSPQryCombExerciseActionField();
 	memset(&myreq, 0, sizeof(myreq));

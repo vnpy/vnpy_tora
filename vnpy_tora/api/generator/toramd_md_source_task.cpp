@@ -1,11 +1,11 @@
-void ToraMdApi::OnFrontConnected()
+void MdApi::OnFrontConnected()
 {
 	Task task = Task();
 	task.task_name = ONFRONTCONNECTED;
 	this->task_queue.push(task);
 };
 
-void ToraMdApi::OnFrontDisconnected(int nReason)
+void MdApi::OnFrontDisconnected(int nReason)
 {
 	Task task = Task();
 	task.task_name = ONFRONTDISCONNECTED;
@@ -13,7 +13,7 @@ void ToraMdApi::OnFrontDisconnected(int nReason)
 	this->task_queue.push(task);
 };
 
-void ToraMdApi::OnRspGetConnectionInfo(CTORATstpConnectionInfoField *pConnectionInfoField, CTORATstpRspInfoField *pRspInfoField, int nRequestID) 
+void MdApi::OnRspGetConnectionInfo(CTORATstpConnectionInfoField *pConnectionInfoField, CTORATstpRspInfoField *pRspInfoField, int nRequestID) 
 {
 	Task task = Task();
 	task.task_name = ONRSPGETCONNECTIONINFO;
@@ -33,7 +33,7 @@ void ToraMdApi::OnRspGetConnectionInfo(CTORATstpConnectionInfoField *pConnection
 	this->task_queue.push(task);
 };
 
-void ToraMdApi::OnRspUserLogin(CTORATstpRspUserLoginField *pRspUserLoginField, CTORATstpRspInfoField *pRspInfoField, int nRequestID) 
+void MdApi::OnRspUserLogin(CTORATstpRspUserLoginField *pRspUserLoginField, CTORATstpRspInfoField *pRspInfoField, int nRequestID) 
 {
 	Task task = Task();
 	task.task_name = ONRSPUSERLOGIN;
@@ -53,7 +53,7 @@ void ToraMdApi::OnRspUserLogin(CTORATstpRspUserLoginField *pRspUserLoginField, C
 	this->task_queue.push(task);
 };
 
-void ToraMdApi::OnRspUserLogout(CTORATstpUserLogoutField *pUserLogoutField, CTORATstpRspInfoField *pRspInfoField, int nRequestID) 
+void MdApi::OnRspUserLogout(CTORATstpUserLogoutField *pUserLogoutField, CTORATstpRspInfoField *pRspInfoField, int nRequestID) 
 {
 	Task task = Task();
 	task.task_name = ONRSPUSERLOGOUT;
@@ -73,7 +73,7 @@ void ToraMdApi::OnRspUserLogout(CTORATstpUserLogoutField *pUserLogoutField, CTOR
 	this->task_queue.push(task);
 };
 
-void ToraMdApi::OnRspSubMarketData(CTORATstpSpecificSecurityField *pSpecificSecurityField, CTORATstpRspInfoField *pRspInfoField) 
+void MdApi::OnRspSubMarketData(CTORATstpSpecificSecurityField *pSpecificSecurityField, CTORATstpRspInfoField *pRspInfoField) 
 {
 	Task task = Task();
 	task.task_name = ONRSPSUBMARKETDATA;
@@ -92,7 +92,7 @@ void ToraMdApi::OnRspSubMarketData(CTORATstpSpecificSecurityField *pSpecificSecu
 	this->task_queue.push(task);
 };
 
-void ToraMdApi::OnRspUnSubMarketData(CTORATstpSpecificSecurityField *pSpecificSecurityField, CTORATstpRspInfoField *pRspInfoField) 
+void MdApi::OnRspUnSubMarketData(CTORATstpSpecificSecurityField *pSpecificSecurityField, CTORATstpRspInfoField *pRspInfoField) 
 {
 	Task task = Task();
 	task.task_name = ONRSPUNSUBMARKETDATA;
@@ -111,7 +111,7 @@ void ToraMdApi::OnRspUnSubMarketData(CTORATstpSpecificSecurityField *pSpecificSe
 	this->task_queue.push(task);
 };
 
-void ToraMdApi::OnRspSubPHMarketData(CTORATstpSpecificSecurityField *pSpecificSecurityField, CTORATstpRspInfoField *pRspInfoField) 
+void MdApi::OnRspSubPHMarketData(CTORATstpSpecificSecurityField *pSpecificSecurityField, CTORATstpRspInfoField *pRspInfoField) 
 {
 	Task task = Task();
 	task.task_name = ONRSPSUBPHMARKETDATA;
@@ -130,7 +130,7 @@ void ToraMdApi::OnRspSubPHMarketData(CTORATstpSpecificSecurityField *pSpecificSe
 	this->task_queue.push(task);
 };
 
-void ToraMdApi::OnRspUnSubPHMarketData(CTORATstpSpecificSecurityField *pSpecificSecurityField, CTORATstpRspInfoField *pRspInfoField) 
+void MdApi::OnRspUnSubPHMarketData(CTORATstpSpecificSecurityField *pSpecificSecurityField, CTORATstpRspInfoField *pRspInfoField) 
 {
 	Task task = Task();
 	task.task_name = ONRSPUNSUBPHMARKETDATA;
@@ -149,7 +149,7 @@ void ToraMdApi::OnRspUnSubPHMarketData(CTORATstpSpecificSecurityField *pSpecific
 	this->task_queue.push(task);
 };
 
-void ToraMdApi::OnRspSubSpecialMarketData(CTORATstpSpecificSecurityField *pSpecificSecurityField, CTORATstpRspInfoField *pRspInfoField) 
+void MdApi::OnRspSubSpecialMarketData(CTORATstpSpecificSecurityField *pSpecificSecurityField, CTORATstpRspInfoField *pRspInfoField) 
 {
 	Task task = Task();
 	task.task_name = ONRSPSUBSPECIALMARKETDATA;
@@ -168,7 +168,7 @@ void ToraMdApi::OnRspSubSpecialMarketData(CTORATstpSpecificSecurityField *pSpeci
 	this->task_queue.push(task);
 };
 
-void ToraMdApi::OnRspUnSubSpecialMarketData(CTORATstpSpecificSecurityField *pSpecificSecurityField, CTORATstpRspInfoField *pRspInfoField) 
+void MdApi::OnRspUnSubSpecialMarketData(CTORATstpSpecificSecurityField *pSpecificSecurityField, CTORATstpRspInfoField *pRspInfoField) 
 {
 	Task task = Task();
 	task.task_name = ONRSPUNSUBSPECIALMARKETDATA;
@@ -187,7 +187,7 @@ void ToraMdApi::OnRspUnSubSpecialMarketData(CTORATstpSpecificSecurityField *pSpe
 	this->task_queue.push(task);
 };
 
-void ToraMdApi::OnRspSubSimplifyMarketData(CTORATstpSpecificSecurityField *pSpecificSecurityField, CTORATstpRspInfoField *pRspInfoField) 
+void MdApi::OnRspSubSimplifyMarketData(CTORATstpSpecificSecurityField *pSpecificSecurityField, CTORATstpRspInfoField *pRspInfoField) 
 {
 	Task task = Task();
 	task.task_name = ONRSPSUBSIMPLIFYMARKETDATA;
@@ -206,7 +206,7 @@ void ToraMdApi::OnRspSubSimplifyMarketData(CTORATstpSpecificSecurityField *pSpec
 	this->task_queue.push(task);
 };
 
-void ToraMdApi::OnRspUnSubSimplifyMarketData(CTORATstpSpecificSecurityField *pSpecificSecurityField, CTORATstpRspInfoField *pRspInfoField) 
+void MdApi::OnRspUnSubSimplifyMarketData(CTORATstpSpecificSecurityField *pSpecificSecurityField, CTORATstpRspInfoField *pRspInfoField) 
 {
 	Task task = Task();
 	task.task_name = ONRSPUNSUBSIMPLIFYMARKETDATA;
@@ -225,7 +225,7 @@ void ToraMdApi::OnRspUnSubSimplifyMarketData(CTORATstpSpecificSecurityField *pSp
 	this->task_queue.push(task);
 };
 
-void ToraMdApi::OnRspSubSecurityStatus(CTORATstpSpecificSecurityField *pSpecificSecurityField, CTORATstpRspInfoField *pRspInfoField) 
+void MdApi::OnRspSubSecurityStatus(CTORATstpSpecificSecurityField *pSpecificSecurityField, CTORATstpRspInfoField *pRspInfoField) 
 {
 	Task task = Task();
 	task.task_name = ONRSPSUBSECURITYSTATUS;
@@ -244,7 +244,7 @@ void ToraMdApi::OnRspSubSecurityStatus(CTORATstpSpecificSecurityField *pSpecific
 	this->task_queue.push(task);
 };
 
-void ToraMdApi::OnRspUnSubSecurityStatus(CTORATstpSpecificSecurityField *pSpecificSecurityField, CTORATstpRspInfoField *pRspInfoField) 
+void MdApi::OnRspUnSubSecurityStatus(CTORATstpSpecificSecurityField *pSpecificSecurityField, CTORATstpRspInfoField *pRspInfoField) 
 {
 	Task task = Task();
 	task.task_name = ONRSPUNSUBSECURITYSTATUS;
@@ -263,7 +263,7 @@ void ToraMdApi::OnRspUnSubSecurityStatus(CTORATstpSpecificSecurityField *pSpecif
 	this->task_queue.push(task);
 };
 
-void ToraMdApi::OnRspSubMarketStatus(CTORATstpSpecificMarketField *pSpecificMarketField, CTORATstpRspInfoField *pRspInfoField) 
+void MdApi::OnRspSubMarketStatus(CTORATstpSpecificMarketField *pSpecificMarketField, CTORATstpRspInfoField *pRspInfoField) 
 {
 	Task task = Task();
 	task.task_name = ONRSPSUBMARKETSTATUS;
@@ -282,7 +282,7 @@ void ToraMdApi::OnRspSubMarketStatus(CTORATstpSpecificMarketField *pSpecificMark
 	this->task_queue.push(task);
 };
 
-void ToraMdApi::OnRspUnSubMarketStatus(CTORATstpSpecificMarketField *pSpecificMarketField, CTORATstpRspInfoField *pRspInfoField) 
+void MdApi::OnRspUnSubMarketStatus(CTORATstpSpecificMarketField *pSpecificMarketField, CTORATstpRspInfoField *pRspInfoField) 
 {
 	Task task = Task();
 	task.task_name = ONRSPUNSUBMARKETSTATUS;
@@ -301,7 +301,7 @@ void ToraMdApi::OnRspUnSubMarketStatus(CTORATstpSpecificMarketField *pSpecificMa
 	this->task_queue.push(task);
 };
 
-void ToraMdApi::OnRspSubImcParams(CTORATstpSpecificMarketField *pSpecificMarketField, CTORATstpRspInfoField *pRspInfoField) 
+void MdApi::OnRspSubImcParams(CTORATstpSpecificMarketField *pSpecificMarketField, CTORATstpRspInfoField *pRspInfoField) 
 {
 	Task task = Task();
 	task.task_name = ONRSPSUBIMCPARAMS;
@@ -320,7 +320,7 @@ void ToraMdApi::OnRspSubImcParams(CTORATstpSpecificMarketField *pSpecificMarketF
 	this->task_queue.push(task);
 };
 
-void ToraMdApi::OnRspUnSubImcParams(CTORATstpSpecificMarketField *pSpecificMarketField, CTORATstpRspInfoField *pRspInfoField) 
+void MdApi::OnRspUnSubImcParams(CTORATstpSpecificMarketField *pSpecificMarketField, CTORATstpRspInfoField *pRspInfoField) 
 {
 	Task task = Task();
 	task.task_name = ONRSPUNSUBIMCPARAMS;
@@ -339,7 +339,7 @@ void ToraMdApi::OnRspUnSubImcParams(CTORATstpSpecificMarketField *pSpecificMarke
 	this->task_queue.push(task);
 };
 
-void ToraMdApi::OnRspInquiryMarketDataMirror(CTORATstpMarketDataField *pMarketDataField, CTORATstpRspInfoField *pRspInfoField, int nRequestID, bool bIsLast) 
+void MdApi::OnRspInquiryMarketDataMirror(CTORATstpMarketDataField *pMarketDataField, CTORATstpRspInfoField *pRspInfoField, int nRequestID, bool bIsLast) 
 {
 	Task task = Task();
 	task.task_name = ONRSPINQUIRYMARKETDATAMIRROR;
@@ -360,7 +360,7 @@ void ToraMdApi::OnRspInquiryMarketDataMirror(CTORATstpMarketDataField *pMarketDa
 	this->task_queue.push(task);
 };
 
-void ToraMdApi::OnRspInquiryPHMarketDataMirror(CTORATstpPHMarketDataField *pPHMarketDataField, CTORATstpRspInfoField *pRspInfoField, int nRequestID, bool bIsLast) 
+void MdApi::OnRspInquiryPHMarketDataMirror(CTORATstpPHMarketDataField *pPHMarketDataField, CTORATstpRspInfoField *pRspInfoField, int nRequestID, bool bIsLast) 
 {
 	Task task = Task();
 	task.task_name = ONRSPINQUIRYPHMARKETDATAMIRROR;
@@ -381,7 +381,7 @@ void ToraMdApi::OnRspInquiryPHMarketDataMirror(CTORATstpPHMarketDataField *pPHMa
 	this->task_queue.push(task);
 };
 
-void ToraMdApi::OnRspInquirySpecialMarketDataMirror(CTORATstpSpecialMarketDataField *pMarketDataField, CTORATstpRspInfoField *pRspInfoField, int nRequestID, bool bIsLast) 
+void MdApi::OnRspInquirySpecialMarketDataMirror(CTORATstpSpecialMarketDataField *pMarketDataField, CTORATstpRspInfoField *pRspInfoField, int nRequestID, bool bIsLast) 
 {
 	Task task = Task();
 	task.task_name = ONRSPINQUIRYSPECIALMARKETDATAMIRROR;
@@ -402,7 +402,7 @@ void ToraMdApi::OnRspInquirySpecialMarketDataMirror(CTORATstpSpecialMarketDataFi
 	this->task_queue.push(task);
 };
 
-void ToraMdApi::OnRspSubSPMarketData(CTORATstpSpecificSecurityField *pSpecificSecurityField, CTORATstpRspInfoField *pRspInfoField) 
+void MdApi::OnRspSubSPMarketData(CTORATstpSpecificSecurityField *pSpecificSecurityField, CTORATstpRspInfoField *pRspInfoField) 
 {
 	Task task = Task();
 	task.task_name = ONRSPSUBSPMARKETDATA;
@@ -421,7 +421,7 @@ void ToraMdApi::OnRspSubSPMarketData(CTORATstpSpecificSecurityField *pSpecificSe
 	this->task_queue.push(task);
 };
 
-void ToraMdApi::OnRspUnSubSPMarketData(CTORATstpSpecificSecurityField *pSpecificSecurityField, CTORATstpRspInfoField *pRspInfoField) 
+void MdApi::OnRspUnSubSPMarketData(CTORATstpSpecificSecurityField *pSpecificSecurityField, CTORATstpRspInfoField *pRspInfoField) 
 {
 	Task task = Task();
 	task.task_name = ONRSPUNSUBSPMARKETDATA;
@@ -440,7 +440,7 @@ void ToraMdApi::OnRspUnSubSPMarketData(CTORATstpSpecificSecurityField *pSpecific
 	this->task_queue.push(task);
 };
 
-void ToraMdApi::OnRspSubSPSimplifyMarketData(CTORATstpSpecificSecurityField *pSpecificSecurityField, CTORATstpRspInfoField *pRspInfoField) 
+void MdApi::OnRspSubSPSimplifyMarketData(CTORATstpSpecificSecurityField *pSpecificSecurityField, CTORATstpRspInfoField *pRspInfoField) 
 {
 	Task task = Task();
 	task.task_name = ONRSPSUBSPSIMPLIFYMARKETDATA;
@@ -459,7 +459,7 @@ void ToraMdApi::OnRspSubSPSimplifyMarketData(CTORATstpSpecificSecurityField *pSp
 	this->task_queue.push(task);
 };
 
-void ToraMdApi::OnRspUnSubSPSimplifyMarketData(CTORATstpSpecificSecurityField *pSpecificSecurityField, CTORATstpRspInfoField *pRspInfoField) 
+void MdApi::OnRspUnSubSPSimplifyMarketData(CTORATstpSpecificSecurityField *pSpecificSecurityField, CTORATstpRspInfoField *pRspInfoField) 
 {
 	Task task = Task();
 	task.task_name = ONRSPUNSUBSPSIMPLIFYMARKETDATA;
@@ -478,7 +478,7 @@ void ToraMdApi::OnRspUnSubSPSimplifyMarketData(CTORATstpSpecificSecurityField *p
 	this->task_queue.push(task);
 };
 
-void ToraMdApi::OnRspSubSPSecurityStatus(CTORATstpSpecificSecurityField *pSpecificSecurityField, CTORATstpRspInfoField *pRspInfoField) 
+void MdApi::OnRspSubSPSecurityStatus(CTORATstpSpecificSecurityField *pSpecificSecurityField, CTORATstpRspInfoField *pRspInfoField) 
 {
 	Task task = Task();
 	task.task_name = ONRSPSUBSPSECURITYSTATUS;
@@ -497,7 +497,7 @@ void ToraMdApi::OnRspSubSPSecurityStatus(CTORATstpSpecificSecurityField *pSpecif
 	this->task_queue.push(task);
 };
 
-void ToraMdApi::OnRspUnSubSPSecurityStatus(CTORATstpSpecificSecurityField *pSpecificSecurityField, CTORATstpRspInfoField *pRspInfoField) 
+void MdApi::OnRspUnSubSPSecurityStatus(CTORATstpSpecificSecurityField *pSpecificSecurityField, CTORATstpRspInfoField *pRspInfoField) 
 {
 	Task task = Task();
 	task.task_name = ONRSPUNSUBSPSECURITYSTATUS;
@@ -516,7 +516,7 @@ void ToraMdApi::OnRspUnSubSPSecurityStatus(CTORATstpSpecificSecurityField *pSpec
 	this->task_queue.push(task);
 };
 
-void ToraMdApi::OnRspSubSPMarketStatus(CTORATstpSpecificMarketField *pSpecificMarketField, CTORATstpRspInfoField *pRspInfoField) 
+void MdApi::OnRspSubSPMarketStatus(CTORATstpSpecificMarketField *pSpecificMarketField, CTORATstpRspInfoField *pRspInfoField) 
 {
 	Task task = Task();
 	task.task_name = ONRSPSUBSPMARKETSTATUS;
@@ -535,7 +535,7 @@ void ToraMdApi::OnRspSubSPMarketStatus(CTORATstpSpecificMarketField *pSpecificMa
 	this->task_queue.push(task);
 };
 
-void ToraMdApi::OnRspUnSubSPMarketStatus(CTORATstpSpecificMarketField *pSpecificMarketField, CTORATstpRspInfoField *pRspInfoField) 
+void MdApi::OnRspUnSubSPMarketStatus(CTORATstpSpecificMarketField *pSpecificMarketField, CTORATstpRspInfoField *pRspInfoField) 
 {
 	Task task = Task();
 	task.task_name = ONRSPUNSUBSPMARKETSTATUS;
@@ -554,7 +554,7 @@ void ToraMdApi::OnRspUnSubSPMarketStatus(CTORATstpSpecificMarketField *pSpecific
 	this->task_queue.push(task);
 };
 
-void ToraMdApi::OnRspInquirySPMarketDataMirror(CTORATstpMarketDataField *pMarketDataField, CTORATstpRspInfoField *pRspInfoField, int nRequestID, bool bIsLast) 
+void MdApi::OnRspInquirySPMarketDataMirror(CTORATstpMarketDataField *pMarketDataField, CTORATstpRspInfoField *pRspInfoField, int nRequestID, bool bIsLast) 
 {
 	Task task = Task();
 	task.task_name = ONRSPINQUIRYSPMARKETDATAMIRROR;
@@ -575,7 +575,7 @@ void ToraMdApi::OnRspInquirySPMarketDataMirror(CTORATstpMarketDataField *pMarket
 	this->task_queue.push(task);
 };
 
-void ToraMdApi::OnRtnMarketData(CTORATstpMarketDataField *pMarketDataField) 
+void MdApi::OnRtnMarketData(CTORATstpMarketDataField *pMarketDataField) 
 {
 	Task task = Task();
 	task.task_name = ONRTNMARKETDATA;
@@ -588,7 +588,7 @@ void ToraMdApi::OnRtnMarketData(CTORATstpMarketDataField *pMarketDataField)
 	this->task_queue.push(task);
 };
 
-void ToraMdApi::OnRtnPHMarketData(CTORATstpPHMarketDataField *pPHMarketDataField) 
+void MdApi::OnRtnPHMarketData(CTORATstpPHMarketDataField *pPHMarketDataField) 
 {
 	Task task = Task();
 	task.task_name = ONRTNPHMARKETDATA;
@@ -601,7 +601,7 @@ void ToraMdApi::OnRtnPHMarketData(CTORATstpPHMarketDataField *pPHMarketDataField
 	this->task_queue.push(task);
 };
 
-void ToraMdApi::OnRtnSpecialMarketData(CTORATstpSpecialMarketDataField *pSpecialMarketDataField) 
+void MdApi::OnRtnSpecialMarketData(CTORATstpSpecialMarketDataField *pSpecialMarketDataField) 
 {
 	Task task = Task();
 	task.task_name = ONRTNSPECIALMARKETDATA;
@@ -614,7 +614,7 @@ void ToraMdApi::OnRtnSpecialMarketData(CTORATstpSpecialMarketDataField *pSpecial
 	this->task_queue.push(task);
 };
 
-void ToraMdApi::OnRtnSimplifyMarketData(CTORATstpSimplifyMarketDataField *pSimplifyMarketDataField) 
+void MdApi::OnRtnSimplifyMarketData(CTORATstpSimplifyMarketDataField *pSimplifyMarketDataField) 
 {
 	Task task = Task();
 	task.task_name = ONRTNSIMPLIFYMARKETDATA;
@@ -627,7 +627,7 @@ void ToraMdApi::OnRtnSimplifyMarketData(CTORATstpSimplifyMarketDataField *pSimpl
 	this->task_queue.push(task);
 };
 
-void ToraMdApi::OnRtnSecurityStatus(CTORATstpSecurityStatusField *pSecurityStatusField) 
+void MdApi::OnRtnSecurityStatus(CTORATstpSecurityStatusField *pSecurityStatusField) 
 {
 	Task task = Task();
 	task.task_name = ONRTNSECURITYSTATUS;
@@ -640,7 +640,7 @@ void ToraMdApi::OnRtnSecurityStatus(CTORATstpSecurityStatusField *pSecurityStatu
 	this->task_queue.push(task);
 };
 
-void ToraMdApi::OnRtnMarketStatus(CTORATstpMarketStatusField *pMarketStatusField) 
+void MdApi::OnRtnMarketStatus(CTORATstpMarketStatusField *pMarketStatusField) 
 {
 	Task task = Task();
 	task.task_name = ONRTNMARKETSTATUS;
@@ -653,7 +653,7 @@ void ToraMdApi::OnRtnMarketStatus(CTORATstpMarketStatusField *pMarketStatusField
 	this->task_queue.push(task);
 };
 
-void ToraMdApi::OnRtnImcParams(CTORATstpImcParamsField *pImcParamsField) 
+void MdApi::OnRtnImcParams(CTORATstpImcParamsField *pImcParamsField) 
 {
 	Task task = Task();
 	task.task_name = ONRTNIMCPARAMS;
@@ -666,7 +666,7 @@ void ToraMdApi::OnRtnImcParams(CTORATstpImcParamsField *pImcParamsField)
 	this->task_queue.push(task);
 };
 
-void ToraMdApi::OnRtnSPMarketData(CTORATstpMarketDataField *pMarketDataField) 
+void MdApi::OnRtnSPMarketData(CTORATstpMarketDataField *pMarketDataField) 
 {
 	Task task = Task();
 	task.task_name = ONRTNSPMARKETDATA;
@@ -679,7 +679,7 @@ void ToraMdApi::OnRtnSPMarketData(CTORATstpMarketDataField *pMarketDataField)
 	this->task_queue.push(task);
 };
 
-void ToraMdApi::OnRtnSPSimplifyMarketData(CTORATstpSimplifyMarketDataField *pSimplifyMarketDataField) 
+void MdApi::OnRtnSPSimplifyMarketData(CTORATstpSimplifyMarketDataField *pSimplifyMarketDataField) 
 {
 	Task task = Task();
 	task.task_name = ONRTNSPSIMPLIFYMARKETDATA;
@@ -692,7 +692,7 @@ void ToraMdApi::OnRtnSPSimplifyMarketData(CTORATstpSimplifyMarketDataField *pSim
 	this->task_queue.push(task);
 };
 
-void ToraMdApi::OnRtnSPSecurityStatus(CTORATstpSecurityStatusField *pSecurityStatusField) 
+void MdApi::OnRtnSPSecurityStatus(CTORATstpSecurityStatusField *pSecurityStatusField) 
 {
 	Task task = Task();
 	task.task_name = ONRTNSPSECURITYSTATUS;
@@ -705,7 +705,7 @@ void ToraMdApi::OnRtnSPSecurityStatus(CTORATstpSecurityStatusField *pSecuritySta
 	this->task_queue.push(task);
 };
 
-void ToraMdApi::OnRtnSPMarketStatus(CTORATstpMarketStatusField *pMarketStatusField) 
+void MdApi::OnRtnSPMarketStatus(CTORATstpMarketStatusField *pMarketStatusField) 
 {
 	Task task = Task();
 	task.task_name = ONRTNSPMARKETSTATUS;
@@ -718,7 +718,7 @@ void ToraMdApi::OnRtnSPMarketStatus(CTORATstpMarketStatusField *pMarketStatusFie
 	this->task_queue.push(task);
 };
 
-void ToraMdApi::OnRspSubRapidMarketData(CTORATstpSpecificSecurityField *pSpecificSecurityField, CTORATstpRspInfoField *pRspInfoField) 
+void MdApi::OnRspSubRapidMarketData(CTORATstpSpecificSecurityField *pSpecificSecurityField, CTORATstpRspInfoField *pRspInfoField) 
 {
 	Task task = Task();
 	task.task_name = ONRSPSUBRAPIDMARKETDATA;
@@ -737,7 +737,7 @@ void ToraMdApi::OnRspSubRapidMarketData(CTORATstpSpecificSecurityField *pSpecifi
 	this->task_queue.push(task);
 };
 
-void ToraMdApi::OnRspUnSubRapidMarketData(CTORATstpSpecificSecurityField *pSpecificSecurityField, CTORATstpRspInfoField *pRspInfoField) 
+void MdApi::OnRspUnSubRapidMarketData(CTORATstpSpecificSecurityField *pSpecificSecurityField, CTORATstpRspInfoField *pRspInfoField) 
 {
 	Task task = Task();
 	task.task_name = ONRSPUNSUBRAPIDMARKETDATA;
@@ -756,7 +756,7 @@ void ToraMdApi::OnRspUnSubRapidMarketData(CTORATstpSpecificSecurityField *pSpeci
 	this->task_queue.push(task);
 };
 
-void ToraMdApi::OnRtnRapidMarketData(CTORATstpRapidMarketDataField *pRapidMarketDataField) 
+void MdApi::OnRtnRapidMarketData(CTORATstpRapidMarketDataField *pRapidMarketDataField) 
 {
 	Task task = Task();
 	task.task_name = ONRTNRAPIDMARKETDATA;

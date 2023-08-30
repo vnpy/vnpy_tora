@@ -1,16 +1,16 @@
-void ToraOptionApi::processFrontConnected(Task *task)
+void OptionApi::processFrontConnected(Task *task)
 {
 	gil_scoped_acquire acquire;
 	this->onFrontConnected();
 };
 
-void ToraOptionApi::processFrontDisconnected(Task *task)
+void OptionApi::processFrontDisconnected(Task *task)
 {
 	gil_scoped_acquire acquire;
 	this->onFrontDisconnected(task->task_id);
 };
 
-void ToraOptionApi::processRspError(Task *task)
+void OptionApi::processRspError(Task *task)
 {
 	gil_scoped_acquire acquire;
 	dict error;
@@ -24,7 +24,7 @@ void ToraOptionApi::processRspError(Task *task)
 	this->onRspError(error, task->task_id, task->task_last);
 };
 
-void ToraOptionApi::processRspGetConnectionInfo(Task *task)
+void OptionApi::processRspGetConnectionInfo(Task *task)
 {
 	gil_scoped_acquire acquire;
 	dict data;
@@ -49,7 +49,7 @@ void ToraOptionApi::processRspGetConnectionInfo(Task *task)
 	this->onRspGetConnectionInfo(data, error, task->task_id);
 };
 
-void ToraOptionApi::processRspUserLogin(Task *task)
+void OptionApi::processRspUserLogin(Task *task)
 {
 	gil_scoped_acquire acquire;
 	dict data;
@@ -100,7 +100,7 @@ void ToraOptionApi::processRspUserLogin(Task *task)
 	this->onRspUserLogin(data, error, task->task_id);
 };
 
-void ToraOptionApi::processRspUserLogout(Task *task)
+void OptionApi::processRspUserLogout(Task *task)
 {
 	gil_scoped_acquire acquire;
 	dict data;
@@ -121,7 +121,7 @@ void ToraOptionApi::processRspUserLogout(Task *task)
 	this->onRspUserLogout(data, error, task->task_id);
 };
 
-void ToraOptionApi::processRspUserPasswordUpdate(Task *task)
+void OptionApi::processRspUserPasswordUpdate(Task *task)
 {
 	gil_scoped_acquire acquire;
 	dict data;
@@ -144,7 +144,7 @@ void ToraOptionApi::processRspUserPasswordUpdate(Task *task)
 	this->onRspUserPasswordUpdate(data, error, task->task_id);
 };
 
-void ToraOptionApi::processRspInputDeviceSerial(Task *task)
+void OptionApi::processRspInputDeviceSerial(Task *task)
 {
 	gil_scoped_acquire acquire;
 	dict data;
@@ -166,7 +166,7 @@ void ToraOptionApi::processRspInputDeviceSerial(Task *task)
 	this->onRspInputDeviceSerial(data, error, task->task_id);
 };
 
-void ToraOptionApi::processRspOrderInsert(Task *task)
+void OptionApi::processRspOrderInsert(Task *task)
 {
 	gil_scoped_acquire acquire;
 	dict data;
@@ -217,7 +217,7 @@ void ToraOptionApi::processRspOrderInsert(Task *task)
 	this->onRspOrderInsert(data, error, task->task_id);
 };
 
-void ToraOptionApi::processRtnOrder(Task *task)
+void OptionApi::processRtnOrder(Task *task)
 {
 	gil_scoped_acquire acquire;
 	dict data;
@@ -280,7 +280,7 @@ void ToraOptionApi::processRtnOrder(Task *task)
 	this->onRtnOrder(data);
 };
 
-void ToraOptionApi::processErrRtnOrderInsert(Task *task)
+void OptionApi::processErrRtnOrderInsert(Task *task)
 {
 	gil_scoped_acquire acquire;
 	dict data;
@@ -331,7 +331,7 @@ void ToraOptionApi::processErrRtnOrderInsert(Task *task)
 	this->onErrRtnOrderInsert(data, error, task->task_id);
 };
 
-void ToraOptionApi::processRspOrderAction(Task *task)
+void OptionApi::processRspOrderAction(Task *task)
 {
 	gil_scoped_acquire acquire;
 	dict data;
@@ -371,7 +371,7 @@ void ToraOptionApi::processRspOrderAction(Task *task)
 	this->onRspOrderAction(data, error, task->task_id);
 };
 
-void ToraOptionApi::processErrRtnOrderAction(Task *task)
+void OptionApi::processErrRtnOrderAction(Task *task)
 {
 	gil_scoped_acquire acquire;
 	dict data;
@@ -411,7 +411,7 @@ void ToraOptionApi::processErrRtnOrderAction(Task *task)
 	this->onErrRtnOrderAction(data, error, task->task_id);
 };
 
-void ToraOptionApi::processRtnTrade(Task *task)
+void OptionApi::processRtnTrade(Task *task)
 {
 	gil_scoped_acquire acquire;
 	dict data;
@@ -446,7 +446,7 @@ void ToraOptionApi::processRtnTrade(Task *task)
 	this->onRtnTrade(data);
 };
 
-void ToraOptionApi::processRspExerciseInsert(Task *task)
+void OptionApi::processRspExerciseInsert(Task *task)
 {
 	gil_scoped_acquire acquire;
 	dict data;
@@ -486,7 +486,7 @@ void ToraOptionApi::processRspExerciseInsert(Task *task)
 	this->onRspExerciseInsert(data, error, task->task_id);
 };
 
-void ToraOptionApi::processRtnExercise(Task *task)
+void OptionApi::processRtnExercise(Task *task)
 {
 	gil_scoped_acquire acquire;
 	dict data;
@@ -545,7 +545,7 @@ void ToraOptionApi::processRtnExercise(Task *task)
 	this->onRtnExercise(data);
 };
 
-void ToraOptionApi::processErrRtnExerciseInsert(Task *task)
+void OptionApi::processErrRtnExerciseInsert(Task *task)
 {
 	gil_scoped_acquire acquire;
 	dict data;
@@ -585,7 +585,7 @@ void ToraOptionApi::processErrRtnExerciseInsert(Task *task)
 	this->onErrRtnExerciseInsert(data, error, task->task_id);
 };
 
-void ToraOptionApi::processRspExerciseAction(Task *task)
+void OptionApi::processRspExerciseAction(Task *task)
 {
 	gil_scoped_acquire acquire;
 	dict data;
@@ -625,7 +625,7 @@ void ToraOptionApi::processRspExerciseAction(Task *task)
 	this->onRspExerciseAction(data, error, task->task_id);
 };
 
-void ToraOptionApi::processErrRtnExerciseAction(Task *task)
+void OptionApi::processErrRtnExerciseAction(Task *task)
 {
 	gil_scoped_acquire acquire;
 	dict data;
@@ -665,7 +665,7 @@ void ToraOptionApi::processErrRtnExerciseAction(Task *task)
 	this->onErrRtnExerciseAction(data, error, task->task_id);
 };
 
-void ToraOptionApi::processRspLockInsert(Task *task)
+void OptionApi::processRspLockInsert(Task *task)
 {
 	gil_scoped_acquire acquire;
 	dict data;
@@ -704,7 +704,7 @@ void ToraOptionApi::processRspLockInsert(Task *task)
 	this->onRspLockInsert(data, error, task->task_id);
 };
 
-void ToraOptionApi::processRtnLock(Task *task)
+void OptionApi::processRtnLock(Task *task)
 {
 	gil_scoped_acquire acquire;
 	dict data;
@@ -758,7 +758,7 @@ void ToraOptionApi::processRtnLock(Task *task)
 	this->onRtnLock(data);
 };
 
-void ToraOptionApi::processErrRtnLockInsert(Task *task)
+void OptionApi::processErrRtnLockInsert(Task *task)
 {
 	gil_scoped_acquire acquire;
 	dict data;
@@ -797,7 +797,7 @@ void ToraOptionApi::processErrRtnLockInsert(Task *task)
 	this->onErrRtnLockInsert(data, error, task->task_id);
 };
 
-void ToraOptionApi::processRspLockAction(Task *task)
+void OptionApi::processRspLockAction(Task *task)
 {
 	gil_scoped_acquire acquire;
 	dict data;
@@ -837,7 +837,7 @@ void ToraOptionApi::processRspLockAction(Task *task)
 	this->onRspLockAction(data, error, task->task_id);
 };
 
-void ToraOptionApi::processErrRtnLockAction(Task *task)
+void OptionApi::processErrRtnLockAction(Task *task)
 {
 	gil_scoped_acquire acquire;
 	dict data;
@@ -877,7 +877,7 @@ void ToraOptionApi::processErrRtnLockAction(Task *task)
 	this->onErrRtnLockAction(data, error, task->task_id);
 };
 
-void ToraOptionApi::processRtnStockDisposal(Task *task)
+void OptionApi::processRtnStockDisposal(Task *task)
 {
 	gil_scoped_acquire acquire;
 	dict data;
@@ -932,7 +932,7 @@ void ToraOptionApi::processRtnStockDisposal(Task *task)
 	this->onRtnStockDisposal(data);
 };
 
-void ToraOptionApi::processRspCombOrderInsert(Task *task)
+void OptionApi::processRspCombOrderInsert(Task *task)
 {
 	gil_scoped_acquire acquire;
 	dict data;
@@ -974,7 +974,7 @@ void ToraOptionApi::processRspCombOrderInsert(Task *task)
 	this->onRspCombOrderInsert(data, error, task->task_id);
 };
 
-void ToraOptionApi::processRtnCombOrder(Task *task)
+void OptionApi::processRtnCombOrder(Task *task)
 {
 	gil_scoped_acquire acquire;
 	dict data;
@@ -1033,7 +1033,7 @@ void ToraOptionApi::processRtnCombOrder(Task *task)
 	this->onRtnCombOrder(data);
 };
 
-void ToraOptionApi::processErrRtnCombOrderInsert(Task *task)
+void OptionApi::processErrRtnCombOrderInsert(Task *task)
 {
 	gil_scoped_acquire acquire;
 	dict data;
@@ -1075,7 +1075,7 @@ void ToraOptionApi::processErrRtnCombOrderInsert(Task *task)
 	this->onErrRtnCombOrderInsert(data, error, task->task_id);
 };
 
-void ToraOptionApi::processRspCombOrderAction(Task *task)
+void OptionApi::processRspCombOrderAction(Task *task)
 {
 	gil_scoped_acquire acquire;
 	dict data;
@@ -1115,7 +1115,7 @@ void ToraOptionApi::processRspCombOrderAction(Task *task)
 	this->onRspCombOrderAction(data, error, task->task_id);
 };
 
-void ToraOptionApi::processErrRtnCombOrderAction(Task *task)
+void OptionApi::processErrRtnCombOrderAction(Task *task)
 {
 	gil_scoped_acquire acquire;
 	dict data;
@@ -1155,7 +1155,7 @@ void ToraOptionApi::processErrRtnCombOrderAction(Task *task)
 	this->onErrRtnCombOrderAction(data, error, task->task_id);
 };
 
-void ToraOptionApi::processRspCondOrderInsert(Task *task)
+void OptionApi::processRspCondOrderInsert(Task *task)
 {
 	gil_scoped_acquire acquire;
 	dict data;
@@ -1217,7 +1217,7 @@ void ToraOptionApi::processRspCondOrderInsert(Task *task)
 	this->onRspCondOrderInsert(data, error, task->task_id);
 };
 
-void ToraOptionApi::processRtnCondOrder(Task *task)
+void OptionApi::processRtnCondOrder(Task *task)
 {
 	gil_scoped_acquire acquire;
 	dict data;
@@ -1285,7 +1285,7 @@ void ToraOptionApi::processRtnCondOrder(Task *task)
 	this->onRtnCondOrder(data);
 };
 
-void ToraOptionApi::processErrRtnCondOrderInsert(Task *task)
+void OptionApi::processErrRtnCondOrderInsert(Task *task)
 {
 	gil_scoped_acquire acquire;
 	dict data;
@@ -1347,7 +1347,7 @@ void ToraOptionApi::processErrRtnCondOrderInsert(Task *task)
 	this->onErrRtnCondOrderInsert(data, error, task->task_id);
 };
 
-void ToraOptionApi::processRspCondOrderAction(Task *task)
+void OptionApi::processRspCondOrderAction(Task *task)
 {
 	gil_scoped_acquire acquire;
 	dict data;
@@ -1387,7 +1387,7 @@ void ToraOptionApi::processRspCondOrderAction(Task *task)
 	this->onRspCondOrderAction(data, error, task->task_id);
 };
 
-void ToraOptionApi::processErrRtnCondOrderAction(Task *task)
+void OptionApi::processErrRtnCondOrderAction(Task *task)
 {
 	gil_scoped_acquire acquire;
 	dict data;
@@ -1427,7 +1427,7 @@ void ToraOptionApi::processErrRtnCondOrderAction(Task *task)
 	this->onErrRtnCondOrderAction(data, error, task->task_id);
 };
 
-void ToraOptionApi::processRspCombExerciseInsert(Task *task)
+void OptionApi::processRspCombExerciseInsert(Task *task)
 {
 	gil_scoped_acquire acquire;
 	dict data;
@@ -1467,7 +1467,7 @@ void ToraOptionApi::processRspCombExerciseInsert(Task *task)
 	this->onRspCombExerciseInsert(data, error, task->task_id);
 };
 
-void ToraOptionApi::processRtnCombExercise(Task *task)
+void OptionApi::processRtnCombExercise(Task *task)
 {
 	gil_scoped_acquire acquire;
 	dict data;
@@ -1524,7 +1524,7 @@ void ToraOptionApi::processRtnCombExercise(Task *task)
 	this->onRtnCombExercise(data);
 };
 
-void ToraOptionApi::processErrRtnCombExerciseInsert(Task *task)
+void OptionApi::processErrRtnCombExerciseInsert(Task *task)
 {
 	gil_scoped_acquire acquire;
 	dict data;
@@ -1564,7 +1564,7 @@ void ToraOptionApi::processErrRtnCombExerciseInsert(Task *task)
 	this->onErrRtnCombExerciseInsert(data, error, task->task_id);
 };
 
-void ToraOptionApi::processRspCombExerciseAction(Task *task)
+void OptionApi::processRspCombExerciseAction(Task *task)
 {
 	gil_scoped_acquire acquire;
 	dict data;
@@ -1605,7 +1605,7 @@ void ToraOptionApi::processRspCombExerciseAction(Task *task)
 	this->onRspCombExerciseAction(data, error, task->task_id);
 };
 
-void ToraOptionApi::processErrRtnCombExerciseAction(Task *task)
+void OptionApi::processErrRtnCombExerciseAction(Task *task)
 {
 	gil_scoped_acquire acquire;
 	dict data;
@@ -1646,7 +1646,7 @@ void ToraOptionApi::processErrRtnCombExerciseAction(Task *task)
 	this->onErrRtnCombExerciseAction(data, error, task->task_id);
 };
 
-void ToraOptionApi::processRspInquiryMaxLockVolume(Task *task)
+void OptionApi::processRspInquiryMaxLockVolume(Task *task)
 {
 	gil_scoped_acquire acquire;
 	dict data;
@@ -1673,7 +1673,7 @@ void ToraOptionApi::processRspInquiryMaxLockVolume(Task *task)
 	this->onRspInquiryMaxLockVolume(data, error, task->task_id);
 };
 
-void ToraOptionApi::processRspInquiryMaxCoverVolume(Task *task)
+void OptionApi::processRspInquiryMaxCoverVolume(Task *task)
 {
 	gil_scoped_acquire acquire;
 	dict data;
@@ -1700,7 +1700,7 @@ void ToraOptionApi::processRspInquiryMaxCoverVolume(Task *task)
 	this->onRspInquiryMaxCoverVolume(data, error, task->task_id);
 };
 
-void ToraOptionApi::processRspInquirySplitCombMarginDifference(Task *task)
+void OptionApi::processRspInquirySplitCombMarginDifference(Task *task)
 {
 	gil_scoped_acquire acquire;
 	dict data;
@@ -1737,7 +1737,7 @@ void ToraOptionApi::processRspInquirySplitCombMarginDifference(Task *task)
 	this->onRspInquirySplitCombMarginDifference(data, error, task->task_id);
 };
 
-void ToraOptionApi::processRspTransferFund(Task *task)
+void OptionApi::processRspTransferFund(Task *task)
 {
 	gil_scoped_acquire acquire;
 	dict data;
@@ -1766,7 +1766,7 @@ void ToraOptionApi::processRspTransferFund(Task *task)
 	this->onRspTransferFund(data, error, task->task_id);
 };
 
-void ToraOptionApi::processRtnTransferFund(Task *task)
+void OptionApi::processRtnTransferFund(Task *task)
 {
 	gil_scoped_acquire acquire;
 	dict data;
@@ -1793,7 +1793,7 @@ void ToraOptionApi::processRtnTransferFund(Task *task)
 	this->onRtnTransferFund(data);
 };
 
-void ToraOptionApi::processErrRtnTransferFund(Task *task)
+void OptionApi::processErrRtnTransferFund(Task *task)
 {
 	gil_scoped_acquire acquire;
 	dict data;
@@ -1822,7 +1822,7 @@ void ToraOptionApi::processErrRtnTransferFund(Task *task)
 	this->onErrRtnTransferFund(data, error, task->task_id);
 };
 
-void ToraOptionApi::processRtnTransferPosition(Task *task)
+void OptionApi::processRtnTransferPosition(Task *task)
 {
 	gil_scoped_acquire acquire;
 	dict data;
@@ -1855,7 +1855,7 @@ void ToraOptionApi::processRtnTransferPosition(Task *task)
 	this->onRtnTransferPosition(data);
 };
 
-void ToraOptionApi::processErrRtnTransferPosition(Task *task)
+void OptionApi::processErrRtnTransferPosition(Task *task)
 {
 	gil_scoped_acquire acquire;
 	dict data;
@@ -1888,7 +1888,7 @@ void ToraOptionApi::processErrRtnTransferPosition(Task *task)
 	this->onErrRtnTransferPosition(data, error, task->task_id);
 };
 
-void ToraOptionApi::processRspTransferStockPosition(Task *task)
+void OptionApi::processRspTransferStockPosition(Task *task)
 {
 	gil_scoped_acquire acquire;
 	dict data;
@@ -1918,7 +1918,7 @@ void ToraOptionApi::processRspTransferStockPosition(Task *task)
 	this->onRspTransferStockPosition(data, error, task->task_id);
 };
 
-void ToraOptionApi::processRtnTransferStockPosition(Task *task)
+void OptionApi::processRtnTransferStockPosition(Task *task)
 {
 	gil_scoped_acquire acquire;
 	dict data;
@@ -1950,7 +1950,7 @@ void ToraOptionApi::processRtnTransferStockPosition(Task *task)
 	this->onRtnTransferStockPosition(data);
 };
 
-void ToraOptionApi::processErrRtnTransferStockPosition(Task *task)
+void OptionApi::processErrRtnTransferStockPosition(Task *task)
 {
 	gil_scoped_acquire acquire;
 	dict data;
@@ -1980,7 +1980,7 @@ void ToraOptionApi::processErrRtnTransferStockPosition(Task *task)
 	this->onErrRtnTransferStockPosition(data, error, task->task_id);
 };
 
-void ToraOptionApi::processRspInquiryJZFund(Task *task)
+void OptionApi::processRspInquiryJZFund(Task *task)
 {
 	gil_scoped_acquire acquire;
 	dict data;
@@ -2006,7 +2006,7 @@ void ToraOptionApi::processRspInquiryJZFund(Task *task)
 	this->onRspInquiryJZFund(data, error, task->task_id);
 };
 
-void ToraOptionApi::processRspInquiryBankAccountFund(Task *task)
+void OptionApi::processRspInquiryBankAccountFund(Task *task)
 {
 	gil_scoped_acquire acquire;
 	dict data;
@@ -2033,7 +2033,7 @@ void ToraOptionApi::processRspInquiryBankAccountFund(Task *task)
 	this->onRspInquiryBankAccountFund(data, error, task->task_id);
 };
 
-void ToraOptionApi::processRspInquiryStockPosition(Task *task)
+void OptionApi::processRspInquiryStockPosition(Task *task)
 {
 	gil_scoped_acquire acquire;
 	dict data;
@@ -2077,7 +2077,7 @@ void ToraOptionApi::processRspInquiryStockPosition(Task *task)
 	this->onRspInquiryStockPosition(data, error, task->task_id);
 };
 
-void ToraOptionApi::processRtnMarketStatus(Task *task)
+void OptionApi::processRtnMarketStatus(Task *task)
 {
 	gil_scoped_acquire acquire;
 	dict data;
@@ -2091,7 +2091,7 @@ void ToraOptionApi::processRtnMarketStatus(Task *task)
 	this->onRtnMarketStatus(data);
 };
 
-void ToraOptionApi::processRtnTradingNotice(Task *task)
+void OptionApi::processRtnTradingNotice(Task *task)
 {
 	gil_scoped_acquire acquire;
 	dict data;
@@ -2110,7 +2110,7 @@ void ToraOptionApi::processRtnTradingNotice(Task *task)
 	this->onRtnTradingNotice(data);
 };
 
-void ToraOptionApi::processRspQryExchange(Task *task)
+void OptionApi::processRspQryExchange(Task *task)
 {
 	gil_scoped_acquire acquire;
 	dict data;
@@ -2134,7 +2134,7 @@ void ToraOptionApi::processRspQryExchange(Task *task)
 	this->onRspQryExchange(data, error, task->task_id, task->task_last);
 };
 
-void ToraOptionApi::processRspQryMarketData(Task *task)
+void OptionApi::processRspQryMarketData(Task *task)
 {
 	gil_scoped_acquire acquire;
 	dict data;
@@ -2198,7 +2198,7 @@ void ToraOptionApi::processRspQryMarketData(Task *task)
 	this->onRspQryMarketData(data, error, task->task_id, task->task_last);
 };
 
-void ToraOptionApi::processRspQrySecurity(Task *task)
+void OptionApi::processRspQrySecurity(Task *task)
 {
 	gil_scoped_acquire acquire;
 	dict data;
@@ -2263,7 +2263,7 @@ void ToraOptionApi::processRspQrySecurity(Task *task)
 	this->onRspQrySecurity(data, error, task->task_id, task->task_last);
 };
 
-void ToraOptionApi::processRspQryBUProxy(Task *task)
+void OptionApi::processRspQryBUProxy(Task *task)
 {
 	gil_scoped_acquire acquire;
 	dict data;
@@ -2287,7 +2287,7 @@ void ToraOptionApi::processRspQryBUProxy(Task *task)
 	this->onRspQryBUProxy(data, error, task->task_id, task->task_last);
 };
 
-void ToraOptionApi::processRspQryUser(Task *task)
+void OptionApi::processRspQryUser(Task *task)
 {
 	gil_scoped_acquire acquire;
 	dict data;
@@ -2328,7 +2328,7 @@ void ToraOptionApi::processRspQryUser(Task *task)
 	this->onRspQryUser(data, error, task->task_id, task->task_last);
 };
 
-void ToraOptionApi::processRspQryInvestor(Task *task)
+void OptionApi::processRspQryInvestor(Task *task)
 {
 	gil_scoped_acquire acquire;
 	dict data;
@@ -2371,7 +2371,7 @@ void ToraOptionApi::processRspQryInvestor(Task *task)
 	this->onRspQryInvestor(data, error, task->task_id, task->task_last);
 };
 
-void ToraOptionApi::processRspQryShareholderAccount(Task *task)
+void OptionApi::processRspQryShareholderAccount(Task *task)
 {
 	gil_scoped_acquire acquire;
 	dict data;
@@ -2396,7 +2396,7 @@ void ToraOptionApi::processRspQryShareholderAccount(Task *task)
 	this->onRspQryShareholderAccount(data, error, task->task_id, task->task_last);
 };
 
-void ToraOptionApi::processRspQryTradingAccount(Task *task)
+void OptionApi::processRspQryTradingAccount(Task *task)
 {
 	gil_scoped_acquire acquire;
 	dict data;
@@ -2440,7 +2440,7 @@ void ToraOptionApi::processRspQryTradingAccount(Task *task)
 	this->onRspQryTradingAccount(data, error, task->task_id, task->task_last);
 };
 
-void ToraOptionApi::processRspQryOrder(Task *task)
+void OptionApi::processRspQryOrder(Task *task)
 {
 	gil_scoped_acquire acquire;
 	dict data;
@@ -2511,7 +2511,7 @@ void ToraOptionApi::processRspQryOrder(Task *task)
 	this->onRspQryOrder(data, error, task->task_id, task->task_last);
 };
 
-void ToraOptionApi::processRspQryTrade(Task *task)
+void OptionApi::processRspQryTrade(Task *task)
 {
 	gil_scoped_acquire acquire;
 	dict data;
@@ -2554,7 +2554,7 @@ void ToraOptionApi::processRspQryTrade(Task *task)
 	this->onRspQryTrade(data, error, task->task_id, task->task_last);
 };
 
-void ToraOptionApi::processRspQryPosition(Task *task)
+void OptionApi::processRspQryPosition(Task *task)
 {
 	gil_scoped_acquire acquire;
 	dict data;
@@ -2617,7 +2617,7 @@ void ToraOptionApi::processRspQryPosition(Task *task)
 	this->onRspQryPosition(data, error, task->task_id, task->task_last);
 };
 
-void ToraOptionApi::processRspQryTradingFee(Task *task)
+void OptionApi::processRspQryTradingFee(Task *task)
 {
 	gil_scoped_acquire acquire;
 	dict data;
@@ -2673,7 +2673,7 @@ void ToraOptionApi::processRspQryTradingFee(Task *task)
 	this->onRspQryTradingFee(data, error, task->task_id, task->task_last);
 };
 
-void ToraOptionApi::processRspQryInvestorTradingFee(Task *task)
+void OptionApi::processRspQryInvestorTradingFee(Task *task)
 {
 	gil_scoped_acquire acquire;
 	dict data;
@@ -2707,7 +2707,7 @@ void ToraOptionApi::processRspQryInvestorTradingFee(Task *task)
 	this->onRspQryInvestorTradingFee(data, error, task->task_id, task->task_last);
 };
 
-void ToraOptionApi::processRspQryInvestorMarginFee(Task *task)
+void OptionApi::processRspQryInvestorMarginFee(Task *task)
 {
 	gil_scoped_acquire acquire;
 	dict data;
@@ -2736,7 +2736,7 @@ void ToraOptionApi::processRspQryInvestorMarginFee(Task *task)
 	this->onRspQryInvestorMarginFee(data, error, task->task_id, task->task_last);
 };
 
-void ToraOptionApi::processRspQryOrderFundDetail(Task *task)
+void OptionApi::processRspQryOrderFundDetail(Task *task)
 {
 	gil_scoped_acquire acquire;
 	dict data;
@@ -2777,7 +2777,7 @@ void ToraOptionApi::processRspQryOrderFundDetail(Task *task)
 	this->onRspQryOrderFundDetail(data, error, task->task_id, task->task_last);
 };
 
-void ToraOptionApi::processRspQryFundTransferDetail(Task *task)
+void OptionApi::processRspQryFundTransferDetail(Task *task)
 {
 	gil_scoped_acquire acquire;
 	dict data;
@@ -2814,7 +2814,7 @@ void ToraOptionApi::processRspQryFundTransferDetail(Task *task)
 	this->onRspQryFundTransferDetail(data, error, task->task_id, task->task_last);
 };
 
-void ToraOptionApi::processRspQryPositionTransferDetail(Task *task)
+void OptionApi::processRspQryPositionTransferDetail(Task *task)
 {
 	gil_scoped_acquire acquire;
 	dict data;
@@ -2856,7 +2856,7 @@ void ToraOptionApi::processRspQryPositionTransferDetail(Task *task)
 	this->onRspQryPositionTransferDetail(data, error, task->task_id, task->task_last);
 };
 
-void ToraOptionApi::processRspQryOrderAction(Task *task)
+void OptionApi::processRspQryOrderAction(Task *task)
 {
 	gil_scoped_acquire acquire;
 	dict data;
@@ -2914,7 +2914,7 @@ void ToraOptionApi::processRspQryOrderAction(Task *task)
 	this->onRspQryOrderAction(data, error, task->task_id, task->task_last);
 };
 
-void ToraOptionApi::processRspQryStockPosition(Task *task)
+void OptionApi::processRspQryStockPosition(Task *task)
 {
 	gil_scoped_acquire acquire;
 	dict data;
@@ -2947,7 +2947,7 @@ void ToraOptionApi::processRspQryStockPosition(Task *task)
 	this->onRspQryStockPosition(data, error, task->task_id, task->task_last);
 };
 
-void ToraOptionApi::processRspQryLock(Task *task)
+void OptionApi::processRspQryLock(Task *task)
 {
 	gil_scoped_acquire acquire;
 	dict data;
@@ -3009,7 +3009,7 @@ void ToraOptionApi::processRspQryLock(Task *task)
 	this->onRspQryLock(data, error, task->task_id, task->task_last);
 };
 
-void ToraOptionApi::processRspQryExercise(Task *task)
+void OptionApi::processRspQryExercise(Task *task)
 {
 	gil_scoped_acquire acquire;
 	dict data;
@@ -3076,7 +3076,7 @@ void ToraOptionApi::processRspQryExercise(Task *task)
 	this->onRspQryExercise(data, error, task->task_id, task->task_last);
 };
 
-void ToraOptionApi::processRspQryLockPosition(Task *task)
+void OptionApi::processRspQryLockPosition(Task *task)
 {
 	gil_scoped_acquire acquire;
 	dict data;
@@ -3108,7 +3108,7 @@ void ToraOptionApi::processRspQryLockPosition(Task *task)
 	this->onRspQryLockPosition(data, error, task->task_id, task->task_last);
 };
 
-void ToraOptionApi::processRspQryExerciseAction(Task *task)
+void OptionApi::processRspQryExerciseAction(Task *task)
 {
 	gil_scoped_acquire acquire;
 	dict data;
@@ -3166,7 +3166,7 @@ void ToraOptionApi::processRspQryExerciseAction(Task *task)
 	this->onRspQryExerciseAction(data, error, task->task_id, task->task_last);
 };
 
-void ToraOptionApi::processRspQryLockAction(Task *task)
+void OptionApi::processRspQryLockAction(Task *task)
 {
 	gil_scoped_acquire acquire;
 	dict data;
@@ -3224,7 +3224,7 @@ void ToraOptionApi::processRspQryLockAction(Task *task)
 	this->onRspQryLockAction(data, error, task->task_id, task->task_last);
 };
 
-void ToraOptionApi::processRspQryStockPositionTransferDetail(Task *task)
+void OptionApi::processRspQryStockPositionTransferDetail(Task *task)
 {
 	gil_scoped_acquire acquire;
 	dict data;
@@ -3271,7 +3271,7 @@ void ToraOptionApi::processRspQryStockPositionTransferDetail(Task *task)
 	this->onRspQryStockPositionTransferDetail(data, error, task->task_id, task->task_last);
 };
 
-void ToraOptionApi::processRspQryTradingNotice(Task *task)
+void OptionApi::processRspQryTradingNotice(Task *task)
 {
 	gil_scoped_acquire acquire;
 	dict data;
@@ -3298,7 +3298,7 @@ void ToraOptionApi::processRspQryTradingNotice(Task *task)
 	this->onRspQryTradingNotice(data, error, task->task_id, task->task_last);
 };
 
-void ToraOptionApi::processRspQryStockDisposal(Task *task)
+void OptionApi::processRspQryStockDisposal(Task *task)
 {
 	gil_scoped_acquire acquire;
 	dict data;
@@ -3361,7 +3361,7 @@ void ToraOptionApi::processRspQryStockDisposal(Task *task)
 	this->onRspQryStockDisposal(data, error, task->task_id, task->task_last);
 };
 
-void ToraOptionApi::processRspQryStockDisposalAction(Task *task)
+void OptionApi::processRspQryStockDisposalAction(Task *task)
 {
 	gil_scoped_acquire acquire;
 	dict data;
@@ -3419,7 +3419,7 @@ void ToraOptionApi::processRspQryStockDisposalAction(Task *task)
 	this->onRspQryStockDisposalAction(data, error, task->task_id, task->task_last);
 };
 
-void ToraOptionApi::processRspQryCondOrder(Task *task)
+void OptionApi::processRspQryCondOrder(Task *task)
 {
 	gil_scoped_acquire acquire;
 	dict data;
@@ -3495,7 +3495,7 @@ void ToraOptionApi::processRspQryCondOrder(Task *task)
 	this->onRspQryCondOrder(data, error, task->task_id, task->task_last);
 };
 
-void ToraOptionApi::processRspQryCondOrderAction(Task *task)
+void OptionApi::processRspQryCondOrderAction(Task *task)
 {
 	gil_scoped_acquire acquire;
 	dict data;
@@ -3543,7 +3543,7 @@ void ToraOptionApi::processRspQryCondOrderAction(Task *task)
 	this->onRspQryCondOrderAction(data, error, task->task_id, task->task_last);
 };
 
-void ToraOptionApi::processRspQryInvestorLimitPosition(Task *task)
+void OptionApi::processRspQryInvestorLimitPosition(Task *task)
 {
 	gil_scoped_acquire acquire;
 	dict data;
@@ -3586,7 +3586,7 @@ void ToraOptionApi::processRspQryInvestorLimitPosition(Task *task)
 	this->onRspQryInvestorLimitPosition(data, error, task->task_id, task->task_last);
 };
 
-void ToraOptionApi::processRspQryInvestorLimitAmount(Task *task)
+void OptionApi::processRspQryInvestorLimitAmount(Task *task)
 {
 	gil_scoped_acquire acquire;
 	dict data;
@@ -3611,7 +3611,7 @@ void ToraOptionApi::processRspQryInvestorLimitAmount(Task *task)
 	this->onRspQryInvestorLimitAmount(data, error, task->task_id, task->task_last);
 };
 
-void ToraOptionApi::processRspQryCombOrderAction(Task *task)
+void OptionApi::processRspQryCombOrderAction(Task *task)
 {
 	gil_scoped_acquire acquire;
 	dict data;
@@ -3670,7 +3670,7 @@ void ToraOptionApi::processRspQryCombOrderAction(Task *task)
 	this->onRspQryCombOrderAction(data, error, task->task_id, task->task_last);
 };
 
-void ToraOptionApi::processRspQryCombOrder(Task *task)
+void OptionApi::processRspQryCombOrder(Task *task)
 {
 	gil_scoped_acquire acquire;
 	dict data;
@@ -3737,7 +3737,7 @@ void ToraOptionApi::processRspQryCombOrder(Task *task)
 	this->onRspQryCombOrder(data, error, task->task_id, task->task_last);
 };
 
-void ToraOptionApi::processRspQryCombPosition(Task *task)
+void OptionApi::processRspQryCombPosition(Task *task)
 {
 	gil_scoped_acquire acquire;
 	dict data;
@@ -3774,7 +3774,7 @@ void ToraOptionApi::processRspQryCombPosition(Task *task)
 	this->onRspQryCombPosition(data, error, task->task_id, task->task_last);
 };
 
-void ToraOptionApi::processRspQryCombPosDetail(Task *task)
+void OptionApi::processRspQryCombPosDetail(Task *task)
 {
 	gil_scoped_acquire acquire;
 	dict data;
@@ -3826,7 +3826,7 @@ void ToraOptionApi::processRspQryCombPosDetail(Task *task)
 	this->onRspQryCombPosDetail(data, error, task->task_id, task->task_last);
 };
 
-void ToraOptionApi::processRspQryExerciseAppointment(Task *task)
+void OptionApi::processRspQryExerciseAppointment(Task *task)
 {
 	gil_scoped_acquire acquire;
 	dict data;
@@ -3862,7 +3862,7 @@ void ToraOptionApi::processRspQryExerciseAppointment(Task *task)
 	this->onRspQryExerciseAppointment(data, error, task->task_id, task->task_last);
 };
 
-void ToraOptionApi::processRspQryInsufficientCoveredStockPosition(Task *task)
+void OptionApi::processRspQryInsufficientCoveredStockPosition(Task *task)
 {
 	gil_scoped_acquire acquire;
 	dict data;
@@ -3892,7 +3892,7 @@ void ToraOptionApi::processRspQryInsufficientCoveredStockPosition(Task *task)
 	this->onRspQryInsufficientCoveredStockPosition(data, error, task->task_id, task->task_last);
 };
 
-void ToraOptionApi::processRspQryCombSecurity(Task *task)
+void OptionApi::processRspQryCombSecurity(Task *task)
 {
 	gil_scoped_acquire acquire;
 	dict data;
@@ -3921,7 +3921,7 @@ void ToraOptionApi::processRspQryCombSecurity(Task *task)
 	this->onRspQryCombSecurity(data, error, task->task_id, task->task_last);
 };
 
-void ToraOptionApi::processRspQryCombExercise(Task *task)
+void OptionApi::processRspQryCombExercise(Task *task)
 {
 	gil_scoped_acquire acquire;
 	dict data;
@@ -3986,7 +3986,7 @@ void ToraOptionApi::processRspQryCombExercise(Task *task)
 	this->onRspQryCombExercise(data, error, task->task_id, task->task_last);
 };
 
-void ToraOptionApi::processRspQryCombExerciseAction(Task *task)
+void OptionApi::processRspQryCombExerciseAction(Task *task)
 {
 	gil_scoped_acquire acquire;
 	dict data;

@@ -8,14 +8,14 @@
 ///C++的回调函数将数据保存到队列中
 ///-------------------------------------------------------------------------------------
 
-void ToraOptionApi::OnFrontConnected()
+void OptionApi::OnFrontConnected()
 {
 	Task task = Task();
 	task.task_name = ONFRONTCONNECTED;
 	this->task_queue.push(task);
 };
 
-void ToraOptionApi::OnFrontDisconnected(int nReason)
+void OptionApi::OnFrontDisconnected(int nReason)
 {
 	Task task = Task();
 	task.task_name = ONFRONTDISCONNECTED;
@@ -23,7 +23,7 @@ void ToraOptionApi::OnFrontDisconnected(int nReason)
 	this->task_queue.push(task);
 };
 
-void ToraOptionApi::OnRspError(CTORATstpSPRspInfoField* pRspInfo, int nRequestID, bool bIsLast)
+void OptionApi::OnRspError(CTORATstpSPRspInfoField* pRspInfo, int nRequestID, bool bIsLast)
 {
 	Task task = Task();
 	task.task_name = ONRSPERROR;
@@ -38,7 +38,7 @@ void ToraOptionApi::OnRspError(CTORATstpSPRspInfoField* pRspInfo, int nRequestID
 	this->task_queue.push(task);
 };
 
-void ToraOptionApi::OnRspGetConnectionInfo(CTORATstpSPConnectionInfoField* pConnectionInfoField, CTORATstpSPRspInfoField* pRspInfoField, int nRequestID)
+void OptionApi::OnRspGetConnectionInfo(CTORATstpSPConnectionInfoField* pConnectionInfoField, CTORATstpSPRspInfoField* pRspInfoField, int nRequestID)
 {
 	Task task = Task();
 	task.task_name = ONRSPGETCONNECTIONINFO;
@@ -58,7 +58,7 @@ void ToraOptionApi::OnRspGetConnectionInfo(CTORATstpSPConnectionInfoField* pConn
 	this->task_queue.push(task);
 };
 
-void ToraOptionApi::OnRspUserLogin(CTORATstpSPRspUserLoginField* pRspUserLoginField, CTORATstpSPRspInfoField* pRspInfo, int nRequestID)
+void OptionApi::OnRspUserLogin(CTORATstpSPRspUserLoginField* pRspUserLoginField, CTORATstpSPRspInfoField* pRspInfo, int nRequestID)
 {
 	Task task = Task();
 	task.task_name = ONRSPUSERLOGIN;
@@ -78,7 +78,7 @@ void ToraOptionApi::OnRspUserLogin(CTORATstpSPRspUserLoginField* pRspUserLoginFi
 	this->task_queue.push(task);
 };
 
-void ToraOptionApi::OnRspUserLogout(CTORATstpSPUserLogoutField* pUserLogoutField, CTORATstpSPRspInfoField* pRspInfo, int nRequestID)
+void OptionApi::OnRspUserLogout(CTORATstpSPUserLogoutField* pUserLogoutField, CTORATstpSPRspInfoField* pRspInfo, int nRequestID)
 {
 	Task task = Task();
 	task.task_name = ONRSPUSERLOGOUT;
@@ -98,7 +98,7 @@ void ToraOptionApi::OnRspUserLogout(CTORATstpSPUserLogoutField* pUserLogoutField
 	this->task_queue.push(task);
 };
 
-void ToraOptionApi::OnRspUserPasswordUpdate(CTORATstpSPUserPasswordUpdateField* pUserPasswordUpdateField, CTORATstpSPRspInfoField* pRspInfo, int nRequestID)
+void OptionApi::OnRspUserPasswordUpdate(CTORATstpSPUserPasswordUpdateField* pUserPasswordUpdateField, CTORATstpSPRspInfoField* pRspInfo, int nRequestID)
 {
 	Task task = Task();
 	task.task_name = ONRSPUSERPASSWORDUPDATE;
@@ -118,7 +118,7 @@ void ToraOptionApi::OnRspUserPasswordUpdate(CTORATstpSPUserPasswordUpdateField* 
 	this->task_queue.push(task);
 };
 
-void ToraOptionApi::OnRspInputDeviceSerial(CTORATstpSPRspInputDeviceSerialField* pRspInputDeviceSerialField, CTORATstpSPRspInfoField* pRspInfo, int nRequestID)
+void OptionApi::OnRspInputDeviceSerial(CTORATstpSPRspInputDeviceSerialField* pRspInputDeviceSerialField, CTORATstpSPRspInfoField* pRspInfo, int nRequestID)
 {
 	Task task = Task();
 	task.task_name = ONRSPINPUTDEVICESERIAL;
@@ -138,7 +138,7 @@ void ToraOptionApi::OnRspInputDeviceSerial(CTORATstpSPRspInputDeviceSerialField*
 	this->task_queue.push(task);
 };
 
-void ToraOptionApi::OnRspOrderInsert(CTORATstpSPInputOrderField* pInputOrderField, CTORATstpSPRspInfoField* pRspInfo, int nRequestID)
+void OptionApi::OnRspOrderInsert(CTORATstpSPInputOrderField* pInputOrderField, CTORATstpSPRspInfoField* pRspInfo, int nRequestID)
 {
 	Task task = Task();
 	task.task_name = ONRSPORDERINSERT;
@@ -158,7 +158,7 @@ void ToraOptionApi::OnRspOrderInsert(CTORATstpSPInputOrderField* pInputOrderFiel
 	this->task_queue.push(task);
 };
 
-void ToraOptionApi::OnRtnOrder(CTORATstpSPOrderField* pOrder)
+void OptionApi::OnRtnOrder(CTORATstpSPOrderField* pOrder)
 {
 	Task task = Task();
 	task.task_name = ONRTNORDER;
@@ -171,7 +171,7 @@ void ToraOptionApi::OnRtnOrder(CTORATstpSPOrderField* pOrder)
 	this->task_queue.push(task);
 };
 
-void ToraOptionApi::OnErrRtnOrderInsert(CTORATstpSPInputOrderField* pInputOrder, CTORATstpSPRspInfoField* pRspInfo, int nRequestID)
+void OptionApi::OnErrRtnOrderInsert(CTORATstpSPInputOrderField* pInputOrder, CTORATstpSPRspInfoField* pRspInfo, int nRequestID)
 {
 	Task task = Task();
 	task.task_name = ONERRRTNORDERINSERT;
@@ -191,7 +191,7 @@ void ToraOptionApi::OnErrRtnOrderInsert(CTORATstpSPInputOrderField* pInputOrder,
 	this->task_queue.push(task);
 };
 
-void ToraOptionApi::OnRspOrderAction(CTORATstpSPInputOrderActionField* pInputOrderActionField, CTORATstpSPRspInfoField* pRspInfo, int nRequestID)
+void OptionApi::OnRspOrderAction(CTORATstpSPInputOrderActionField* pInputOrderActionField, CTORATstpSPRspInfoField* pRspInfo, int nRequestID)
 {
 	Task task = Task();
 	task.task_name = ONRSPORDERACTION;
@@ -211,7 +211,7 @@ void ToraOptionApi::OnRspOrderAction(CTORATstpSPInputOrderActionField* pInputOrd
 	this->task_queue.push(task);
 };
 
-void ToraOptionApi::OnErrRtnOrderAction(CTORATstpSPInputOrderActionField* pInputOrderAction, CTORATstpSPRspInfoField* pRspInfo, int nRequestID)
+void OptionApi::OnErrRtnOrderAction(CTORATstpSPInputOrderActionField* pInputOrderAction, CTORATstpSPRspInfoField* pRspInfo, int nRequestID)
 {
 	Task task = Task();
 	task.task_name = ONERRRTNORDERACTION;
@@ -231,7 +231,7 @@ void ToraOptionApi::OnErrRtnOrderAction(CTORATstpSPInputOrderActionField* pInput
 	this->task_queue.push(task);
 };
 
-void ToraOptionApi::OnRtnTrade(CTORATstpSPTradeField* pTrade)
+void OptionApi::OnRtnTrade(CTORATstpSPTradeField* pTrade)
 {
 	Task task = Task();
 	task.task_name = ONRTNTRADE;
@@ -244,7 +244,7 @@ void ToraOptionApi::OnRtnTrade(CTORATstpSPTradeField* pTrade)
 	this->task_queue.push(task);
 };
 
-void ToraOptionApi::OnRspExerciseInsert(CTORATstpSPInputExerciseField* pInputExerciseField, CTORATstpSPRspInfoField* pRspInfo, int nRequestID)
+void OptionApi::OnRspExerciseInsert(CTORATstpSPInputExerciseField* pInputExerciseField, CTORATstpSPRspInfoField* pRspInfo, int nRequestID)
 {
 	Task task = Task();
 	task.task_name = ONRSPEXERCISEINSERT;
@@ -264,7 +264,7 @@ void ToraOptionApi::OnRspExerciseInsert(CTORATstpSPInputExerciseField* pInputExe
 	this->task_queue.push(task);
 };
 
-void ToraOptionApi::OnRtnExercise(CTORATstpSPExerciseField* pExercise)
+void OptionApi::OnRtnExercise(CTORATstpSPExerciseField* pExercise)
 {
 	Task task = Task();
 	task.task_name = ONRTNEXERCISE;
@@ -277,7 +277,7 @@ void ToraOptionApi::OnRtnExercise(CTORATstpSPExerciseField* pExercise)
 	this->task_queue.push(task);
 };
 
-void ToraOptionApi::OnErrRtnExerciseInsert(CTORATstpSPInputExerciseField* pInputExercise, CTORATstpSPRspInfoField* pRspInfo, int nRequestID)
+void OptionApi::OnErrRtnExerciseInsert(CTORATstpSPInputExerciseField* pInputExercise, CTORATstpSPRspInfoField* pRspInfo, int nRequestID)
 {
 	Task task = Task();
 	task.task_name = ONERRRTNEXERCISEINSERT;
@@ -297,7 +297,7 @@ void ToraOptionApi::OnErrRtnExerciseInsert(CTORATstpSPInputExerciseField* pInput
 	this->task_queue.push(task);
 };
 
-void ToraOptionApi::OnRspExerciseAction(CTORATstpSPInputExerciseActionField* pInputExerciseActionField, CTORATstpSPRspInfoField* pRspInfo, int nRequestID)
+void OptionApi::OnRspExerciseAction(CTORATstpSPInputExerciseActionField* pInputExerciseActionField, CTORATstpSPRspInfoField* pRspInfo, int nRequestID)
 {
 	Task task = Task();
 	task.task_name = ONRSPEXERCISEACTION;
@@ -317,7 +317,7 @@ void ToraOptionApi::OnRspExerciseAction(CTORATstpSPInputExerciseActionField* pIn
 	this->task_queue.push(task);
 };
 
-void ToraOptionApi::OnErrRtnExerciseAction(CTORATstpSPInputExerciseActionField* pInputExerciseAction, CTORATstpSPRspInfoField* pRspInfo, int nRequestID)
+void OptionApi::OnErrRtnExerciseAction(CTORATstpSPInputExerciseActionField* pInputExerciseAction, CTORATstpSPRspInfoField* pRspInfo, int nRequestID)
 {
 	Task task = Task();
 	task.task_name = ONERRRTNEXERCISEACTION;
@@ -337,7 +337,7 @@ void ToraOptionApi::OnErrRtnExerciseAction(CTORATstpSPInputExerciseActionField* 
 	this->task_queue.push(task);
 };
 
-void ToraOptionApi::OnRspLockInsert(CTORATstpSPInputLockField* pInputLockField, CTORATstpSPRspInfoField* pRspInfo, int nRequestID)
+void OptionApi::OnRspLockInsert(CTORATstpSPInputLockField* pInputLockField, CTORATstpSPRspInfoField* pRspInfo, int nRequestID)
 {
 	Task task = Task();
 	task.task_name = ONRSPLOCKINSERT;
@@ -357,7 +357,7 @@ void ToraOptionApi::OnRspLockInsert(CTORATstpSPInputLockField* pInputLockField, 
 	this->task_queue.push(task);
 };
 
-void ToraOptionApi::OnRtnLock(CTORATstpSPLockField* pLock)
+void OptionApi::OnRtnLock(CTORATstpSPLockField* pLock)
 {
 	Task task = Task();
 	task.task_name = ONRTNLOCK;
@@ -370,7 +370,7 @@ void ToraOptionApi::OnRtnLock(CTORATstpSPLockField* pLock)
 	this->task_queue.push(task);
 };
 
-void ToraOptionApi::OnErrRtnLockInsert(CTORATstpSPInputLockField* pInputLock, CTORATstpSPRspInfoField* pRspInfo, int nRequestID)
+void OptionApi::OnErrRtnLockInsert(CTORATstpSPInputLockField* pInputLock, CTORATstpSPRspInfoField* pRspInfo, int nRequestID)
 {
 	Task task = Task();
 	task.task_name = ONERRRTNLOCKINSERT;
@@ -390,7 +390,7 @@ void ToraOptionApi::OnErrRtnLockInsert(CTORATstpSPInputLockField* pInputLock, CT
 	this->task_queue.push(task);
 };
 
-void ToraOptionApi::OnRspLockAction(CTORATstpSPInputLockActionField* pInputLockActionField, CTORATstpSPRspInfoField* pRspInfo, int nRequestID)
+void OptionApi::OnRspLockAction(CTORATstpSPInputLockActionField* pInputLockActionField, CTORATstpSPRspInfoField* pRspInfo, int nRequestID)
 {
 	Task task = Task();
 	task.task_name = ONRSPLOCKACTION;
@@ -410,7 +410,7 @@ void ToraOptionApi::OnRspLockAction(CTORATstpSPInputLockActionField* pInputLockA
 	this->task_queue.push(task);
 };
 
-void ToraOptionApi::OnErrRtnLockAction(CTORATstpSPInputLockActionField* pInputLockAction, CTORATstpSPRspInfoField* pRspInfo, int nRequestID)
+void OptionApi::OnErrRtnLockAction(CTORATstpSPInputLockActionField* pInputLockAction, CTORATstpSPRspInfoField* pRspInfo, int nRequestID)
 {
 	Task task = Task();
 	task.task_name = ONERRRTNLOCKACTION;
@@ -430,7 +430,7 @@ void ToraOptionApi::OnErrRtnLockAction(CTORATstpSPInputLockActionField* pInputLo
 	this->task_queue.push(task);
 };
 
-void ToraOptionApi::OnRtnStockDisposal(CTORATstpSPStockDisposalField* pStockDisposal)
+void OptionApi::OnRtnStockDisposal(CTORATstpSPStockDisposalField* pStockDisposal)
 {
 	Task task = Task();
 	task.task_name = ONRTNSTOCKDISPOSAL;
@@ -443,7 +443,7 @@ void ToraOptionApi::OnRtnStockDisposal(CTORATstpSPStockDisposalField* pStockDisp
 	this->task_queue.push(task);
 };
 
-void ToraOptionApi::OnRspCombOrderInsert(CTORATstpSPInputCombOrderField* pInputCombOrderField, CTORATstpSPRspInfoField* pRspInfo, int nRequestID)
+void OptionApi::OnRspCombOrderInsert(CTORATstpSPInputCombOrderField* pInputCombOrderField, CTORATstpSPRspInfoField* pRspInfo, int nRequestID)
 {
 	Task task = Task();
 	task.task_name = ONRSPCOMBORDERINSERT;
@@ -463,7 +463,7 @@ void ToraOptionApi::OnRspCombOrderInsert(CTORATstpSPInputCombOrderField* pInputC
 	this->task_queue.push(task);
 };
 
-void ToraOptionApi::OnRtnCombOrder(CTORATstpSPCombOrderField* pCombOrder)
+void OptionApi::OnRtnCombOrder(CTORATstpSPCombOrderField* pCombOrder)
 {
 	Task task = Task();
 	task.task_name = ONRTNCOMBORDER;
@@ -476,7 +476,7 @@ void ToraOptionApi::OnRtnCombOrder(CTORATstpSPCombOrderField* pCombOrder)
 	this->task_queue.push(task);
 };
 
-void ToraOptionApi::OnErrRtnCombOrderInsert(CTORATstpSPInputCombOrderField* pInputCombOrder, CTORATstpSPRspInfoField* pRspInfo, int nRequestID)
+void OptionApi::OnErrRtnCombOrderInsert(CTORATstpSPInputCombOrderField* pInputCombOrder, CTORATstpSPRspInfoField* pRspInfo, int nRequestID)
 {
 	Task task = Task();
 	task.task_name = ONERRRTNCOMBORDERINSERT;
@@ -496,7 +496,7 @@ void ToraOptionApi::OnErrRtnCombOrderInsert(CTORATstpSPInputCombOrderField* pInp
 	this->task_queue.push(task);
 };
 
-void ToraOptionApi::OnRspCombOrderAction(CTORATstpSPInputCombOrderActionField* pInputCombOrderActionField, CTORATstpSPRspInfoField* pRspInfo, int nRequestID)
+void OptionApi::OnRspCombOrderAction(CTORATstpSPInputCombOrderActionField* pInputCombOrderActionField, CTORATstpSPRspInfoField* pRspInfo, int nRequestID)
 {
 	Task task = Task();
 	task.task_name = ONRSPCOMBORDERACTION;
@@ -516,7 +516,7 @@ void ToraOptionApi::OnRspCombOrderAction(CTORATstpSPInputCombOrderActionField* p
 	this->task_queue.push(task);
 };
 
-void ToraOptionApi::OnErrRtnCombOrderAction(CTORATstpSPInputCombOrderActionField* pInputCombOrderAction, CTORATstpSPRspInfoField* pRspInfo, int nRequestID)
+void OptionApi::OnErrRtnCombOrderAction(CTORATstpSPInputCombOrderActionField* pInputCombOrderAction, CTORATstpSPRspInfoField* pRspInfo, int nRequestID)
 {
 	Task task = Task();
 	task.task_name = ONERRRTNCOMBORDERACTION;
@@ -536,7 +536,7 @@ void ToraOptionApi::OnErrRtnCombOrderAction(CTORATstpSPInputCombOrderActionField
 	this->task_queue.push(task);
 };
 
-void ToraOptionApi::OnRspCondOrderInsert(CTORATstpSPInputCondOrderField* pInputCondOrderField, CTORATstpSPRspInfoField* pRspInfo, int nRequestID)
+void OptionApi::OnRspCondOrderInsert(CTORATstpSPInputCondOrderField* pInputCondOrderField, CTORATstpSPRspInfoField* pRspInfo, int nRequestID)
 {
 	Task task = Task();
 	task.task_name = ONRSPCONDORDERINSERT;
@@ -556,7 +556,7 @@ void ToraOptionApi::OnRspCondOrderInsert(CTORATstpSPInputCondOrderField* pInputC
 	this->task_queue.push(task);
 };
 
-void ToraOptionApi::OnRtnCondOrder(CTORATstpSPConditionOrderField* pConditionOrder)
+void OptionApi::OnRtnCondOrder(CTORATstpSPConditionOrderField* pConditionOrder)
 {
 	Task task = Task();
 	task.task_name = ONRTNCONDORDER;
@@ -569,7 +569,7 @@ void ToraOptionApi::OnRtnCondOrder(CTORATstpSPConditionOrderField* pConditionOrd
 	this->task_queue.push(task);
 };
 
-void ToraOptionApi::OnErrRtnCondOrderInsert(CTORATstpSPInputCondOrderField* pInputCondOrder, CTORATstpSPRspInfoField* pRspInfo, int nRequestID)
+void OptionApi::OnErrRtnCondOrderInsert(CTORATstpSPInputCondOrderField* pInputCondOrder, CTORATstpSPRspInfoField* pRspInfo, int nRequestID)
 {
 	Task task = Task();
 	task.task_name = ONERRRTNCONDORDERINSERT;
@@ -589,7 +589,7 @@ void ToraOptionApi::OnErrRtnCondOrderInsert(CTORATstpSPInputCondOrderField* pInp
 	this->task_queue.push(task);
 };
 
-void ToraOptionApi::OnRspCondOrderAction(CTORATstpSPInputCondOrderActionField* pInputCondOrderActionField, CTORATstpSPRspInfoField* pRspInfo, int nRequestID)
+void OptionApi::OnRspCondOrderAction(CTORATstpSPInputCondOrderActionField* pInputCondOrderActionField, CTORATstpSPRspInfoField* pRspInfo, int nRequestID)
 {
 	Task task = Task();
 	task.task_name = ONRSPCONDORDERACTION;
@@ -609,7 +609,7 @@ void ToraOptionApi::OnRspCondOrderAction(CTORATstpSPInputCondOrderActionField* p
 	this->task_queue.push(task);
 };
 
-void ToraOptionApi::OnErrRtnCondOrderAction(CTORATstpSPInputCondOrderActionField* pInputCondOrderAction, CTORATstpSPRspInfoField* pRspInfo, int nRequestID)
+void OptionApi::OnErrRtnCondOrderAction(CTORATstpSPInputCondOrderActionField* pInputCondOrderAction, CTORATstpSPRspInfoField* pRspInfo, int nRequestID)
 {
 	Task task = Task();
 	task.task_name = ONERRRTNCONDORDERACTION;
@@ -629,7 +629,7 @@ void ToraOptionApi::OnErrRtnCondOrderAction(CTORATstpSPInputCondOrderActionField
 	this->task_queue.push(task);
 };
 
-void ToraOptionApi::OnRspCombExerciseInsert(CTORATstpSPInputCombExerciseField* pInputCombExerciseField, CTORATstpSPRspInfoField* pRspInfo, int nRequestID)
+void OptionApi::OnRspCombExerciseInsert(CTORATstpSPInputCombExerciseField* pInputCombExerciseField, CTORATstpSPRspInfoField* pRspInfo, int nRequestID)
 {
 	Task task = Task();
 	task.task_name = ONRSPCOMBEXERCISEINSERT;
@@ -649,7 +649,7 @@ void ToraOptionApi::OnRspCombExerciseInsert(CTORATstpSPInputCombExerciseField* p
 	this->task_queue.push(task);
 };
 
-void ToraOptionApi::OnRtnCombExercise(CTORATstpSPCombExerciseField* pCombExercise)
+void OptionApi::OnRtnCombExercise(CTORATstpSPCombExerciseField* pCombExercise)
 {
 	Task task = Task();
 	task.task_name = ONRTNCOMBEXERCISE;
@@ -662,7 +662,7 @@ void ToraOptionApi::OnRtnCombExercise(CTORATstpSPCombExerciseField* pCombExercis
 	this->task_queue.push(task);
 };
 
-void ToraOptionApi::OnErrRtnCombExerciseInsert(CTORATstpSPInputCombExerciseField* pInputCombExercise, CTORATstpSPRspInfoField* pRspInfo, int nRequestID)
+void OptionApi::OnErrRtnCombExerciseInsert(CTORATstpSPInputCombExerciseField* pInputCombExercise, CTORATstpSPRspInfoField* pRspInfo, int nRequestID)
 {
 	Task task = Task();
 	task.task_name = ONERRRTNCOMBEXERCISEINSERT;
@@ -682,7 +682,7 @@ void ToraOptionApi::OnErrRtnCombExerciseInsert(CTORATstpSPInputCombExerciseField
 	this->task_queue.push(task);
 };
 
-void ToraOptionApi::OnRspCombExerciseAction(CTORATstpSPInputCombExerciseActionField* pInputCombExerciseActionField, CTORATstpSPRspInfoField* pRspInfo, int nRequestID)
+void OptionApi::OnRspCombExerciseAction(CTORATstpSPInputCombExerciseActionField* pInputCombExerciseActionField, CTORATstpSPRspInfoField* pRspInfo, int nRequestID)
 {
 	Task task = Task();
 	task.task_name = ONRSPCOMBEXERCISEACTION;
@@ -702,7 +702,7 @@ void ToraOptionApi::OnRspCombExerciseAction(CTORATstpSPInputCombExerciseActionFi
 	this->task_queue.push(task);
 };
 
-void ToraOptionApi::OnErrRtnCombExerciseAction(CTORATstpSPInputCombExerciseActionField* pInputCombExerciseAction, CTORATstpSPRspInfoField* pRspInfo, int nRequestID)
+void OptionApi::OnErrRtnCombExerciseAction(CTORATstpSPInputCombExerciseActionField* pInputCombExerciseAction, CTORATstpSPRspInfoField* pRspInfo, int nRequestID)
 {
 	Task task = Task();
 	task.task_name = ONERRRTNCOMBEXERCISEACTION;
@@ -722,7 +722,7 @@ void ToraOptionApi::OnErrRtnCombExerciseAction(CTORATstpSPInputCombExerciseActio
 	this->task_queue.push(task);
 };
 
-void ToraOptionApi::OnRspInquiryMaxLockVolume(CTORATstpSPRspInquiryMaxLockVolumeField* pRspInquiryMaxLockVolumeField, CTORATstpSPRspInfoField* pRspInfo, int nRequestID)
+void OptionApi::OnRspInquiryMaxLockVolume(CTORATstpSPRspInquiryMaxLockVolumeField* pRspInquiryMaxLockVolumeField, CTORATstpSPRspInfoField* pRspInfo, int nRequestID)
 {
 	Task task = Task();
 	task.task_name = ONRSPINQUIRYMAXLOCKVOLUME;
@@ -742,7 +742,7 @@ void ToraOptionApi::OnRspInquiryMaxLockVolume(CTORATstpSPRspInquiryMaxLockVolume
 	this->task_queue.push(task);
 };
 
-void ToraOptionApi::OnRspInquiryMaxCoverVolume(CTORATstpSPRspInquiryMaxCoverVolumeField* pRspInquiryMaxCoverVolumeField, CTORATstpSPRspInfoField* pRspInfo, int nRequestID)
+void OptionApi::OnRspInquiryMaxCoverVolume(CTORATstpSPRspInquiryMaxCoverVolumeField* pRspInquiryMaxCoverVolumeField, CTORATstpSPRspInfoField* pRspInfo, int nRequestID)
 {
 	Task task = Task();
 	task.task_name = ONRSPINQUIRYMAXCOVERVOLUME;
@@ -762,7 +762,7 @@ void ToraOptionApi::OnRspInquiryMaxCoverVolume(CTORATstpSPRspInquiryMaxCoverVolu
 	this->task_queue.push(task);
 };
 
-void ToraOptionApi::OnRspInquirySplitCombMarginDifference(CTORATstpSPRspInquirySplitCombMarginDifferenceField* pRspInquirySplitCombMarginDifferenceField, CTORATstpSPRspInfoField* pRspInfo, int nRequestID)
+void OptionApi::OnRspInquirySplitCombMarginDifference(CTORATstpSPRspInquirySplitCombMarginDifferenceField* pRspInquirySplitCombMarginDifferenceField, CTORATstpSPRspInfoField* pRspInfo, int nRequestID)
 {
 	Task task = Task();
 	task.task_name = ONRSPINQUIRYSPLITCOMBMARGINDIFFERENCE;
@@ -782,7 +782,7 @@ void ToraOptionApi::OnRspInquirySplitCombMarginDifference(CTORATstpSPRspInquiryS
 	this->task_queue.push(task);
 };
 
-void ToraOptionApi::OnRspTransferFund(CTORATstpSPInputTransferFundField* pInputTransferFundField, CTORATstpSPRspInfoField* pRspInfo, int nRequestID)
+void OptionApi::OnRspTransferFund(CTORATstpSPInputTransferFundField* pInputTransferFundField, CTORATstpSPRspInfoField* pRspInfo, int nRequestID)
 {
 	Task task = Task();
 	task.task_name = ONRSPTRANSFERFUND;
@@ -802,7 +802,7 @@ void ToraOptionApi::OnRspTransferFund(CTORATstpSPInputTransferFundField* pInputT
 	this->task_queue.push(task);
 };
 
-void ToraOptionApi::OnRtnTransferFund(CTORATstpSPTransferFundField* pTransferFund)
+void OptionApi::OnRtnTransferFund(CTORATstpSPTransferFundField* pTransferFund)
 {
 	Task task = Task();
 	task.task_name = ONRTNTRANSFERFUND;
@@ -815,7 +815,7 @@ void ToraOptionApi::OnRtnTransferFund(CTORATstpSPTransferFundField* pTransferFun
 	this->task_queue.push(task);
 };
 
-void ToraOptionApi::OnErrRtnTransferFund(CTORATstpSPInputTransferFundField* pInputTransferFund, CTORATstpSPRspInfoField* pRspInfo, int nRequestID)
+void OptionApi::OnErrRtnTransferFund(CTORATstpSPInputTransferFundField* pInputTransferFund, CTORATstpSPRspInfoField* pRspInfo, int nRequestID)
 {
 	Task task = Task();
 	task.task_name = ONERRRTNTRANSFERFUND;
@@ -835,7 +835,7 @@ void ToraOptionApi::OnErrRtnTransferFund(CTORATstpSPInputTransferFundField* pInp
 	this->task_queue.push(task);
 };
 
-void ToraOptionApi::OnRtnTransferPosition(CTORATstpSPTransferPositionField* pTransferPosition)
+void OptionApi::OnRtnTransferPosition(CTORATstpSPTransferPositionField* pTransferPosition)
 {
 	Task task = Task();
 	task.task_name = ONRTNTRANSFERPOSITION;
@@ -848,7 +848,7 @@ void ToraOptionApi::OnRtnTransferPosition(CTORATstpSPTransferPositionField* pTra
 	this->task_queue.push(task);
 };
 
-void ToraOptionApi::OnErrRtnTransferPosition(CTORATstpSPInputTransferPositionField* pInputTransferPosition, CTORATstpSPRspInfoField* pRspInfo, int nRequestID)
+void OptionApi::OnErrRtnTransferPosition(CTORATstpSPInputTransferPositionField* pInputTransferPosition, CTORATstpSPRspInfoField* pRspInfo, int nRequestID)
 {
 	Task task = Task();
 	task.task_name = ONERRRTNTRANSFERPOSITION;
@@ -868,7 +868,7 @@ void ToraOptionApi::OnErrRtnTransferPosition(CTORATstpSPInputTransferPositionFie
 	this->task_queue.push(task);
 };
 
-void ToraOptionApi::OnRspTransferStockPosition(CTORATstpSPInputTransferStockPositionField* pInputTransferStockPositionField, CTORATstpSPRspInfoField* pRspInfo, int nRequestID)
+void OptionApi::OnRspTransferStockPosition(CTORATstpSPInputTransferStockPositionField* pInputTransferStockPositionField, CTORATstpSPRspInfoField* pRspInfo, int nRequestID)
 {
 	Task task = Task();
 	task.task_name = ONRSPTRANSFERSTOCKPOSITION;
@@ -888,7 +888,7 @@ void ToraOptionApi::OnRspTransferStockPosition(CTORATstpSPInputTransferStockPosi
 	this->task_queue.push(task);
 };
 
-void ToraOptionApi::OnRtnTransferStockPosition(CTORATstpSPTransferStockPositionField* pTransferStockPosition)
+void OptionApi::OnRtnTransferStockPosition(CTORATstpSPTransferStockPositionField* pTransferStockPosition)
 {
 	Task task = Task();
 	task.task_name = ONRTNTRANSFERSTOCKPOSITION;
@@ -901,7 +901,7 @@ void ToraOptionApi::OnRtnTransferStockPosition(CTORATstpSPTransferStockPositionF
 	this->task_queue.push(task);
 };
 
-void ToraOptionApi::OnErrRtnTransferStockPosition(CTORATstpSPInputTransferStockPositionField* pInputTransferStockPosition, CTORATstpSPRspInfoField* pRspInfo, int nRequestID)
+void OptionApi::OnErrRtnTransferStockPosition(CTORATstpSPInputTransferStockPositionField* pInputTransferStockPosition, CTORATstpSPRspInfoField* pRspInfo, int nRequestID)
 {
 	Task task = Task();
 	task.task_name = ONERRRTNTRANSFERSTOCKPOSITION;
@@ -921,7 +921,7 @@ void ToraOptionApi::OnErrRtnTransferStockPosition(CTORATstpSPInputTransferStockP
 	this->task_queue.push(task);
 };
 
-void ToraOptionApi::OnRspInquiryJZFund(CTORATstpSPRspInquiryJZFundField* pRspInquiryJZFundField, CTORATstpSPRspInfoField* pRspInfo, int nRequestID)
+void OptionApi::OnRspInquiryJZFund(CTORATstpSPRspInquiryJZFundField* pRspInquiryJZFundField, CTORATstpSPRspInfoField* pRspInfo, int nRequestID)
 {
 	Task task = Task();
 	task.task_name = ONRSPINQUIRYJZFUND;
@@ -941,7 +941,7 @@ void ToraOptionApi::OnRspInquiryJZFund(CTORATstpSPRspInquiryJZFundField* pRspInq
 	this->task_queue.push(task);
 };
 
-void ToraOptionApi::OnRspInquiryBankAccountFund(CTORATstpSPRspInquiryBankAccountFundField* pRspInquiryBankAccountFundField, CTORATstpSPRspInfoField* pRspInfo, int nRequestID)
+void OptionApi::OnRspInquiryBankAccountFund(CTORATstpSPRspInquiryBankAccountFundField* pRspInquiryBankAccountFundField, CTORATstpSPRspInfoField* pRspInfo, int nRequestID)
 {
 	Task task = Task();
 	task.task_name = ONRSPINQUIRYBANKACCOUNTFUND;
@@ -961,7 +961,7 @@ void ToraOptionApi::OnRspInquiryBankAccountFund(CTORATstpSPRspInquiryBankAccount
 	this->task_queue.push(task);
 };
 
-void ToraOptionApi::OnRspInquiryStockPosition(CTORATstpSPRspInquiryStockPositionField* pRspInquiryStockPositionField, CTORATstpSPRspInfoField* pRspInfo, int nRequestID)
+void OptionApi::OnRspInquiryStockPosition(CTORATstpSPRspInquiryStockPositionField* pRspInquiryStockPositionField, CTORATstpSPRspInfoField* pRspInfo, int nRequestID)
 {
 	Task task = Task();
 	task.task_name = ONRSPINQUIRYSTOCKPOSITION;
@@ -981,7 +981,7 @@ void ToraOptionApi::OnRspInquiryStockPosition(CTORATstpSPRspInquiryStockPosition
 	this->task_queue.push(task);
 };
 
-void ToraOptionApi::OnRtnMarketStatus(CTORATstpSPMarketStatusField* pMarketStatus)
+void OptionApi::OnRtnMarketStatus(CTORATstpSPMarketStatusField* pMarketStatus)
 {
 	Task task = Task();
 	task.task_name = ONRTNMARKETSTATUS;
@@ -994,7 +994,7 @@ void ToraOptionApi::OnRtnMarketStatus(CTORATstpSPMarketStatusField* pMarketStatu
 	this->task_queue.push(task);
 };
 
-void ToraOptionApi::OnRtnTradingNotice(CTORATstpSPTradingNoticeField* pTradingNotice)
+void OptionApi::OnRtnTradingNotice(CTORATstpSPTradingNoticeField* pTradingNotice)
 {
 	Task task = Task();
 	task.task_name = ONRTNTRADINGNOTICE;
@@ -1007,7 +1007,7 @@ void ToraOptionApi::OnRtnTradingNotice(CTORATstpSPTradingNoticeField* pTradingNo
 	this->task_queue.push(task);
 };
 
-void ToraOptionApi::OnRspQryExchange(CTORATstpSPExchangeField* pExchange, CTORATstpSPRspInfoField* pRspInfo, int nRequestID, bool bIsLast)
+void OptionApi::OnRspQryExchange(CTORATstpSPExchangeField* pExchange, CTORATstpSPRspInfoField* pRspInfo, int nRequestID, bool bIsLast)
 {
 	Task task = Task();
 	task.task_name = ONRSPQRYEXCHANGE;
@@ -1028,7 +1028,7 @@ void ToraOptionApi::OnRspQryExchange(CTORATstpSPExchangeField* pExchange, CTORAT
 	this->task_queue.push(task);
 };
 
-void ToraOptionApi::OnRspQryMarketData(CTORATstpSPMarketDataField* pMarketData, CTORATstpSPRspInfoField* pRspInfo, int nRequestID, bool bIsLast)
+void OptionApi::OnRspQryMarketData(CTORATstpSPMarketDataField* pMarketData, CTORATstpSPRspInfoField* pRspInfo, int nRequestID, bool bIsLast)
 {
 	Task task = Task();
 	task.task_name = ONRSPQRYMARKETDATA;
@@ -1049,7 +1049,7 @@ void ToraOptionApi::OnRspQryMarketData(CTORATstpSPMarketDataField* pMarketData, 
 	this->task_queue.push(task);
 };
 
-void ToraOptionApi::OnRspQrySecurity(CTORATstpSPSecurityField* pSecurity, CTORATstpSPRspInfoField* pRspInfo, int nRequestID, bool bIsLast)
+void OptionApi::OnRspQrySecurity(CTORATstpSPSecurityField* pSecurity, CTORATstpSPRspInfoField* pRspInfo, int nRequestID, bool bIsLast)
 {
 	Task task = Task();
 	task.task_name = ONRSPQRYSECURITY;
@@ -1070,7 +1070,7 @@ void ToraOptionApi::OnRspQrySecurity(CTORATstpSPSecurityField* pSecurity, CTORAT
 	this->task_queue.push(task);
 };
 
-void ToraOptionApi::OnRspQryBUProxy(CTORATstpSPBUProxyField* pBUProxy, CTORATstpSPRspInfoField* pRspInfo, int nRequestID, bool bIsLast)
+void OptionApi::OnRspQryBUProxy(CTORATstpSPBUProxyField* pBUProxy, CTORATstpSPRspInfoField* pRspInfo, int nRequestID, bool bIsLast)
 {
 	Task task = Task();
 	task.task_name = ONRSPQRYBUPROXY;
@@ -1091,7 +1091,7 @@ void ToraOptionApi::OnRspQryBUProxy(CTORATstpSPBUProxyField* pBUProxy, CTORATstp
 	this->task_queue.push(task);
 };
 
-void ToraOptionApi::OnRspQryUser(CTORATstpSPUserField* pUser, CTORATstpSPRspInfoField* pRspInfo, int nRequestID, bool bIsLast)
+void OptionApi::OnRspQryUser(CTORATstpSPUserField* pUser, CTORATstpSPRspInfoField* pRspInfo, int nRequestID, bool bIsLast)
 {
 	Task task = Task();
 	task.task_name = ONRSPQRYUSER;
@@ -1112,7 +1112,7 @@ void ToraOptionApi::OnRspQryUser(CTORATstpSPUserField* pUser, CTORATstpSPRspInfo
 	this->task_queue.push(task);
 };
 
-void ToraOptionApi::OnRspQryInvestor(CTORATstpSPInvestorField* pInvestor, CTORATstpSPRspInfoField* pRspInfo, int nRequestID, bool bIsLast)
+void OptionApi::OnRspQryInvestor(CTORATstpSPInvestorField* pInvestor, CTORATstpSPRspInfoField* pRspInfo, int nRequestID, bool bIsLast)
 {
 	Task task = Task();
 	task.task_name = ONRSPQRYINVESTOR;
@@ -1133,7 +1133,7 @@ void ToraOptionApi::OnRspQryInvestor(CTORATstpSPInvestorField* pInvestor, CTORAT
 	this->task_queue.push(task);
 };
 
-void ToraOptionApi::OnRspQryShareholderAccount(CTORATstpSPShareholderAccountField* pShareholderAccount, CTORATstpSPRspInfoField* pRspInfo, int nRequestID, bool bIsLast)
+void OptionApi::OnRspQryShareholderAccount(CTORATstpSPShareholderAccountField* pShareholderAccount, CTORATstpSPRspInfoField* pRspInfo, int nRequestID, bool bIsLast)
 {
 	Task task = Task();
 	task.task_name = ONRSPQRYSHAREHOLDERACCOUNT;
@@ -1154,7 +1154,7 @@ void ToraOptionApi::OnRspQryShareholderAccount(CTORATstpSPShareholderAccountFiel
 	this->task_queue.push(task);
 };
 
-void ToraOptionApi::OnRspQryTradingAccount(CTORATstpSPTradingAccountField* pTradingAccount, CTORATstpSPRspInfoField* pRspInfo, int nRequestID, bool bIsLast)
+void OptionApi::OnRspQryTradingAccount(CTORATstpSPTradingAccountField* pTradingAccount, CTORATstpSPRspInfoField* pRspInfo, int nRequestID, bool bIsLast)
 {
 	Task task = Task();
 	task.task_name = ONRSPQRYTRADINGACCOUNT;
@@ -1175,7 +1175,7 @@ void ToraOptionApi::OnRspQryTradingAccount(CTORATstpSPTradingAccountField* pTrad
 	this->task_queue.push(task);
 };
 
-void ToraOptionApi::OnRspQryOrder(CTORATstpSPOrderField* pOrder, CTORATstpSPRspInfoField* pRspInfo, int nRequestID, bool bIsLast)
+void OptionApi::OnRspQryOrder(CTORATstpSPOrderField* pOrder, CTORATstpSPRspInfoField* pRspInfo, int nRequestID, bool bIsLast)
 {
 	Task task = Task();
 	task.task_name = ONRSPQRYORDER;
@@ -1196,7 +1196,7 @@ void ToraOptionApi::OnRspQryOrder(CTORATstpSPOrderField* pOrder, CTORATstpSPRspI
 	this->task_queue.push(task);
 };
 
-void ToraOptionApi::OnRspQryTrade(CTORATstpSPTradeField* pTrade, CTORATstpSPRspInfoField* pRspInfo, int nRequestID, bool bIsLast)
+void OptionApi::OnRspQryTrade(CTORATstpSPTradeField* pTrade, CTORATstpSPRspInfoField* pRspInfo, int nRequestID, bool bIsLast)
 {
 	Task task = Task();
 	task.task_name = ONRSPQRYTRADE;
@@ -1217,7 +1217,7 @@ void ToraOptionApi::OnRspQryTrade(CTORATstpSPTradeField* pTrade, CTORATstpSPRspI
 	this->task_queue.push(task);
 };
 
-void ToraOptionApi::OnRspQryPosition(CTORATstpSPPositionField* pPosition, CTORATstpSPRspInfoField* pRspInfo, int nRequestID, bool bIsLast)
+void OptionApi::OnRspQryPosition(CTORATstpSPPositionField* pPosition, CTORATstpSPRspInfoField* pRspInfo, int nRequestID, bool bIsLast)
 {
 	Task task = Task();
 	task.task_name = ONRSPQRYPOSITION;
@@ -1238,7 +1238,7 @@ void ToraOptionApi::OnRspQryPosition(CTORATstpSPPositionField* pPosition, CTORAT
 	this->task_queue.push(task);
 };
 
-void ToraOptionApi::OnRspQryTradingFee(CTORATstpSPTradingFeeField* pTradingFee, CTORATstpSPRspInfoField* pRspInfo, int nRequestID, bool bIsLast)
+void OptionApi::OnRspQryTradingFee(CTORATstpSPTradingFeeField* pTradingFee, CTORATstpSPRspInfoField* pRspInfo, int nRequestID, bool bIsLast)
 {
 	Task task = Task();
 	task.task_name = ONRSPQRYTRADINGFEE;
@@ -1259,7 +1259,7 @@ void ToraOptionApi::OnRspQryTradingFee(CTORATstpSPTradingFeeField* pTradingFee, 
 	this->task_queue.push(task);
 };
 
-void ToraOptionApi::OnRspQryInvestorTradingFee(CTORATstpSPInvestorTradingFeeField* pInvestorTradingFee, CTORATstpSPRspInfoField* pRspInfo, int nRequestID, bool bIsLast)
+void OptionApi::OnRspQryInvestorTradingFee(CTORATstpSPInvestorTradingFeeField* pInvestorTradingFee, CTORATstpSPRspInfoField* pRspInfo, int nRequestID, bool bIsLast)
 {
 	Task task = Task();
 	task.task_name = ONRSPQRYINVESTORTRADINGFEE;
@@ -1280,7 +1280,7 @@ void ToraOptionApi::OnRspQryInvestorTradingFee(CTORATstpSPInvestorTradingFeeFiel
 	this->task_queue.push(task);
 };
 
-void ToraOptionApi::OnRspQryInvestorMarginFee(CTORATstpSPInvestorMarginFeeField* pInvestorMarginFee, CTORATstpSPRspInfoField* pRspInfo, int nRequestID, bool bIsLast)
+void OptionApi::OnRspQryInvestorMarginFee(CTORATstpSPInvestorMarginFeeField* pInvestorMarginFee, CTORATstpSPRspInfoField* pRspInfo, int nRequestID, bool bIsLast)
 {
 	Task task = Task();
 	task.task_name = ONRSPQRYINVESTORMARGINFEE;
@@ -1301,7 +1301,7 @@ void ToraOptionApi::OnRspQryInvestorMarginFee(CTORATstpSPInvestorMarginFeeField*
 	this->task_queue.push(task);
 };
 
-void ToraOptionApi::OnRspQryOrderFundDetail(CTORATstpSPOrderFundDetailField* pOrderFundDetail, CTORATstpSPRspInfoField* pRspInfo, int nRequestID, bool bIsLast)
+void OptionApi::OnRspQryOrderFundDetail(CTORATstpSPOrderFundDetailField* pOrderFundDetail, CTORATstpSPRspInfoField* pRspInfo, int nRequestID, bool bIsLast)
 {
 	Task task = Task();
 	task.task_name = ONRSPQRYORDERFUNDDETAIL;
@@ -1322,7 +1322,7 @@ void ToraOptionApi::OnRspQryOrderFundDetail(CTORATstpSPOrderFundDetailField* pOr
 	this->task_queue.push(task);
 };
 
-void ToraOptionApi::OnRspQryFundTransferDetail(CTORATstpSPFundTransferDetailField* pFundTransferDetail, CTORATstpSPRspInfoField* pRspInfo, int nRequestID, bool bIsLast)
+void OptionApi::OnRspQryFundTransferDetail(CTORATstpSPFundTransferDetailField* pFundTransferDetail, CTORATstpSPRspInfoField* pRspInfo, int nRequestID, bool bIsLast)
 {
 	Task task = Task();
 	task.task_name = ONRSPQRYFUNDTRANSFERDETAIL;
@@ -1343,7 +1343,7 @@ void ToraOptionApi::OnRspQryFundTransferDetail(CTORATstpSPFundTransferDetailFiel
 	this->task_queue.push(task);
 };
 
-void ToraOptionApi::OnRspQryPositionTransferDetail(CTORATstpSPPositionTransferDetailField* pPositionTransferDetail, CTORATstpSPRspInfoField* pRspInfo, int nRequestID, bool bIsLast)
+void OptionApi::OnRspQryPositionTransferDetail(CTORATstpSPPositionTransferDetailField* pPositionTransferDetail, CTORATstpSPRspInfoField* pRspInfo, int nRequestID, bool bIsLast)
 {
 	Task task = Task();
 	task.task_name = ONRSPQRYPOSITIONTRANSFERDETAIL;
@@ -1364,7 +1364,7 @@ void ToraOptionApi::OnRspQryPositionTransferDetail(CTORATstpSPPositionTransferDe
 	this->task_queue.push(task);
 };
 
-void ToraOptionApi::OnRspQryOrderAction(CTORATstpSPOrderActionField* pOrderAction, CTORATstpSPRspInfoField* pRspInfo, int nRequestID, bool bIsLast)
+void OptionApi::OnRspQryOrderAction(CTORATstpSPOrderActionField* pOrderAction, CTORATstpSPRspInfoField* pRspInfo, int nRequestID, bool bIsLast)
 {
 	Task task = Task();
 	task.task_name = ONRSPQRYORDERACTION;
@@ -1385,7 +1385,7 @@ void ToraOptionApi::OnRspQryOrderAction(CTORATstpSPOrderActionField* pOrderActio
 	this->task_queue.push(task);
 };
 
-void ToraOptionApi::OnRspQryStockPosition(CTORATstpSPStockPositionField* pStockPosition, CTORATstpSPRspInfoField* pRspInfo, int nRequestID, bool bIsLast)
+void OptionApi::OnRspQryStockPosition(CTORATstpSPStockPositionField* pStockPosition, CTORATstpSPRspInfoField* pRspInfo, int nRequestID, bool bIsLast)
 {
 	Task task = Task();
 	task.task_name = ONRSPQRYSTOCKPOSITION;
@@ -1406,7 +1406,7 @@ void ToraOptionApi::OnRspQryStockPosition(CTORATstpSPStockPositionField* pStockP
 	this->task_queue.push(task);
 };
 
-void ToraOptionApi::OnRspQryLock(CTORATstpSPLockField* pLock, CTORATstpSPRspInfoField* pRspInfo, int nRequestID, bool bIsLast)
+void OptionApi::OnRspQryLock(CTORATstpSPLockField* pLock, CTORATstpSPRspInfoField* pRspInfo, int nRequestID, bool bIsLast)
 {
 	Task task = Task();
 	task.task_name = ONRSPQRYLOCK;
@@ -1427,7 +1427,7 @@ void ToraOptionApi::OnRspQryLock(CTORATstpSPLockField* pLock, CTORATstpSPRspInfo
 	this->task_queue.push(task);
 };
 
-void ToraOptionApi::OnRspQryExercise(CTORATstpSPExerciseField* pExercise, CTORATstpSPRspInfoField* pRspInfo, int nRequestID, bool bIsLast)
+void OptionApi::OnRspQryExercise(CTORATstpSPExerciseField* pExercise, CTORATstpSPRspInfoField* pRspInfo, int nRequestID, bool bIsLast)
 {
 	Task task = Task();
 	task.task_name = ONRSPQRYEXERCISE;
@@ -1448,7 +1448,7 @@ void ToraOptionApi::OnRspQryExercise(CTORATstpSPExerciseField* pExercise, CTORAT
 	this->task_queue.push(task);
 };
 
-void ToraOptionApi::OnRspQryLockPosition(CTORATstpSPLockPositionField* pLockPosition, CTORATstpSPRspInfoField* pRspInfo, int nRequestID, bool bIsLast)
+void OptionApi::OnRspQryLockPosition(CTORATstpSPLockPositionField* pLockPosition, CTORATstpSPRspInfoField* pRspInfo, int nRequestID, bool bIsLast)
 {
 	Task task = Task();
 	task.task_name = ONRSPQRYLOCKPOSITION;
@@ -1469,7 +1469,7 @@ void ToraOptionApi::OnRspQryLockPosition(CTORATstpSPLockPositionField* pLockPosi
 	this->task_queue.push(task);
 };
 
-void ToraOptionApi::OnRspQryExerciseAction(CTORATstpSPExerciseActionField* pExerciseAction, CTORATstpSPRspInfoField* pRspInfo, int nRequestID, bool bIsLast)
+void OptionApi::OnRspQryExerciseAction(CTORATstpSPExerciseActionField* pExerciseAction, CTORATstpSPRspInfoField* pRspInfo, int nRequestID, bool bIsLast)
 {
 	Task task = Task();
 	task.task_name = ONRSPQRYEXERCISEACTION;
@@ -1490,7 +1490,7 @@ void ToraOptionApi::OnRspQryExerciseAction(CTORATstpSPExerciseActionField* pExer
 	this->task_queue.push(task);
 };
 
-void ToraOptionApi::OnRspQryLockAction(CTORATstpSPLockActionField* pLockAction, CTORATstpSPRspInfoField* pRspInfo, int nRequestID, bool bIsLast)
+void OptionApi::OnRspQryLockAction(CTORATstpSPLockActionField* pLockAction, CTORATstpSPRspInfoField* pRspInfo, int nRequestID, bool bIsLast)
 {
 	Task task = Task();
 	task.task_name = ONRSPQRYLOCKACTION;
@@ -1511,7 +1511,7 @@ void ToraOptionApi::OnRspQryLockAction(CTORATstpSPLockActionField* pLockAction, 
 	this->task_queue.push(task);
 };
 
-void ToraOptionApi::OnRspQryStockPositionTransferDetail(CTORATstpSPStockPositionTransferDetailField* pStockPositionTransferDetail, CTORATstpSPRspInfoField* pRspInfo, int nRequestID, bool bIsLast)
+void OptionApi::OnRspQryStockPositionTransferDetail(CTORATstpSPStockPositionTransferDetailField* pStockPositionTransferDetail, CTORATstpSPRspInfoField* pRspInfo, int nRequestID, bool bIsLast)
 {
 	Task task = Task();
 	task.task_name = ONRSPQRYSTOCKPOSITIONTRANSFERDETAIL;
@@ -1532,7 +1532,7 @@ void ToraOptionApi::OnRspQryStockPositionTransferDetail(CTORATstpSPStockPosition
 	this->task_queue.push(task);
 };
 
-void ToraOptionApi::OnRspQryTradingNotice(CTORATstpSPTradingNoticeField* pTradingNotice, CTORATstpSPRspInfoField* pRspInfo, int nRequestID, bool bIsLast)
+void OptionApi::OnRspQryTradingNotice(CTORATstpSPTradingNoticeField* pTradingNotice, CTORATstpSPRspInfoField* pRspInfo, int nRequestID, bool bIsLast)
 {
 	Task task = Task();
 	task.task_name = ONRSPQRYTRADINGNOTICE;
@@ -1553,7 +1553,7 @@ void ToraOptionApi::OnRspQryTradingNotice(CTORATstpSPTradingNoticeField* pTradin
 	this->task_queue.push(task);
 };
 
-void ToraOptionApi::OnRspQryStockDisposal(CTORATstpSPStockDisposalField* pStockDisposal, CTORATstpSPRspInfoField* pRspInfo, int nRequestID, bool bIsLast)
+void OptionApi::OnRspQryStockDisposal(CTORATstpSPStockDisposalField* pStockDisposal, CTORATstpSPRspInfoField* pRspInfo, int nRequestID, bool bIsLast)
 {
 	Task task = Task();
 	task.task_name = ONRSPQRYSTOCKDISPOSAL;
@@ -1574,7 +1574,7 @@ void ToraOptionApi::OnRspQryStockDisposal(CTORATstpSPStockDisposalField* pStockD
 	this->task_queue.push(task);
 };
 
-void ToraOptionApi::OnRspQryStockDisposalAction(CTORATstpSPStockDisposalActionField* pStockDisposalAction, CTORATstpSPRspInfoField* pRspInfo, int nRequestID, bool bIsLast)
+void OptionApi::OnRspQryStockDisposalAction(CTORATstpSPStockDisposalActionField* pStockDisposalAction, CTORATstpSPRspInfoField* pRspInfo, int nRequestID, bool bIsLast)
 {
 	Task task = Task();
 	task.task_name = ONRSPQRYSTOCKDISPOSALACTION;
@@ -1595,7 +1595,7 @@ void ToraOptionApi::OnRspQryStockDisposalAction(CTORATstpSPStockDisposalActionFi
 	this->task_queue.push(task);
 };
 
-void ToraOptionApi::OnRspQryCondOrder(CTORATstpSPCondOrderField* pCondOrder, CTORATstpSPRspInfoField* pRspInfo, int nRequestID, bool bIsLast)
+void OptionApi::OnRspQryCondOrder(CTORATstpSPCondOrderField* pCondOrder, CTORATstpSPRspInfoField* pRspInfo, int nRequestID, bool bIsLast)
 {
 	Task task = Task();
 	task.task_name = ONRSPQRYCONDORDER;
@@ -1616,7 +1616,7 @@ void ToraOptionApi::OnRspQryCondOrder(CTORATstpSPCondOrderField* pCondOrder, CTO
 	this->task_queue.push(task);
 };
 
-void ToraOptionApi::OnRspQryCondOrderAction(CTORATstpSPCondOrderActionField* pCondOrderAction, CTORATstpSPRspInfoField* pRspInfo, int nRequestID, bool bIsLast)
+void OptionApi::OnRspQryCondOrderAction(CTORATstpSPCondOrderActionField* pCondOrderAction, CTORATstpSPRspInfoField* pRspInfo, int nRequestID, bool bIsLast)
 {
 	Task task = Task();
 	task.task_name = ONRSPQRYCONDORDERACTION;
@@ -1637,7 +1637,7 @@ void ToraOptionApi::OnRspQryCondOrderAction(CTORATstpSPCondOrderActionField* pCo
 	this->task_queue.push(task);
 };
 
-void ToraOptionApi::OnRspQryInvestorLimitPosition(CTORATstpSPInvestorLimitPositionField* pInvestorLimitPosition, CTORATstpSPRspInfoField* pRspInfo, int nRequestID, bool bIsLast)
+void OptionApi::OnRspQryInvestorLimitPosition(CTORATstpSPInvestorLimitPositionField* pInvestorLimitPosition, CTORATstpSPRspInfoField* pRspInfo, int nRequestID, bool bIsLast)
 {
 	Task task = Task();
 	task.task_name = ONRSPQRYINVESTORLIMITPOSITION;
@@ -1658,7 +1658,7 @@ void ToraOptionApi::OnRspQryInvestorLimitPosition(CTORATstpSPInvestorLimitPositi
 	this->task_queue.push(task);
 };
 
-void ToraOptionApi::OnRspQryInvestorLimitAmount(CTORATstpSPInvestorLimitAmountField* pInvestorLimitAmount, CTORATstpSPRspInfoField* pRspInfo, int nRequestID, bool bIsLast)
+void OptionApi::OnRspQryInvestorLimitAmount(CTORATstpSPInvestorLimitAmountField* pInvestorLimitAmount, CTORATstpSPRspInfoField* pRspInfo, int nRequestID, bool bIsLast)
 {
 	Task task = Task();
 	task.task_name = ONRSPQRYINVESTORLIMITAMOUNT;
@@ -1679,7 +1679,7 @@ void ToraOptionApi::OnRspQryInvestorLimitAmount(CTORATstpSPInvestorLimitAmountFi
 	this->task_queue.push(task);
 };
 
-void ToraOptionApi::OnRspQryCombOrderAction(CTORATstpSPCombOrderActionField* pCombOrderAction, CTORATstpSPRspInfoField* pRspInfo, int nRequestID, bool bIsLast)
+void OptionApi::OnRspQryCombOrderAction(CTORATstpSPCombOrderActionField* pCombOrderAction, CTORATstpSPRspInfoField* pRspInfo, int nRequestID, bool bIsLast)
 {
 	Task task = Task();
 	task.task_name = ONRSPQRYCOMBORDERACTION;
@@ -1700,7 +1700,7 @@ void ToraOptionApi::OnRspQryCombOrderAction(CTORATstpSPCombOrderActionField* pCo
 	this->task_queue.push(task);
 };
 
-void ToraOptionApi::OnRspQryCombOrder(CTORATstpSPCombOrderField* pCombOrder, CTORATstpSPRspInfoField* pRspInfo, int nRequestID, bool bIsLast)
+void OptionApi::OnRspQryCombOrder(CTORATstpSPCombOrderField* pCombOrder, CTORATstpSPRspInfoField* pRspInfo, int nRequestID, bool bIsLast)
 {
 	Task task = Task();
 	task.task_name = ONRSPQRYCOMBORDER;
@@ -1721,7 +1721,7 @@ void ToraOptionApi::OnRspQryCombOrder(CTORATstpSPCombOrderField* pCombOrder, CTO
 	this->task_queue.push(task);
 };
 
-void ToraOptionApi::OnRspQryCombPosition(CTORATstpSPCombPositionField* pCombPosition, CTORATstpSPRspInfoField* pRspInfo, int nRequestID, bool bIsLast)
+void OptionApi::OnRspQryCombPosition(CTORATstpSPCombPositionField* pCombPosition, CTORATstpSPRspInfoField* pRspInfo, int nRequestID, bool bIsLast)
 {
 	Task task = Task();
 	task.task_name = ONRSPQRYCOMBPOSITION;
@@ -1742,7 +1742,7 @@ void ToraOptionApi::OnRspQryCombPosition(CTORATstpSPCombPositionField* pCombPosi
 	this->task_queue.push(task);
 };
 
-void ToraOptionApi::OnRspQryCombPosDetail(CTORATstpSPCombPosDetailField* pCombPosDetail, CTORATstpSPRspInfoField* pRspInfo, int nRequestID, bool bIsLast)
+void OptionApi::OnRspQryCombPosDetail(CTORATstpSPCombPosDetailField* pCombPosDetail, CTORATstpSPRspInfoField* pRspInfo, int nRequestID, bool bIsLast)
 {
 	Task task = Task();
 	task.task_name = ONRSPQRYCOMBPOSDETAIL;
@@ -1763,7 +1763,7 @@ void ToraOptionApi::OnRspQryCombPosDetail(CTORATstpSPCombPosDetailField* pCombPo
 	this->task_queue.push(task);
 };
 
-void ToraOptionApi::OnRspQryExerciseAppointment(CTORATstpSPExerciseAppointmentField* pExerciseAppointment, CTORATstpSPRspInfoField* pRspInfo, int nRequestID, bool bIsLast)
+void OptionApi::OnRspQryExerciseAppointment(CTORATstpSPExerciseAppointmentField* pExerciseAppointment, CTORATstpSPRspInfoField* pRspInfo, int nRequestID, bool bIsLast)
 {
 	Task task = Task();
 	task.task_name = ONRSPQRYEXERCISEAPPOINTMENT;
@@ -1784,7 +1784,7 @@ void ToraOptionApi::OnRspQryExerciseAppointment(CTORATstpSPExerciseAppointmentFi
 	this->task_queue.push(task);
 };
 
-void ToraOptionApi::OnRspQryInsufficientCoveredStockPosition(CTORATstpSPInsufficientCoveredStockPositionField* pInsufficientCoveredStockPosition, CTORATstpSPRspInfoField* pRspInfo, int nRequestID, bool bIsLast)
+void OptionApi::OnRspQryInsufficientCoveredStockPosition(CTORATstpSPInsufficientCoveredStockPositionField* pInsufficientCoveredStockPosition, CTORATstpSPRspInfoField* pRspInfo, int nRequestID, bool bIsLast)
 {
 	Task task = Task();
 	task.task_name = ONRSPQRYINSUFFICIENTCOVEREDSTOCKPOSITION;
@@ -1805,7 +1805,7 @@ void ToraOptionApi::OnRspQryInsufficientCoveredStockPosition(CTORATstpSPInsuffic
 	this->task_queue.push(task);
 };
 
-void ToraOptionApi::OnRspQryCombSecurity(CTORATstpSPCombSecurityField* pCombSecurity, CTORATstpSPRspInfoField* pRspInfo, int nRequestID, bool bIsLast)
+void OptionApi::OnRspQryCombSecurity(CTORATstpSPCombSecurityField* pCombSecurity, CTORATstpSPRspInfoField* pRspInfo, int nRequestID, bool bIsLast)
 {
 	Task task = Task();
 	task.task_name = ONRSPQRYCOMBSECURITY;
@@ -1826,7 +1826,7 @@ void ToraOptionApi::OnRspQryCombSecurity(CTORATstpSPCombSecurityField* pCombSecu
 	this->task_queue.push(task);
 };
 
-void ToraOptionApi::OnRspQryCombExercise(CTORATstpSPCombExerciseField* pCombExercise, CTORATstpSPRspInfoField* pRspInfo, int nRequestID, bool bIsLast)
+void OptionApi::OnRspQryCombExercise(CTORATstpSPCombExerciseField* pCombExercise, CTORATstpSPRspInfoField* pRspInfo, int nRequestID, bool bIsLast)
 {
 	Task task = Task();
 	task.task_name = ONRSPQRYCOMBEXERCISE;
@@ -1847,7 +1847,7 @@ void ToraOptionApi::OnRspQryCombExercise(CTORATstpSPCombExerciseField* pCombExer
 	this->task_queue.push(task);
 };
 
-void ToraOptionApi::OnRspQryCombExerciseAction(CTORATstpSPCombExerciseActionField* pCombExerciseAction, CTORATstpSPRspInfoField* pRspInfo, int nRequestID, bool bIsLast)
+void OptionApi::OnRspQryCombExerciseAction(CTORATstpSPCombExerciseActionField* pCombExerciseAction, CTORATstpSPRspInfoField* pRspInfo, int nRequestID, bool bIsLast)
 {
 	Task task = Task();
 	task.task_name = ONRSPQRYCOMBEXERCISEACTION;
@@ -1872,7 +1872,7 @@ void ToraOptionApi::OnRspQryCombExerciseAction(CTORATstpSPCombExerciseActionFiel
 ///工作线程从队列中取出数据，转化为python对象后，进行推送
 ///-------------------------------------------------------------------------------------
 
-void ToraOptionApi::processTask()
+void OptionApi::processTask()
 {
 	try
 	{
@@ -2471,19 +2471,19 @@ void ToraOptionApi::processTask()
 	}
 };
 
-void ToraOptionApi::processFrontConnected(Task* task)
+void OptionApi::processFrontConnected(Task* task)
 {
 	gil_scoped_acquire acquire;
 	this->onFrontConnected();
 };
 
-void ToraOptionApi::processFrontDisconnected(Task* task)
+void OptionApi::processFrontDisconnected(Task* task)
 {
 	gil_scoped_acquire acquire;
 	this->onFrontDisconnected(task->task_id);
 };
 
-void ToraOptionApi::processRspError(Task* task)
+void OptionApi::processRspError(Task* task)
 {
 	gil_scoped_acquire acquire;
 	dict error;
@@ -2497,7 +2497,7 @@ void ToraOptionApi::processRspError(Task* task)
 	this->onRspError(error, task->task_id, task->task_last);
 };
 
-void ToraOptionApi::processRspGetConnectionInfo(Task* task)
+void OptionApi::processRspGetConnectionInfo(Task* task)
 {
 	gil_scoped_acquire acquire;
 	dict data;
@@ -2522,7 +2522,7 @@ void ToraOptionApi::processRspGetConnectionInfo(Task* task)
 	this->onRspGetConnectionInfo(data, error, task->task_id);
 };
 
-void ToraOptionApi::processRspUserLogin(Task* task)
+void OptionApi::processRspUserLogin(Task* task)
 {
 	gil_scoped_acquire acquire;
 	dict data;
@@ -2573,7 +2573,7 @@ void ToraOptionApi::processRspUserLogin(Task* task)
 	this->onRspUserLogin(data, error, task->task_id);
 };
 
-void ToraOptionApi::processRspUserLogout(Task* task)
+void OptionApi::processRspUserLogout(Task* task)
 {
 	gil_scoped_acquire acquire;
 	dict data;
@@ -2594,7 +2594,7 @@ void ToraOptionApi::processRspUserLogout(Task* task)
 	this->onRspUserLogout(data, error, task->task_id);
 };
 
-void ToraOptionApi::processRspUserPasswordUpdate(Task* task)
+void OptionApi::processRspUserPasswordUpdate(Task* task)
 {
 	gil_scoped_acquire acquire;
 	dict data;
@@ -2617,7 +2617,7 @@ void ToraOptionApi::processRspUserPasswordUpdate(Task* task)
 	this->onRspUserPasswordUpdate(data, error, task->task_id);
 };
 
-void ToraOptionApi::processRspInputDeviceSerial(Task* task)
+void OptionApi::processRspInputDeviceSerial(Task* task)
 {
 	gil_scoped_acquire acquire;
 	dict data;
@@ -2639,7 +2639,7 @@ void ToraOptionApi::processRspInputDeviceSerial(Task* task)
 	this->onRspInputDeviceSerial(data, error, task->task_id);
 };
 
-void ToraOptionApi::processRspOrderInsert(Task* task)
+void OptionApi::processRspOrderInsert(Task* task)
 {
 	gil_scoped_acquire acquire;
 	dict data;
@@ -2690,7 +2690,7 @@ void ToraOptionApi::processRspOrderInsert(Task* task)
 	this->onRspOrderInsert(data, error, task->task_id);
 };
 
-void ToraOptionApi::processRtnOrder(Task* task)
+void OptionApi::processRtnOrder(Task* task)
 {
 	gil_scoped_acquire acquire;
 	dict data;
@@ -2753,7 +2753,7 @@ void ToraOptionApi::processRtnOrder(Task* task)
 	this->onRtnOrder(data);
 };
 
-void ToraOptionApi::processErrRtnOrderInsert(Task* task)
+void OptionApi::processErrRtnOrderInsert(Task* task)
 {
 	gil_scoped_acquire acquire;
 	dict data;
@@ -2804,7 +2804,7 @@ void ToraOptionApi::processErrRtnOrderInsert(Task* task)
 	this->onErrRtnOrderInsert(data, error, task->task_id);
 };
 
-void ToraOptionApi::processRspOrderAction(Task* task)
+void OptionApi::processRspOrderAction(Task* task)
 {
 	gil_scoped_acquire acquire;
 	dict data;
@@ -2844,7 +2844,7 @@ void ToraOptionApi::processRspOrderAction(Task* task)
 	this->onRspOrderAction(data, error, task->task_id);
 };
 
-void ToraOptionApi::processErrRtnOrderAction(Task* task)
+void OptionApi::processErrRtnOrderAction(Task* task)
 {
 	gil_scoped_acquire acquire;
 	dict data;
@@ -2884,7 +2884,7 @@ void ToraOptionApi::processErrRtnOrderAction(Task* task)
 	this->onErrRtnOrderAction(data, error, task->task_id);
 };
 
-void ToraOptionApi::processRtnTrade(Task* task)
+void OptionApi::processRtnTrade(Task* task)
 {
 	gil_scoped_acquire acquire;
 	dict data;
@@ -2919,7 +2919,7 @@ void ToraOptionApi::processRtnTrade(Task* task)
 	this->onRtnTrade(data);
 };
 
-void ToraOptionApi::processRspExerciseInsert(Task* task)
+void OptionApi::processRspExerciseInsert(Task* task)
 {
 	gil_scoped_acquire acquire;
 	dict data;
@@ -2959,7 +2959,7 @@ void ToraOptionApi::processRspExerciseInsert(Task* task)
 	this->onRspExerciseInsert(data, error, task->task_id);
 };
 
-void ToraOptionApi::processRtnExercise(Task* task)
+void OptionApi::processRtnExercise(Task* task)
 {
 	gil_scoped_acquire acquire;
 	dict data;
@@ -3018,7 +3018,7 @@ void ToraOptionApi::processRtnExercise(Task* task)
 	this->onRtnExercise(data);
 };
 
-void ToraOptionApi::processErrRtnExerciseInsert(Task* task)
+void OptionApi::processErrRtnExerciseInsert(Task* task)
 {
 	gil_scoped_acquire acquire;
 	dict data;
@@ -3058,7 +3058,7 @@ void ToraOptionApi::processErrRtnExerciseInsert(Task* task)
 	this->onErrRtnExerciseInsert(data, error, task->task_id);
 };
 
-void ToraOptionApi::processRspExerciseAction(Task* task)
+void OptionApi::processRspExerciseAction(Task* task)
 {
 	gil_scoped_acquire acquire;
 	dict data;
@@ -3098,7 +3098,7 @@ void ToraOptionApi::processRspExerciseAction(Task* task)
 	this->onRspExerciseAction(data, error, task->task_id);
 };
 
-void ToraOptionApi::processErrRtnExerciseAction(Task* task)
+void OptionApi::processErrRtnExerciseAction(Task* task)
 {
 	gil_scoped_acquire acquire;
 	dict data;
@@ -3138,7 +3138,7 @@ void ToraOptionApi::processErrRtnExerciseAction(Task* task)
 	this->onErrRtnExerciseAction(data, error, task->task_id);
 };
 
-void ToraOptionApi::processRspLockInsert(Task* task)
+void OptionApi::processRspLockInsert(Task* task)
 {
 	gil_scoped_acquire acquire;
 	dict data;
@@ -3177,7 +3177,7 @@ void ToraOptionApi::processRspLockInsert(Task* task)
 	this->onRspLockInsert(data, error, task->task_id);
 };
 
-void ToraOptionApi::processRtnLock(Task* task)
+void OptionApi::processRtnLock(Task* task)
 {
 	gil_scoped_acquire acquire;
 	dict data;
@@ -3231,7 +3231,7 @@ void ToraOptionApi::processRtnLock(Task* task)
 	this->onRtnLock(data);
 };
 
-void ToraOptionApi::processErrRtnLockInsert(Task* task)
+void OptionApi::processErrRtnLockInsert(Task* task)
 {
 	gil_scoped_acquire acquire;
 	dict data;
@@ -3270,7 +3270,7 @@ void ToraOptionApi::processErrRtnLockInsert(Task* task)
 	this->onErrRtnLockInsert(data, error, task->task_id);
 };
 
-void ToraOptionApi::processRspLockAction(Task* task)
+void OptionApi::processRspLockAction(Task* task)
 {
 	gil_scoped_acquire acquire;
 	dict data;
@@ -3310,7 +3310,7 @@ void ToraOptionApi::processRspLockAction(Task* task)
 	this->onRspLockAction(data, error, task->task_id);
 };
 
-void ToraOptionApi::processErrRtnLockAction(Task* task)
+void OptionApi::processErrRtnLockAction(Task* task)
 {
 	gil_scoped_acquire acquire;
 	dict data;
@@ -3350,7 +3350,7 @@ void ToraOptionApi::processErrRtnLockAction(Task* task)
 	this->onErrRtnLockAction(data, error, task->task_id);
 };
 
-void ToraOptionApi::processRtnStockDisposal(Task* task)
+void OptionApi::processRtnStockDisposal(Task* task)
 {
 	gil_scoped_acquire acquire;
 	dict data;
@@ -3405,7 +3405,7 @@ void ToraOptionApi::processRtnStockDisposal(Task* task)
 	this->onRtnStockDisposal(data);
 };
 
-void ToraOptionApi::processRspCombOrderInsert(Task* task)
+void OptionApi::processRspCombOrderInsert(Task* task)
 {
 	gil_scoped_acquire acquire;
 	dict data;
@@ -3447,7 +3447,7 @@ void ToraOptionApi::processRspCombOrderInsert(Task* task)
 	this->onRspCombOrderInsert(data, error, task->task_id);
 };
 
-void ToraOptionApi::processRtnCombOrder(Task* task)
+void OptionApi::processRtnCombOrder(Task* task)
 {
 	gil_scoped_acquire acquire;
 	dict data;
@@ -3506,7 +3506,7 @@ void ToraOptionApi::processRtnCombOrder(Task* task)
 	this->onRtnCombOrder(data);
 };
 
-void ToraOptionApi::processErrRtnCombOrderInsert(Task* task)
+void OptionApi::processErrRtnCombOrderInsert(Task* task)
 {
 	gil_scoped_acquire acquire;
 	dict data;
@@ -3548,7 +3548,7 @@ void ToraOptionApi::processErrRtnCombOrderInsert(Task* task)
 	this->onErrRtnCombOrderInsert(data, error, task->task_id);
 };
 
-void ToraOptionApi::processRspCombOrderAction(Task* task)
+void OptionApi::processRspCombOrderAction(Task* task)
 {
 	gil_scoped_acquire acquire;
 	dict data;
@@ -3588,7 +3588,7 @@ void ToraOptionApi::processRspCombOrderAction(Task* task)
 	this->onRspCombOrderAction(data, error, task->task_id);
 };
 
-void ToraOptionApi::processErrRtnCombOrderAction(Task* task)
+void OptionApi::processErrRtnCombOrderAction(Task* task)
 {
 	gil_scoped_acquire acquire;
 	dict data;
@@ -3628,7 +3628,7 @@ void ToraOptionApi::processErrRtnCombOrderAction(Task* task)
 	this->onErrRtnCombOrderAction(data, error, task->task_id);
 };
 
-void ToraOptionApi::processRspCondOrderInsert(Task* task)
+void OptionApi::processRspCondOrderInsert(Task* task)
 {
 	gil_scoped_acquire acquire;
 	dict data;
@@ -3690,7 +3690,7 @@ void ToraOptionApi::processRspCondOrderInsert(Task* task)
 	this->onRspCondOrderInsert(data, error, task->task_id);
 };
 
-void ToraOptionApi::processRtnCondOrder(Task* task)
+void OptionApi::processRtnCondOrder(Task* task)
 {
 	gil_scoped_acquire acquire;
 	dict data;
@@ -3758,7 +3758,7 @@ void ToraOptionApi::processRtnCondOrder(Task* task)
 	this->onRtnCondOrder(data);
 };
 
-void ToraOptionApi::processErrRtnCondOrderInsert(Task* task)
+void OptionApi::processErrRtnCondOrderInsert(Task* task)
 {
 	gil_scoped_acquire acquire;
 	dict data;
@@ -3820,7 +3820,7 @@ void ToraOptionApi::processErrRtnCondOrderInsert(Task* task)
 	this->onErrRtnCondOrderInsert(data, error, task->task_id);
 };
 
-void ToraOptionApi::processRspCondOrderAction(Task* task)
+void OptionApi::processRspCondOrderAction(Task* task)
 {
 	gil_scoped_acquire acquire;
 	dict data;
@@ -3860,7 +3860,7 @@ void ToraOptionApi::processRspCondOrderAction(Task* task)
 	this->onRspCondOrderAction(data, error, task->task_id);
 };
 
-void ToraOptionApi::processErrRtnCondOrderAction(Task* task)
+void OptionApi::processErrRtnCondOrderAction(Task* task)
 {
 	gil_scoped_acquire acquire;
 	dict data;
@@ -3900,7 +3900,7 @@ void ToraOptionApi::processErrRtnCondOrderAction(Task* task)
 	this->onErrRtnCondOrderAction(data, error, task->task_id);
 };
 
-void ToraOptionApi::processRspCombExerciseInsert(Task* task)
+void OptionApi::processRspCombExerciseInsert(Task* task)
 {
 	gil_scoped_acquire acquire;
 	dict data;
@@ -3940,7 +3940,7 @@ void ToraOptionApi::processRspCombExerciseInsert(Task* task)
 	this->onRspCombExerciseInsert(data, error, task->task_id);
 };
 
-void ToraOptionApi::processRtnCombExercise(Task* task)
+void OptionApi::processRtnCombExercise(Task* task)
 {
 	gil_scoped_acquire acquire;
 	dict data;
@@ -3997,7 +3997,7 @@ void ToraOptionApi::processRtnCombExercise(Task* task)
 	this->onRtnCombExercise(data);
 };
 
-void ToraOptionApi::processErrRtnCombExerciseInsert(Task* task)
+void OptionApi::processErrRtnCombExerciseInsert(Task* task)
 {
 	gil_scoped_acquire acquire;
 	dict data;
@@ -4037,7 +4037,7 @@ void ToraOptionApi::processErrRtnCombExerciseInsert(Task* task)
 	this->onErrRtnCombExerciseInsert(data, error, task->task_id);
 };
 
-void ToraOptionApi::processRspCombExerciseAction(Task* task)
+void OptionApi::processRspCombExerciseAction(Task* task)
 {
 	gil_scoped_acquire acquire;
 	dict data;
@@ -4078,7 +4078,7 @@ void ToraOptionApi::processRspCombExerciseAction(Task* task)
 	this->onRspCombExerciseAction(data, error, task->task_id);
 };
 
-void ToraOptionApi::processErrRtnCombExerciseAction(Task* task)
+void OptionApi::processErrRtnCombExerciseAction(Task* task)
 {
 	gil_scoped_acquire acquire;
 	dict data;
@@ -4119,7 +4119,7 @@ void ToraOptionApi::processErrRtnCombExerciseAction(Task* task)
 	this->onErrRtnCombExerciseAction(data, error, task->task_id);
 };
 
-void ToraOptionApi::processRspInquiryMaxLockVolume(Task* task)
+void OptionApi::processRspInquiryMaxLockVolume(Task* task)
 {
 	gil_scoped_acquire acquire;
 	dict data;
@@ -4146,7 +4146,7 @@ void ToraOptionApi::processRspInquiryMaxLockVolume(Task* task)
 	this->onRspInquiryMaxLockVolume(data, error, task->task_id);
 };
 
-void ToraOptionApi::processRspInquiryMaxCoverVolume(Task* task)
+void OptionApi::processRspInquiryMaxCoverVolume(Task* task)
 {
 	gil_scoped_acquire acquire;
 	dict data;
@@ -4173,7 +4173,7 @@ void ToraOptionApi::processRspInquiryMaxCoverVolume(Task* task)
 	this->onRspInquiryMaxCoverVolume(data, error, task->task_id);
 };
 
-void ToraOptionApi::processRspInquirySplitCombMarginDifference(Task* task)
+void OptionApi::processRspInquirySplitCombMarginDifference(Task* task)
 {
 	gil_scoped_acquire acquire;
 	dict data;
@@ -4210,7 +4210,7 @@ void ToraOptionApi::processRspInquirySplitCombMarginDifference(Task* task)
 	this->onRspInquirySplitCombMarginDifference(data, error, task->task_id);
 };
 
-void ToraOptionApi::processRspTransferFund(Task* task)
+void OptionApi::processRspTransferFund(Task* task)
 {
 	gil_scoped_acquire acquire;
 	dict data;
@@ -4239,7 +4239,7 @@ void ToraOptionApi::processRspTransferFund(Task* task)
 	this->onRspTransferFund(data, error, task->task_id);
 };
 
-void ToraOptionApi::processRtnTransferFund(Task* task)
+void OptionApi::processRtnTransferFund(Task* task)
 {
 	gil_scoped_acquire acquire;
 	dict data;
@@ -4266,7 +4266,7 @@ void ToraOptionApi::processRtnTransferFund(Task* task)
 	this->onRtnTransferFund(data);
 };
 
-void ToraOptionApi::processErrRtnTransferFund(Task* task)
+void OptionApi::processErrRtnTransferFund(Task* task)
 {
 	gil_scoped_acquire acquire;
 	dict data;
@@ -4295,7 +4295,7 @@ void ToraOptionApi::processErrRtnTransferFund(Task* task)
 	this->onErrRtnTransferFund(data, error, task->task_id);
 };
 
-void ToraOptionApi::processRtnTransferPosition(Task* task)
+void OptionApi::processRtnTransferPosition(Task* task)
 {
 	gil_scoped_acquire acquire;
 	dict data;
@@ -4328,7 +4328,7 @@ void ToraOptionApi::processRtnTransferPosition(Task* task)
 	this->onRtnTransferPosition(data);
 };
 
-void ToraOptionApi::processErrRtnTransferPosition(Task* task)
+void OptionApi::processErrRtnTransferPosition(Task* task)
 {
 	gil_scoped_acquire acquire;
 	dict data;
@@ -4361,7 +4361,7 @@ void ToraOptionApi::processErrRtnTransferPosition(Task* task)
 	this->onErrRtnTransferPosition(data, error, task->task_id);
 };
 
-void ToraOptionApi::processRspTransferStockPosition(Task* task)
+void OptionApi::processRspTransferStockPosition(Task* task)
 {
 	gil_scoped_acquire acquire;
 	dict data;
@@ -4391,7 +4391,7 @@ void ToraOptionApi::processRspTransferStockPosition(Task* task)
 	this->onRspTransferStockPosition(data, error, task->task_id);
 };
 
-void ToraOptionApi::processRtnTransferStockPosition(Task* task)
+void OptionApi::processRtnTransferStockPosition(Task* task)
 {
 	gil_scoped_acquire acquire;
 	dict data;
@@ -4423,7 +4423,7 @@ void ToraOptionApi::processRtnTransferStockPosition(Task* task)
 	this->onRtnTransferStockPosition(data);
 };
 
-void ToraOptionApi::processErrRtnTransferStockPosition(Task* task)
+void OptionApi::processErrRtnTransferStockPosition(Task* task)
 {
 	gil_scoped_acquire acquire;
 	dict data;
@@ -4453,7 +4453,7 @@ void ToraOptionApi::processErrRtnTransferStockPosition(Task* task)
 	this->onErrRtnTransferStockPosition(data, error, task->task_id);
 };
 
-void ToraOptionApi::processRspInquiryJZFund(Task* task)
+void OptionApi::processRspInquiryJZFund(Task* task)
 {
 	gil_scoped_acquire acquire;
 	dict data;
@@ -4479,7 +4479,7 @@ void ToraOptionApi::processRspInquiryJZFund(Task* task)
 	this->onRspInquiryJZFund(data, error, task->task_id);
 };
 
-void ToraOptionApi::processRspInquiryBankAccountFund(Task* task)
+void OptionApi::processRspInquiryBankAccountFund(Task* task)
 {
 	gil_scoped_acquire acquire;
 	dict data;
@@ -4506,7 +4506,7 @@ void ToraOptionApi::processRspInquiryBankAccountFund(Task* task)
 	this->onRspInquiryBankAccountFund(data, error, task->task_id);
 };
 
-void ToraOptionApi::processRspInquiryStockPosition(Task* task)
+void OptionApi::processRspInquiryStockPosition(Task* task)
 {
 	gil_scoped_acquire acquire;
 	dict data;
@@ -4550,7 +4550,7 @@ void ToraOptionApi::processRspInquiryStockPosition(Task* task)
 	this->onRspInquiryStockPosition(data, error, task->task_id);
 };
 
-void ToraOptionApi::processRtnMarketStatus(Task* task)
+void OptionApi::processRtnMarketStatus(Task* task)
 {
 	gil_scoped_acquire acquire;
 	dict data;
@@ -4564,7 +4564,7 @@ void ToraOptionApi::processRtnMarketStatus(Task* task)
 	this->onRtnMarketStatus(data);
 };
 
-void ToraOptionApi::processRtnTradingNotice(Task* task)
+void OptionApi::processRtnTradingNotice(Task* task)
 {
 	gil_scoped_acquire acquire;
 	dict data;
@@ -4583,7 +4583,7 @@ void ToraOptionApi::processRtnTradingNotice(Task* task)
 	this->onRtnTradingNotice(data);
 };
 
-void ToraOptionApi::processRspQryExchange(Task* task)
+void OptionApi::processRspQryExchange(Task* task)
 {
 	gil_scoped_acquire acquire;
 	dict data;
@@ -4607,7 +4607,7 @@ void ToraOptionApi::processRspQryExchange(Task* task)
 	this->onRspQryExchange(data, error, task->task_id, task->task_last);
 };
 
-void ToraOptionApi::processRspQryMarketData(Task* task)
+void OptionApi::processRspQryMarketData(Task* task)
 {
 	gil_scoped_acquire acquire;
 	dict data;
@@ -4671,7 +4671,7 @@ void ToraOptionApi::processRspQryMarketData(Task* task)
 	this->onRspQryMarketData(data, error, task->task_id, task->task_last);
 };
 
-void ToraOptionApi::processRspQrySecurity(Task* task)
+void OptionApi::processRspQrySecurity(Task* task)
 {
 	gil_scoped_acquire acquire;
 	dict data;
@@ -4736,7 +4736,7 @@ void ToraOptionApi::processRspQrySecurity(Task* task)
 	this->onRspQrySecurity(data, error, task->task_id, task->task_last);
 };
 
-void ToraOptionApi::processRspQryBUProxy(Task* task)
+void OptionApi::processRspQryBUProxy(Task* task)
 {
 	gil_scoped_acquire acquire;
 	dict data;
@@ -4760,7 +4760,7 @@ void ToraOptionApi::processRspQryBUProxy(Task* task)
 	this->onRspQryBUProxy(data, error, task->task_id, task->task_last);
 };
 
-void ToraOptionApi::processRspQryUser(Task* task)
+void OptionApi::processRspQryUser(Task* task)
 {
 	gil_scoped_acquire acquire;
 	dict data;
@@ -4801,7 +4801,7 @@ void ToraOptionApi::processRspQryUser(Task* task)
 	this->onRspQryUser(data, error, task->task_id, task->task_last);
 };
 
-void ToraOptionApi::processRspQryInvestor(Task* task)
+void OptionApi::processRspQryInvestor(Task* task)
 {
 	gil_scoped_acquire acquire;
 	dict data;
@@ -4844,7 +4844,7 @@ void ToraOptionApi::processRspQryInvestor(Task* task)
 	this->onRspQryInvestor(data, error, task->task_id, task->task_last);
 };
 
-void ToraOptionApi::processRspQryShareholderAccount(Task* task)
+void OptionApi::processRspQryShareholderAccount(Task* task)
 {
 	gil_scoped_acquire acquire;
 	dict data;
@@ -4869,7 +4869,7 @@ void ToraOptionApi::processRspQryShareholderAccount(Task* task)
 	this->onRspQryShareholderAccount(data, error, task->task_id, task->task_last);
 };
 
-void ToraOptionApi::processRspQryTradingAccount(Task* task)
+void OptionApi::processRspQryTradingAccount(Task* task)
 {
 	gil_scoped_acquire acquire;
 	dict data;
@@ -4913,7 +4913,7 @@ void ToraOptionApi::processRspQryTradingAccount(Task* task)
 	this->onRspQryTradingAccount(data, error, task->task_id, task->task_last);
 };
 
-void ToraOptionApi::processRspQryOrder(Task* task)
+void OptionApi::processRspQryOrder(Task* task)
 {
 	gil_scoped_acquire acquire;
 	dict data;
@@ -4984,7 +4984,7 @@ void ToraOptionApi::processRspQryOrder(Task* task)
 	this->onRspQryOrder(data, error, task->task_id, task->task_last);
 };
 
-void ToraOptionApi::processRspQryTrade(Task* task)
+void OptionApi::processRspQryTrade(Task* task)
 {
 	gil_scoped_acquire acquire;
 	dict data;
@@ -5027,7 +5027,7 @@ void ToraOptionApi::processRspQryTrade(Task* task)
 	this->onRspQryTrade(data, error, task->task_id, task->task_last);
 };
 
-void ToraOptionApi::processRspQryPosition(Task* task)
+void OptionApi::processRspQryPosition(Task* task)
 {
 	gil_scoped_acquire acquire;
 	dict data;
@@ -5090,7 +5090,7 @@ void ToraOptionApi::processRspQryPosition(Task* task)
 	this->onRspQryPosition(data, error, task->task_id, task->task_last);
 };
 
-void ToraOptionApi::processRspQryTradingFee(Task* task)
+void OptionApi::processRspQryTradingFee(Task* task)
 {
 	gil_scoped_acquire acquire;
 	dict data;
@@ -5146,7 +5146,7 @@ void ToraOptionApi::processRspQryTradingFee(Task* task)
 	this->onRspQryTradingFee(data, error, task->task_id, task->task_last);
 };
 
-void ToraOptionApi::processRspQryInvestorTradingFee(Task* task)
+void OptionApi::processRspQryInvestorTradingFee(Task* task)
 {
 	gil_scoped_acquire acquire;
 	dict data;
@@ -5180,7 +5180,7 @@ void ToraOptionApi::processRspQryInvestorTradingFee(Task* task)
 	this->onRspQryInvestorTradingFee(data, error, task->task_id, task->task_last);
 };
 
-void ToraOptionApi::processRspQryInvestorMarginFee(Task* task)
+void OptionApi::processRspQryInvestorMarginFee(Task* task)
 {
 	gil_scoped_acquire acquire;
 	dict data;
@@ -5209,7 +5209,7 @@ void ToraOptionApi::processRspQryInvestorMarginFee(Task* task)
 	this->onRspQryInvestorMarginFee(data, error, task->task_id, task->task_last);
 };
 
-void ToraOptionApi::processRspQryOrderFundDetail(Task* task)
+void OptionApi::processRspQryOrderFundDetail(Task* task)
 {
 	gil_scoped_acquire acquire;
 	dict data;
@@ -5250,7 +5250,7 @@ void ToraOptionApi::processRspQryOrderFundDetail(Task* task)
 	this->onRspQryOrderFundDetail(data, error, task->task_id, task->task_last);
 };
 
-void ToraOptionApi::processRspQryFundTransferDetail(Task* task)
+void OptionApi::processRspQryFundTransferDetail(Task* task)
 {
 	gil_scoped_acquire acquire;
 	dict data;
@@ -5287,7 +5287,7 @@ void ToraOptionApi::processRspQryFundTransferDetail(Task* task)
 	this->onRspQryFundTransferDetail(data, error, task->task_id, task->task_last);
 };
 
-void ToraOptionApi::processRspQryPositionTransferDetail(Task* task)
+void OptionApi::processRspQryPositionTransferDetail(Task* task)
 {
 	gil_scoped_acquire acquire;
 	dict data;
@@ -5329,7 +5329,7 @@ void ToraOptionApi::processRspQryPositionTransferDetail(Task* task)
 	this->onRspQryPositionTransferDetail(data, error, task->task_id, task->task_last);
 };
 
-void ToraOptionApi::processRspQryOrderAction(Task* task)
+void OptionApi::processRspQryOrderAction(Task* task)
 {
 	gil_scoped_acquire acquire;
 	dict data;
@@ -5387,7 +5387,7 @@ void ToraOptionApi::processRspQryOrderAction(Task* task)
 	this->onRspQryOrderAction(data, error, task->task_id, task->task_last);
 };
 
-void ToraOptionApi::processRspQryStockPosition(Task* task)
+void OptionApi::processRspQryStockPosition(Task* task)
 {
 	gil_scoped_acquire acquire;
 	dict data;
@@ -5420,7 +5420,7 @@ void ToraOptionApi::processRspQryStockPosition(Task* task)
 	this->onRspQryStockPosition(data, error, task->task_id, task->task_last);
 };
 
-void ToraOptionApi::processRspQryLock(Task* task)
+void OptionApi::processRspQryLock(Task* task)
 {
 	gil_scoped_acquire acquire;
 	dict data;
@@ -5482,7 +5482,7 @@ void ToraOptionApi::processRspQryLock(Task* task)
 	this->onRspQryLock(data, error, task->task_id, task->task_last);
 };
 
-void ToraOptionApi::processRspQryExercise(Task* task)
+void OptionApi::processRspQryExercise(Task* task)
 {
 	gil_scoped_acquire acquire;
 	dict data;
@@ -5549,7 +5549,7 @@ void ToraOptionApi::processRspQryExercise(Task* task)
 	this->onRspQryExercise(data, error, task->task_id, task->task_last);
 };
 
-void ToraOptionApi::processRspQryLockPosition(Task* task)
+void OptionApi::processRspQryLockPosition(Task* task)
 {
 	gil_scoped_acquire acquire;
 	dict data;
@@ -5581,7 +5581,7 @@ void ToraOptionApi::processRspQryLockPosition(Task* task)
 	this->onRspQryLockPosition(data, error, task->task_id, task->task_last);
 };
 
-void ToraOptionApi::processRspQryExerciseAction(Task* task)
+void OptionApi::processRspQryExerciseAction(Task* task)
 {
 	gil_scoped_acquire acquire;
 	dict data;
@@ -5639,7 +5639,7 @@ void ToraOptionApi::processRspQryExerciseAction(Task* task)
 	this->onRspQryExerciseAction(data, error, task->task_id, task->task_last);
 };
 
-void ToraOptionApi::processRspQryLockAction(Task* task)
+void OptionApi::processRspQryLockAction(Task* task)
 {
 	gil_scoped_acquire acquire;
 	dict data;
@@ -5697,7 +5697,7 @@ void ToraOptionApi::processRspQryLockAction(Task* task)
 	this->onRspQryLockAction(data, error, task->task_id, task->task_last);
 };
 
-void ToraOptionApi::processRspQryStockPositionTransferDetail(Task* task)
+void OptionApi::processRspQryStockPositionTransferDetail(Task* task)
 {
 	gil_scoped_acquire acquire;
 	dict data;
@@ -5744,7 +5744,7 @@ void ToraOptionApi::processRspQryStockPositionTransferDetail(Task* task)
 	this->onRspQryStockPositionTransferDetail(data, error, task->task_id, task->task_last);
 };
 
-void ToraOptionApi::processRspQryTradingNotice(Task* task)
+void OptionApi::processRspQryTradingNotice(Task* task)
 {
 	gil_scoped_acquire acquire;
 	dict data;
@@ -5771,7 +5771,7 @@ void ToraOptionApi::processRspQryTradingNotice(Task* task)
 	this->onRspQryTradingNotice(data, error, task->task_id, task->task_last);
 };
 
-void ToraOptionApi::processRspQryStockDisposal(Task* task)
+void OptionApi::processRspQryStockDisposal(Task* task)
 {
 	gil_scoped_acquire acquire;
 	dict data;
@@ -5834,7 +5834,7 @@ void ToraOptionApi::processRspQryStockDisposal(Task* task)
 	this->onRspQryStockDisposal(data, error, task->task_id, task->task_last);
 };
 
-void ToraOptionApi::processRspQryStockDisposalAction(Task* task)
+void OptionApi::processRspQryStockDisposalAction(Task* task)
 {
 	gil_scoped_acquire acquire;
 	dict data;
@@ -5892,7 +5892,7 @@ void ToraOptionApi::processRspQryStockDisposalAction(Task* task)
 	this->onRspQryStockDisposalAction(data, error, task->task_id, task->task_last);
 };
 
-void ToraOptionApi::processRspQryCondOrder(Task* task)
+void OptionApi::processRspQryCondOrder(Task* task)
 {
 	gil_scoped_acquire acquire;
 	dict data;
@@ -5968,7 +5968,7 @@ void ToraOptionApi::processRspQryCondOrder(Task* task)
 	this->onRspQryCondOrder(data, error, task->task_id, task->task_last);
 };
 
-void ToraOptionApi::processRspQryCondOrderAction(Task* task)
+void OptionApi::processRspQryCondOrderAction(Task* task)
 {
 	gil_scoped_acquire acquire;
 	dict data;
@@ -6016,7 +6016,7 @@ void ToraOptionApi::processRspQryCondOrderAction(Task* task)
 	this->onRspQryCondOrderAction(data, error, task->task_id, task->task_last);
 };
 
-void ToraOptionApi::processRspQryInvestorLimitPosition(Task* task)
+void OptionApi::processRspQryInvestorLimitPosition(Task* task)
 {
 	gil_scoped_acquire acquire;
 	dict data;
@@ -6059,7 +6059,7 @@ void ToraOptionApi::processRspQryInvestorLimitPosition(Task* task)
 	this->onRspQryInvestorLimitPosition(data, error, task->task_id, task->task_last);
 };
 
-void ToraOptionApi::processRspQryInvestorLimitAmount(Task* task)
+void OptionApi::processRspQryInvestorLimitAmount(Task* task)
 {
 	gil_scoped_acquire acquire;
 	dict data;
@@ -6084,7 +6084,7 @@ void ToraOptionApi::processRspQryInvestorLimitAmount(Task* task)
 	this->onRspQryInvestorLimitAmount(data, error, task->task_id, task->task_last);
 };
 
-void ToraOptionApi::processRspQryCombOrderAction(Task* task)
+void OptionApi::processRspQryCombOrderAction(Task* task)
 {
 	gil_scoped_acquire acquire;
 	dict data;
@@ -6143,7 +6143,7 @@ void ToraOptionApi::processRspQryCombOrderAction(Task* task)
 	this->onRspQryCombOrderAction(data, error, task->task_id, task->task_last);
 };
 
-void ToraOptionApi::processRspQryCombOrder(Task* task)
+void OptionApi::processRspQryCombOrder(Task* task)
 {
 	gil_scoped_acquire acquire;
 	dict data;
@@ -6210,7 +6210,7 @@ void ToraOptionApi::processRspQryCombOrder(Task* task)
 	this->onRspQryCombOrder(data, error, task->task_id, task->task_last);
 };
 
-void ToraOptionApi::processRspQryCombPosition(Task* task)
+void OptionApi::processRspQryCombPosition(Task* task)
 {
 	gil_scoped_acquire acquire;
 	dict data;
@@ -6247,7 +6247,7 @@ void ToraOptionApi::processRspQryCombPosition(Task* task)
 	this->onRspQryCombPosition(data, error, task->task_id, task->task_last);
 };
 
-void ToraOptionApi::processRspQryCombPosDetail(Task* task)
+void OptionApi::processRspQryCombPosDetail(Task* task)
 {
 	gil_scoped_acquire acquire;
 	dict data;
@@ -6299,7 +6299,7 @@ void ToraOptionApi::processRspQryCombPosDetail(Task* task)
 	this->onRspQryCombPosDetail(data, error, task->task_id, task->task_last);
 };
 
-void ToraOptionApi::processRspQryExerciseAppointment(Task* task)
+void OptionApi::processRspQryExerciseAppointment(Task* task)
 {
 	gil_scoped_acquire acquire;
 	dict data;
@@ -6335,7 +6335,7 @@ void ToraOptionApi::processRspQryExerciseAppointment(Task* task)
 	this->onRspQryExerciseAppointment(data, error, task->task_id, task->task_last);
 };
 
-void ToraOptionApi::processRspQryInsufficientCoveredStockPosition(Task* task)
+void OptionApi::processRspQryInsufficientCoveredStockPosition(Task* task)
 {
 	gil_scoped_acquire acquire;
 	dict data;
@@ -6365,7 +6365,7 @@ void ToraOptionApi::processRspQryInsufficientCoveredStockPosition(Task* task)
 	this->onRspQryInsufficientCoveredStockPosition(data, error, task->task_id, task->task_last);
 };
 
-void ToraOptionApi::processRspQryCombSecurity(Task* task)
+void OptionApi::processRspQryCombSecurity(Task* task)
 {
 	gil_scoped_acquire acquire;
 	dict data;
@@ -6394,7 +6394,7 @@ void ToraOptionApi::processRspQryCombSecurity(Task* task)
 	this->onRspQryCombSecurity(data, error, task->task_id, task->task_last);
 };
 
-void ToraOptionApi::processRspQryCombExercise(Task* task)
+void OptionApi::processRspQryCombExercise(Task* task)
 {
 	gil_scoped_acquire acquire;
 	dict data;
@@ -6459,7 +6459,7 @@ void ToraOptionApi::processRspQryCombExercise(Task* task)
 	this->onRspQryCombExercise(data, error, task->task_id, task->task_last);
 };
 
-void ToraOptionApi::processRspQryCombExerciseAction(Task* task)
+void OptionApi::processRspQryCombExerciseAction(Task* task)
 {
 	gil_scoped_acquire acquire;
 	dict data;
@@ -6523,42 +6523,42 @@ void ToraOptionApi::processRspQryCombExerciseAction(Task* task)
 ///主动函数
 ///-------------------------------------------------------------------------------------
 
-void ToraOptionApi::createTstpSPTraderApi(string pszFlowPath, bool bEncrypt)
+void OptionApi::createTstpSPTraderApi(string pszFlowPath, bool bEncrypt)
 {
 	this->api = CTORATstpSPTraderApi::CreateTstpSPTraderApi(pszFlowPath.c_str(), bEncrypt);
 	this->api->RegisterSpi(this);
 
 	this->active = true;
-	this->task_thread = thread(&ToraOptionApi::processTask, this);
+	this->task_thread = thread(&OptionApi::processTask, this);
 };
 
-void ToraOptionApi::init()
+void OptionApi::init()
 {
 	this->api->Init();
 };
 
-void ToraOptionApi::registerFront(string pszFrontAddress)
+void OptionApi::registerFront(string pszFrontAddress)
 {
 	this->api->RegisterFront((char*)pszFrontAddress.c_str());
 };
 
-int ToraOptionApi::join()
+int OptionApi::join()
 {
 	int i = this->api->Join();
 	return i;
 };
 
-void ToraOptionApi::release()
+void OptionApi::release()
 {
 	this->api->Release();
 };
 
-string ToraOptionApi::getApiVersion()
+string OptionApi::getApiVersion()
 {
 	return this->api->GetApiVersion();
 };
 
-int ToraOptionApi::exit()
+int OptionApi::exit()
 {
 	this->active = false;
 	this->task_queue.terminate();
@@ -6570,28 +6570,28 @@ int ToraOptionApi::exit()
 	return 1;
 };
 
-void ToraOptionApi::registerNameServer(string pszNsAddress)
+void OptionApi::registerNameServer(string pszNsAddress)
 {
 	this->api->RegisterNameServer((char*)pszNsAddress.c_str());
 }
 
-void ToraOptionApi::subscribePrivateTopic(int type)
+void OptionApi::subscribePrivateTopic(int type)
 {
 	this->api->SubscribePrivateTopic((TORA_TE_RESUME_TYPE)type);
 }
 
-void ToraOptionApi::subscribePublicTopic(int type)
+void OptionApi::subscribePublicTopic(int type)
 {
 	this->api->SubscribePublicTopic((TORA_TE_RESUME_TYPE)type);
 }
 
-int ToraOptionApi::reqGetConnectionInfo(int nRequestID)
+int OptionApi::reqGetConnectionInfo(int nRequestID)
 {
 	int i = this->api->ReqGetConnectionInfo(nRequestID);
 	return i;
 };
 
-int ToraOptionApi::reqUserLogin(const dict& req, int nRequestID)
+int OptionApi::reqUserLogin(const dict& req, int nRequestID)
 {
 	CTORATstpSPReqUserLoginField myreq = CTORATstpSPReqUserLoginField();
 	memset(&myreq, 0, sizeof(myreq));
@@ -6621,7 +6621,7 @@ int ToraOptionApi::reqUserLogin(const dict& req, int nRequestID)
 	return i;
 };
 
-int ToraOptionApi::reqUserLogout(const dict& req, int nRequestID)
+int OptionApi::reqUserLogout(const dict& req, int nRequestID)
 {
 	CTORATstpSPUserLogoutField myreq = CTORATstpSPUserLogoutField();
 	memset(&myreq, 0, sizeof(myreq));
@@ -6630,7 +6630,7 @@ int ToraOptionApi::reqUserLogout(const dict& req, int nRequestID)
 	return i;
 };
 
-int ToraOptionApi::reqUserPasswordUpdate(const dict& req, int nRequestID)
+int OptionApi::reqUserPasswordUpdate(const dict& req, int nRequestID)
 {
 	CTORATstpSPUserPasswordUpdateField myreq = CTORATstpSPUserPasswordUpdateField();
 	memset(&myreq, 0, sizeof(myreq));
@@ -6641,7 +6641,7 @@ int ToraOptionApi::reqUserPasswordUpdate(const dict& req, int nRequestID)
 	return i;
 };
 
-int ToraOptionApi::reqInputDeviceSerial(const dict& req, int nRequestID)
+int OptionApi::reqInputDeviceSerial(const dict& req, int nRequestID)
 {
 	CTORATstpSPReqInputDeviceSerialField myreq = CTORATstpSPReqInputDeviceSerialField();
 	memset(&myreq, 0, sizeof(myreq));
@@ -6653,7 +6653,7 @@ int ToraOptionApi::reqInputDeviceSerial(const dict& req, int nRequestID)
 	return i;
 };
 
-int ToraOptionApi::reqOrderInsert(const dict& req, int nRequestID)
+int OptionApi::reqOrderInsert(const dict& req, int nRequestID)
 {
 	CTORATstpSPInputOrderField myreq = CTORATstpSPInputOrderField();
 	memset(&myreq, 0, sizeof(myreq));
@@ -6692,7 +6692,7 @@ int ToraOptionApi::reqOrderInsert(const dict& req, int nRequestID)
 	return i;
 };
 
-int ToraOptionApi::reqOrderAction(const dict& req, int nRequestID)
+int OptionApi::reqOrderAction(const dict& req, int nRequestID)
 {
 	CTORATstpSPInputOrderActionField myreq = CTORATstpSPInputOrderActionField();
 	memset(&myreq, 0, sizeof(myreq));
@@ -6720,7 +6720,7 @@ int ToraOptionApi::reqOrderAction(const dict& req, int nRequestID)
 	return i;
 };
 
-int ToraOptionApi::reqExerciseInsert(const dict& req, int nRequestID)
+int OptionApi::reqExerciseInsert(const dict& req, int nRequestID)
 {
 	CTORATstpSPInputExerciseField myreq = CTORATstpSPInputExerciseField();
 	memset(&myreq, 0, sizeof(myreq));
@@ -6748,7 +6748,7 @@ int ToraOptionApi::reqExerciseInsert(const dict& req, int nRequestID)
 	return i;
 };
 
-int ToraOptionApi::reqExerciseAction(const dict& req, int nRequestID)
+int OptionApi::reqExerciseAction(const dict& req, int nRequestID)
 {
 	CTORATstpSPInputExerciseActionField myreq = CTORATstpSPInputExerciseActionField();
 	memset(&myreq, 0, sizeof(myreq));
@@ -6776,7 +6776,7 @@ int ToraOptionApi::reqExerciseAction(const dict& req, int nRequestID)
 	return i;
 };
 
-int ToraOptionApi::reqLockInsert(const dict& req, int nRequestID)
+int OptionApi::reqLockInsert(const dict& req, int nRequestID)
 {
 	CTORATstpSPInputLockField myreq = CTORATstpSPInputLockField();
 	memset(&myreq, 0, sizeof(myreq));
@@ -6803,7 +6803,7 @@ int ToraOptionApi::reqLockInsert(const dict& req, int nRequestID)
 	return i;
 };
 
-int ToraOptionApi::reqLockAction(const dict& req, int nRequestID)
+int OptionApi::reqLockAction(const dict& req, int nRequestID)
 {
 	CTORATstpSPInputLockActionField myreq = CTORATstpSPInputLockActionField();
 	memset(&myreq, 0, sizeof(myreq));
@@ -6831,7 +6831,7 @@ int ToraOptionApi::reqLockAction(const dict& req, int nRequestID)
 	return i;
 };
 
-int ToraOptionApi::reqCombOrderInsert(const dict& req, int nRequestID)
+int OptionApi::reqCombOrderInsert(const dict& req, int nRequestID)
 {
 	CTORATstpSPInputCombOrderField myreq = CTORATstpSPInputCombOrderField();
 	memset(&myreq, 0, sizeof(myreq));
@@ -6861,7 +6861,7 @@ int ToraOptionApi::reqCombOrderInsert(const dict& req, int nRequestID)
 	return i;
 };
 
-int ToraOptionApi::reqCombOrderAction(const dict& req, int nRequestID)
+int OptionApi::reqCombOrderAction(const dict& req, int nRequestID)
 {
 	CTORATstpSPInputCombOrderActionField myreq = CTORATstpSPInputCombOrderActionField();
 	memset(&myreq, 0, sizeof(myreq));
@@ -6889,7 +6889,7 @@ int ToraOptionApi::reqCombOrderAction(const dict& req, int nRequestID)
 	return i;
 };
 
-int ToraOptionApi::reqCondOrderInsert(const dict& req, int nRequestID)
+int OptionApi::reqCondOrderInsert(const dict& req, int nRequestID)
 {
 	CTORATstpSPInputCondOrderField myreq = CTORATstpSPInputCondOrderField();
 	memset(&myreq, 0, sizeof(myreq));
@@ -6939,7 +6939,7 @@ int ToraOptionApi::reqCondOrderInsert(const dict& req, int nRequestID)
 	return i;
 };
 
-int ToraOptionApi::reqCondOrderAction(const dict& req, int nRequestID)
+int OptionApi::reqCondOrderAction(const dict& req, int nRequestID)
 {
 	CTORATstpSPInputCondOrderActionField myreq = CTORATstpSPInputCondOrderActionField();
 	memset(&myreq, 0, sizeof(myreq));
@@ -6967,7 +6967,7 @@ int ToraOptionApi::reqCondOrderAction(const dict& req, int nRequestID)
 	return i;
 };
 
-int ToraOptionApi::reqCombExerciseInsert(const dict& req, int nRequestID)
+int OptionApi::reqCombExerciseInsert(const dict& req, int nRequestID)
 {
 	CTORATstpSPInputCombExerciseField myreq = CTORATstpSPInputCombExerciseField();
 	memset(&myreq, 0, sizeof(myreq));
@@ -6995,7 +6995,7 @@ int ToraOptionApi::reqCombExerciseInsert(const dict& req, int nRequestID)
 	return i;
 };
 
-int ToraOptionApi::reqCombExerciseAction(const dict& req, int nRequestID)
+int OptionApi::reqCombExerciseAction(const dict& req, int nRequestID)
 {
 	CTORATstpSPInputCombExerciseActionField myreq = CTORATstpSPInputCombExerciseActionField();
 	memset(&myreq, 0, sizeof(myreq));
@@ -7024,7 +7024,7 @@ int ToraOptionApi::reqCombExerciseAction(const dict& req, int nRequestID)
 	return i;
 };
 
-int ToraOptionApi::reqInquiryMaxLockVolume(const dict& req, int nRequestID)
+int OptionApi::reqInquiryMaxLockVolume(const dict& req, int nRequestID)
 {
 	CTORATstpSPReqInquiryMaxLockVolumeField myreq = CTORATstpSPReqInquiryMaxLockVolumeField();
 	memset(&myreq, 0, sizeof(myreq));
@@ -7037,7 +7037,7 @@ int ToraOptionApi::reqInquiryMaxLockVolume(const dict& req, int nRequestID)
 	return i;
 };
 
-int ToraOptionApi::reqInquiryMaxCoverVolume(const dict& req, int nRequestID)
+int OptionApi::reqInquiryMaxCoverVolume(const dict& req, int nRequestID)
 {
 	CTORATstpSPReqInquiryMaxCoverVolumeField myreq = CTORATstpSPReqInquiryMaxCoverVolumeField();
 	memset(&myreq, 0, sizeof(myreq));
@@ -7050,7 +7050,7 @@ int ToraOptionApi::reqInquiryMaxCoverVolume(const dict& req, int nRequestID)
 	return i;
 };
 
-int ToraOptionApi::reqInquirySplitCombMarginDifference(const dict& req, int nRequestID)
+int OptionApi::reqInquirySplitCombMarginDifference(const dict& req, int nRequestID)
 {
 	CTORATstpSPReqInquirySplitCombMarginDifferenceField myreq = CTORATstpSPReqInquirySplitCombMarginDifferenceField();
 	memset(&myreq, 0, sizeof(myreq));
@@ -7066,7 +7066,7 @@ int ToraOptionApi::reqInquirySplitCombMarginDifference(const dict& req, int nReq
 	return i;
 };
 
-int ToraOptionApi::reqTransferFund(const dict& req, int nRequestID)
+int OptionApi::reqTransferFund(const dict& req, int nRequestID)
 {
 	CTORATstpSPInputTransferFundField myreq = CTORATstpSPInputTransferFundField();
 	memset(&myreq, 0, sizeof(myreq));
@@ -7083,7 +7083,7 @@ int ToraOptionApi::reqTransferFund(const dict& req, int nRequestID)
 	return i;
 };
 
-int ToraOptionApi::reqTransferStockPosition(const dict& req, int nRequestID)
+int OptionApi::reqTransferStockPosition(const dict& req, int nRequestID)
 {
 	CTORATstpSPInputTransferStockPositionField myreq = CTORATstpSPInputTransferStockPositionField();
 	memset(&myreq, 0, sizeof(myreq));
@@ -7101,7 +7101,7 @@ int ToraOptionApi::reqTransferStockPosition(const dict& req, int nRequestID)
 	return i;
 };
 
-int ToraOptionApi::reqInquiryJZFund(const dict& req, int nRequestID)
+int OptionApi::reqInquiryJZFund(const dict& req, int nRequestID)
 {
 	CTORATstpSPReqInquiryJZFundField myreq = CTORATstpSPReqInquiryJZFundField();
 	memset(&myreq, 0, sizeof(myreq));
@@ -7112,7 +7112,7 @@ int ToraOptionApi::reqInquiryJZFund(const dict& req, int nRequestID)
 	return i;
 };
 
-int ToraOptionApi::reqInquiryBankAccountFund(const dict& req, int nRequestID)
+int OptionApi::reqInquiryBankAccountFund(const dict& req, int nRequestID)
 {
 	CTORATstpSPReqInquiryBankAccountFundField myreq = CTORATstpSPReqInquiryBankAccountFundField();
 	memset(&myreq, 0, sizeof(myreq));
@@ -7124,7 +7124,7 @@ int ToraOptionApi::reqInquiryBankAccountFund(const dict& req, int nRequestID)
 	return i;
 };
 
-int ToraOptionApi::reqInquiryStockPosition(const dict& req, int nRequestID)
+int OptionApi::reqInquiryStockPosition(const dict& req, int nRequestID)
 {
 	CTORATstpSPReqInquiryStockPositionField myreq = CTORATstpSPReqInquiryStockPositionField();
 	memset(&myreq, 0, sizeof(myreq));
@@ -7139,7 +7139,7 @@ int ToraOptionApi::reqInquiryStockPosition(const dict& req, int nRequestID)
 	return i;
 };
 
-int ToraOptionApi::reqQryExchange(const dict& req, int nRequestID)
+int OptionApi::reqQryExchange(const dict& req, int nRequestID)
 {
 	CTORATstpSPQryExchangeField myreq = CTORATstpSPQryExchangeField();
 	memset(&myreq, 0, sizeof(myreq));
@@ -7148,7 +7148,7 @@ int ToraOptionApi::reqQryExchange(const dict& req, int nRequestID)
 	return i;
 };
 
-int ToraOptionApi::reqQryMarketData(const dict& req, int nRequestID)
+int OptionApi::reqQryMarketData(const dict& req, int nRequestID)
 {
 	CTORATstpSPQryMarketDataField myreq = CTORATstpSPQryMarketDataField();
 	memset(&myreq, 0, sizeof(myreq));
@@ -7158,7 +7158,7 @@ int ToraOptionApi::reqQryMarketData(const dict& req, int nRequestID)
 	return i;
 };
 
-int ToraOptionApi::reqQrySecurity(const dict& req, int nRequestID)
+int OptionApi::reqQrySecurity(const dict& req, int nRequestID)
 {
 	CTORATstpSPQrySecurityField myreq = CTORATstpSPQrySecurityField();
 	memset(&myreq, 0, sizeof(myreq));
@@ -7168,7 +7168,7 @@ int ToraOptionApi::reqQrySecurity(const dict& req, int nRequestID)
 	return i;
 };
 
-int ToraOptionApi::reqQryBUProxy(const dict& req, int nRequestID)
+int OptionApi::reqQryBUProxy(const dict& req, int nRequestID)
 {
 	CTORATstpSPQryBUProxyField myreq = CTORATstpSPQryBUProxyField();
 	memset(&myreq, 0, sizeof(myreq));
@@ -7179,7 +7179,7 @@ int ToraOptionApi::reqQryBUProxy(const dict& req, int nRequestID)
 	return i;
 };
 
-int ToraOptionApi::reqQryUser(const dict& req, int nRequestID)
+int OptionApi::reqQryUser(const dict& req, int nRequestID)
 {
 	CTORATstpSPQryUserField myreq = CTORATstpSPQryUserField();
 	memset(&myreq, 0, sizeof(myreq));
@@ -7189,7 +7189,7 @@ int ToraOptionApi::reqQryUser(const dict& req, int nRequestID)
 	return i;
 };
 
-int ToraOptionApi::reqQryInvestor(const dict& req, int nRequestID)
+int OptionApi::reqQryInvestor(const dict& req, int nRequestID)
 {
 	CTORATstpSPQryInvestorField myreq = CTORATstpSPQryInvestorField();
 	memset(&myreq, 0, sizeof(myreq));
@@ -7198,7 +7198,7 @@ int ToraOptionApi::reqQryInvestor(const dict& req, int nRequestID)
 	return i;
 };
 
-int ToraOptionApi::reqQryShareholderAccount(const dict& req, int nRequestID)
+int OptionApi::reqQryShareholderAccount(const dict& req, int nRequestID)
 {
 	CTORATstpSPQryShareholderAccountField myreq = CTORATstpSPQryShareholderAccountField();
 	memset(&myreq, 0, sizeof(myreq));
@@ -7211,7 +7211,7 @@ int ToraOptionApi::reqQryShareholderAccount(const dict& req, int nRequestID)
 	return i;
 };
 
-int ToraOptionApi::reqQryTradingAccount(const dict& req, int nRequestID)
+int OptionApi::reqQryTradingAccount(const dict& req, int nRequestID)
 {
 	CTORATstpSPQryTradingAccountField myreq = CTORATstpSPQryTradingAccountField();
 	memset(&myreq, 0, sizeof(myreq));
@@ -7224,7 +7224,7 @@ int ToraOptionApi::reqQryTradingAccount(const dict& req, int nRequestID)
 	return i;
 };
 
-int ToraOptionApi::reqQryOrder(const dict& req, int nRequestID)
+int OptionApi::reqQryOrder(const dict& req, int nRequestID)
 {
 	CTORATstpSPQryOrderField myreq = CTORATstpSPQryOrderField();
 	memset(&myreq, 0, sizeof(myreq));
@@ -7245,7 +7245,7 @@ int ToraOptionApi::reqQryOrder(const dict& req, int nRequestID)
 	return i;
 };
 
-int ToraOptionApi::reqQryTrade(const dict& req, int nRequestID)
+int OptionApi::reqQryTrade(const dict& req, int nRequestID)
 {
 	CTORATstpSPQryTradeField myreq = CTORATstpSPQryTradeField();
 	memset(&myreq, 0, sizeof(myreq));
@@ -7262,7 +7262,7 @@ int ToraOptionApi::reqQryTrade(const dict& req, int nRequestID)
 	return i;
 };
 
-int ToraOptionApi::reqQryPosition(const dict& req, int nRequestID)
+int OptionApi::reqQryPosition(const dict& req, int nRequestID)
 {
 	CTORATstpSPQryPositionField myreq = CTORATstpSPQryPositionField();
 	memset(&myreq, 0, sizeof(myreq));
@@ -7278,7 +7278,7 @@ int ToraOptionApi::reqQryPosition(const dict& req, int nRequestID)
 	return i;
 };
 
-int ToraOptionApi::reqQryTradingFee(const dict& req, int nRequestID)
+int OptionApi::reqQryTradingFee(const dict& req, int nRequestID)
 {
 	CTORATstpSPQryTradingFeeField myreq = CTORATstpSPQryTradingFeeField();
 	memset(&myreq, 0, sizeof(myreq));
@@ -7287,7 +7287,7 @@ int ToraOptionApi::reqQryTradingFee(const dict& req, int nRequestID)
 	return i;
 };
 
-int ToraOptionApi::reqQryInvestorTradingFee(const dict& req, int nRequestID)
+int OptionApi::reqQryInvestorTradingFee(const dict& req, int nRequestID)
 {
 	CTORATstpSPQryInvestorTradingFeeField myreq = CTORATstpSPQryInvestorTradingFeeField();
 	memset(&myreq, 0, sizeof(myreq));
@@ -7298,7 +7298,7 @@ int ToraOptionApi::reqQryInvestorTradingFee(const dict& req, int nRequestID)
 	return i;
 };
 
-int ToraOptionApi::reqQryInvestorMarginFee(const dict& req, int nRequestID)
+int OptionApi::reqQryInvestorMarginFee(const dict& req, int nRequestID)
 {
 	CTORATstpSPQryInvestorMarginFeeField myreq = CTORATstpSPQryInvestorMarginFeeField();
 	memset(&myreq, 0, sizeof(myreq));
@@ -7313,7 +7313,7 @@ int ToraOptionApi::reqQryInvestorMarginFee(const dict& req, int nRequestID)
 	return i;
 };
 
-int ToraOptionApi::reqQryOrderFundDetail(const dict& req, int nRequestID)
+int OptionApi::reqQryOrderFundDetail(const dict& req, int nRequestID)
 {
 	CTORATstpSPQryOrderFundDetailField myreq = CTORATstpSPQryOrderFundDetailField();
 	memset(&myreq, 0, sizeof(myreq));
@@ -7326,7 +7326,7 @@ int ToraOptionApi::reqQryOrderFundDetail(const dict& req, int nRequestID)
 	return i;
 };
 
-int ToraOptionApi::reqQryFundTransferDetail(const dict& req, int nRequestID)
+int OptionApi::reqQryFundTransferDetail(const dict& req, int nRequestID)
 {
 	CTORATstpSPQryFundTransferDetailField myreq = CTORATstpSPQryFundTransferDetailField();
 	memset(&myreq, 0, sizeof(myreq));
@@ -7338,7 +7338,7 @@ int ToraOptionApi::reqQryFundTransferDetail(const dict& req, int nRequestID)
 	return i;
 };
 
-int ToraOptionApi::reqQryPositionTransferDetail(const dict& req, int nRequestID)
+int OptionApi::reqQryPositionTransferDetail(const dict& req, int nRequestID)
 {
 	CTORATstpSPQryPositionTransferDetailField myreq = CTORATstpSPQryPositionTransferDetailField();
 	memset(&myreq, 0, sizeof(myreq));
@@ -7353,7 +7353,7 @@ int ToraOptionApi::reqQryPositionTransferDetail(const dict& req, int nRequestID)
 	return i;
 };
 
-int ToraOptionApi::reqQryOrderAction(const dict& req, int nRequestID)
+int OptionApi::reqQryOrderAction(const dict& req, int nRequestID)
 {
 	CTORATstpSPQryOrderActionField myreq = CTORATstpSPQryOrderActionField();
 	memset(&myreq, 0, sizeof(myreq));
@@ -7372,7 +7372,7 @@ int ToraOptionApi::reqQryOrderAction(const dict& req, int nRequestID)
 	return i;
 };
 
-int ToraOptionApi::reqQryStockPosition(const dict& req, int nRequestID)
+int OptionApi::reqQryStockPosition(const dict& req, int nRequestID)
 {
 	CTORATstpSPQryStockPositionField myreq = CTORATstpSPQryStockPositionField();
 	memset(&myreq, 0, sizeof(myreq));
@@ -7386,7 +7386,7 @@ int ToraOptionApi::reqQryStockPosition(const dict& req, int nRequestID)
 	return i;
 };
 
-int ToraOptionApi::reqQryLock(const dict& req, int nRequestID)
+int OptionApi::reqQryLock(const dict& req, int nRequestID)
 {
 	CTORATstpSPQryLockField myreq = CTORATstpSPQryLockField();
 	memset(&myreq, 0, sizeof(myreq));
@@ -7407,7 +7407,7 @@ int ToraOptionApi::reqQryLock(const dict& req, int nRequestID)
 	return i;
 };
 
-int ToraOptionApi::reqQryExercise(const dict& req, int nRequestID)
+int OptionApi::reqQryExercise(const dict& req, int nRequestID)
 {
 	CTORATstpSPQryExerciseField myreq = CTORATstpSPQryExerciseField();
 	memset(&myreq, 0, sizeof(myreq));
@@ -7427,7 +7427,7 @@ int ToraOptionApi::reqQryExercise(const dict& req, int nRequestID)
 	return i;
 };
 
-int ToraOptionApi::reqQryLockPosition(const dict& req, int nRequestID)
+int OptionApi::reqQryLockPosition(const dict& req, int nRequestID)
 {
 	CTORATstpSPQryLockPositionField myreq = CTORATstpSPQryLockPositionField();
 	memset(&myreq, 0, sizeof(myreq));
@@ -7441,7 +7441,7 @@ int ToraOptionApi::reqQryLockPosition(const dict& req, int nRequestID)
 	return i;
 };
 
-int ToraOptionApi::reqQryExerciseAction(const dict& req, int nRequestID)
+int OptionApi::reqQryExerciseAction(const dict& req, int nRequestID)
 {
 	CTORATstpSPQryExerciseActionField myreq = CTORATstpSPQryExerciseActionField();
 	memset(&myreq, 0, sizeof(myreq));
@@ -7460,7 +7460,7 @@ int ToraOptionApi::reqQryExerciseAction(const dict& req, int nRequestID)
 	return i;
 };
 
-int ToraOptionApi::reqQryLockAction(const dict& req, int nRequestID)
+int OptionApi::reqQryLockAction(const dict& req, int nRequestID)
 {
 	CTORATstpSPQryLockActionField myreq = CTORATstpSPQryLockActionField();
 	memset(&myreq, 0, sizeof(myreq));
@@ -7479,7 +7479,7 @@ int ToraOptionApi::reqQryLockAction(const dict& req, int nRequestID)
 	return i;
 };
 
-int ToraOptionApi::reqQryStockPositionTransferDetail(const dict& req, int nRequestID)
+int OptionApi::reqQryStockPositionTransferDetail(const dict& req, int nRequestID)
 {
 	CTORATstpSPQryStockPositionTransferDetailField myreq = CTORATstpSPQryStockPositionTransferDetailField();
 	memset(&myreq, 0, sizeof(myreq));
@@ -7493,7 +7493,7 @@ int ToraOptionApi::reqQryStockPositionTransferDetail(const dict& req, int nReque
 	return i;
 };
 
-int ToraOptionApi::reqQryTradingNotice(const dict& req, int nRequestID)
+int OptionApi::reqQryTradingNotice(const dict& req, int nRequestID)
 {
 	CTORATstpSPQryTradingNoticeField myreq = CTORATstpSPQryTradingNoticeField();
 	memset(&myreq, 0, sizeof(myreq));
@@ -7506,7 +7506,7 @@ int ToraOptionApi::reqQryTradingNotice(const dict& req, int nRequestID)
 	return i;
 };
 
-int ToraOptionApi::reqQryStockDisposal(const dict& req, int nRequestID)
+int OptionApi::reqQryStockDisposal(const dict& req, int nRequestID)
 {
 	CTORATstpSPQryStockDisposalField myreq = CTORATstpSPQryStockDisposalField();
 	memset(&myreq, 0, sizeof(myreq));
@@ -7526,7 +7526,7 @@ int ToraOptionApi::reqQryStockDisposal(const dict& req, int nRequestID)
 	return i;
 };
 
-int ToraOptionApi::reqQryStockDisposalAction(const dict& req, int nRequestID)
+int OptionApi::reqQryStockDisposalAction(const dict& req, int nRequestID)
 {
 	CTORATstpSPQryStockDisposalActionField myreq = CTORATstpSPQryStockDisposalActionField();
 	memset(&myreq, 0, sizeof(myreq));
@@ -7545,7 +7545,7 @@ int ToraOptionApi::reqQryStockDisposalAction(const dict& req, int nRequestID)
 	return i;
 };
 
-int ToraOptionApi::reqQryCondOrder(const dict& req, int nRequestID)
+int OptionApi::reqQryCondOrder(const dict& req, int nRequestID)
 {
 	CTORATstpSPQryCondOrderField myreq = CTORATstpSPQryCondOrderField();
 	memset(&myreq, 0, sizeof(myreq));
@@ -7564,7 +7564,7 @@ int ToraOptionApi::reqQryCondOrder(const dict& req, int nRequestID)
 	return i;
 };
 
-int ToraOptionApi::reqQryCondOrderAction(const dict& req, int nRequestID)
+int OptionApi::reqQryCondOrderAction(const dict& req, int nRequestID)
 {
 	CTORATstpSPQryCondOrderActionField myreq = CTORATstpSPQryCondOrderActionField();
 	memset(&myreq, 0, sizeof(myreq));
@@ -7578,7 +7578,7 @@ int ToraOptionApi::reqQryCondOrderAction(const dict& req, int nRequestID)
 	return i;
 };
 
-int ToraOptionApi::reqQryInvestorLimitPosition(const dict& req, int nRequestID)
+int OptionApi::reqQryInvestorLimitPosition(const dict& req, int nRequestID)
 {
 	CTORATstpSPQryInvestorLimitPositionField myreq = CTORATstpSPQryInvestorLimitPositionField();
 	memset(&myreq, 0, sizeof(myreq));
@@ -7589,7 +7589,7 @@ int ToraOptionApi::reqQryInvestorLimitPosition(const dict& req, int nRequestID)
 	return i;
 };
 
-int ToraOptionApi::reqQryInvestorLimitAmount(const dict& req, int nRequestID)
+int OptionApi::reqQryInvestorLimitAmount(const dict& req, int nRequestID)
 {
 	CTORATstpSPQryInvestorLimitAmountField myreq = CTORATstpSPQryInvestorLimitAmountField();
 	memset(&myreq, 0, sizeof(myreq));
@@ -7599,7 +7599,7 @@ int ToraOptionApi::reqQryInvestorLimitAmount(const dict& req, int nRequestID)
 	return i;
 };
 
-int ToraOptionApi::reqQryCombOrderAction(const dict& req, int nRequestID)
+int OptionApi::reqQryCombOrderAction(const dict& req, int nRequestID)
 {
 	CTORATstpSPQryCombOrderActionField myreq = CTORATstpSPQryCombOrderActionField();
 	memset(&myreq, 0, sizeof(myreq));
@@ -7618,7 +7618,7 @@ int ToraOptionApi::reqQryCombOrderAction(const dict& req, int nRequestID)
 	return i;
 };
 
-int ToraOptionApi::reqQryCombOrder(const dict& req, int nRequestID)
+int OptionApi::reqQryCombOrder(const dict& req, int nRequestID)
 {
 	CTORATstpSPQryCombOrderField myreq = CTORATstpSPQryCombOrderField();
 	memset(&myreq, 0, sizeof(myreq));
@@ -7640,7 +7640,7 @@ int ToraOptionApi::reqQryCombOrder(const dict& req, int nRequestID)
 	return i;
 };
 
-int ToraOptionApi::reqQryCombPosition(const dict& req, int nRequestID)
+int OptionApi::reqQryCombPosition(const dict& req, int nRequestID)
 {
 	CTORATstpSPQryCombPositionField myreq = CTORATstpSPQryCombPositionField();
 	memset(&myreq, 0, sizeof(myreq));
@@ -7655,7 +7655,7 @@ int ToraOptionApi::reqQryCombPosition(const dict& req, int nRequestID)
 	return i;
 };
 
-int ToraOptionApi::reqQryCombPosDetail(const dict& req, int nRequestID)
+int OptionApi::reqQryCombPosDetail(const dict& req, int nRequestID)
 {
 	CTORATstpSPQryCombPosDetailField myreq = CTORATstpSPQryCombPosDetailField();
 	memset(&myreq, 0, sizeof(myreq));
@@ -7672,7 +7672,7 @@ int ToraOptionApi::reqQryCombPosDetail(const dict& req, int nRequestID)
 	return i;
 };
 
-int ToraOptionApi::reqQryExerciseAppointment(const dict& req, int nRequestID)
+int OptionApi::reqQryExerciseAppointment(const dict& req, int nRequestID)
 {
 	CTORATstpSPQryExerciseAppointmentField myreq = CTORATstpSPQryExerciseAppointmentField();
 	memset(&myreq, 0, sizeof(myreq));
@@ -7688,7 +7688,7 @@ int ToraOptionApi::reqQryExerciseAppointment(const dict& req, int nRequestID)
 	return i;
 };
 
-int ToraOptionApi::reqQryInsufficientCoveredStockPosition(const dict& req, int nRequestID)
+int OptionApi::reqQryInsufficientCoveredStockPosition(const dict& req, int nRequestID)
 {
 	CTORATstpSPQryInsufficientCoveredStockPositionField myreq = CTORATstpSPQryInsufficientCoveredStockPositionField();
 	memset(&myreq, 0, sizeof(myreq));
@@ -7702,7 +7702,7 @@ int ToraOptionApi::reqQryInsufficientCoveredStockPosition(const dict& req, int n
 	return i;
 };
 
-int ToraOptionApi::reqQryCombSecurity(const dict& req, int nRequestID)
+int OptionApi::reqQryCombSecurity(const dict& req, int nRequestID)
 {
 	CTORATstpSPQryCombSecurityField myreq = CTORATstpSPQryCombSecurityField();
 	memset(&myreq, 0, sizeof(myreq));
@@ -7713,7 +7713,7 @@ int ToraOptionApi::reqQryCombSecurity(const dict& req, int nRequestID)
 	return i;
 };
 
-int ToraOptionApi::reqQryCombExercise(const dict& req, int nRequestID)
+int OptionApi::reqQryCombExercise(const dict& req, int nRequestID)
 {
 	CTORATstpSPQryCombExerciseField myreq = CTORATstpSPQryCombExerciseField();
 	memset(&myreq, 0, sizeof(myreq));
@@ -7734,7 +7734,7 @@ int ToraOptionApi::reqQryCombExercise(const dict& req, int nRequestID)
 	return i;
 };
 
-int ToraOptionApi::reqQryCombExerciseAction(const dict& req, int nRequestID)
+int OptionApi::reqQryCombExerciseAction(const dict& req, int nRequestID)
 {
 	CTORATstpSPQryCombExerciseActionField myreq = CTORATstpSPQryCombExerciseActionField();
 	memset(&myreq, 0, sizeof(myreq));
@@ -7757,15 +7757,15 @@ int ToraOptionApi::reqQryCombExerciseAction(const dict& req, int nRequestID)
 ///pybind11封装
 ///-------------------------------------------------------------------------------------
 
-class PyOptionApi : public ToraOptionApi
+class PyOptionApi : public OptionApi
 {
 public:
-	using ToraOptionApi::ToraOptionApi;
+	using OptionApi::OptionApi;
 	void onFrontConnected() override
 	{
 		try
 		{
-			PYBIND11_OVERLOAD(void, ToraOptionApi, onFrontConnected);
+			PYBIND11_OVERLOAD(void, OptionApi, onFrontConnected);
 		}
 		catch (const error_already_set& e)
 		{
@@ -7777,7 +7777,7 @@ public:
 	{
 		try
 		{
-			PYBIND11_OVERLOAD(void, ToraOptionApi, onFrontDisconnected, nReason);
+			PYBIND11_OVERLOAD(void, OptionApi, onFrontDisconnected, nReason);
 		}
 		catch (const error_already_set& e)
 		{
@@ -7789,7 +7789,7 @@ public:
 	{
 		try
 		{
-			PYBIND11_OVERLOAD(void, ToraOptionApi, onRspError, error, nRequestID, last);
+			PYBIND11_OVERLOAD(void, OptionApi, onRspError, error, nRequestID, last);
 		}
 		catch (const error_already_set& e)
 		{
@@ -7801,7 +7801,7 @@ public:
 	{
 		try
 		{
-			PYBIND11_OVERLOAD(void, ToraOptionApi, onRspGetConnectionInfo, data, error, nRequestID);
+			PYBIND11_OVERLOAD(void, OptionApi, onRspGetConnectionInfo, data, error, nRequestID);
 		}
 		catch (const error_already_set& e)
 		{
@@ -7813,7 +7813,7 @@ public:
 	{
 		try
 		{
-			PYBIND11_OVERLOAD(void, ToraOptionApi, onRspUserLogin, data, error, nRequestID);
+			PYBIND11_OVERLOAD(void, OptionApi, onRspUserLogin, data, error, nRequestID);
 		}
 		catch (const error_already_set& e)
 		{
@@ -7825,7 +7825,7 @@ public:
 	{
 		try
 		{
-			PYBIND11_OVERLOAD(void, ToraOptionApi, onRspUserLogout, data, error, nRequestID);
+			PYBIND11_OVERLOAD(void, OptionApi, onRspUserLogout, data, error, nRequestID);
 		}
 		catch (const error_already_set& e)
 		{
@@ -7837,7 +7837,7 @@ public:
 	{
 		try
 		{
-			PYBIND11_OVERLOAD(void, ToraOptionApi, onRspUserPasswordUpdate, data, error, nRequestID);
+			PYBIND11_OVERLOAD(void, OptionApi, onRspUserPasswordUpdate, data, error, nRequestID);
 		}
 		catch (const error_already_set& e)
 		{
@@ -7849,7 +7849,7 @@ public:
 	{
 		try
 		{
-			PYBIND11_OVERLOAD(void, ToraOptionApi, onRspInputDeviceSerial, data, error, nRequestID);
+			PYBIND11_OVERLOAD(void, OptionApi, onRspInputDeviceSerial, data, error, nRequestID);
 		}
 		catch (const error_already_set& e)
 		{
@@ -7861,7 +7861,7 @@ public:
 	{
 		try
 		{
-			PYBIND11_OVERLOAD(void, ToraOptionApi, onRspOrderInsert, data, error, nRequestID);
+			PYBIND11_OVERLOAD(void, OptionApi, onRspOrderInsert, data, error, nRequestID);
 		}
 		catch (const error_already_set& e)
 		{
@@ -7873,7 +7873,7 @@ public:
 	{
 		try
 		{
-			PYBIND11_OVERLOAD(void, ToraOptionApi, onRtnOrder, data);
+			PYBIND11_OVERLOAD(void, OptionApi, onRtnOrder, data);
 		}
 		catch (const error_already_set& e)
 		{
@@ -7885,7 +7885,7 @@ public:
 	{
 		try
 		{
-			PYBIND11_OVERLOAD(void, ToraOptionApi, onErrRtnOrderInsert, data, error, nRequestID);
+			PYBIND11_OVERLOAD(void, OptionApi, onErrRtnOrderInsert, data, error, nRequestID);
 		}
 		catch (const error_already_set& e)
 		{
@@ -7897,7 +7897,7 @@ public:
 	{
 		try
 		{
-			PYBIND11_OVERLOAD(void, ToraOptionApi, onRspOrderAction, data, error, nRequestID);
+			PYBIND11_OVERLOAD(void, OptionApi, onRspOrderAction, data, error, nRequestID);
 		}
 		catch (const error_already_set& e)
 		{
@@ -7909,7 +7909,7 @@ public:
 	{
 		try
 		{
-			PYBIND11_OVERLOAD(void, ToraOptionApi, onErrRtnOrderAction, data, error, nRequestID);
+			PYBIND11_OVERLOAD(void, OptionApi, onErrRtnOrderAction, data, error, nRequestID);
 		}
 		catch (const error_already_set& e)
 		{
@@ -7921,7 +7921,7 @@ public:
 	{
 		try
 		{
-			PYBIND11_OVERLOAD(void, ToraOptionApi, onRtnTrade, data);
+			PYBIND11_OVERLOAD(void, OptionApi, onRtnTrade, data);
 		}
 		catch (const error_already_set& e)
 		{
@@ -7933,7 +7933,7 @@ public:
 	{
 		try
 		{
-			PYBIND11_OVERLOAD(void, ToraOptionApi, onRspExerciseInsert, data, error, nRequestID);
+			PYBIND11_OVERLOAD(void, OptionApi, onRspExerciseInsert, data, error, nRequestID);
 		}
 		catch (const error_already_set& e)
 		{
@@ -7945,7 +7945,7 @@ public:
 	{
 		try
 		{
-			PYBIND11_OVERLOAD(void, ToraOptionApi, onRtnExercise, data);
+			PYBIND11_OVERLOAD(void, OptionApi, onRtnExercise, data);
 		}
 		catch (const error_already_set& e)
 		{
@@ -7957,7 +7957,7 @@ public:
 	{
 		try
 		{
-			PYBIND11_OVERLOAD(void, ToraOptionApi, onErrRtnExerciseInsert, data, error, nRequestID);
+			PYBIND11_OVERLOAD(void, OptionApi, onErrRtnExerciseInsert, data, error, nRequestID);
 		}
 		catch (const error_already_set& e)
 		{
@@ -7969,7 +7969,7 @@ public:
 	{
 		try
 		{
-			PYBIND11_OVERLOAD(void, ToraOptionApi, onRspExerciseAction, data, error, nRequestID);
+			PYBIND11_OVERLOAD(void, OptionApi, onRspExerciseAction, data, error, nRequestID);
 		}
 		catch (const error_already_set& e)
 		{
@@ -7981,7 +7981,7 @@ public:
 	{
 		try
 		{
-			PYBIND11_OVERLOAD(void, ToraOptionApi, onErrRtnExerciseAction, data, error, nRequestID);
+			PYBIND11_OVERLOAD(void, OptionApi, onErrRtnExerciseAction, data, error, nRequestID);
 		}
 		catch (const error_already_set& e)
 		{
@@ -7993,7 +7993,7 @@ public:
 	{
 		try
 		{
-			PYBIND11_OVERLOAD(void, ToraOptionApi, onRspLockInsert, data, error, nRequestID);
+			PYBIND11_OVERLOAD(void, OptionApi, onRspLockInsert, data, error, nRequestID);
 		}
 		catch (const error_already_set& e)
 		{
@@ -8005,7 +8005,7 @@ public:
 	{
 		try
 		{
-			PYBIND11_OVERLOAD(void, ToraOptionApi, onRtnLock, data);
+			PYBIND11_OVERLOAD(void, OptionApi, onRtnLock, data);
 		}
 		catch (const error_already_set& e)
 		{
@@ -8017,7 +8017,7 @@ public:
 	{
 		try
 		{
-			PYBIND11_OVERLOAD(void, ToraOptionApi, onErrRtnLockInsert, data, error, nRequestID);
+			PYBIND11_OVERLOAD(void, OptionApi, onErrRtnLockInsert, data, error, nRequestID);
 		}
 		catch (const error_already_set& e)
 		{
@@ -8029,7 +8029,7 @@ public:
 	{
 		try
 		{
-			PYBIND11_OVERLOAD(void, ToraOptionApi, onRspLockAction, data, error, nRequestID);
+			PYBIND11_OVERLOAD(void, OptionApi, onRspLockAction, data, error, nRequestID);
 		}
 		catch (const error_already_set& e)
 		{
@@ -8041,7 +8041,7 @@ public:
 	{
 		try
 		{
-			PYBIND11_OVERLOAD(void, ToraOptionApi, onErrRtnLockAction, data, error, nRequestID);
+			PYBIND11_OVERLOAD(void, OptionApi, onErrRtnLockAction, data, error, nRequestID);
 		}
 		catch (const error_already_set& e)
 		{
@@ -8053,7 +8053,7 @@ public:
 	{
 		try
 		{
-			PYBIND11_OVERLOAD(void, ToraOptionApi, onRtnStockDisposal, data);
+			PYBIND11_OVERLOAD(void, OptionApi, onRtnStockDisposal, data);
 		}
 		catch (const error_already_set& e)
 		{
@@ -8065,7 +8065,7 @@ public:
 	{
 		try
 		{
-			PYBIND11_OVERLOAD(void, ToraOptionApi, onRspCombOrderInsert, data, error, nRequestID);
+			PYBIND11_OVERLOAD(void, OptionApi, onRspCombOrderInsert, data, error, nRequestID);
 		}
 		catch (const error_already_set& e)
 		{
@@ -8077,7 +8077,7 @@ public:
 	{
 		try
 		{
-			PYBIND11_OVERLOAD(void, ToraOptionApi, onRtnCombOrder, data);
+			PYBIND11_OVERLOAD(void, OptionApi, onRtnCombOrder, data);
 		}
 		catch (const error_already_set& e)
 		{
@@ -8089,7 +8089,7 @@ public:
 	{
 		try
 		{
-			PYBIND11_OVERLOAD(void, ToraOptionApi, onErrRtnCombOrderInsert, data, error, nRequestID);
+			PYBIND11_OVERLOAD(void, OptionApi, onErrRtnCombOrderInsert, data, error, nRequestID);
 		}
 		catch (const error_already_set& e)
 		{
@@ -8101,7 +8101,7 @@ public:
 	{
 		try
 		{
-			PYBIND11_OVERLOAD(void, ToraOptionApi, onRspCombOrderAction, data, error, nRequestID);
+			PYBIND11_OVERLOAD(void, OptionApi, onRspCombOrderAction, data, error, nRequestID);
 		}
 		catch (const error_already_set& e)
 		{
@@ -8113,7 +8113,7 @@ public:
 	{
 		try
 		{
-			PYBIND11_OVERLOAD(void, ToraOptionApi, onErrRtnCombOrderAction, data, error, nRequestID);
+			PYBIND11_OVERLOAD(void, OptionApi, onErrRtnCombOrderAction, data, error, nRequestID);
 		}
 		catch (const error_already_set& e)
 		{
@@ -8125,7 +8125,7 @@ public:
 	{
 		try
 		{
-			PYBIND11_OVERLOAD(void, ToraOptionApi, onRspCondOrderInsert, data, error, nRequestID);
+			PYBIND11_OVERLOAD(void, OptionApi, onRspCondOrderInsert, data, error, nRequestID);
 		}
 		catch (const error_already_set& e)
 		{
@@ -8137,7 +8137,7 @@ public:
 	{
 		try
 		{
-			PYBIND11_OVERLOAD(void, ToraOptionApi, onRtnCondOrder, data);
+			PYBIND11_OVERLOAD(void, OptionApi, onRtnCondOrder, data);
 		}
 		catch (const error_already_set& e)
 		{
@@ -8149,7 +8149,7 @@ public:
 	{
 		try
 		{
-			PYBIND11_OVERLOAD(void, ToraOptionApi, onErrRtnCondOrderInsert, data, error, nRequestID);
+			PYBIND11_OVERLOAD(void, OptionApi, onErrRtnCondOrderInsert, data, error, nRequestID);
 		}
 		catch (const error_already_set& e)
 		{
@@ -8161,7 +8161,7 @@ public:
 	{
 		try
 		{
-			PYBIND11_OVERLOAD(void, ToraOptionApi, onRspCondOrderAction, data, error, nRequestID);
+			PYBIND11_OVERLOAD(void, OptionApi, onRspCondOrderAction, data, error, nRequestID);
 		}
 		catch (const error_already_set& e)
 		{
@@ -8173,7 +8173,7 @@ public:
 	{
 		try
 		{
-			PYBIND11_OVERLOAD(void, ToraOptionApi, onErrRtnCondOrderAction, data, error, nRequestID);
+			PYBIND11_OVERLOAD(void, OptionApi, onErrRtnCondOrderAction, data, error, nRequestID);
 		}
 		catch (const error_already_set& e)
 		{
@@ -8185,7 +8185,7 @@ public:
 	{
 		try
 		{
-			PYBIND11_OVERLOAD(void, ToraOptionApi, onRspCombExerciseInsert, data, error, nRequestID);
+			PYBIND11_OVERLOAD(void, OptionApi, onRspCombExerciseInsert, data, error, nRequestID);
 		}
 		catch (const error_already_set& e)
 		{
@@ -8197,7 +8197,7 @@ public:
 	{
 		try
 		{
-			PYBIND11_OVERLOAD(void, ToraOptionApi, onRtnCombExercise, data);
+			PYBIND11_OVERLOAD(void, OptionApi, onRtnCombExercise, data);
 		}
 		catch (const error_already_set& e)
 		{
@@ -8209,7 +8209,7 @@ public:
 	{
 		try
 		{
-			PYBIND11_OVERLOAD(void, ToraOptionApi, onErrRtnCombExerciseInsert, data, error, nRequestID);
+			PYBIND11_OVERLOAD(void, OptionApi, onErrRtnCombExerciseInsert, data, error, nRequestID);
 		}
 		catch (const error_already_set& e)
 		{
@@ -8221,7 +8221,7 @@ public:
 	{
 		try
 		{
-			PYBIND11_OVERLOAD(void, ToraOptionApi, onRspCombExerciseAction, data, error, nRequestID);
+			PYBIND11_OVERLOAD(void, OptionApi, onRspCombExerciseAction, data, error, nRequestID);
 		}
 		catch (const error_already_set& e)
 		{
@@ -8233,7 +8233,7 @@ public:
 	{
 		try
 		{
-			PYBIND11_OVERLOAD(void, ToraOptionApi, onErrRtnCombExerciseAction, data, error, nRequestID);
+			PYBIND11_OVERLOAD(void, OptionApi, onErrRtnCombExerciseAction, data, error, nRequestID);
 		}
 		catch (const error_already_set& e)
 		{
@@ -8245,7 +8245,7 @@ public:
 	{
 		try
 		{
-			PYBIND11_OVERLOAD(void, ToraOptionApi, onRspInquiryMaxLockVolume, data, error, nRequestID);
+			PYBIND11_OVERLOAD(void, OptionApi, onRspInquiryMaxLockVolume, data, error, nRequestID);
 		}
 		catch (const error_already_set& e)
 		{
@@ -8257,7 +8257,7 @@ public:
 	{
 		try
 		{
-			PYBIND11_OVERLOAD(void, ToraOptionApi, onRspInquiryMaxCoverVolume, data, error, nRequestID);
+			PYBIND11_OVERLOAD(void, OptionApi, onRspInquiryMaxCoverVolume, data, error, nRequestID);
 		}
 		catch (const error_already_set& e)
 		{
@@ -8269,7 +8269,7 @@ public:
 	{
 		try
 		{
-			PYBIND11_OVERLOAD(void, ToraOptionApi, onRspInquirySplitCombMarginDifference, data, error, nRequestID);
+			PYBIND11_OVERLOAD(void, OptionApi, onRspInquirySplitCombMarginDifference, data, error, nRequestID);
 		}
 		catch (const error_already_set& e)
 		{
@@ -8281,7 +8281,7 @@ public:
 	{
 		try
 		{
-			PYBIND11_OVERLOAD(void, ToraOptionApi, onRspTransferFund, data, error, nRequestID);
+			PYBIND11_OVERLOAD(void, OptionApi, onRspTransferFund, data, error, nRequestID);
 		}
 		catch (const error_already_set& e)
 		{
@@ -8293,7 +8293,7 @@ public:
 	{
 		try
 		{
-			PYBIND11_OVERLOAD(void, ToraOptionApi, onRtnTransferFund, data);
+			PYBIND11_OVERLOAD(void, OptionApi, onRtnTransferFund, data);
 		}
 		catch (const error_already_set& e)
 		{
@@ -8305,7 +8305,7 @@ public:
 	{
 		try
 		{
-			PYBIND11_OVERLOAD(void, ToraOptionApi, onErrRtnTransferFund, data, error, nRequestID);
+			PYBIND11_OVERLOAD(void, OptionApi, onErrRtnTransferFund, data, error, nRequestID);
 		}
 		catch (const error_already_set& e)
 		{
@@ -8317,7 +8317,7 @@ public:
 	{
 		try
 		{
-			PYBIND11_OVERLOAD(void, ToraOptionApi, onRtnTransferPosition, data);
+			PYBIND11_OVERLOAD(void, OptionApi, onRtnTransferPosition, data);
 		}
 		catch (const error_already_set& e)
 		{
@@ -8329,7 +8329,7 @@ public:
 	{
 		try
 		{
-			PYBIND11_OVERLOAD(void, ToraOptionApi, onErrRtnTransferPosition, data, error, nRequestID);
+			PYBIND11_OVERLOAD(void, OptionApi, onErrRtnTransferPosition, data, error, nRequestID);
 		}
 		catch (const error_already_set& e)
 		{
@@ -8341,7 +8341,7 @@ public:
 	{
 		try
 		{
-			PYBIND11_OVERLOAD(void, ToraOptionApi, onRspTransferStockPosition, data, error, nRequestID);
+			PYBIND11_OVERLOAD(void, OptionApi, onRspTransferStockPosition, data, error, nRequestID);
 		}
 		catch (const error_already_set& e)
 		{
@@ -8353,7 +8353,7 @@ public:
 	{
 		try
 		{
-			PYBIND11_OVERLOAD(void, ToraOptionApi, onRtnTransferStockPosition, data);
+			PYBIND11_OVERLOAD(void, OptionApi, onRtnTransferStockPosition, data);
 		}
 		catch (const error_already_set& e)
 		{
@@ -8365,7 +8365,7 @@ public:
 	{
 		try
 		{
-			PYBIND11_OVERLOAD(void, ToraOptionApi, onErrRtnTransferStockPosition, data, error, nRequestID);
+			PYBIND11_OVERLOAD(void, OptionApi, onErrRtnTransferStockPosition, data, error, nRequestID);
 		}
 		catch (const error_already_set& e)
 		{
@@ -8377,7 +8377,7 @@ public:
 	{
 		try
 		{
-			PYBIND11_OVERLOAD(void, ToraOptionApi, onRspInquiryJZFund, data, error, nRequestID);
+			PYBIND11_OVERLOAD(void, OptionApi, onRspInquiryJZFund, data, error, nRequestID);
 		}
 		catch (const error_already_set& e)
 		{
@@ -8389,7 +8389,7 @@ public:
 	{
 		try
 		{
-			PYBIND11_OVERLOAD(void, ToraOptionApi, onRspInquiryBankAccountFund, data, error, nRequestID);
+			PYBIND11_OVERLOAD(void, OptionApi, onRspInquiryBankAccountFund, data, error, nRequestID);
 		}
 		catch (const error_already_set& e)
 		{
@@ -8401,7 +8401,7 @@ public:
 	{
 		try
 		{
-			PYBIND11_OVERLOAD(void, ToraOptionApi, onRspInquiryStockPosition, data, error, nRequestID);
+			PYBIND11_OVERLOAD(void, OptionApi, onRspInquiryStockPosition, data, error, nRequestID);
 		}
 		catch (const error_already_set& e)
 		{
@@ -8413,7 +8413,7 @@ public:
 	{
 		try
 		{
-			PYBIND11_OVERLOAD(void, ToraOptionApi, onRtnMarketStatus, data);
+			PYBIND11_OVERLOAD(void, OptionApi, onRtnMarketStatus, data);
 		}
 		catch (const error_already_set& e)
 		{
@@ -8425,7 +8425,7 @@ public:
 	{
 		try
 		{
-			PYBIND11_OVERLOAD(void, ToraOptionApi, onRtnTradingNotice, data);
+			PYBIND11_OVERLOAD(void, OptionApi, onRtnTradingNotice, data);
 		}
 		catch (const error_already_set& e)
 		{
@@ -8437,7 +8437,7 @@ public:
 	{
 		try
 		{
-			PYBIND11_OVERLOAD(void, ToraOptionApi, onRspQryExchange, data, error, nRequestID, last);
+			PYBIND11_OVERLOAD(void, OptionApi, onRspQryExchange, data, error, nRequestID, last);
 		}
 		catch (const error_already_set& e)
 		{
@@ -8449,7 +8449,7 @@ public:
 	{
 		try
 		{
-			PYBIND11_OVERLOAD(void, ToraOptionApi, onRspQryMarketData, data, error, nRequestID, last);
+			PYBIND11_OVERLOAD(void, OptionApi, onRspQryMarketData, data, error, nRequestID, last);
 		}
 		catch (const error_already_set& e)
 		{
@@ -8461,7 +8461,7 @@ public:
 	{
 		try
 		{
-			PYBIND11_OVERLOAD(void, ToraOptionApi, onRspQrySecurity, data, error, nRequestID, last);
+			PYBIND11_OVERLOAD(void, OptionApi, onRspQrySecurity, data, error, nRequestID, last);
 		}
 		catch (const error_already_set& e)
 		{
@@ -8473,7 +8473,7 @@ public:
 	{
 		try
 		{
-			PYBIND11_OVERLOAD(void, ToraOptionApi, onRspQryBUProxy, data, error, nRequestID, last);
+			PYBIND11_OVERLOAD(void, OptionApi, onRspQryBUProxy, data, error, nRequestID, last);
 		}
 		catch (const error_already_set& e)
 		{
@@ -8485,7 +8485,7 @@ public:
 	{
 		try
 		{
-			PYBIND11_OVERLOAD(void, ToraOptionApi, onRspQryUser, data, error, nRequestID, last);
+			PYBIND11_OVERLOAD(void, OptionApi, onRspQryUser, data, error, nRequestID, last);
 		}
 		catch (const error_already_set& e)
 		{
@@ -8497,7 +8497,7 @@ public:
 	{
 		try
 		{
-			PYBIND11_OVERLOAD(void, ToraOptionApi, onRspQryInvestor, data, error, nRequestID, last);
+			PYBIND11_OVERLOAD(void, OptionApi, onRspQryInvestor, data, error, nRequestID, last);
 		}
 		catch (const error_already_set& e)
 		{
@@ -8509,7 +8509,7 @@ public:
 	{
 		try
 		{
-			PYBIND11_OVERLOAD(void, ToraOptionApi, onRspQryShareholderAccount, data, error, nRequestID, last);
+			PYBIND11_OVERLOAD(void, OptionApi, onRspQryShareholderAccount, data, error, nRequestID, last);
 		}
 		catch (const error_already_set& e)
 		{
@@ -8521,7 +8521,7 @@ public:
 	{
 		try
 		{
-			PYBIND11_OVERLOAD(void, ToraOptionApi, onRspQryTradingAccount, data, error, nRequestID, last);
+			PYBIND11_OVERLOAD(void, OptionApi, onRspQryTradingAccount, data, error, nRequestID, last);
 		}
 		catch (const error_already_set& e)
 		{
@@ -8533,7 +8533,7 @@ public:
 	{
 		try
 		{
-			PYBIND11_OVERLOAD(void, ToraOptionApi, onRspQryOrder, data, error, nRequestID, last);
+			PYBIND11_OVERLOAD(void, OptionApi, onRspQryOrder, data, error, nRequestID, last);
 		}
 		catch (const error_already_set& e)
 		{
@@ -8545,7 +8545,7 @@ public:
 	{
 		try
 		{
-			PYBIND11_OVERLOAD(void, ToraOptionApi, onRspQryTrade, data, error, nRequestID, last);
+			PYBIND11_OVERLOAD(void, OptionApi, onRspQryTrade, data, error, nRequestID, last);
 		}
 		catch (const error_already_set& e)
 		{
@@ -8557,7 +8557,7 @@ public:
 	{
 		try
 		{
-			PYBIND11_OVERLOAD(void, ToraOptionApi, onRspQryPosition, data, error, nRequestID, last);
+			PYBIND11_OVERLOAD(void, OptionApi, onRspQryPosition, data, error, nRequestID, last);
 		}
 		catch (const error_already_set& e)
 		{
@@ -8569,7 +8569,7 @@ public:
 	{
 		try
 		{
-			PYBIND11_OVERLOAD(void, ToraOptionApi, onRspQryTradingFee, data, error, nRequestID, last);
+			PYBIND11_OVERLOAD(void, OptionApi, onRspQryTradingFee, data, error, nRequestID, last);
 		}
 		catch (const error_already_set& e)
 		{
@@ -8581,7 +8581,7 @@ public:
 	{
 		try
 		{
-			PYBIND11_OVERLOAD(void, ToraOptionApi, onRspQryInvestorTradingFee, data, error, nRequestID, last);
+			PYBIND11_OVERLOAD(void, OptionApi, onRspQryInvestorTradingFee, data, error, nRequestID, last);
 		}
 		catch (const error_already_set& e)
 		{
@@ -8593,7 +8593,7 @@ public:
 	{
 		try
 		{
-			PYBIND11_OVERLOAD(void, ToraOptionApi, onRspQryInvestorMarginFee, data, error, nRequestID, last);
+			PYBIND11_OVERLOAD(void, OptionApi, onRspQryInvestorMarginFee, data, error, nRequestID, last);
 		}
 		catch (const error_already_set& e)
 		{
@@ -8605,7 +8605,7 @@ public:
 	{
 		try
 		{
-			PYBIND11_OVERLOAD(void, ToraOptionApi, onRspQryOrderFundDetail, data, error, nRequestID, last);
+			PYBIND11_OVERLOAD(void, OptionApi, onRspQryOrderFundDetail, data, error, nRequestID, last);
 		}
 		catch (const error_already_set& e)
 		{
@@ -8617,7 +8617,7 @@ public:
 	{
 		try
 		{
-			PYBIND11_OVERLOAD(void, ToraOptionApi, onRspQryFundTransferDetail, data, error, nRequestID, last);
+			PYBIND11_OVERLOAD(void, OptionApi, onRspQryFundTransferDetail, data, error, nRequestID, last);
 		}
 		catch (const error_already_set& e)
 		{
@@ -8629,7 +8629,7 @@ public:
 	{
 		try
 		{
-			PYBIND11_OVERLOAD(void, ToraOptionApi, onRspQryPositionTransferDetail, data, error, nRequestID, last);
+			PYBIND11_OVERLOAD(void, OptionApi, onRspQryPositionTransferDetail, data, error, nRequestID, last);
 		}
 		catch (const error_already_set& e)
 		{
@@ -8641,7 +8641,7 @@ public:
 	{
 		try
 		{
-			PYBIND11_OVERLOAD(void, ToraOptionApi, onRspQryOrderAction, data, error, nRequestID, last);
+			PYBIND11_OVERLOAD(void, OptionApi, onRspQryOrderAction, data, error, nRequestID, last);
 		}
 		catch (const error_already_set& e)
 		{
@@ -8653,7 +8653,7 @@ public:
 	{
 		try
 		{
-			PYBIND11_OVERLOAD(void, ToraOptionApi, onRspQryStockPosition, data, error, nRequestID, last);
+			PYBIND11_OVERLOAD(void, OptionApi, onRspQryStockPosition, data, error, nRequestID, last);
 		}
 		catch (const error_already_set& e)
 		{
@@ -8665,7 +8665,7 @@ public:
 	{
 		try
 		{
-			PYBIND11_OVERLOAD(void, ToraOptionApi, onRspQryLock, data, error, nRequestID, last);
+			PYBIND11_OVERLOAD(void, OptionApi, onRspQryLock, data, error, nRequestID, last);
 		}
 		catch (const error_already_set& e)
 		{
@@ -8677,7 +8677,7 @@ public:
 	{
 		try
 		{
-			PYBIND11_OVERLOAD(void, ToraOptionApi, onRspQryExercise, data, error, nRequestID, last);
+			PYBIND11_OVERLOAD(void, OptionApi, onRspQryExercise, data, error, nRequestID, last);
 		}
 		catch (const error_already_set& e)
 		{
@@ -8689,7 +8689,7 @@ public:
 	{
 		try
 		{
-			PYBIND11_OVERLOAD(void, ToraOptionApi, onRspQryLockPosition, data, error, nRequestID, last);
+			PYBIND11_OVERLOAD(void, OptionApi, onRspQryLockPosition, data, error, nRequestID, last);
 		}
 		catch (const error_already_set& e)
 		{
@@ -8701,7 +8701,7 @@ public:
 	{
 		try
 		{
-			PYBIND11_OVERLOAD(void, ToraOptionApi, onRspQryExerciseAction, data, error, nRequestID, last);
+			PYBIND11_OVERLOAD(void, OptionApi, onRspQryExerciseAction, data, error, nRequestID, last);
 		}
 		catch (const error_already_set& e)
 		{
@@ -8713,7 +8713,7 @@ public:
 	{
 		try
 		{
-			PYBIND11_OVERLOAD(void, ToraOptionApi, onRspQryLockAction, data, error, nRequestID, last);
+			PYBIND11_OVERLOAD(void, OptionApi, onRspQryLockAction, data, error, nRequestID, last);
 		}
 		catch (const error_already_set& e)
 		{
@@ -8725,7 +8725,7 @@ public:
 	{
 		try
 		{
-			PYBIND11_OVERLOAD(void, ToraOptionApi, onRspQryStockPositionTransferDetail, data, error, nRequestID, last);
+			PYBIND11_OVERLOAD(void, OptionApi, onRspQryStockPositionTransferDetail, data, error, nRequestID, last);
 		}
 		catch (const error_already_set& e)
 		{
@@ -8737,7 +8737,7 @@ public:
 	{
 		try
 		{
-			PYBIND11_OVERLOAD(void, ToraOptionApi, onRspQryTradingNotice, data, error, nRequestID, last);
+			PYBIND11_OVERLOAD(void, OptionApi, onRspQryTradingNotice, data, error, nRequestID, last);
 		}
 		catch (const error_already_set& e)
 		{
@@ -8749,7 +8749,7 @@ public:
 	{
 		try
 		{
-			PYBIND11_OVERLOAD(void, ToraOptionApi, onRspQryStockDisposal, data, error, nRequestID, last);
+			PYBIND11_OVERLOAD(void, OptionApi, onRspQryStockDisposal, data, error, nRequestID, last);
 		}
 		catch (const error_already_set& e)
 		{
@@ -8761,7 +8761,7 @@ public:
 	{
 		try
 		{
-			PYBIND11_OVERLOAD(void, ToraOptionApi, onRspQryStockDisposalAction, data, error, nRequestID, last);
+			PYBIND11_OVERLOAD(void, OptionApi, onRspQryStockDisposalAction, data, error, nRequestID, last);
 		}
 		catch (const error_already_set& e)
 		{
@@ -8773,7 +8773,7 @@ public:
 	{
 		try
 		{
-			PYBIND11_OVERLOAD(void, ToraOptionApi, onRspQryCondOrder, data, error, nRequestID, last);
+			PYBIND11_OVERLOAD(void, OptionApi, onRspQryCondOrder, data, error, nRequestID, last);
 		}
 		catch (const error_already_set& e)
 		{
@@ -8785,7 +8785,7 @@ public:
 	{
 		try
 		{
-			PYBIND11_OVERLOAD(void, ToraOptionApi, onRspQryCondOrderAction, data, error, nRequestID, last);
+			PYBIND11_OVERLOAD(void, OptionApi, onRspQryCondOrderAction, data, error, nRequestID, last);
 		}
 		catch (const error_already_set& e)
 		{
@@ -8797,7 +8797,7 @@ public:
 	{
 		try
 		{
-			PYBIND11_OVERLOAD(void, ToraOptionApi, onRspQryInvestorLimitPosition, data, error, nRequestID, last);
+			PYBIND11_OVERLOAD(void, OptionApi, onRspQryInvestorLimitPosition, data, error, nRequestID, last);
 		}
 		catch (const error_already_set& e)
 		{
@@ -8809,7 +8809,7 @@ public:
 	{
 		try
 		{
-			PYBIND11_OVERLOAD(void, ToraOptionApi, onRspQryInvestorLimitAmount, data, error, nRequestID, last);
+			PYBIND11_OVERLOAD(void, OptionApi, onRspQryInvestorLimitAmount, data, error, nRequestID, last);
 		}
 		catch (const error_already_set& e)
 		{
@@ -8821,7 +8821,7 @@ public:
 	{
 		try
 		{
-			PYBIND11_OVERLOAD(void, ToraOptionApi, onRspQryCombOrderAction, data, error, nRequestID, last);
+			PYBIND11_OVERLOAD(void, OptionApi, onRspQryCombOrderAction, data, error, nRequestID, last);
 		}
 		catch (const error_already_set& e)
 		{
@@ -8833,7 +8833,7 @@ public:
 	{
 		try
 		{
-			PYBIND11_OVERLOAD(void, ToraOptionApi, onRspQryCombOrder, data, error, nRequestID, last);
+			PYBIND11_OVERLOAD(void, OptionApi, onRspQryCombOrder, data, error, nRequestID, last);
 		}
 		catch (const error_already_set& e)
 		{
@@ -8845,7 +8845,7 @@ public:
 	{
 		try
 		{
-			PYBIND11_OVERLOAD(void, ToraOptionApi, onRspQryCombPosition, data, error, nRequestID, last);
+			PYBIND11_OVERLOAD(void, OptionApi, onRspQryCombPosition, data, error, nRequestID, last);
 		}
 		catch (const error_already_set& e)
 		{
@@ -8857,7 +8857,7 @@ public:
 	{
 		try
 		{
-			PYBIND11_OVERLOAD(void, ToraOptionApi, onRspQryCombPosDetail, data, error, nRequestID, last);
+			PYBIND11_OVERLOAD(void, OptionApi, onRspQryCombPosDetail, data, error, nRequestID, last);
 		}
 		catch (const error_already_set& e)
 		{
@@ -8869,7 +8869,7 @@ public:
 	{
 		try
 		{
-			PYBIND11_OVERLOAD(void, ToraOptionApi, onRspQryExerciseAppointment, data, error, nRequestID, last);
+			PYBIND11_OVERLOAD(void, OptionApi, onRspQryExerciseAppointment, data, error, nRequestID, last);
 		}
 		catch (const error_already_set& e)
 		{
@@ -8881,7 +8881,7 @@ public:
 	{
 		try
 		{
-			PYBIND11_OVERLOAD(void, ToraOptionApi, onRspQryInsufficientCoveredStockPosition, data, error, nRequestID, last);
+			PYBIND11_OVERLOAD(void, OptionApi, onRspQryInsufficientCoveredStockPosition, data, error, nRequestID, last);
 		}
 		catch (const error_already_set& e)
 		{
@@ -8893,7 +8893,7 @@ public:
 	{
 		try
 		{
-			PYBIND11_OVERLOAD(void, ToraOptionApi, onRspQryCombSecurity, data, error, nRequestID, last);
+			PYBIND11_OVERLOAD(void, OptionApi, onRspQryCombSecurity, data, error, nRequestID, last);
 		}
 		catch (const error_already_set& e)
 		{
@@ -8905,7 +8905,7 @@ public:
 	{
 		try
 		{
-			PYBIND11_OVERLOAD(void, ToraOptionApi, onRspQryCombExercise, data, error, nRequestID, last);
+			PYBIND11_OVERLOAD(void, OptionApi, onRspQryCombExercise, data, error, nRequestID, last);
 		}
 		catch (const error_already_set& e)
 		{
@@ -8917,7 +8917,7 @@ public:
 	{
 		try
 		{
-			PYBIND11_OVERLOAD(void, ToraOptionApi, onRspQryCombExerciseAction, data, error, nRequestID, last);
+			PYBIND11_OVERLOAD(void, OptionApi, onRspQryCombExerciseAction, data, error, nRequestID, last);
 		}
 		catch (const error_already_set& e)
 		{
@@ -8928,183 +8928,183 @@ public:
 
 PYBIND11_MODULE(vntoraoption, m)
 {
-	class_<ToraOptionApi, PyOptionApi> ToraOptionApi(m, "ToraOptionApi", module_local());
-	ToraOptionApi
+	class_<OptionApi, PyOptionApi> OptionApi(m, "OptionApi", module_local());
+	OptionApi
 		.def(init<>())
-		.def("createTstpXMdApi", &ToraOptionApi::createTstpSPTraderApi)
-		.def("registerFront", &ToraOptionApi::registerFront)
-		.def("init", &ToraOptionApi::init)
-		.def("join", &ToraOptionApi::join)
-		.def("release", &ToraOptionApi::release)
-		.def("getApiVersion", &ToraOptionApi::getApiVersion)
-		.def("exit", &ToraOptionApi::exit)
-		.def("registerNameServer", &ToraOptionApi::registerNameServer)
-		.def("subscribePrivateTopic", &ToraOptionApi::subscribePrivateTopic)
-		.def("subscribePublicTopic", &ToraOptionApi::subscribePublicTopic)
-		.def("reqGetConnectionInfo", &ToraOptionApi::reqGetConnectionInfo)
-		.def("reqUserLogin", &ToraOptionApi::reqUserLogin)
-		.def("reqUserLogout", &ToraOptionApi::reqUserLogout)
-		.def("reqUserPasswordUpdate", &ToraOptionApi::reqUserPasswordUpdate)
-		.def("reqInputDeviceSerial", &ToraOptionApi::reqInputDeviceSerial)
-		.def("reqOrderInsert", &ToraOptionApi::reqOrderInsert)
-		.def("reqOrderAction", &ToraOptionApi::reqOrderAction)
-		.def("reqExerciseInsert", &ToraOptionApi::reqExerciseInsert)
-		.def("reqExerciseAction", &ToraOptionApi::reqExerciseAction)
-		.def("reqLockInsert", &ToraOptionApi::reqLockInsert)
-		.def("reqLockAction", &ToraOptionApi::reqLockAction)
-		.def("reqCombOrderInsert", &ToraOptionApi::reqCombOrderInsert)
-		.def("reqCombOrderAction", &ToraOptionApi::reqCombOrderAction)
-		.def("reqCondOrderInsert", &ToraOptionApi::reqCondOrderInsert)
-		.def("reqCondOrderAction", &ToraOptionApi::reqCondOrderAction)
-		.def("reqCombExerciseInsert", &ToraOptionApi::reqCombExerciseInsert)
-		.def("reqCombExerciseAction", &ToraOptionApi::reqCombExerciseAction)
-		.def("reqInquiryMaxLockVolume", &ToraOptionApi::reqInquiryMaxLockVolume)
-		.def("reqInquiryMaxCoverVolume", &ToraOptionApi::reqInquiryMaxCoverVolume)
-		.def("reqInquirySplitCombMarginDifference", &ToraOptionApi::reqInquirySplitCombMarginDifference)
-		.def("reqTransferFund", &ToraOptionApi::reqTransferFund)
-		.def("reqTransferStockPosition", &ToraOptionApi::reqTransferStockPosition)
-		.def("reqInquiryJZFund", &ToraOptionApi::reqInquiryJZFund)
-		.def("reqInquiryBankAccountFund", &ToraOptionApi::reqInquiryBankAccountFund)
-		.def("reqInquiryStockPosition", &ToraOptionApi::reqInquiryStockPosition)
-		.def("reqQryExchange", &ToraOptionApi::reqQryExchange)
-		.def("reqQryMarketData", &ToraOptionApi::reqQryMarketData)
-		.def("reqQrySecurity", &ToraOptionApi::reqQrySecurity)
-		.def("reqQryBUProxy", &ToraOptionApi::reqQryBUProxy)
-		.def("reqQryUser", &ToraOptionApi::reqQryUser)
-		.def("reqQryInvestor", &ToraOptionApi::reqQryInvestor)
-		.def("reqQryShareholderAccount", &ToraOptionApi::reqQryShareholderAccount)
-		.def("reqQryTradingAccount", &ToraOptionApi::reqQryTradingAccount)
-		.def("reqQryOrder", &ToraOptionApi::reqQryOrder)
-		.def("reqQryTrade", &ToraOptionApi::reqQryTrade)
-		.def("reqQryPosition", &ToraOptionApi::reqQryPosition)
-		.def("reqQryTradingFee", &ToraOptionApi::reqQryTradingFee)
-		.def("reqQryInvestorTradingFee", &ToraOptionApi::reqQryInvestorTradingFee)
-		.def("reqQryInvestorMarginFee", &ToraOptionApi::reqQryInvestorMarginFee)
-		.def("reqQryOrderFundDetail", &ToraOptionApi::reqQryOrderFundDetail)
-		.def("reqQryFundTransferDetail", &ToraOptionApi::reqQryFundTransferDetail)
-		.def("reqQryPositionTransferDetail", &ToraOptionApi::reqQryPositionTransferDetail)
-		.def("reqQryOrderAction", &ToraOptionApi::reqQryOrderAction)
-		.def("reqQryStockPosition", &ToraOptionApi::reqQryStockPosition)
-		.def("reqQryLock", &ToraOptionApi::reqQryLock)
-		.def("reqQryExercise", &ToraOptionApi::reqQryExercise)
-		.def("reqQryLockPosition", &ToraOptionApi::reqQryLockPosition)
-		.def("reqQryExerciseAction", &ToraOptionApi::reqQryExerciseAction)
-		.def("reqQryLockAction", &ToraOptionApi::reqQryLockAction)
-		.def("reqQryStockPositionTransferDetail", &ToraOptionApi::reqQryStockPositionTransferDetail)
-		.def("reqQryTradingNotice", &ToraOptionApi::reqQryTradingNotice)
-		.def("reqQryStockDisposal", &ToraOptionApi::reqQryStockDisposal)
-		.def("reqQryStockDisposalAction", &ToraOptionApi::reqQryStockDisposalAction)
-		.def("reqQryCondOrder", &ToraOptionApi::reqQryCondOrder)
-		.def("reqQryCondOrderAction", &ToraOptionApi::reqQryCondOrderAction)
-		.def("reqQryInvestorLimitPosition", &ToraOptionApi::reqQryInvestorLimitPosition)
-		.def("reqQryInvestorLimitAmount", &ToraOptionApi::reqQryInvestorLimitAmount)
-		.def("reqQryCombOrderAction", &ToraOptionApi::reqQryCombOrderAction)
-		.def("reqQryCombOrder", &ToraOptionApi::reqQryCombOrder)
-		.def("reqQryCombPosition", &ToraOptionApi::reqQryCombPosition)
-		.def("reqQryCombPosDetail", &ToraOptionApi::reqQryCombPosDetail)
-		.def("reqQryExerciseAppointment", &ToraOptionApi::reqQryExerciseAppointment)
-		.def("reqQryInsufficientCoveredStockPosition", &ToraOptionApi::reqQryInsufficientCoveredStockPosition)
-		.def("reqQryCombSecurity", &ToraOptionApi::reqQryCombSecurity)
-		.def("reqQryCombExercise", &ToraOptionApi::reqQryCombExercise)
-		.def("reqQryCombExerciseAction", &ToraOptionApi::reqQryCombExerciseAction)
+		.def("createTstpXMdApi", &OptionApi::createTstpSPTraderApi)
+		.def("registerFront", &OptionApi::registerFront)
+		.def("init", &OptionApi::init)
+		.def("join", &OptionApi::join)
+		.def("release", &OptionApi::release)
+		.def("getApiVersion", &OptionApi::getApiVersion)
+		.def("exit", &OptionApi::exit)
+		.def("registerNameServer", &OptionApi::registerNameServer)
+		.def("subscribePrivateTopic", &OptionApi::subscribePrivateTopic)
+		.def("subscribePublicTopic", &OptionApi::subscribePublicTopic)
+		.def("reqGetConnectionInfo", &OptionApi::reqGetConnectionInfo)
+		.def("reqUserLogin", &OptionApi::reqUserLogin)
+		.def("reqUserLogout", &OptionApi::reqUserLogout)
+		.def("reqUserPasswordUpdate", &OptionApi::reqUserPasswordUpdate)
+		.def("reqInputDeviceSerial", &OptionApi::reqInputDeviceSerial)
+		.def("reqOrderInsert", &OptionApi::reqOrderInsert)
+		.def("reqOrderAction", &OptionApi::reqOrderAction)
+		.def("reqExerciseInsert", &OptionApi::reqExerciseInsert)
+		.def("reqExerciseAction", &OptionApi::reqExerciseAction)
+		.def("reqLockInsert", &OptionApi::reqLockInsert)
+		.def("reqLockAction", &OptionApi::reqLockAction)
+		.def("reqCombOrderInsert", &OptionApi::reqCombOrderInsert)
+		.def("reqCombOrderAction", &OptionApi::reqCombOrderAction)
+		.def("reqCondOrderInsert", &OptionApi::reqCondOrderInsert)
+		.def("reqCondOrderAction", &OptionApi::reqCondOrderAction)
+		.def("reqCombExerciseInsert", &OptionApi::reqCombExerciseInsert)
+		.def("reqCombExerciseAction", &OptionApi::reqCombExerciseAction)
+		.def("reqInquiryMaxLockVolume", &OptionApi::reqInquiryMaxLockVolume)
+		.def("reqInquiryMaxCoverVolume", &OptionApi::reqInquiryMaxCoverVolume)
+		.def("reqInquirySplitCombMarginDifference", &OptionApi::reqInquirySplitCombMarginDifference)
+		.def("reqTransferFund", &OptionApi::reqTransferFund)
+		.def("reqTransferStockPosition", &OptionApi::reqTransferStockPosition)
+		.def("reqInquiryJZFund", &OptionApi::reqInquiryJZFund)
+		.def("reqInquiryBankAccountFund", &OptionApi::reqInquiryBankAccountFund)
+		.def("reqInquiryStockPosition", &OptionApi::reqInquiryStockPosition)
+		.def("reqQryExchange", &OptionApi::reqQryExchange)
+		.def("reqQryMarketData", &OptionApi::reqQryMarketData)
+		.def("reqQrySecurity", &OptionApi::reqQrySecurity)
+		.def("reqQryBUProxy", &OptionApi::reqQryBUProxy)
+		.def("reqQryUser", &OptionApi::reqQryUser)
+		.def("reqQryInvestor", &OptionApi::reqQryInvestor)
+		.def("reqQryShareholderAccount", &OptionApi::reqQryShareholderAccount)
+		.def("reqQryTradingAccount", &OptionApi::reqQryTradingAccount)
+		.def("reqQryOrder", &OptionApi::reqQryOrder)
+		.def("reqQryTrade", &OptionApi::reqQryTrade)
+		.def("reqQryPosition", &OptionApi::reqQryPosition)
+		.def("reqQryTradingFee", &OptionApi::reqQryTradingFee)
+		.def("reqQryInvestorTradingFee", &OptionApi::reqQryInvestorTradingFee)
+		.def("reqQryInvestorMarginFee", &OptionApi::reqQryInvestorMarginFee)
+		.def("reqQryOrderFundDetail", &OptionApi::reqQryOrderFundDetail)
+		.def("reqQryFundTransferDetail", &OptionApi::reqQryFundTransferDetail)
+		.def("reqQryPositionTransferDetail", &OptionApi::reqQryPositionTransferDetail)
+		.def("reqQryOrderAction", &OptionApi::reqQryOrderAction)
+		.def("reqQryStockPosition", &OptionApi::reqQryStockPosition)
+		.def("reqQryLock", &OptionApi::reqQryLock)
+		.def("reqQryExercise", &OptionApi::reqQryExercise)
+		.def("reqQryLockPosition", &OptionApi::reqQryLockPosition)
+		.def("reqQryExerciseAction", &OptionApi::reqQryExerciseAction)
+		.def("reqQryLockAction", &OptionApi::reqQryLockAction)
+		.def("reqQryStockPositionTransferDetail", &OptionApi::reqQryStockPositionTransferDetail)
+		.def("reqQryTradingNotice", &OptionApi::reqQryTradingNotice)
+		.def("reqQryStockDisposal", &OptionApi::reqQryStockDisposal)
+		.def("reqQryStockDisposalAction", &OptionApi::reqQryStockDisposalAction)
+		.def("reqQryCondOrder", &OptionApi::reqQryCondOrder)
+		.def("reqQryCondOrderAction", &OptionApi::reqQryCondOrderAction)
+		.def("reqQryInvestorLimitPosition", &OptionApi::reqQryInvestorLimitPosition)
+		.def("reqQryInvestorLimitAmount", &OptionApi::reqQryInvestorLimitAmount)
+		.def("reqQryCombOrderAction", &OptionApi::reqQryCombOrderAction)
+		.def("reqQryCombOrder", &OptionApi::reqQryCombOrder)
+		.def("reqQryCombPosition", &OptionApi::reqQryCombPosition)
+		.def("reqQryCombPosDetail", &OptionApi::reqQryCombPosDetail)
+		.def("reqQryExerciseAppointment", &OptionApi::reqQryExerciseAppointment)
+		.def("reqQryInsufficientCoveredStockPosition", &OptionApi::reqQryInsufficientCoveredStockPosition)
+		.def("reqQryCombSecurity", &OptionApi::reqQryCombSecurity)
+		.def("reqQryCombExercise", &OptionApi::reqQryCombExercise)
+		.def("reqQryCombExerciseAction", &OptionApi::reqQryCombExerciseAction)
 
-		.def("onFrontConnected", &ToraOptionApi::onFrontConnected)
-		.def("onFrontDisconnected", &ToraOptionApi::onFrontDisconnected)
-		.def("onRspError", &ToraOptionApi::onRspError)
-		.def("onRspGetConnectionInfo", &ToraOptionApi::onRspGetConnectionInfo)
-		.def("onRspUserLogin", &ToraOptionApi::onRspUserLogin)
-		.def("onRspUserLogout", &ToraOptionApi::onRspUserLogout)
-		.def("onRspUserPasswordUpdate", &ToraOptionApi::onRspUserPasswordUpdate)
-		.def("onRspInputDeviceSerial", &ToraOptionApi::onRspInputDeviceSerial)
-		.def("onRspOrderInsert", &ToraOptionApi::onRspOrderInsert)
-		.def("onRtnOrder", &ToraOptionApi::onRtnOrder)
-		.def("onErrRtnOrderInsert", &ToraOptionApi::onErrRtnOrderInsert)
-		.def("onRspOrderAction", &ToraOptionApi::onRspOrderAction)
-		.def("onErrRtnOrderAction", &ToraOptionApi::onErrRtnOrderAction)
-		.def("onRtnTrade", &ToraOptionApi::onRtnTrade)
-		.def("onRspExerciseInsert", &ToraOptionApi::onRspExerciseInsert)
-		.def("onRtnExercise", &ToraOptionApi::onRtnExercise)
-		.def("onErrRtnExerciseInsert", &ToraOptionApi::onErrRtnExerciseInsert)
-		.def("onRspExerciseAction", &ToraOptionApi::onRspExerciseAction)
-		.def("onErrRtnExerciseAction", &ToraOptionApi::onErrRtnExerciseAction)
-		.def("onRspLockInsert", &ToraOptionApi::onRspLockInsert)
-		.def("onRtnLock", &ToraOptionApi::onRtnLock)
-		.def("onErrRtnLockInsert", &ToraOptionApi::onErrRtnLockInsert)
-		.def("onRspLockAction", &ToraOptionApi::onRspLockAction)
-		.def("onErrRtnLockAction", &ToraOptionApi::onErrRtnLockAction)
-		.def("onRtnStockDisposal", &ToraOptionApi::onRtnStockDisposal)
-		.def("onRspCombOrderInsert", &ToraOptionApi::onRspCombOrderInsert)
-		.def("onRtnCombOrder", &ToraOptionApi::onRtnCombOrder)
-		.def("onErrRtnCombOrderInsert", &ToraOptionApi::onErrRtnCombOrderInsert)
-		.def("onRspCombOrderAction", &ToraOptionApi::onRspCombOrderAction)
-		.def("onErrRtnCombOrderAction", &ToraOptionApi::onErrRtnCombOrderAction)
-		.def("onRspCondOrderInsert", &ToraOptionApi::onRspCondOrderInsert)
-		.def("onRtnCondOrder", &ToraOptionApi::onRtnCondOrder)
-		.def("onErrRtnCondOrderInsert", &ToraOptionApi::onErrRtnCondOrderInsert)
-		.def("onRspCondOrderAction", &ToraOptionApi::onRspCondOrderAction)
-		.def("onErrRtnCondOrderAction", &ToraOptionApi::onErrRtnCondOrderAction)
-		.def("onRspCombExerciseInsert", &ToraOptionApi::onRspCombExerciseInsert)
-		.def("onRtnCombExercise", &ToraOptionApi::onRtnCombExercise)
-		.def("onErrRtnCombExerciseInsert", &ToraOptionApi::onErrRtnCombExerciseInsert)
-		.def("onRspCombExerciseAction", &ToraOptionApi::onRspCombExerciseAction)
-		.def("onErrRtnCombExerciseAction", &ToraOptionApi::onErrRtnCombExerciseAction)
-		.def("onRspInquiryMaxLockVolume", &ToraOptionApi::onRspInquiryMaxLockVolume)
-		.def("onRspInquiryMaxCoverVolume", &ToraOptionApi::onRspInquiryMaxCoverVolume)
-		.def("onRspInquirySplitCombMarginDifference", &ToraOptionApi::onRspInquirySplitCombMarginDifference)
-		.def("onRspTransferFund", &ToraOptionApi::onRspTransferFund)
-		.def("onRtnTransferFund", &ToraOptionApi::onRtnTransferFund)
-		.def("onErrRtnTransferFund", &ToraOptionApi::onErrRtnTransferFund)
-		.def("onRtnTransferPosition", &ToraOptionApi::onRtnTransferPosition)
-		.def("onErrRtnTransferPosition", &ToraOptionApi::onErrRtnTransferPosition)
-		.def("onRspTransferStockPosition", &ToraOptionApi::onRspTransferStockPosition)
-		.def("onRtnTransferStockPosition", &ToraOptionApi::onRtnTransferStockPosition)
-		.def("onErrRtnTransferStockPosition", &ToraOptionApi::onErrRtnTransferStockPosition)
-		.def("onRspInquiryJZFund", &ToraOptionApi::onRspInquiryJZFund)
-		.def("onRspInquiryBankAccountFund", &ToraOptionApi::onRspInquiryBankAccountFund)
-		.def("onRspInquiryStockPosition", &ToraOptionApi::onRspInquiryStockPosition)
-		.def("onRtnMarketStatus", &ToraOptionApi::onRtnMarketStatus)
-		.def("onRtnTradingNotice", &ToraOptionApi::onRtnTradingNotice)
-		.def("onRspQryExchange", &ToraOptionApi::onRspQryExchange)
-		.def("onRspQryMarketData", &ToraOptionApi::onRspQryMarketData)
-		.def("onRspQrySecurity", &ToraOptionApi::onRspQrySecurity)
-		.def("onRspQryBUProxy", &ToraOptionApi::onRspQryBUProxy)
-		.def("onRspQryUser", &ToraOptionApi::onRspQryUser)
-		.def("onRspQryInvestor", &ToraOptionApi::onRspQryInvestor)
-		.def("onRspQryShareholderAccount", &ToraOptionApi::onRspQryShareholderAccount)
-		.def("onRspQryTradingAccount", &ToraOptionApi::onRspQryTradingAccount)
-		.def("onRspQryOrder", &ToraOptionApi::onRspQryOrder)
-		.def("onRspQryTrade", &ToraOptionApi::onRspQryTrade)
-		.def("onRspQryPosition", &ToraOptionApi::onRspQryPosition)
-		.def("onRspQryTradingFee", &ToraOptionApi::onRspQryTradingFee)
-		.def("onRspQryInvestorTradingFee", &ToraOptionApi::onRspQryInvestorTradingFee)
-		.def("onRspQryInvestorMarginFee", &ToraOptionApi::onRspQryInvestorMarginFee)
-		.def("onRspQryOrderFundDetail", &ToraOptionApi::onRspQryOrderFundDetail)
-		.def("onRspQryFundTransferDetail", &ToraOptionApi::onRspQryFundTransferDetail)
-		.def("onRspQryPositionTransferDetail", &ToraOptionApi::onRspQryPositionTransferDetail)
-		.def("onRspQryOrderAction", &ToraOptionApi::onRspQryOrderAction)
-		.def("onRspQryStockPosition", &ToraOptionApi::onRspQryStockPosition)
-		.def("onRspQryLock", &ToraOptionApi::onRspQryLock)
-		.def("onRspQryExercise", &ToraOptionApi::onRspQryExercise)
-		.def("onRspQryLockPosition", &ToraOptionApi::onRspQryLockPosition)
-		.def("onRspQryExerciseAction", &ToraOptionApi::onRspQryExerciseAction)
-		.def("onRspQryLockAction", &ToraOptionApi::onRspQryLockAction)
-		.def("onRspQryStockPositionTransferDetail", &ToraOptionApi::onRspQryStockPositionTransferDetail)
-		.def("onRspQryTradingNotice", &ToraOptionApi::onRspQryTradingNotice)
-		.def("onRspQryStockDisposal", &ToraOptionApi::onRspQryStockDisposal)
-		.def("onRspQryStockDisposalAction", &ToraOptionApi::onRspQryStockDisposalAction)
-		.def("onRspQryCondOrder", &ToraOptionApi::onRspQryCondOrder)
-		.def("onRspQryCondOrderAction", &ToraOptionApi::onRspQryCondOrderAction)
-		.def("onRspQryInvestorLimitPosition", &ToraOptionApi::onRspQryInvestorLimitPosition)
-		.def("onRspQryInvestorLimitAmount", &ToraOptionApi::onRspQryInvestorLimitAmount)
-		.def("onRspQryCombOrderAction", &ToraOptionApi::onRspQryCombOrderAction)
-		.def("onRspQryCombOrder", &ToraOptionApi::onRspQryCombOrder)
-		.def("onRspQryCombPosition", &ToraOptionApi::onRspQryCombPosition)
-		.def("onRspQryCombPosDetail", &ToraOptionApi::onRspQryCombPosDetail)
-		.def("onRspQryExerciseAppointment", &ToraOptionApi::onRspQryExerciseAppointment)
-		.def("onRspQryInsufficientCoveredStockPosition", &ToraOptionApi::onRspQryInsufficientCoveredStockPosition)
-		.def("onRspQryCombSecurity", &ToraOptionApi::onRspQryCombSecurity)
-		.def("onRspQryCombExercise", &ToraOptionApi::onRspQryCombExercise)
-		.def("onRspQryCombExerciseAction", &ToraOptionApi::onRspQryCombExerciseAction)
+		.def("onFrontConnected", &OptionApi::onFrontConnected)
+		.def("onFrontDisconnected", &OptionApi::onFrontDisconnected)
+		.def("onRspError", &OptionApi::onRspError)
+		.def("onRspGetConnectionInfo", &OptionApi::onRspGetConnectionInfo)
+		.def("onRspUserLogin", &OptionApi::onRspUserLogin)
+		.def("onRspUserLogout", &OptionApi::onRspUserLogout)
+		.def("onRspUserPasswordUpdate", &OptionApi::onRspUserPasswordUpdate)
+		.def("onRspInputDeviceSerial", &OptionApi::onRspInputDeviceSerial)
+		.def("onRspOrderInsert", &OptionApi::onRspOrderInsert)
+		.def("onRtnOrder", &OptionApi::onRtnOrder)
+		.def("onErrRtnOrderInsert", &OptionApi::onErrRtnOrderInsert)
+		.def("onRspOrderAction", &OptionApi::onRspOrderAction)
+		.def("onErrRtnOrderAction", &OptionApi::onErrRtnOrderAction)
+		.def("onRtnTrade", &OptionApi::onRtnTrade)
+		.def("onRspExerciseInsert", &OptionApi::onRspExerciseInsert)
+		.def("onRtnExercise", &OptionApi::onRtnExercise)
+		.def("onErrRtnExerciseInsert", &OptionApi::onErrRtnExerciseInsert)
+		.def("onRspExerciseAction", &OptionApi::onRspExerciseAction)
+		.def("onErrRtnExerciseAction", &OptionApi::onErrRtnExerciseAction)
+		.def("onRspLockInsert", &OptionApi::onRspLockInsert)
+		.def("onRtnLock", &OptionApi::onRtnLock)
+		.def("onErrRtnLockInsert", &OptionApi::onErrRtnLockInsert)
+		.def("onRspLockAction", &OptionApi::onRspLockAction)
+		.def("onErrRtnLockAction", &OptionApi::onErrRtnLockAction)
+		.def("onRtnStockDisposal", &OptionApi::onRtnStockDisposal)
+		.def("onRspCombOrderInsert", &OptionApi::onRspCombOrderInsert)
+		.def("onRtnCombOrder", &OptionApi::onRtnCombOrder)
+		.def("onErrRtnCombOrderInsert", &OptionApi::onErrRtnCombOrderInsert)
+		.def("onRspCombOrderAction", &OptionApi::onRspCombOrderAction)
+		.def("onErrRtnCombOrderAction", &OptionApi::onErrRtnCombOrderAction)
+		.def("onRspCondOrderInsert", &OptionApi::onRspCondOrderInsert)
+		.def("onRtnCondOrder", &OptionApi::onRtnCondOrder)
+		.def("onErrRtnCondOrderInsert", &OptionApi::onErrRtnCondOrderInsert)
+		.def("onRspCondOrderAction", &OptionApi::onRspCondOrderAction)
+		.def("onErrRtnCondOrderAction", &OptionApi::onErrRtnCondOrderAction)
+		.def("onRspCombExerciseInsert", &OptionApi::onRspCombExerciseInsert)
+		.def("onRtnCombExercise", &OptionApi::onRtnCombExercise)
+		.def("onErrRtnCombExerciseInsert", &OptionApi::onErrRtnCombExerciseInsert)
+		.def("onRspCombExerciseAction", &OptionApi::onRspCombExerciseAction)
+		.def("onErrRtnCombExerciseAction", &OptionApi::onErrRtnCombExerciseAction)
+		.def("onRspInquiryMaxLockVolume", &OptionApi::onRspInquiryMaxLockVolume)
+		.def("onRspInquiryMaxCoverVolume", &OptionApi::onRspInquiryMaxCoverVolume)
+		.def("onRspInquirySplitCombMarginDifference", &OptionApi::onRspInquirySplitCombMarginDifference)
+		.def("onRspTransferFund", &OptionApi::onRspTransferFund)
+		.def("onRtnTransferFund", &OptionApi::onRtnTransferFund)
+		.def("onErrRtnTransferFund", &OptionApi::onErrRtnTransferFund)
+		.def("onRtnTransferPosition", &OptionApi::onRtnTransferPosition)
+		.def("onErrRtnTransferPosition", &OptionApi::onErrRtnTransferPosition)
+		.def("onRspTransferStockPosition", &OptionApi::onRspTransferStockPosition)
+		.def("onRtnTransferStockPosition", &OptionApi::onRtnTransferStockPosition)
+		.def("onErrRtnTransferStockPosition", &OptionApi::onErrRtnTransferStockPosition)
+		.def("onRspInquiryJZFund", &OptionApi::onRspInquiryJZFund)
+		.def("onRspInquiryBankAccountFund", &OptionApi::onRspInquiryBankAccountFund)
+		.def("onRspInquiryStockPosition", &OptionApi::onRspInquiryStockPosition)
+		.def("onRtnMarketStatus", &OptionApi::onRtnMarketStatus)
+		.def("onRtnTradingNotice", &OptionApi::onRtnTradingNotice)
+		.def("onRspQryExchange", &OptionApi::onRspQryExchange)
+		.def("onRspQryMarketData", &OptionApi::onRspQryMarketData)
+		.def("onRspQrySecurity", &OptionApi::onRspQrySecurity)
+		.def("onRspQryBUProxy", &OptionApi::onRspQryBUProxy)
+		.def("onRspQryUser", &OptionApi::onRspQryUser)
+		.def("onRspQryInvestor", &OptionApi::onRspQryInvestor)
+		.def("onRspQryShareholderAccount", &OptionApi::onRspQryShareholderAccount)
+		.def("onRspQryTradingAccount", &OptionApi::onRspQryTradingAccount)
+		.def("onRspQryOrder", &OptionApi::onRspQryOrder)
+		.def("onRspQryTrade", &OptionApi::onRspQryTrade)
+		.def("onRspQryPosition", &OptionApi::onRspQryPosition)
+		.def("onRspQryTradingFee", &OptionApi::onRspQryTradingFee)
+		.def("onRspQryInvestorTradingFee", &OptionApi::onRspQryInvestorTradingFee)
+		.def("onRspQryInvestorMarginFee", &OptionApi::onRspQryInvestorMarginFee)
+		.def("onRspQryOrderFundDetail", &OptionApi::onRspQryOrderFundDetail)
+		.def("onRspQryFundTransferDetail", &OptionApi::onRspQryFundTransferDetail)
+		.def("onRspQryPositionTransferDetail", &OptionApi::onRspQryPositionTransferDetail)
+		.def("onRspQryOrderAction", &OptionApi::onRspQryOrderAction)
+		.def("onRspQryStockPosition", &OptionApi::onRspQryStockPosition)
+		.def("onRspQryLock", &OptionApi::onRspQryLock)
+		.def("onRspQryExercise", &OptionApi::onRspQryExercise)
+		.def("onRspQryLockPosition", &OptionApi::onRspQryLockPosition)
+		.def("onRspQryExerciseAction", &OptionApi::onRspQryExerciseAction)
+		.def("onRspQryLockAction", &OptionApi::onRspQryLockAction)
+		.def("onRspQryStockPositionTransferDetail", &OptionApi::onRspQryStockPositionTransferDetail)
+		.def("onRspQryTradingNotice", &OptionApi::onRspQryTradingNotice)
+		.def("onRspQryStockDisposal", &OptionApi::onRspQryStockDisposal)
+		.def("onRspQryStockDisposalAction", &OptionApi::onRspQryStockDisposalAction)
+		.def("onRspQryCondOrder", &OptionApi::onRspQryCondOrder)
+		.def("onRspQryCondOrderAction", &OptionApi::onRspQryCondOrderAction)
+		.def("onRspQryInvestorLimitPosition", &OptionApi::onRspQryInvestorLimitPosition)
+		.def("onRspQryInvestorLimitAmount", &OptionApi::onRspQryInvestorLimitAmount)
+		.def("onRspQryCombOrderAction", &OptionApi::onRspQryCombOrderAction)
+		.def("onRspQryCombOrder", &OptionApi::onRspQryCombOrder)
+		.def("onRspQryCombPosition", &OptionApi::onRspQryCombPosition)
+		.def("onRspQryCombPosDetail", &OptionApi::onRspQryCombPosDetail)
+		.def("onRspQryExerciseAppointment", &OptionApi::onRspQryExerciseAppointment)
+		.def("onRspQryInsufficientCoveredStockPosition", &OptionApi::onRspQryInsufficientCoveredStockPosition)
+		.def("onRspQryCombSecurity", &OptionApi::onRspQryCombSecurity)
+		.def("onRspQryCombExercise", &OptionApi::onRspQryCombExercise)
+		.def("onRspQryCombExerciseAction", &OptionApi::onRspQryCombExerciseAction)
 		;
 
 }

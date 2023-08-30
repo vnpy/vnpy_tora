@@ -66,7 +66,7 @@ using namespace std;
 ///-------------------------------------------------------------------------------------
 
 //API的继承实现
-class ToraMdApi : public CTORATstpXMdSpi
+class MdApi : public CTORATstpXMdSpi
 {
 private:
     XMD_API_DLL_EXPORT CTORATstpXMdApi* api;      //API对象
@@ -77,11 +77,11 @@ private:
 
 
 public:
-    ToraMdApi()
+	MdApi()
     {
     };
 
-    ~ToraMdApi()
+    ~MdApi()
     {
         if (this->active)
         {

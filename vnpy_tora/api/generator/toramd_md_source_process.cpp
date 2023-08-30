@@ -1,16 +1,16 @@
-void ToraMdApi::processFrontConnected(Task *task)
+void MdApi::processFrontConnected(Task *task)
 {
 	gil_scoped_acquire acquire;
 	this->onFrontConnected();
 };
 
-void ToraMdApi::processFrontDisconnected(Task *task)
+void MdApi::processFrontDisconnected(Task *task)
 {
 	gil_scoped_acquire acquire;
 	this->onFrontDisconnected(task->task_id);
 };
 
-void ToraMdApi::processRspGetConnectionInfo(Task *task)
+void MdApi::processRspGetConnectionInfo(Task *task)
 {
 	gil_scoped_acquire acquire;
 	dict data;
@@ -35,7 +35,7 @@ void ToraMdApi::processRspGetConnectionInfo(Task *task)
 	this->onRspGetConnectionInfo(data, error, task->task_id);
 };
 
-void ToraMdApi::processRspUserLogin(Task *task)
+void MdApi::processRspUserLogin(Task *task)
 {
 	gil_scoped_acquire acquire;
 	dict data;
@@ -77,7 +77,7 @@ void ToraMdApi::processRspUserLogin(Task *task)
 	this->onRspUserLogin(data, error, task->task_id);
 };
 
-void ToraMdApi::processRspUserLogout(Task *task)
+void MdApi::processRspUserLogout(Task *task)
 {
 	gil_scoped_acquire acquire;
 	dict data;
@@ -98,7 +98,7 @@ void ToraMdApi::processRspUserLogout(Task *task)
 	this->onRspUserLogout(data, error, task->task_id);
 };
 
-void ToraMdApi::processRspSubMarketData(Task *task)
+void MdApi::processRspSubMarketData(Task *task)
 {
 	gil_scoped_acquire acquire;
 	dict data;
@@ -120,7 +120,7 @@ void ToraMdApi::processRspSubMarketData(Task *task)
 	this->onRspSubMarketData(data, error);
 };
 
-void ToraMdApi::processRspUnSubMarketData(Task *task)
+void MdApi::processRspUnSubMarketData(Task *task)
 {
 	gil_scoped_acquire acquire;
 	dict data;
@@ -142,7 +142,7 @@ void ToraMdApi::processRspUnSubMarketData(Task *task)
 	this->onRspUnSubMarketData(data, error);
 };
 
-void ToraMdApi::processRspSubPHMarketData(Task *task)
+void MdApi::processRspSubPHMarketData(Task *task)
 {
 	gil_scoped_acquire acquire;
 	dict data;
@@ -164,7 +164,7 @@ void ToraMdApi::processRspSubPHMarketData(Task *task)
 	this->onRspSubPHMarketData(data, error);
 };
 
-void ToraMdApi::processRspUnSubPHMarketData(Task *task)
+void MdApi::processRspUnSubPHMarketData(Task *task)
 {
 	gil_scoped_acquire acquire;
 	dict data;
@@ -186,7 +186,7 @@ void ToraMdApi::processRspUnSubPHMarketData(Task *task)
 	this->onRspUnSubPHMarketData(data, error);
 };
 
-void ToraMdApi::processRspSubSpecialMarketData(Task *task)
+void MdApi::processRspSubSpecialMarketData(Task *task)
 {
 	gil_scoped_acquire acquire;
 	dict data;
@@ -208,7 +208,7 @@ void ToraMdApi::processRspSubSpecialMarketData(Task *task)
 	this->onRspSubSpecialMarketData(data, error);
 };
 
-void ToraMdApi::processRspUnSubSpecialMarketData(Task *task)
+void MdApi::processRspUnSubSpecialMarketData(Task *task)
 {
 	gil_scoped_acquire acquire;
 	dict data;
@@ -230,7 +230,7 @@ void ToraMdApi::processRspUnSubSpecialMarketData(Task *task)
 	this->onRspUnSubSpecialMarketData(data, error);
 };
 
-void ToraMdApi::processRspSubSimplifyMarketData(Task *task)
+void MdApi::processRspSubSimplifyMarketData(Task *task)
 {
 	gil_scoped_acquire acquire;
 	dict data;
@@ -252,7 +252,7 @@ void ToraMdApi::processRspSubSimplifyMarketData(Task *task)
 	this->onRspSubSimplifyMarketData(data, error);
 };
 
-void ToraMdApi::processRspUnSubSimplifyMarketData(Task *task)
+void MdApi::processRspUnSubSimplifyMarketData(Task *task)
 {
 	gil_scoped_acquire acquire;
 	dict data;
@@ -274,7 +274,7 @@ void ToraMdApi::processRspUnSubSimplifyMarketData(Task *task)
 	this->onRspUnSubSimplifyMarketData(data, error);
 };
 
-void ToraMdApi::processRspSubSecurityStatus(Task *task)
+void MdApi::processRspSubSecurityStatus(Task *task)
 {
 	gil_scoped_acquire acquire;
 	dict data;
@@ -296,7 +296,7 @@ void ToraMdApi::processRspSubSecurityStatus(Task *task)
 	this->onRspSubSecurityStatus(data, error);
 };
 
-void ToraMdApi::processRspUnSubSecurityStatus(Task *task)
+void MdApi::processRspUnSubSecurityStatus(Task *task)
 {
 	gil_scoped_acquire acquire;
 	dict data;
@@ -318,7 +318,7 @@ void ToraMdApi::processRspUnSubSecurityStatus(Task *task)
 	this->onRspUnSubSecurityStatus(data, error);
 };
 
-void ToraMdApi::processRspSubMarketStatus(Task *task)
+void MdApi::processRspSubMarketStatus(Task *task)
 {
 	gil_scoped_acquire acquire;
 	dict data;
@@ -339,7 +339,7 @@ void ToraMdApi::processRspSubMarketStatus(Task *task)
 	this->onRspSubMarketStatus(data, error);
 };
 
-void ToraMdApi::processRspUnSubMarketStatus(Task *task)
+void MdApi::processRspUnSubMarketStatus(Task *task)
 {
 	gil_scoped_acquire acquire;
 	dict data;
@@ -360,7 +360,7 @@ void ToraMdApi::processRspUnSubMarketStatus(Task *task)
 	this->onRspUnSubMarketStatus(data, error);
 };
 
-void ToraMdApi::processRspSubImcParams(Task *task)
+void MdApi::processRspSubImcParams(Task *task)
 {
 	gil_scoped_acquire acquire;
 	dict data;
@@ -381,7 +381,7 @@ void ToraMdApi::processRspSubImcParams(Task *task)
 	this->onRspSubImcParams(data, error);
 };
 
-void ToraMdApi::processRspUnSubImcParams(Task *task)
+void MdApi::processRspUnSubImcParams(Task *task)
 {
 	gil_scoped_acquire acquire;
 	dict data;
@@ -402,7 +402,7 @@ void ToraMdApi::processRspUnSubImcParams(Task *task)
 	this->onRspUnSubImcParams(data, error);
 };
 
-void ToraMdApi::processRspInquiryMarketDataMirror(Task *task)
+void MdApi::processRspInquiryMarketDataMirror(Task *task)
 {
 	gil_scoped_acquire acquire;
 	dict data;
@@ -469,7 +469,7 @@ void ToraMdApi::processRspInquiryMarketDataMirror(Task *task)
 	this->onRspInquiryMarketDataMirror(data, error, task->task_id, task->task_last);
 };
 
-void ToraMdApi::processRspInquiryPHMarketDataMirror(Task *task)
+void MdApi::processRspInquiryPHMarketDataMirror(Task *task)
 {
 	gil_scoped_acquire acquire;
 	dict data;
@@ -504,7 +504,7 @@ void ToraMdApi::processRspInquiryPHMarketDataMirror(Task *task)
 	this->onRspInquiryPHMarketDataMirror(data, error, task->task_id, task->task_last);
 };
 
-void ToraMdApi::processRspInquirySpecialMarketDataMirror(Task *task)
+void MdApi::processRspInquirySpecialMarketDataMirror(Task *task)
 {
 	gil_scoped_acquire acquire;
 	dict data;
@@ -532,7 +532,7 @@ void ToraMdApi::processRspInquirySpecialMarketDataMirror(Task *task)
 	this->onRspInquirySpecialMarketDataMirror(data, error, task->task_id, task->task_last);
 };
 
-void ToraMdApi::processRspSubSPMarketData(Task *task)
+void MdApi::processRspSubSPMarketData(Task *task)
 {
 	gil_scoped_acquire acquire;
 	dict data;
@@ -554,7 +554,7 @@ void ToraMdApi::processRspSubSPMarketData(Task *task)
 	this->onRspSubSPMarketData(data, error);
 };
 
-void ToraMdApi::processRspUnSubSPMarketData(Task *task)
+void MdApi::processRspUnSubSPMarketData(Task *task)
 {
 	gil_scoped_acquire acquire;
 	dict data;
@@ -576,7 +576,7 @@ void ToraMdApi::processRspUnSubSPMarketData(Task *task)
 	this->onRspUnSubSPMarketData(data, error);
 };
 
-void ToraMdApi::processRspSubSPSimplifyMarketData(Task *task)
+void MdApi::processRspSubSPSimplifyMarketData(Task *task)
 {
 	gil_scoped_acquire acquire;
 	dict data;
@@ -598,7 +598,7 @@ void ToraMdApi::processRspSubSPSimplifyMarketData(Task *task)
 	this->onRspSubSPSimplifyMarketData(data, error);
 };
 
-void ToraMdApi::processRspUnSubSPSimplifyMarketData(Task *task)
+void MdApi::processRspUnSubSPSimplifyMarketData(Task *task)
 {
 	gil_scoped_acquire acquire;
 	dict data;
@@ -620,7 +620,7 @@ void ToraMdApi::processRspUnSubSPSimplifyMarketData(Task *task)
 	this->onRspUnSubSPSimplifyMarketData(data, error);
 };
 
-void ToraMdApi::processRspSubSPSecurityStatus(Task *task)
+void MdApi::processRspSubSPSecurityStatus(Task *task)
 {
 	gil_scoped_acquire acquire;
 	dict data;
@@ -642,7 +642,7 @@ void ToraMdApi::processRspSubSPSecurityStatus(Task *task)
 	this->onRspSubSPSecurityStatus(data, error);
 };
 
-void ToraMdApi::processRspUnSubSPSecurityStatus(Task *task)
+void MdApi::processRspUnSubSPSecurityStatus(Task *task)
 {
 	gil_scoped_acquire acquire;
 	dict data;
@@ -664,7 +664,7 @@ void ToraMdApi::processRspUnSubSPSecurityStatus(Task *task)
 	this->onRspUnSubSPSecurityStatus(data, error);
 };
 
-void ToraMdApi::processRspSubSPMarketStatus(Task *task)
+void MdApi::processRspSubSPMarketStatus(Task *task)
 {
 	gil_scoped_acquire acquire;
 	dict data;
@@ -685,7 +685,7 @@ void ToraMdApi::processRspSubSPMarketStatus(Task *task)
 	this->onRspSubSPMarketStatus(data, error);
 };
 
-void ToraMdApi::processRspUnSubSPMarketStatus(Task *task)
+void MdApi::processRspUnSubSPMarketStatus(Task *task)
 {
 	gil_scoped_acquire acquire;
 	dict data;
@@ -706,7 +706,7 @@ void ToraMdApi::processRspUnSubSPMarketStatus(Task *task)
 	this->onRspUnSubSPMarketStatus(data, error);
 };
 
-void ToraMdApi::processRspInquirySPMarketDataMirror(Task *task)
+void MdApi::processRspInquirySPMarketDataMirror(Task *task)
 {
 	gil_scoped_acquire acquire;
 	dict data;
@@ -773,7 +773,7 @@ void ToraMdApi::processRspInquirySPMarketDataMirror(Task *task)
 	this->onRspInquirySPMarketDataMirror(data, error, task->task_id, task->task_last);
 };
 
-void ToraMdApi::processRtnMarketData(Task *task)
+void MdApi::processRtnMarketData(Task *task)
 {
 	gil_scoped_acquire acquire;
 	dict data;
@@ -832,7 +832,7 @@ void ToraMdApi::processRtnMarketData(Task *task)
 	this->onRtnMarketData(data);
 };
 
-void ToraMdApi::processRtnPHMarketData(Task *task)
+void MdApi::processRtnPHMarketData(Task *task)
 {
 	gil_scoped_acquire acquire;
 	dict data;
@@ -859,7 +859,7 @@ void ToraMdApi::processRtnPHMarketData(Task *task)
 	this->onRtnPHMarketData(data);
 };
 
-void ToraMdApi::processRtnSpecialMarketData(Task *task)
+void MdApi::processRtnSpecialMarketData(Task *task)
 {
 	gil_scoped_acquire acquire;
 	dict data;
@@ -879,7 +879,7 @@ void ToraMdApi::processRtnSpecialMarketData(Task *task)
 	this->onRtnSpecialMarketData(data);
 };
 
-void ToraMdApi::processRtnSimplifyMarketData(Task *task)
+void MdApi::processRtnSimplifyMarketData(Task *task)
 {
 	gil_scoped_acquire acquire;
 	dict data;
@@ -905,7 +905,7 @@ void ToraMdApi::processRtnSimplifyMarketData(Task *task)
 	this->onRtnSimplifyMarketData(data);
 };
 
-void ToraMdApi::processRtnSecurityStatus(Task *task)
+void MdApi::processRtnSecurityStatus(Task *task)
 {
 	gil_scoped_acquire acquire;
 	dict data;
@@ -940,7 +940,7 @@ void ToraMdApi::processRtnSecurityStatus(Task *task)
 	this->onRtnSecurityStatus(data);
 };
 
-void ToraMdApi::processRtnMarketStatus(Task *task)
+void MdApi::processRtnMarketStatus(Task *task)
 {
 	gil_scoped_acquire acquire;
 	dict data;
@@ -954,7 +954,7 @@ void ToraMdApi::processRtnMarketStatus(Task *task)
 	this->onRtnMarketStatus(data);
 };
 
-void ToraMdApi::processRtnImcParams(Task *task)
+void MdApi::processRtnImcParams(Task *task)
 {
 	gil_scoped_acquire acquire;
 	dict data;
@@ -971,7 +971,7 @@ void ToraMdApi::processRtnImcParams(Task *task)
 	this->onRtnImcParams(data);
 };
 
-void ToraMdApi::processRtnSPMarketData(Task *task)
+void MdApi::processRtnSPMarketData(Task *task)
 {
 	gil_scoped_acquire acquire;
 	dict data;
@@ -1030,7 +1030,7 @@ void ToraMdApi::processRtnSPMarketData(Task *task)
 	this->onRtnSPMarketData(data);
 };
 
-void ToraMdApi::processRtnSPSimplifyMarketData(Task *task)
+void MdApi::processRtnSPSimplifyMarketData(Task *task)
 {
 	gil_scoped_acquire acquire;
 	dict data;
@@ -1056,7 +1056,7 @@ void ToraMdApi::processRtnSPSimplifyMarketData(Task *task)
 	this->onRtnSPSimplifyMarketData(data);
 };
 
-void ToraMdApi::processRtnSPSecurityStatus(Task *task)
+void MdApi::processRtnSPSecurityStatus(Task *task)
 {
 	gil_scoped_acquire acquire;
 	dict data;
@@ -1091,7 +1091,7 @@ void ToraMdApi::processRtnSPSecurityStatus(Task *task)
 	this->onRtnSPSecurityStatus(data);
 };
 
-void ToraMdApi::processRtnSPMarketStatus(Task *task)
+void MdApi::processRtnSPMarketStatus(Task *task)
 {
 	gil_scoped_acquire acquire;
 	dict data;
@@ -1105,7 +1105,7 @@ void ToraMdApi::processRtnSPMarketStatus(Task *task)
 	this->onRtnSPMarketStatus(data);
 };
 
-void ToraMdApi::processRspSubRapidMarketData(Task *task)
+void MdApi::processRspSubRapidMarketData(Task *task)
 {
 	gil_scoped_acquire acquire;
 	dict data;
@@ -1127,7 +1127,7 @@ void ToraMdApi::processRspSubRapidMarketData(Task *task)
 	this->onRspSubRapidMarketData(data, error);
 };
 
-void ToraMdApi::processRspUnSubRapidMarketData(Task *task)
+void MdApi::processRspUnSubRapidMarketData(Task *task)
 {
 	gil_scoped_acquire acquire;
 	dict data;
@@ -1149,7 +1149,7 @@ void ToraMdApi::processRspUnSubRapidMarketData(Task *task)
 	this->onRspUnSubRapidMarketData(data, error);
 };
 
-void ToraMdApi::processRtnRapidMarketData(Task *task)
+void MdApi::processRtnRapidMarketData(Task *task)
 {
 	gil_scoped_acquire acquire;
 	dict data;
