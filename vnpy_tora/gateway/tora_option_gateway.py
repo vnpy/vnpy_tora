@@ -442,11 +442,10 @@ class ToraTdApi(OptionApi):
         self.userid: str = ""
         self.password: str = ""
         self.account_type: str = ""
-        self.frontid: int = 0
-        self.sessionid: int = 0
         self.product_info: str = ""
 
         self.sysid_orderid_map: Dict[str, str] = {}
+        self.orderid_sysid_map: Dict[str, str] = {}
 
     def onFrontConnected(self) -> None:
         """服务器连接成功回报"""
@@ -466,8 +465,6 @@ class ToraTdApi(OptionApi):
     ) -> None:
         """用户登录请求回报"""
         if not error["ErrorID"]:
-            self.frontid = data["FrontID"]
-            self.sessionid = data["SessionID"]
             self.login_status = True
             self.gateway.write_log("交易服务器登录成功")
 
@@ -496,10 +493,7 @@ class ToraTdApi(OptionApi):
         symbol: str = data["SecurityID"]
         exchange: Exchange = EXCHANGE_TORA2VT[data["ExchangeID"]]
 
-        frontid: int = data["FrontID"]
-        sessionid: int = data["SessionID"]
-        order_ref: int = data["OrderRef"]
-        order_id: str = f"{frontid}_{sessionid}_{order_ref}"
+        order_id: str = str(data["OrderRef"])
 
         timestamp: str = f"{data['InsertDate']} {data['InsertTime']}"
         dt: datetime = datetime.strptime(timestamp, "%Y%m%d %H:%M:%S")
@@ -522,6 +516,7 @@ class ToraTdApi(OptionApi):
         self.gateway.on_order(order)
 
         self.sysid_orderid_map[data["OrderSysID"]] = order_id
+        self.orderid_sysid_map[order_id] = data["OrderSysID"]
 
     def onRtnTrade(self, data: dict) -> None:
         """成交数据推送"""
@@ -673,10 +668,9 @@ class ToraTdApi(OptionApi):
         )
         self.gateway.on_position(position_data)
 
-    def OnErrRtnOrderInsert(self, data: dict, error: dict, reqid: int) -> None:
+    def onErrRtnOrderInsert(self, data: dict, error: dict, reqid: int) -> None:
         """委托下单失败回报"""
-        order_ref: int = data["OrderRef"]
-        order_id: str = f"{self.frontid}_{self.sessionid}_{order_ref}"
+        order_id: str = str(data["OrderRef"])
         dt: datetime = datetime.now()
         dt: datetime = dt.replace(tzinfo=CHINA_TZ)
 
@@ -778,7 +772,9 @@ class ToraTdApi(OptionApi):
             return ""
 
         self.reqid += 1
-        order_ref: int = self._get_new_order_id()
+        prefix: str = datetime.now().strftime("%H%M%S")
+        suffix: str = str(self.reqid).rjust(3, "0")
+        order_id: int = int(prefix + suffix)
 
         opt, tc, vc = ORDER_TYPE_VT2TORA[req.type]
 
@@ -786,7 +782,7 @@ class ToraTdApi(OptionApi):
             "ShareholderID": self.shareholder_ids[req.exchange],
             "SecurityID": req.symbol,
             "ExchangeID": EXCHANGE_VT2TORA[req.exchange],
-            "OrderRef": order_ref,
+            "OrderRef": order_id,
             "OrderPriceType": opt,
             "Direction": DIRECTION_VT2TORA[req.direction],
             "CombOffsetFlag": OFFSET_VT2TORA[req.offset],
@@ -799,18 +795,16 @@ class ToraTdApi(OptionApi):
 
         self.reqOrderInsert(tora_req, self.reqid)
 
-        order_id: str = f"{self.frontid}_{self.sessionid}_{order_ref}"
-        order: OrderData = req.create_order_data(order_id, self.gateway_name)
+        order: OrderData = req.create_order_data(str(order_id), self.gateway_name)
         self.gateway.on_order(order)
 
-        return f"{self.gateway_name}.{order_id}"
+        return order.vt_orderid
 
     def cancel_order(self, req: CancelRequest) -> None:
         """委托撤单"""
+        sysid: str = self.orderid_sysid_map[req.orderid]
         self.reqid += 1
-        self.order_ref += 1
 
-        frontid, sessionid, order_ref = req.orderid.split("_")
         tora_req: dict = {
             "InvestorID": self.investor_id,
             "ExchangeID": EXCHANGE_VT2TORA[req.exchange],
@@ -823,12 +817,6 @@ class ToraTdApi(OptionApi):
         }
 
         self.reqOrderAction(tora_req, self.reqid)
-
-    def _get_new_order_id(self) -> int:
-        """生成本地委托号"""
-        self.localid += 1
-        order_id: int = self.localid
-        return order_id
 
 
 def get_option_index(strike_price: float, exchange_instrument_id: str) -> str:

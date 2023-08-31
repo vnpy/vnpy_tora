@@ -397,11 +397,10 @@ class ToraTdApi(StockApi):
         self.localid: int = 10000
         self.userid: str = ""
         self.password: str = ""
-        self.frontid: int = 0
-        self.sessionid: int = 0
         self.product_info: str = ""
 
         self.sysid_orderid_map: Dict[str, str] = {}
+        self.orderid_sysid_map: Dict[str, str] = {}
 
     def onFrontConnected(self) -> None:
         """服务器连接成功回报"""
@@ -421,8 +420,6 @@ class ToraTdApi(StockApi):
     ) -> None:
         """用户登录请求回报"""
         if not error["ErrorID"]:
-            self.frontid = data["FrontID"]
-            self.sessionid = data["SessionID"]
             self.login_status = True
             self.gateway.write_log("交易服务器登录成功")
 
@@ -454,10 +451,7 @@ class ToraTdApi(StockApi):
         symbol: str = data["SecurityID"]
         exchange: Exchange = EXCHANGE_TORA2VT[data["ExchangeID"]]
 
-        frontid: int = data["FrontID"]
-        sessionid: int = data["SessionID"]
-        order_ref: int = data["OrderRef"]
-        order_id: str = f"{frontid}_{sessionid}_{order_ref}"
+        order_id: str = str(data["OrderRef"])
 
         timestamp: str = f"{data['InsertDate']} {data['InsertTime']}"
         dt: datetime = datetime.strptime(timestamp, "%Y%m%d %H:%M:%S")
@@ -479,6 +473,7 @@ class ToraTdApi(StockApi):
         self.gateway.on_order(order)
 
         self.sysid_orderid_map[data["OrderSysID"]] = order_id
+        self.orderid_sysid_map[order_id] = data["OrderSysID"]
 
     def onRtnTrade(self, data: dict) -> None:
         """成交数据推送"""
@@ -616,8 +611,7 @@ class ToraTdApi(StockApi):
         if not type:
             return
 
-        order_ref: int = data["OrderRef"]
-        order_id: str = f"{self.frontid}_{self.sessionid}_{order_ref}"
+        order_id: str = str(data["OrderRef"])
         dt: datetime = datetime.now()
         dt: datetime = dt.replace(tzinfo=CHINA_TZ)
 
@@ -718,7 +712,9 @@ class ToraTdApi(StockApi):
             return ""
 
         self.reqid += 1
-        self.order_ref += 1
+        prefix: str = datetime.now().strftime("%H%M%S")
+        suffix: str = str(self.reqid).rjust(3, "0")
+        order_id: int = int(prefix + suffix)
 
         opt, tc, vc = ORDER_TYPE_VT2TORA[req.type]
 
@@ -726,7 +722,7 @@ class ToraTdApi(StockApi):
             "ShareholderID": self.shareholder_ids[req.exchange],
             "SecurityID": req.symbol,
             "ExchangeID": EXCHANGE_VT2TORA[req.exchange],
-            "OrderRef": self.order_ref,
+            "OrderRef": order_id,
             "OrderPriceType": opt,
             "Direction": DIRECTION_VT2TORA[req.direction],
             "LimitPrice": req.price,
@@ -737,18 +733,15 @@ class ToraTdApi(StockApi):
 
         self.reqOrderInsert(tora_req, self.reqid)
 
-        order_id: str = f"{self.frontid}_{self.sessionid}_{self.order_ref}"
-        order: OrderData = req.create_order_data(order_id, self.gateway_name)
+        order: OrderData = req.create_order_data(str(order_id), self.gateway_name)
         self.gateway.on_order(order)
 
-        return f"{self.gateway_name}.{order_id}"
+        return order.vt_orderid
 
     def cancel_order(self, req: CancelRequest) -> None:
         """委托撤单"""
+        sysid: str = self.orderid_sysid_map[req.orderid]
         self.reqid += 1
-        self.order_ref += 1
-
-        frontid, sessionid, order_ref = req.orderid.split("_")
 
         tora_req: dict = {
             "ExchangeID": EXCHANGE_VT2TORA[req.exchange],
