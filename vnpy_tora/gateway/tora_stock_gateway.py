@@ -25,10 +25,9 @@ from vnpy.trader.event import EVENT_TIMER
 from vnpy.event.engine import Event
 from vnpy.trader.utility import ZoneInfo
 
-from ..api.stock import (
-    traderapi,
-    xmdapi,
-    lev2mdapi,
+from ..api import (
+    MdApi,
+    StockApi,
     TORA_TSTP_D_Buy,
     TORA_TSTP_D_Sell,
     TORA_TSTP_EXD_SSE,
@@ -58,27 +57,6 @@ from ..api.stock import (
     TORA_TSTP_TC_IOC,
     TORA_TSTP_VC_AV,
     TORA_TSTP_AF_Delete,
-    CTORATstpQrySecurityField,
-    CTORATstpQryInvestorField,
-    CTORATstpQryShareholderAccountField,
-    CTORATstpQryTradingAccountField,
-    CTORATstpQryPositionField,
-    CTORATstpQryOrderField,
-    CTORATstpQryTradeField,
-    CTORATstpInputOrderField,
-    CTORATstpInputOrderActionField,
-    CTORATstpRspUserLoginField,
-    CTORATstpSpecificSecurityField,
-    CTORATstpRspInfoField,
-    CTORATstpMarketDataField,
-    CTORATstpOrderField,
-    CTORATstpTradeField,
-    CTORATstpSecurityField,
-    CTORATstpTradingAccountField,
-    CTORATstpShareholderAccountField,
-    CTORATstpInvestorField,
-    CTORATstpPositionField,
-    CTORATstpLev2MarketDataField,
     TORA_TSTP_PID_SHKC,
     TORA_TSTP_OST_Unknown
 )

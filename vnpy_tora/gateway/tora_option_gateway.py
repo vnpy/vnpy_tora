@@ -26,10 +26,10 @@ from vnpy.trader.object import (
 from vnpy.trader.event import EVENT_TIMER
 from vnpy.trader.utility import ZoneInfo
 
-from ..api.stock import TORA_TSTP_LACT_AccountID
-from ..api.option import (
-    sptraderapi,
-    spmdapi,
+from ..api import (
+    MdApi,
+    OptionApi,
+    TORA_TSTP_LACT_AccountID,
     TORA_TSTP_SP_D_Buy,
     TORA_TSTP_SP_D_Sell,
     TORA_TSTP_SP_EXD_SSE,
@@ -55,17 +55,8 @@ from ..api.option import (
     TORA_TSTP_SP_HF_Speculation,
     TORA_TSTP_SP_OF_Open,
     TORA_TSTP_SP_OF_Close,
-    CTORATstpSPQrySecurityField,
-    CTORATstpSPQryInvestorField,
-    CTORATstpSPQryShareholderAccountField,
-    CTORATstpSPQryTradingAccountField,
-    CTORATstpSPQryPositionField,
-    CTORATstpSPQryOrderField,
-    CTORATstpSPQryTradeField,
     TORA_TSTP_SP_PID_SHStockOption,
     TORA_TSTP_SP_PID_SZStockOption,
-    CTORATstpSPInputOrderField,
-    CTORATstpSPInputOrderActionField,
     TORA_TSTP_SP_OST_Handled,
     TORA_TSTP_SP_PD_Net,
     TORA_TSTP_SP_PD_Long,
