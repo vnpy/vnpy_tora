@@ -787,18 +787,6 @@ class ToraTdApi(sptraderapi.CTORATstpSPTraderSpi):
         self.reqid += 1
         self.api.ReqQryPosition(req, self.reqid)
 
-    def query_orders(self) -> None:
-        """查询未成交委托"""
-        req: CTORATstpSPQryOrderField = CTORATstpSPQryOrderField()
-        self.reqid += 1
-        self.api.ReqQryOrder(req, self.reqid)
-
-    def query_trades(self) -> None:
-        """查询成交"""
-        req: CTORATstpSPQryTradeField = CTORATstpSPQryTradeField()
-        self.reqid += 1
-        self.api.ReqQryTrade(req, self.reqid)
-
     def send_order(self, req: OrderRequest):
         """委托下单"""
         if req.type not in ORDER_TYPE_VT2TORA:
