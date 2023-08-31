@@ -298,10 +298,6 @@ class ToraMdApi(spmdapi.CTORATstpSPMdSpi):
         else:
             self.gateway.write_error("行情服务器登录失败", error)
 
-    def OnRspError(self, error: dict, reqid: int, last: bool) -> None:
-        """请求报错回报"""
-        self.gateway.write_error("行情接口报错", error)
-
     def OnRspSubMarketData(
         self,
         data: dict,
