@@ -249,7 +249,7 @@ class ToraOptionGateway(BaseGateway):
         self.event_engine.register(EVENT_TIMER, self.process_timer_event)
 
 
-class ToraMdApi(spmdapi.CTORATstpSPMdSpi):
+class ToraMdApi(MdApi):
     """"""
 
     def __init__(self, gateway: ToraOptionGateway) -> None:
@@ -260,7 +260,6 @@ class ToraMdApi(spmdapi.CTORATstpSPMdSpi):
         self.gateway_name: str = gateway.gateway_name
 
         self.reqid: int = 0
-        self.api: spmdapi.CTORATstpSPMdApi_CreateTstpSPMdApi = None
 
         self.connect_status: bool = False
         self.login_status: bool = False
@@ -268,19 +267,19 @@ class ToraMdApi(spmdapi.CTORATstpSPMdSpi):
 
         self.userid: str = ""
         self.password: str = ""
-        self.address: str = ""
+        self.account_type: str = ""
 
-    def OnFrontConnected(self) -> None:
+    def onFrontConnected(self) -> None:
         """服务器连接成功回报"""
         self.gateway.write_log("行情服务器连接成功")
         self.login()
 
-    def OnFrontDisconnected(self, reason: int) -> None:
+    def onFrontDisconnected(self, reason: int) -> None:
         """服务器连接断开回报"""
         self.login_status = False
         self.gateway.write_log(f"行情服务器连接断开，原因{reason}")
 
-    def OnRspUserLogin(self, data: dict, error: dict, reqid: int) -> None:
+    def onRspUserLogin(self, data: dict, error: dict, reqid: int) -> None:
         """用户登录请求回报"""
         if not error["ErrorID"]:
             self.login_status = True
@@ -289,12 +288,10 @@ class ToraMdApi(spmdapi.CTORATstpSPMdSpi):
         else:
             self.gateway.write_error("行情服务器登录失败", error)
 
-    def OnRspSubMarketData(
+    def onRspSubMarketData(
         self,
         data: dict,
-        error: dict,
-        reqid: int,
-        last: bool
+        error: dict
     ) -> None:
         """订阅行情回报"""
         if not error or not error["ErrorID"]:
@@ -313,7 +310,7 @@ class ToraMdApi(spmdapi.CTORATstpSPMdSpi):
 
         tick: TickData = TickData(
             symbol=data["SecurityID"],
-            exchange=EXCHANGE_TORA2VT[bytes.decode(data["ExchangeID"])],
+            exchange=EXCHANGE_TORA2VT[data["ExchangeID"]],
             datetime=dt,
             name=data["SecurityName"],
             open_interest=data["OpenInterest"],
@@ -366,22 +363,18 @@ class ToraMdApi(spmdapi.CTORATstpSPMdSpi):
         """连接服务器"""
         self.userid = userid
         self.password = password
-        self.address = address
         self.account_type = account_type
-        self.address_type = address_type
 
         # 禁止重复发起连接，会导致异常崩溃
         if not self.connect_status:
-            self.api = spmdapi.CTORATstpSPMdApi_CreateTstpSPMdApi()
+            self.createTstpXMdApi()
 
-            self.api.RegisterSpi(self)
-
-            if self.address_type == ADDRESS_FRONT:
-                self.api.RegisterFront(address)
+            if address_type == ADDRESS_FRONT:
+                self.registerFront(address)
             else:
-                self.api.RegisterNameServer(address)
+                self.registerNameServer(address)
 
-            self.api.Init()
+            self.init()
             self.connect_status = True
 
         elif not self.login_status:
@@ -389,25 +382,26 @@ class ToraMdApi(spmdapi.CTORATstpSPMdSpi):
 
     def login(self) -> None:
         """用户登录"""
-        login_req: spmdapi.CTORATstpSPReqUserLoginField = spmdapi.CTORATstpSPReqUserLoginField()
-        login_req.LogInAccount = self.userid
-        login_req.Password = self.password
-        login_req.UserProductInfo = "vnpy_2.0"
-        login_req.TerminalInfo = get_terminal_info()
+        tora_req: dict = {
+            "LogInAccount": self.userid,
+            "Password": self.password,
+            "UserProductInfo": "vnpy_2.0",
+            "TerminalInfo": get_terminal_info()
+        }
 
         if self.account_type == ACCOUNT_USERID:
-            login_req.LogInAccountType = TORA_TSTP_SP_LACT_UserID
+            tora_req["LogInAccountType"] = TORA_TSTP_SP_LACT_UserID
         else:
-            login_req.LogInAccountType = TORA_TSTP_SP_LACT_AccountID
+            tora_req["LogInAccountType"] = TORA_TSTP_SP_LACT_AccountID
 
         self.reqid += 1
-        self.api.ReqUserLogin(login_req, self.reqid)
+        self.reqUserLogin(tora_req, self.reqid)
 
     def subscribe(self, req: SubscribeRequest) -> None:
         """订阅行情"""
         if self.login_status:
             exchange: Exchange = EXCHANGE_VT2TORA[req.exchange]
-            self.api.SubscribeMarketData([str.encode(req.symbol)], exchange)
+            self.subscribeMarketData(req.symbol, 1, exchange)
 
     def close(self) -> None:
         """关闭连接"""

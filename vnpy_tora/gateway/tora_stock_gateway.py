@@ -220,7 +220,7 @@ class ToraStockGateway(BaseGateway):
         self.event_engine.register(EVENT_TIMER, self.process_timer_event)
 
 
-class ToraMdApi(xmdapi.CTORATstpXMdSpi):
+class ToraMdApi(MdApi):
 
     def __init__(self, gateway: ToraStockGateway) -> None:
         """构造函数"""
@@ -230,7 +230,6 @@ class ToraMdApi(xmdapi.CTORATstpXMdSpi):
         self.gateway_name: str = gateway.gateway_name
 
         self.reqid: int = 0
-        self.api: xmdapi.CTORATstpXMdApi_CreateTstpXMdApi = None
 
         self.connect_status: bool = False
         self.login_status: bool = False
@@ -238,93 +237,88 @@ class ToraMdApi(xmdapi.CTORATstpXMdSpi):
 
         self.userid: str = ""
         self.password: str = ""
-        self.address: str = ""
 
         self.current_date: str = datetime.now().strftime("%Y%m%d")
 
-    def OnFrontConnected(self) -> None:
+    def onFrontConnected(self) -> None:
         """服务器连接成功回报"""
         self.gateway.write_log("行情服务器连接成功")
         self.login()
 
-    def OnFrontDisconnected(self, reason: int) -> None:
+    def onFrontDisconnected(self, reason: int) -> None:
         """服务器连接断开回报"""
         self.login_status = False
         self.gateway.write_log(f"行情服务器连接断开，原因{reason}")
 
-    def OnRspUserLogin(
-        self,
-        data: CTORATstpRspUserLoginField,
-        error: CTORATstpRspInfoField,
-        reqid: int
-    ) -> None:
+    def onRspUserLogin(self, data: dict, error: dict, reqid: int) -> None:
         """用户登录请求回报"""
-        if not error.ErrorID:
+        if not error["ErrorID"]:
             self.login_status = True
             self.gateway.write_log("行情服务器登录成功")
+
         else:
             self.gateway.write_error("行情服务器登录失败", error)
 
-    def OnRspSubMarketData(
+    def onRspSubMarketData(
         self,
-        data: CTORATstpSpecificSecurityField,
-        error: CTORATstpRspInfoField,
+        data: dict,
+        error: dict
     ) -> None:
         """订阅行情回报"""
-        if not error or not error.ErrorID:
+        if not error or not error["ErrorID"]:
             return
 
         self.gateway.write_error("行情订阅失败", error)
 
-    def OnRtnMarketData(self, data: CTORATstpMarketDataField) -> None:
+    def onRtnMarketData(self, data: dict) -> None:
         """行情数据推送"""
-        current_date: str = data.TradingDay
-        current_time: str = data.UpdateTime
+        current_date: str = data["TradingDay"]
+        current_time: str = data["UpdateTime"]
         dt: datetime = datetime.strptime(
             f'{current_date}-{current_time}', "%Y%m%d-%H:%M:%S"
         )
         dt: datetime = dt.replace(tzinfo=CHINA_TZ)
         tick: TickData = TickData(
-            symbol=data.SecurityID,
-            exchange=EXCHANGE_TORA2VT[data.ExchangeID],
+            symbol=data["SecurityID"],
+            exchange=EXCHANGE_TORA2VT[data["ExchangeID"]],
             datetime=dt,
-            name=data.SecurityName,
-            turnover=data.Turnover,
-            open_interest=data.OpenInterest,
-            last_price=data.LastPrice,
-            last_volume=data.Volume,
-            limit_up=data.UpperLimitPrice,
-            limit_down=data.LowerLimitPrice,
-            open_price=data.OpenPrice,
-            high_price=data.HighestPrice,
-            low_price=data.LowestPrice,
-            pre_close=data.PreClosePrice,
-            bid_price_1=data.BidPrice1,
-            ask_price_1=data.AskPrice1,
-            bid_volume_1=data.BidVolume1,
-            ask_volume_1=data.AskVolume1,
+            name=data["SecurityName"],
+            open_interest=data["OpenInterest"],
+            last_price=data["LastPrice"],
+            last_volume=data["Volume"],
+            limit_up=data["UpperLimitPrice"],
+            limit_down=data["LowerLimitPrice"],
+            open_price=data["OpenPrice"],
+            high_price=data["HighestPrice"],
+            low_price=data["LowestPrice"],
+            pre_close=data["PreClosePrice"],
+            bid_price_1=data["BidPrice1"],
+            ask_price_1=data["AskPrice1"],
+            bid_volume_1=data["BidVolume1"],
+            ask_volume_1=data["AskVolume1"],
             gateway_name=self.gateway_name
         )
 
-        if data.BidVolume2 or data.AskVolume2:
-            tick.bid_price_2 = data.BidPrice2
-            tick.bid_price_3 = data.BidPrice3
-            tick.bid_price_4 = data.BidPrice4
-            tick.bid_price_5 = data.BidPrice5
-            tick.ask_price_2 = data.AskPrice2
-            tick.ask_price_3 = data.AskPrice3
-            tick.ask_price_4 = data.AskPrice4
-            tick.ask_price_5 = data.AskPrice5
+        if data["BidVolume2"] or data["AskVolume2"]:
+            tick.bid_price_2 = data["BidPrice2"]
+            tick.bid_price_3 = data["BidPrice3"]
+            tick.bid_price_4 = data["BidPrice4"]
+            tick.bid_price_5 = data["BidPrice5"]
 
-            tick.bid_volume_2 = data.BidVolume2
-            tick.bid_volume_3 = data.BidVolume3
-            tick.bid_volume_4 = data.BidVolume4
-            tick.bid_volume_5 = data.BidVolume5
+            tick.ask_price_2 = data["AskPrice2"]
+            tick.ask_price_3 = data["AskPrice3"]
+            tick.ask_price_4 = data["AskPrice4"]
+            tick.ask_price_5 = data["AskPrice5"]
 
-            tick.ask_volume_2 = data.AskVolume2
-            tick.ask_volume_3 = data.AskVolume3
-            tick.ask_volume_4 = data.AskVolume4
-            tick.ask_volume_5 = data.AskVolume5
+            tick.bid_volume_2 = data["BidVolume2"]
+            tick.bid_volume_3 = data["BidVolume3"]
+            tick.bid_volume_4 = data["BidVolume4"]
+            tick.bid_volume_5 = data["BidVolume5"]
+
+            tick.ask_volume_2 = data["AskVolume2"]
+            tick.ask_volume_3 = data["AskVolume3"]
+            tick.ask_volume_4 = data["AskVolume4"]
+            tick.ask_volume_5 = data["AskVolume5"]
 
         self.gateway.on_tick(tick)
 
@@ -339,21 +333,18 @@ class ToraMdApi(xmdapi.CTORATstpXMdSpi):
         """连接服务器"""
         self.userid = userid
         self.password = password
-        self.address = address
         self.account_type = account_type
-        self.address_type = address_type
 
         # 禁止重复发起连接，会导致异常崩溃
         if not self.connect_status:
-            self.api = xmdapi.CTORATstpXMdApi_CreateTstpXMdApi()
-            self.api.RegisterSpi(self)
+            self.createTstpXMdApi()
 
-            if self.address_type == ADDRESS_FRONT:
-                self.api.RegisterFront(address)
+            if address_type == ADDRESS_FRONT:
+                self.registerFront(address)
             else:
-                self.api.RegisterNameServer(address)
+                self.registerNameServer(address)
 
-            self.api.Init()
+            self.init()
             self.connect_status = True
 
         elif not self.login_status:
@@ -361,16 +352,14 @@ class ToraMdApi(xmdapi.CTORATstpXMdSpi):
 
     def login(self) -> None:
         """用户登录"""
-        login_req: xmdapi.CTORATstpReqUserLoginField = xmdapi.CTORATstpReqUserLoginField()
-
         self.reqid += 1
-        self.api.ReqUserLogin(login_req, self.reqid)
+        self.reqUserLogin({}, self.reqid)
 
     def subscribe(self, req: SubscribeRequest) -> None:
         """订阅行情"""
         if self.login_status:
             exchange: Exchange = EXCHANGE_VT2TORA[req.exchange]
-            self.api.SubscribeMarketData([str.encode(req.symbol)], exchange)
+            self.subscribeMarketData(req.symbol, 1, exchange)
 
     def close(self) -> None:
         """关闭连接"""
