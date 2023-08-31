@@ -8931,7 +8931,7 @@ PYBIND11_MODULE(vntoraoption, m)
 	class_<OptionApi, PyOptionApi> OptionApi(m, "OptionApi", module_local());
 	OptionApi
 		.def(init<>())
-		.def("createTstpXMdApi", &OptionApi::createTstpSPTraderApi)
+		.def("createTstpSPTraderApi", &OptionApi::createTstpSPTraderApi)
 		.def("registerFront", &OptionApi::registerFront)
 		.def("init", &OptionApi::init)
 		.def("join", &OptionApi::join)

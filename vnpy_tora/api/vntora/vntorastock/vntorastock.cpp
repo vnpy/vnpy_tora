@@ -7720,7 +7720,7 @@ PYBIND11_MODULE(vntorastock, m)
 	class_<StockApi, PyStockApi> StockApi(m, "StockApi", module_local());
 	StockApi
 		.def(init<>())
-		.def("createTstpXMdApi", &StockApi::createTstpTraderApi)
+		.def("createTstpTraderApi", &StockApi::createTstpTraderApi)
 		.def("registerFront", &StockApi::registerFront)
 		.def("init", &StockApi::init)
 		.def("join", &StockApi::join)
