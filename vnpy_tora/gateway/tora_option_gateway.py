@@ -302,7 +302,7 @@ class ToraMdApi(spmdapi.CTORATstpSPMdSpi):
 
         self.gateway.write_error("行情订阅失败", error)
 
-    def OnRtnDepthMarketData(self, data: dict) -> None:
+    def onRtnMarketData(self, data: dict) -> None:
         """行情数据推送"""
         current_date: str = data["TradingDay"]
         current_time: str = data["UpdateTime"]
