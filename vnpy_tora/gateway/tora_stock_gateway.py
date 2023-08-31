@@ -1,5 +1,6 @@
 from typing import Dict, Tuple, Any, List
 from datetime import datetime
+from pathlib import Path
 
 from vnpy.event import EventEngine
 from vnpy.trader.constant import (
@@ -23,7 +24,7 @@ from vnpy.trader.object import (
 )
 from vnpy.trader.event import EVENT_TIMER
 from vnpy.event.engine import Event
-from vnpy.trader.utility import ZoneInfo
+from vnpy.trader.utility import ZoneInfo, get_folder_path
 
 from ..api import (
     MdApi,
@@ -655,7 +656,8 @@ class ToraTdApi(StockApi):
         self.product_info = product_info
 
         if not self.connect_status:
-            self.createTstpTraderApi("", False)
+            path: Path = get_folder_path(self.gateway_name.lower())
+            self.createTstpTraderApi((str(path) + "\\Stk").encode("GBK"), False)
 
             if address_type == ADDRESS_FRONT:
                 self.registerFront(address)
