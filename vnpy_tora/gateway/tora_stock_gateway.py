@@ -139,7 +139,7 @@ class ToraStockGateway(BaseGateway):
         "交易服务器": "",
         "产品标识": "",
         "账号类型": [ACCOUNT_USERID, ACCOUNT_ACCOUNTID],
-        "地址类型": [ADDRESS_FRONT, ADDRESS_FENS],
+        "地址类型": [ADDRESS_FRONT, ADDRESS_FENS]
     }
 
     exchanges: List[str] = list(EXCHANGE_VT2TORA.keys())
@@ -198,8 +198,8 @@ class ToraStockGateway(BaseGateway):
 
     def write_error(self, msg: str, error: dict):
         """输出错误信息日志"""
-        error_id: int = error.ErrorID
-        error_msg: str = error.ErrorMsg
+        error_id: int = error["ErrorID"]
+        error_msg: str = error["ErrorMsg"]
         msg: str = f"{msg}，代码：{error_id}，信息：{error_msg}"
         self.write_log(msg)
 
