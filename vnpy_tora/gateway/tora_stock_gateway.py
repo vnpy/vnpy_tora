@@ -136,6 +136,7 @@ class ToraStockGateway(BaseGateway):
         "密码": "",
         "行情服务器": "",
         "交易服务器": "",
+        "产品标识": "",
         "账号类型": [ACCOUNT_USERID, ACCOUNT_ACCOUNTID],
         "地址类型": [ADDRESS_FRONT, ADDRESS_FENS],
     }
@@ -153,6 +154,7 @@ class ToraStockGateway(BaseGateway):
         """连接交易接口"""
         username: str = setting['账号']
         password: str = setting['密码']
+        product_info: str = setting["产品标识"]
         td_address: str = setting["交易服务器"]
         md_address: str = setting["行情服务器"]
 
@@ -165,7 +167,7 @@ class ToraStockGateway(BaseGateway):
         address_type: str = setting["地址类型"]
 
         self.md_api.connect(username, password, md_address, account_type, address_type)
-        self.td_api.connect(username, password, td_address, account_type, address_type)
+        self.td_api.connect(username, password, td_address, account_type, address_type, product_info)
 
         self.init_query()
 
@@ -396,6 +398,7 @@ class ToraTdApi(StockApi):
         self.password: str = ""
         self.frontid: int = 0
         self.sessionid: int = 0
+        self.product_info: str = ""
 
         self.sysid_orderid_map: Dict[str, str] = {}
 
@@ -642,13 +645,14 @@ class ToraTdApi(StockApi):
         password: str,
         address: str,
         account_type: str,
-        address_type: str
+        address_type: str,
+        product_info: str
     ) -> None:
         """连接服务器"""
         self.userid = userid
         self.password = password
         self.account_type = account_type
-        self.address_type = address_type
+        self.product_info = product_info
 
         if not self.connect_status:
             self.createTstpTraderApi("", False)
@@ -668,7 +672,7 @@ class ToraTdApi(StockApi):
         tora_req: dict = {
             "LogInAccount": self.userid,
             "Password": self.password,
-            "UserProductInfo": "vnpy_2.0",
+            "UserProductInfo": self.product_info,
             "TerminalInfo": get_terminal_info(),
         }
 

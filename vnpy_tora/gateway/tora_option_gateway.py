@@ -165,6 +165,7 @@ class ToraOptionGateway(BaseGateway):
         "密码": "",
         "行情服务器": "",
         "交易服务器": "",
+        "产品标识": "",
         "账号类型": [ACCOUNT_USERID, ACCOUNT_ACCOUNTID],
         "地址类型": [ADDRESS_FRONT, ADDRESS_FENS]
     }
@@ -182,6 +183,7 @@ class ToraOptionGateway(BaseGateway):
         """连接交易接口"""
         username: str = setting['账号']
         password: str = setting['密码']
+        product_info: str = setting["产品标识"]
         td_address: str = setting["交易服务器"]
         md_address: str = setting["行情服务器"]
 
@@ -193,8 +195,8 @@ class ToraOptionGateway(BaseGateway):
         account_type: str = setting["账号类型"]
         address_type: str = setting["地址类型"]
 
-        self.md_api.connect(username, password, md_address, account_type, address_type)
-        self.td_api.connect(username, password, td_address, account_type, address_type)
+        self.md_api.connect(username, password, md_address, account_type, address_type, product_info)
+        self.td_api.connect(username, password, td_address, account_type, address_type, product_info)
 
         self.init_query()
 
@@ -268,6 +270,7 @@ class ToraMdApi(MdApi):
         self.userid: str = ""
         self.password: str = ""
         self.account_type: str = ""
+        self.product_info: str = ""
 
     def onFrontConnected(self) -> None:
         """服务器连接成功回报"""
@@ -358,12 +361,14 @@ class ToraMdApi(MdApi):
         password: str,
         address: str,
         account_type: str,
-        address_type: str
+        address_type: str,
+        product_info: str
     ) -> None:
         """连接服务器"""
         self.userid = userid
         self.password = password
         self.account_type = account_type
+        self.product_info = product_info
 
         # 禁止重复发起连接，会导致异常崩溃
         if not self.connect_status:
@@ -385,7 +390,7 @@ class ToraMdApi(MdApi):
         tora_req: dict = {
             "LogInAccount": self.userid,
             "Password": self.password,
-            "UserProductInfo": "vnpy_2.0",
+            "UserProductInfo": self.product_info,
             "TerminalInfo": get_terminal_info()
         }
 
@@ -438,6 +443,7 @@ class ToraTdApi(OptionApi):
         self.account_type: str = ""
         self.frontid: int = 0
         self.sessionid: int = 0
+        self.product_info: str = ""
 
         self.sysid_orderid_map: Dict[str, str] = {}
 
@@ -699,12 +705,14 @@ class ToraTdApi(OptionApi):
         password: str,
         address: str,
         account_type: str,
-        address_type: str
+        address_type: str,
+        product_info: str
     ) -> None:
         """连接服务器"""
         self.userid = userid
         self.password = password
         self.account_type = account_type
+        self.product_info = product_info
 
         if not self.connect_status:
             self.createTstpSPTraderApi("", False)
@@ -724,7 +732,7 @@ class ToraTdApi(OptionApi):
         tora_req: dict = {
             "LogInAccount": self.userid,
             "Password": self.password,
-            "UserProductInfo": "vnpy_2.0",
+            "UserProductInfo": self.product_info,
             "TerminalInfo": get_terminal_info()
         }
 
