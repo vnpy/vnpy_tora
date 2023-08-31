@@ -740,17 +740,15 @@ class ToraTdApi(StockApi):
 
     def cancel_order(self, req: CancelRequest) -> None:
         """委托撤单"""
-        sysid: str = self.orderid_sysid_map[req.orderid]
+        sysid: str = self.orderid_sysid_map.get(req.orderid, None)
+        if not sysid:
+            self.gateway.write_log(f"撤单失败，找不到{req.orderid}对应的系统委托号")
         self.reqid += 1
 
         tora_req: dict = {
             "ExchangeID": EXCHANGE_VT2TORA[req.exchange],
-            # "SecurityID": req.symbol,
-            "OrderRef": int(order_ref),
-            "FrontID": int(frontid),
-            "SessionID": int(sessionid),
+            "OrderSysID": sysid,
             "ActionFlag": TORA_TSTP_AF_Delete,
-            "OrderActionRef": self.order_ref
         }
 
         self.reqOrderAction(tora_req, self.reqid)
