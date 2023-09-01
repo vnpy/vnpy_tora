@@ -306,7 +306,7 @@ class ToraMdApi(MdApi):
 
         self.gateway.write_error("行情订阅失败", error)
 
-    def onRtnMarketData(self, data: dict) -> None:
+    def onRtnSPMarketData(self, data: dict) -> None:
         """行情数据推送"""
         current_date: str = data["TradingDay"]
         current_time: str = data["UpdateTime"]
@@ -410,7 +410,7 @@ class ToraMdApi(MdApi):
         """订阅行情"""
         if self.login_status:
             exchange: Exchange = EXCHANGE_VT2TORA[req.exchange]
-            self.subscribeMarketData(req.symbol, 1, exchange)
+            self.subscribeSPMarketData(req.symbol, 1, exchange)
 
     def close(self) -> None:
         """关闭连接"""
