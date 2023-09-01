@@ -25,6 +25,7 @@ from vnpy.trader.object import (
     SubscribeRequest,
 )
 from vnpy.trader.event import EVENT_TIMER
+from vnpy.event.engine import Event
 from vnpy.trader.utility import ZoneInfo, get_folder_path
 
 from ..api import (
@@ -232,7 +233,7 @@ class ToraOptionGateway(BaseGateway):
         msg: str = f"{msg}，代码：{error_id}，信息：{error_msg}"
         self.write_log(msg)
 
-    def process_timer_event(self, event) -> None:
+    def process_timer_event(self, event: Event) -> None:
         """定时事件处理"""
         self.count += 1
         if self.count < 2:
@@ -266,12 +267,14 @@ class ToraMdApi(MdApi):
 
         self.connect_status: bool = False
         self.login_status: bool = False
-        self.subscribed: Set = set()
+        self.subscribed: set = set()
 
         self.userid: str = ""
         self.password: str = ""
         self.account_type: str = ""
         self.product_info: str = ""
+
+        self.current_date: str = datetime.now().strftime("%Y%m%d")
 
     def onFrontConnected(self) -> None:
         """服务器连接成功回报"""

@@ -196,7 +196,7 @@ class ToraStockGateway(BaseGateway):
         """查询持仓"""
         self.td_api.query_positions()
 
-    def write_error(self, msg: str, error: dict):
+    def write_error(self, msg: str, error: dict) -> None:
         """输出错误信息日志"""
         error_id: int = error["ErrorID"]
         error_msg: str = error["ErrorMsg"]
@@ -281,6 +281,7 @@ class ToraMdApi(MdApi):
             f'{current_date}-{current_time}', "%Y%m%d-%H:%M:%S"
         )
         dt: datetime = dt.replace(tzinfo=CHINA_TZ)
+
         tick: TickData = TickData(
             symbol=data["SecurityID"],
             exchange=EXCHANGE_TORA2VT[data["ExchangeID"]],
