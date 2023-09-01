@@ -2507,25 +2507,25 @@ int MdApi::unSubscribeSecurityStatus(string ppSecurityID, int nCount, string Exc
 
 int MdApi::subscribeMarketStatus(string MarketID)
 {
-	int i = this->api->SubscribeMarketStatus((char)MarketID.c_str());
+	int i = this->api->SubscribeMarketStatus(MarketID.c_str()[0]);
 	return i;
 };
 
 int MdApi::unSubscribeMarketStatus(string MarketID)
 {
-	int i = this->api->UnSubscribeMarketStatus((char)MarketID.c_str());
+	int i = this->api->UnSubscribeMarketStatus(MarketID.c_str()[0]);
 	return i;
 };
 
 int MdApi::subscribeImcParams(string MarketID)
 {
-	int i = this->api->SubscribeImcParams((char)MarketID.c_str());
+	int i = this->api->SubscribeImcParams(MarketID.c_str()[0]);
 	return i;
 };
 
 int MdApi::unSubscribeImcParams(string MarketID)
 {
-	int i = this->api->UnSubscribeImcParams((char)MarketID.c_str());
+	int i = this->api->UnSubscribeImcParams(MarketID.c_str()[0]);
 	return i;
 };
 
@@ -2603,13 +2603,13 @@ int MdApi::unSubscribeSPSecurityStatus(string ppSecurityID, int nCount, string E
 
 int MdApi::subscribeSPMarketStatus(string MarketID)
 {
-	int i = this->api->SubscribeSPMarketStatus((char)MarketID.c_str());
+	int i = this->api->SubscribeSPMarketStatus(MarketID.c_str()[0]);
 	return i;
 };
 
 int MdApi::unSubscribeSPMarketStatus(string MarketID)
 {
-	int i = this->api->UnSubscribeSPMarketStatus((char)MarketID.c_str());
+	int i = this->api->UnSubscribeSPMarketStatus(MarketID.c_str()[0]);
 	return i;
 };
 
