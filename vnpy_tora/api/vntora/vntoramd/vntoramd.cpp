@@ -2437,61 +2437,71 @@ int MdApi::reqUserLogout(const dict& req, int nRequestID)
 
 int MdApi::subscribeMarketData(string ppSecurityID, int nCount, string ExchangeID)
 {
-	int i = this->api->SubscribeMarketData((char**)ppSecurityID.c_str(), nCount, (char)ExchangeID.c_str());
+	char* buffer = (char*)ppSecurityID.c_str();
+	int i = this->api->SubscribeMarketData(&buffer, nCount, ExchangeID.c_str()[0]);
 	return i;
 };
 
 int MdApi::unSubscribeMarketData(string ppSecurityID, int nCount, string ExchangeID)
 {
-	int i = this->api->UnSubscribeMarketData((char**)ppSecurityID.c_str(), nCount, (char)ExchangeID.c_str());
+	char* buffer = (char*)ppSecurityID.c_str();
+	int i = this->api->UnSubscribeMarketData(&buffer, nCount, ExchangeID.c_str()[0]);
 	return i;
 };
 
 int MdApi::subscribePHMarketData(string ppSecurityID, int nCount, string ExchangeID)
 {
-	int i = this->api->SubscribePHMarketData((char**)ppSecurityID.c_str(), nCount, (char)ExchangeID.c_str());
+	char* buffer = (char*)ppSecurityID.c_str();
+	int i = this->api->SubscribePHMarketData(&buffer, nCount, ExchangeID.c_str()[0]);
 	return i;
 };
 
 int MdApi::unSubscribePHMarketData(string ppSecurityID, int nCount, string ExchangeID)
 {
-	int i = this->api->UnSubscribePHMarketData((char**)ppSecurityID.c_str(), nCount, (char)ExchangeID.c_str());
+	char* buffer = (char*)ppSecurityID.c_str();
+	int i = this->api->UnSubscribePHMarketData(&buffer, nCount, ExchangeID.c_str()[0]);
 	return i;
 };
 
 int MdApi::subscribeSpecialMarketData(string ppSecurityID, int nCount, string ExchangeID)
 {
-	int i = this->api->SubscribeSpecialMarketData((char**)ppSecurityID.c_str(), nCount, (char)ExchangeID.c_str());
+	char* buffer = (char*)ppSecurityID.c_str();
+	int i = this->api->SubscribeSpecialMarketData(&buffer, nCount, ExchangeID.c_str()[0]);
 	return i;
 };
 
 int MdApi::unSubscribeSpecialMarketData(string ppSecurityID, int nCount, string ExchangeID)
 {
-	int i = this->api->UnSubscribeSpecialMarketData((char**)ppSecurityID.c_str(), nCount, (char)ExchangeID.c_str());
+	char* buffer = (char*)ppSecurityID.c_str();
+	int i = this->api->UnSubscribeSpecialMarketData(&buffer, nCount, ExchangeID.c_str()[0]);
 	return i;
 };
 
 int MdApi::subscribeSimplifyMarketData(string ppSecurityID, int nCount, string ExchangeID)
 {
-	int i = this->api->SubscribeSimplifyMarketData((char**)ppSecurityID.c_str(), nCount, (char)ExchangeID.c_str());
+	char* buffer = (char*)ppSecurityID.c_str();
+	int i = this->api->SubscribeSimplifyMarketData(&buffer, nCount, ExchangeID.c_str()[0]);
 	return i;
 };
 
 int MdApi::unSubscribeSimplifyMarketData(string ppSecurityID, int nCount, string ExchangeID)
 {
-	int i = this->api->UnSubscribeSimplifyMarketData((char**)ppSecurityID.c_str(), nCount, (char)ExchangeID.c_str());
+	char* buffer = (char*)ppSecurityID.c_str();
+	int i = this->api->UnSubscribeSimplifyMarketData(&buffer, nCount, ExchangeID.c_str()[0]);
 	return i;
 };
 
 int MdApi::subscribeSecurityStatus(string ppSecurityID, int nCount, string ExchangeID)
 {
-	int i = this->api->SubscribeSecurityStatus((char**)ppSecurityID.c_str(), nCount, (char)ExchangeID.c_str());
+	char* buffer = (char*)ppSecurityID.c_str();
+	int i = this->api->SubscribeSecurityStatus(&buffer, nCount, ExchangeID.c_str()[0]);
 	return i;
 };
 
 int MdApi::unSubscribeSecurityStatus(string ppSecurityID, int nCount, string ExchangeID)
 {
-	int i = this->api->UnSubscribeSecurityStatus((char**)ppSecurityID.c_str(), nCount, (char)ExchangeID.c_str());
+	char* buffer = (char*)ppSecurityID.c_str();
+	int i = this->api->UnSubscribeSecurityStatus(&buffer, nCount, ExchangeID.c_str()[0]);
 	return i;
 };
 
@@ -2551,37 +2561,43 @@ int MdApi::reqInquirySpecialMarketDataMirror(const dict& req, int nRequestID)
 
 int MdApi::subscribeSPMarketData(string ppSecurityID, int nCount, string ExchangeID)
 {
-	int i = this->api->SubscribeSPMarketData((char**)ppSecurityID.c_str(), nCount, (char)ExchangeID.c_str());
+	char* buffer = (char*)ppSecurityID.c_str();
+	int i = this->api->SubscribeSPMarketData(&buffer, nCount, ExchangeID.c_str()[0]);
 	return i;
 };
 
 int MdApi::unSubscribeSPMarketData(string ppSecurityID, int nCount, string ExchangeID)
 {
-	int i = this->api->UnSubscribeSPMarketData((char**)ppSecurityID.c_str(), nCount, (char)ExchangeID.c_str());
+	char* buffer = (char*)ppSecurityID.c_str();
+	int i = this->api->UnSubscribeSPMarketData(&buffer, nCount, ExchangeID.c_str()[0]);
 	return i;
 };
 
 int MdApi::subscribeSPSimplifyMarketData(string ppSecurityID, int nCount, string ExchangeID)
 {
-	int i = this->api->SubscribeSPSimplifyMarketData((char**)ppSecurityID.c_str(), nCount, (char)ExchangeID.c_str());
+	char* buffer = (char*)ppSecurityID.c_str();
+	int i = this->api->SubscribeSPSimplifyMarketData(&buffer, nCount, ExchangeID.c_str()[0]);
 	return i;
 };
 
 int MdApi::unSubscribeSPSimplifyMarketData(string ppSecurityID, int nCount, string ExchangeID)
 {
-	int i = this->api->UnSubscribeSPSimplifyMarketData((char**)ppSecurityID.c_str(), nCount, (char)ExchangeID.c_str());
+	char* buffer = (char*)ppSecurityID.c_str();
+	int i = this->api->UnSubscribeSPSimplifyMarketData(&buffer, nCount, ExchangeID.c_str()[0]);
 	return i;
 };
 
 int MdApi::subscribeSPSecurityStatus(string ppSecurityID, int nCount, string ExchangeID)
 {
-	int i = this->api->SubscribeSPSecurityStatus((char**)ppSecurityID.c_str(), nCount, (char)ExchangeID.c_str());
+	char* buffer = (char*)ppSecurityID.c_str();
+	int i = this->api->SubscribeSPSecurityStatus(&buffer, nCount, ExchangeID.c_str()[0]);
 	return i;
 };
 
 int MdApi::unSubscribeSPSecurityStatus(string ppSecurityID, int nCount, string ExchangeID)
 {
-	int i = this->api->UnSubscribeSPSecurityStatus((char**)ppSecurityID.c_str(), nCount, (char)ExchangeID.c_str());
+	char* buffer = (char*)ppSecurityID.c_str();
+	int i = this->api->UnSubscribeSPSecurityStatus(&buffer, nCount, ExchangeID.c_str()[0]);
 	return i;
 };
 
@@ -2609,13 +2625,15 @@ int MdApi::reqInquirySPMarketDataMirror(const dict& req, int nRequestID)
 
 int MdApi::subscribeRapidMarketData(string ppSecurityID, int nCount, string ExchangeID)
 {
-	int i = this->api->SubscribeRapidMarketData((char**)ppSecurityID.c_str(), nCount, (char)ExchangeID.c_str());
+	char* buffer = (char*)ppSecurityID.c_str();
+	int i = this->api->SubscribeRapidMarketData(&buffer, nCount, ExchangeID.c_str()[0]);
 	return i;
 };
 
 int MdApi::unSubscribeRapidMarketData(string ppSecurityID, int nCount, string ExchangeID)
 {
-	int i = this->api->UnSubscribeRapidMarketData((char**)ppSecurityID.c_str(), nCount, (char)ExchangeID.c_str());
+	char* buffer = (char*)ppSecurityID.c_str();
+	int i = this->api->UnSubscribeRapidMarketData(&buffer, nCount, ExchangeID.c_str()[0]);
 	return i;
 };
 
