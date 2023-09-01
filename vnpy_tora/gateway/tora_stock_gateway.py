@@ -1,3 +1,4 @@
+import platform
 from typing import Dict, Tuple, Any, List
 from datetime import datetime
 from pathlib import Path
@@ -61,7 +62,10 @@ from ..api import (
     TORA_TSTP_PID_SHKC,
     TORA_TSTP_OST_Unknown
 )
-from .terminal_info import get_terminal_info
+if platform.system() == "Linux":
+    from .terminal_info_linux import get_terminal_info
+else:
+    from .terminal_info import get_terminal_info
 
 
 # 委托状态映射

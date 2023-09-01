@@ -1,4 +1,5 @@
-from typing import Dict, Set, Tuple, List, Any
+import platform
+from typing import Dict, Tuple, List, Any
 from datetime import datetime
 from pathlib import Path
 
@@ -67,7 +68,10 @@ from ..api import (
     TORA_TSTP_SP_CP_PutOptions,
     TORA_TSTP_SP_CP_CallOptions
 )
-from .terminal_info import get_terminal_info
+if platform.system() == "Linux":
+    from .terminal_info_linux import get_terminal_info
+else:
+    from .terminal_info import get_terminal_info
 
 
 # 委托状态映射
