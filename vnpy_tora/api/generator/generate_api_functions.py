@@ -309,13 +309,9 @@ class ApiGenerator:
                         end_args.append(field)
                     elif type_ == "char":
                         args.append(f"string {field}")
-                        end_args.append(f"(char**){field}.c_str()")
-                    elif type_ in ("TTORATstpMarketIDType", "TTORATstpExchangeIDType", "char"):
+                    elif type_ in ("TTORATstpMarketIDType", "TTORATstpExchangeIDType"):
                         args.append(f"string {field}")
-                        if type_ == "char":
-                            end_args.append(f"(char**){field}.c_str()")
-                        else:
-                            end_args.append(f"(char){field}.c_str()")
+                        end_args.append(f"{field}.c_str()[0]")
                     else:
                         struct_type = type_
                         args.append("const dict &req")
@@ -327,7 +323,11 @@ class ApiGenerator:
                     f"int {self.class_name}::{req_name}({args_str})\n")
                 f.write("{\n")
                 if "const dict &req" not in args:
-                    f.write(f"\tint i = this->api->{name}({end_args_str});\n")
+                    if "string ppSecurityID" in args:
+                        f.write("\tchar* buffer = (char*)ppSecurityID.c_str();\n")
+                        f.write(f"\tint i = this->api->{name}(&buffer, nCount, ExchangeID.c_str()[0]);\n")
+                    else:
+                        f.write(f"\tint i = this->api->{name}({end_args_str});\n")
                     f.write("\treturn i;\n")
                     f.write("};\n\n")
                 else:
