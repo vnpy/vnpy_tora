@@ -65,7 +65,7 @@ from ..api import (
 if platform.system() == "Linux":
     from .terminal_info_linux import get_terminal_info
 else:
-    from .terminal_info import get_terminal_info
+    from .terminal_info_windows import get_terminal_info
 
 
 # 委托状态映射

@@ -1865,4 +1865,3 @@ CTORATstpConnectionInfoField = {
     "OuterPort": "int",
     "MacAddress": "string",
 }
-
