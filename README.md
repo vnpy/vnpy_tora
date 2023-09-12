@@ -5,30 +5,29 @@
 </p>
 
 <p align="center">
-    <img src ="https://img.shields.io/badge/version-2022.7.13-blueviolet.svg"/>
-    <img src ="https://img.shields.io/badge/platform-windows-yellow.svg"/>
-    <img src ="https://img.shields.io/badge/python-3.7-blue.svg" />
+    <img src ="https://img.shields.io/badge/version-2023.9.5-blueviolet.svg"/>
+    <img src ="https://img.shields.io/badge/platform-windows|linux-yellow.svg"/>
+    <img src ="https://img.shields.io/badge/python-3.8|3.9|3.10-blue.svg" />
     <img src ="https://img.shields.io/github/license/vnpy/vnpy.svg?color=orange"/>
 </p>
 
 ## 说明
 
-基于华鑫奇点的Python API开发，支持股票和期权交易。
+基于华鑫奇点的C++ API开发，支持股票和期权交易。
 
 股票API的版本为：
 
-- Level1行情：API_Python3.7_行情_v1.0.3_20220303
-- Level2行情：API_Python3.7_v4.0.0_20210426
-- 交易：API_Python3.7_交易_v4.0.3_20220222
+- Level1行情：v1.0.5_20230210
+- 交易：v4.0.8_20230627
 
 期权的API版本为：
-- API_Python3.7_v1.3.2_20211201
+- v1.3.3_20220908
 
 API版本的详细信息，请参考[奇点官网](https://n-sight.com.cn/)。
 
 ## 安装
 
-安装环境推荐基于3.3.0版本以上的【[**VeighNa Studio**](https://www.vnpy.com)】和Python3.7环境。
+安装环境推荐基于3.7.0版本以上的【[**VeighNa Studio**](https://www.vnpy.com)】。
 
 直接使用pip命令：
 
