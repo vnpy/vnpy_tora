@@ -66,7 +66,8 @@ from ..api import (
     TORA_TSTP_SP_PD_Short,
     TORA_TSTP_SP_OST_Failed,
     TORA_TSTP_SP_CP_PutOptions,
-    TORA_TSTP_SP_CP_CallOptions
+    TORA_TSTP_SP_CP_CallOptions,
+    TORA_TSTP_SP_OST_PartTradedCancelled
 )
 if platform.system() == "Linux":
     from .terminal_info_linux import get_terminal_info
@@ -82,6 +83,7 @@ ORDER_STATUS_TORA2VT: Dict[str, Status] = {
     TORA_TSTP_SP_OST_Cancelled: Status.CANCELLED,
     TORA_TSTP_SP_OST_Handled: Status.NOTTRADED,
     TORA_TSTP_SP_OST_Failed: Status.REJECTED,
+    TORA_TSTP_SP_OST_PartTradedCancelled: Status.CANCELLED
 }
 
 # 委托类型映射
