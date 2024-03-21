@@ -717,8 +717,8 @@ class ToraTdApi(StockApi):
             return ""
 
         self.reqid += 1
-        prefix: str = datetime.now().strftime("%H%M%S")
-        suffix: str = str(self.reqid).rjust(3, "0")
+        prefix: str = datetime.now().strftime("%H%M")
+        suffix: str = str(self.reqid).rjust(5, "0")
         order_id: int = int(prefix + suffix)
 
         opt, tc, vc = ORDER_TYPE_VT2TORA[req.type]
