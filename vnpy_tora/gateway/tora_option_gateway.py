@@ -1,5 +1,4 @@
 import platform
-from typing import Dict, Tuple, List, Any
 from datetime import datetime
 from pathlib import Path
 
@@ -76,7 +75,7 @@ else:
 
 
 # 委托状态映射
-ORDER_STATUS_TORA2VT: Dict[str, Status] = {
+ORDER_STATUS_TORA2VT: dict[str, Status] = {
     TORA_TSTP_SP_OST_AllTraded: Status.ALLTRADED,
     TORA_TSTP_SP_OST_PartTraded: Status.PARTTRADED,
     TORA_TSTP_SP_OST_Accepted: Status.NOTTRADED,
@@ -87,7 +86,7 @@ ORDER_STATUS_TORA2VT: Dict[str, Status] = {
 }
 
 # 委托类型映射
-ORDER_TYPE_VT2TORA: Dict[OrderType, Tuple] = {
+ORDER_TYPE_VT2TORA: dict[OrderType, tuple] = {
     OrderType.FOK: (
         TORA_TSTP_SP_OPT_LimitPrice, TORA_TSTP_SP_TC_IOC, TORA_TSTP_SP_VC_AV
     ),
@@ -98,29 +97,29 @@ ORDER_TYPE_VT2TORA: Dict[OrderType, Tuple] = {
         TORA_TSTP_SP_OPT_LimitPrice, TORA_TSTP_SP_TC_GFD, TORA_TSTP_SP_VC_AV
     ),
 }
-ORDER_TYPE_TORA2VT: Dict[Tuple, OrderType] = {
+ORDER_TYPE_TORA2VT: dict[tuple, OrderType] = {
     v: k for k, v in ORDER_TYPE_VT2TORA.items()
 }
-ORDERTYPE_TORA2VT: Dict[str, OrderType] = {
+ORDERTYPE_TORA2VT: dict[str, OrderType] = {
     TORA_TSTP_SP_OPT_LimitPrice: OrderType.LIMIT
 }
 
 # 多空方向映射
-DIRECTION_TORA2VT: Dict[str, Direction] = {
+DIRECTION_TORA2VT: dict[str, Direction] = {
     TORA_TSTP_SP_D_Buy: Direction.LONG,
     TORA_TSTP_SP_D_Sell: Direction.SHORT,
 }
-DIRECTION_VT2TORA: Dict[Direction, str] = {v: k for k, v in DIRECTION_TORA2VT.items()}
+DIRECTION_VT2TORA: dict[Direction, str] = {v: k for k, v in DIRECTION_TORA2VT.items()}
 
 # 交易所映射
-EXCHANGE_TORA2VT: Dict[str, Exchange] = {
+EXCHANGE_TORA2VT: dict[str, Exchange] = {
     TORA_TSTP_SP_EXD_SSE: Exchange.SSE,
     TORA_TSTP_SP_EXD_SZSE: Exchange.SZSE,
 }
-EXCHANGE_VT2TORA: Dict[Exchange, str] = {v: k for k, v in EXCHANGE_TORA2VT.items()}
+EXCHANGE_VT2TORA: dict[Exchange, str] = {v: k for k, v in EXCHANGE_TORA2VT.items()}
 
 # 产品类型映射
-PRODUCT_TORA2VT: Dict[str, Product] = {
+PRODUCT_TORA2VT: dict[str, Product] = {
     TORA_TSTP_SP_PID_SHStock: Product.EQUITY,
     TORA_TSTP_SP_PID_SHFund: Product.FUND,
     TORA_TSTP_SP_PID_SHBond: Product.BOND,
@@ -132,21 +131,21 @@ PRODUCT_TORA2VT: Dict[str, Product] = {
 }
 
 # 持仓方向映射
-POSITION_TORA2VT: Dict[str, Direction] = {
+POSITION_TORA2VT: dict[str, Direction] = {
     TORA_TSTP_SP_PD_Net: Direction.NET,
     TORA_TSTP_SP_PD_Long: Direction.LONG,
     TORA_TSTP_SP_PD_Short: Direction.SHORT,
 }
 
 # 开平方向映射
-OFFSET_TORA2VT: Dict[str, Offset] = {
+OFFSET_TORA2VT: dict[str, Offset] = {
     TORA_TSTP_SP_OF_Open: Offset.OPEN,
     TORA_TSTP_SP_OF_Close: Offset.CLOSE
 }
-OFFSET_VT2TORA: Dict[Offset, str] = {v: k for k, v in OFFSET_TORA2VT.items()}
+OFFSET_VT2TORA: dict[Offset, str] = {v: k for k, v in OFFSET_TORA2VT.items()}
 
 # 期权类型映射
-OPTIONTYPE_TORA2VT: Dict[str, OptionType] = {
+OPTIONTYPE_TORA2VT: dict[str, OptionType] = {
     TORA_TSTP_SP_CP_CallOptions: OptionType.CALL,
     TORA_TSTP_SP_CP_PutOptions: OptionType.PUT
 }
@@ -168,7 +167,7 @@ class ToraOptionGateway(BaseGateway):
 
     default_name: str = "TORAOPTION"
 
-    default_setting: Dict[str, Any] = {
+    default_setting: dict = {
         "账号": "",
         "密码": "",
         "行情服务器": "",
@@ -178,7 +177,7 @@ class ToraOptionGateway(BaseGateway):
         "地址类型": [ADDRESS_FRONT, ADDRESS_FENS]
     }
 
-    exchanges: List[str] = list(EXCHANGE_VT2TORA.keys())
+    exchanges: list[str] = list(EXCHANGE_VT2TORA.keys())
 
     def __init__(self, event_engine: EventEngine, gateway_name: str) -> None:
         """构造函数"""
@@ -446,15 +445,15 @@ class ToraTdApi(OptionApi):
         self.login_failed: bool = False
 
         self.investor_id: str = None
-        self.shareholder_ids: Dict[Exchange, str] = {}
+        self.shareholder_ids: dict[Exchange, str] = {}
         self.account_id: str = None
         self.userid: str = ""
         self.password: str = ""
         self.account_type: str = ""
         self.product_info: str = ""
 
-        self.sysid_orderid_map: Dict[str, str] = {}
-        self.orderid_sysid_map: Dict[str, str] = {}
+        self.sysid_orderid_map: dict[str, str] = {}
+        self.orderid_sysid_map: dict[str, str] = {}
 
     def onFrontConnected(self) -> None:
         """服务器连接成功回报"""

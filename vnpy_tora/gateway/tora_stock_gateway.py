@@ -1,5 +1,4 @@
 import platform
-from typing import Dict, Tuple, Any, List
 from datetime import datetime
 from pathlib import Path
 
@@ -69,7 +68,7 @@ else:
 
 
 # 委托状态映射
-ORDER_STATUS_TORA2VT: Dict[str, Status] = {
+ORDER_STATUS_TORA2VT: dict[str, Status] = {
     TORA_TSTP_OST_Cached: Status.SUBMITTING,
     TORA_TSTP_OST_AllTraded: Status.ALLTRADED,
     TORA_TSTP_OST_PartTraded: Status.PARTTRADED,
@@ -81,26 +80,26 @@ ORDER_STATUS_TORA2VT: Dict[str, Status] = {
 }
 
 # 委托类型映射
-ORDER_TYPE_VT2TORA: Dict[OrderType, Tuple] = {
+ORDER_TYPE_VT2TORA: dict[OrderType, tuple] = {
     OrderType.LIMIT: (TORA_TSTP_OPT_LimitPrice, TORA_TSTP_TC_GFD, TORA_TSTP_VC_AV),
     OrderType.MARKET: (TORA_TSTP_OPT_FiveLevelPrice, TORA_TSTP_TC_IOC, TORA_TSTP_VC_AV),
 }
-ORDERTYPE_TORA2VT: Dict[str, OrderType] = {
+ORDERTYPE_TORA2VT: dict[str, OrderType] = {
     TORA_TSTP_OPT_LimitPrice: OrderType.LIMIT,
     TORA_TSTP_OPT_FiveLevelPrice: OrderType.MARKET,
 }
 
 # 交易所映射
-EXCHANGE_TORA2VT: Dict[str, Exchange] = {
+EXCHANGE_TORA2VT: dict[str, Exchange] = {
     TORA_TSTP_EXD_SSE: Exchange.SSE,
     TORA_TSTP_EXD_SZSE: Exchange.SZSE,
     TORA_TSTP_EXD_HK: Exchange.SEHK,
     TORA_TSTP_EXD_BSE: Exchange.BSE,
 }
-EXCHANGE_VT2TORA: Dict[Exchange, str] = {v: k for k, v in EXCHANGE_TORA2VT.items()}
+EXCHANGE_VT2TORA: dict[Exchange, str] = {v: k for k, v in EXCHANGE_TORA2VT.items()}
 
 # 产品类型映射
-PRODUCT_TORA2VT: Dict[str, Product] = {
+PRODUCT_TORA2VT: dict[str, Product] = {
     TORA_TSTP_PID_SHStock: Product.EQUITY,
     TORA_TSTP_PID_SHFund: Product.FUND,
     TORA_TSTP_PID_SHBond: Product.BOND,
@@ -112,11 +111,11 @@ PRODUCT_TORA2VT: Dict[str, Product] = {
 }
 
 # 多空方向映射
-DIRECTION_TORA2VT: Dict[str, Direction] = {
+DIRECTION_TORA2VT: dict[str, Direction] = {
     TORA_TSTP_D_Buy: Direction.LONG,
     TORA_TSTP_D_Sell: Direction.SHORT,
 }
-DIRECTION_VT2TORA: Dict[Direction, str] = {v: k for k, v in DIRECTION_TORA2VT.items()}
+DIRECTION_VT2TORA: dict[Direction, str] = {v: k for k, v in DIRECTION_TORA2VT.items()}
 
 
 # 其他常量
@@ -136,7 +135,7 @@ class ToraStockGateway(BaseGateway):
 
     default_name: str = "TORASTOCK"
 
-    default_setting: Dict[str, Any] = {
+    default_setting: dict = {
         "账号": "",
         "密码": "",
         "行情服务器": "",
@@ -146,7 +145,7 @@ class ToraStockGateway(BaseGateway):
         "地址类型": [ADDRESS_FRONT, ADDRESS_FENS]
     }
 
-    exchanges: List[str] = list(EXCHANGE_VT2TORA.keys())
+    exchanges: list[str] = list(EXCHANGE_VT2TORA.keys())
 
     def __init__(self, event_engine: EventEngine, gateway_name: str) -> None:
         """构造函数"""
@@ -397,15 +396,15 @@ class ToraTdApi(StockApi):
         self.login_failed: bool = False
 
         self.investor_id: str = None
-        self.shareholder_ids: Dict[Exchange, str] = {}
+        self.shareholder_ids: dict[Exchange, str] = {}
         self.account_id: str = None
         self.localid: int = 10000
         self.userid: str = ""
         self.password: str = ""
         self.product_info: str = ""
 
-        self.sysid_orderid_map: Dict[str, str] = {}
-        self.orderid_sysid_map: Dict[str, str] = {}
+        self.sysid_orderid_map: dict[str, str] = {}
+        self.orderid_sysid_map: dict[str, str] = {}
 
     def onFrontConnected(self) -> None:
         """服务器连接成功回报"""
