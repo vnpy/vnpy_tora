@@ -173,6 +173,7 @@ class ToraOptionGateway(BaseGateway):
         "行情服务器": "",
         "交易服务器": "",
         "产品标识": "",
+        "动态密钥": "",
         "账号类型": [ACCOUNT_USERID, ACCOUNT_ACCOUNTID],
         "地址类型": [ADDRESS_FRONT, ADDRESS_FENS]
     }
@@ -191,6 +192,7 @@ class ToraOptionGateway(BaseGateway):
         username: str = setting['账号']
         password: str = setting['密码']
         product_info: str = setting["产品标识"]
+        dynamic_password: str = setting["动态密钥"]
         td_address: str = setting["交易服务器"]
         md_address: str = setting["行情服务器"]
 
@@ -203,7 +205,7 @@ class ToraOptionGateway(BaseGateway):
         address_type: str = setting["地址类型"]
 
         self.md_api.connect(username, password, md_address, account_type, address_type, product_info)
-        self.td_api.connect(username, password, td_address, account_type, address_type, product_info)
+        self.td_api.connect(username, password, td_address, account_type, address_type, product_info, dynamic_password)
 
         self.init_query()
 
@@ -709,13 +711,15 @@ class ToraTdApi(OptionApi):
         address: str,
         account_type: str,
         address_type: str,
-        product_info: str
+        product_info: str,
+        dynamic_password: str
     ) -> None:
         """连接服务器"""
         self.userid = userid
         self.password = password
         self.account_type = account_type
         self.product_info = product_info
+        self.dynamic_password = dynamic_password
 
         if not self.connect_status:
             path: Path = get_folder_path(self.gateway_name.lower())
@@ -737,6 +741,7 @@ class ToraTdApi(OptionApi):
             "LogInAccount": self.userid,
             "Password": self.password,
             "UserProductInfo": self.product_info,
+            "DynamicPassword": self.dynamic_password,
             "TerminalInfo": get_terminal_info()
         }
 
