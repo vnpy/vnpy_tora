@@ -29,13 +29,12 @@ compiler_id = cpp.get_id()
 message('构建目标系统: ' + host_machine.system())
 
 # 初始化变量
-xmdapi_lib = []
-traderapi_lib = []
 extra_cpp_args = []
 extra_link_args = []
 
 # 初始化库变量
 xmdapi_lib = []
+sptraderapi_lib = []
 traderapi_lib = []
 
 # 初始化其他编译选项
@@ -53,6 +52,7 @@ if host_machine.system() == 'windows'
   # 设置include目录
   include_dirs = include_directories(
     'vnpy_tora/api/include',
+    'vnpy_tora/api/include/tora',
     'vnpy_tora/api/vntora',
     pybind11_include_dir,
   )
@@ -64,7 +64,7 @@ if host_machine.system() == 'windows'
   sptraderapi_lib = cpp.find_library('sptraderapi', 
                                        dirs: [lib_dir, api_dir],
                                        required: true)
-  traderapi_lib = cpp.find_library('traderapi_se', 
+  traderapi_lib = cpp.find_library('traderapi', 
                                        dirs: [lib_dir, api_dir],
                                        required: true)
 
@@ -89,6 +89,7 @@ else  # Linux
   # 设置include目录
   include_dirs = include_directories(
     'vnpy_tora/api/include',
+    'vnpy_tora/api/include/tora',
     'vnpy_tora/api/vntora',
     pybind11_include_dir,
   )
@@ -147,7 +148,10 @@ python_files = [
   ['vnpy_tora/api/__init__.py', 'vnpy_tora/api'],
   ['vnpy_tora/api/tora_constant.py', 'vnpy_tora/api'],
   ['vnpy_tora/gateway/__init__.py', 'vnpy_tora/gateway'],
-  ['vnpy_tora/gateway/tora_gateway.py', 'vnpy_tora/gateway'],
+  ['vnpy_tora/gateway/tora_option_gateway.py', 'vnpy_tora/gateway'],
+  ['vnpy_tora/gateway/tora_stock_gateway.py', 'vnpy_tora/gateway'],
+  ['vnpy_tora/gateway/terminal_info_windows.py', 'vnpy_tora/gateway'],
+  ['vnpy_tora/gateway/terminal_info_linux.py', 'vnpy_tora/gateway'],
 ]
 
 foreach file : python_files
