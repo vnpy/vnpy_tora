@@ -25,6 +25,9 @@ import importlib_metadata
 from .gateway import ToraStockGateway, ToraOptionGateway
 
 
+__all__ = ["ToraStockGateway", "ToraOptionGateway"]
+
+
 try:
     __version__ = importlib_metadata.version("vnpy_tora")
 except importlib_metadata.PackageNotFoundError:
