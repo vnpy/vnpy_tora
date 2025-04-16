@@ -152,8 +152,8 @@ class ToraStockGateway(BaseGateway):
         """构造函数"""
         super().__init__(event_engine, gateway_name)
 
-        self.td_api: "ToraTdApi" = ToraTdApi(self)
-        self.md_api: "ToraMdApi" = ToraMdApi(self)
+        self.td_api: ToraTdApi = ToraTdApi(self)
+        self.md_api: ToraMdApi = ToraMdApi(self)
 
     def connect(self, setting: dict) -> None:
         """连接交易接口"""

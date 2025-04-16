@@ -26,7 +26,8 @@ def get_lip():
 def get_mac():
     """"""
     node: int = getnode()
-    mac: str = "".join(("%012X" % node)[i: i + 2] for i in range(0, 12, 2))
+    hex_str = f"{node:012X}"
+    mac: str = "".join(hex_str[i: i + 2] for i in range(0, 12, 2))
     return mac
 
 
