@@ -120,7 +120,7 @@ md_module = py.extension_module(
 
 # 创建期权模块扩展
 option_module = py.extension_module(
-  'vntora',
+  'vntoraoption',
   sources: ['vnpy_tora/api/vntora/vntoraoption/vntoraoption.cpp'],
   include_directories: include_dirs,
   dependencies: [py_dep, sptraderapi_lib],
@@ -132,7 +132,7 @@ option_module = py.extension_module(
 
 # 创建股票模块扩展
 stock_module = py.extension_module(
-  'vntoratd',
+  'vntorastock',
   sources: ['vnpy_tora/api/vntora/vntorastock/vntorastock.cpp'],
   include_directories: include_dirs,
   dependencies: [py_dep, traderapi_lib],
