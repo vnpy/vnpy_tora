@@ -23,7 +23,8 @@ requires-python = ">=3.10"
 dependencies = [
     "vnpy>=4.0.0",
     "wmi>=1.5.1",
-    "requests>=2.23.3"
+    "requests>=2.23.3",
+    "types-requests",
 ]
 keywords = ["quant", "quantitative", "investment", "trading", "algotrading", "ctp"]
 
