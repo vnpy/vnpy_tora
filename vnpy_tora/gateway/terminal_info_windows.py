@@ -3,14 +3,14 @@ import requests
 import pythoncom
 
 
-def get_iip():
+def get_iip() -> str:
     """"""
     f = requests.get("http://myip.dnsomatic.com")
-    iip = f.text
+    iip: str = f.text
     return iip
 
 
-def get_lip():
+def get_lip() -> str:
     """"""
     c = wmi.WMI()
 
@@ -21,7 +21,7 @@ def get_lip():
     return lip
 
 
-def get_mac():
+def get_mac() -> str:
     """"""
     c = wmi.WMI()
 
@@ -32,7 +32,7 @@ def get_mac():
     return mac
 
 
-def get_hd():
+def get_hd() -> str:
     """"""
     c = wmi.WMI()
 
@@ -43,7 +43,7 @@ def get_hd():
     return hd
 
 
-def get_terminal_info():
+def get_terminal_info() -> str:
     """"""
     # Initialize COM object in this thread.
     pythoncom.CoInitialize()
