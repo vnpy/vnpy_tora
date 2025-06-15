@@ -8,7 +8,7 @@ from vnpy_tora import (
 )
 
 
-def main():
+def main() -> None:
     """主入口函数"""
     qapp = create_qapp()
 
