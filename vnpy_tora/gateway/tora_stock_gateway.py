@@ -110,6 +110,25 @@ PRODUCT_TORA2VT: dict[str, Product] = {
     TORA_TSTP_PID_BJStock: Product.EQUITY,
 }
 
+
+ETF_SECURITY_TYPES: set[str] = {
+    "b",    # 上海单市场股票ETF
+    "c",    # 上海单市场实物债券ETF
+    "d",    # 上海黄金ETF
+    "e",    # 上海黄金ETF
+    "s",    # 上海跨市场ETF
+    "t",    # 上海跨境ETF
+    "K",    # 深圳跨境ETF
+    "L",    # 深圳黄金ETF
+    "M",    # 深圳现金债券ETF
+    "N",    # 深圳单市场股票ETF
+    "O",    # 深圳单市场实物债券ETF
+    "P",    # 深圳货币ETF
+    "Y",    # 深圳跨市场股票ETF
+    "@",    # 上海科创板ETFss
+}
+
+
 # 多空方向映射
 DIRECTION_TORA2VT: dict[str, Direction] = {
     TORA_TSTP_D_Buy: Direction.LONG,
@@ -520,12 +539,19 @@ class ToraTdApi(StockApi):
         if not data:
             return
 
+        product: Product = PRODUCT_TORA2VT.get(data["ProductID"], Product.EQUITY)
+        if (
+            product == Product.FUND
+            and data["SecurityType"] in ETF_SECURITY_TYPES
+        ):
+            product = Product.ETF
+
         contract_data: ContractData = ContractData(
             gateway_name=self.gateway_name,
             symbol=data["SecurityID"],
             exchange=EXCHANGE_TORA2VT[data["ExchangeID"]],
             name=data["SecurityName"],
-            product=PRODUCT_TORA2VT.get(data["ProductID"], Product.EQUITY),
+            product=product,
             size=data["VolumeMultiple"],
             pricetick=data["PriceTick"],
             min_volume=data["MinLimitOrderBuyVolume"],
