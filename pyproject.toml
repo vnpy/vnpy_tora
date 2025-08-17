@@ -1,6 +1,6 @@
 [project]
 name = "vnpy_tora"
-version = "2025.04.16"
+version = "2025.08.17"
 description = "TORA gateway for vn.py quant trading framework."
 readme = "README.md"
 license = {text = "MIT"}
