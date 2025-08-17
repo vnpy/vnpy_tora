@@ -349,6 +349,10 @@ class ToraMdApi(MdApi):
             tick.ask_volume_4 = data["AskVolume4"]
             tick.ask_volume_5 = data["AskVolume5"]
 
+        tick.extra = {
+            "iopv": data["IOPV"]
+        }
+
         self.gateway.on_tick(tick)
 
     def connect(
