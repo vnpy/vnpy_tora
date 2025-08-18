@@ -80,8 +80,9 @@ else  # Linux
   
   extra_link_args = [
     '-lstdc++',
-    '-Wl,-rpath,$ORIGIN',  # 添加rpath设置，使库能在运行时找到同目录下的动态库
+    '-Wl,-rpath,' + install_rpath_value,
   ]
+  install_rpath_value = '$ORIGIN'
   
   # 设置库目录
   lib_dir = meson.current_source_dir() / 'vnpy_tora/api'
@@ -115,6 +116,7 @@ md_module = py.extension_module(
   cpp_args: extra_cpp_args,
   link_args: extra_link_args,
   install: true,
+  install_rpath: install_rpath_value,
   subdir: 'vnpy_tora/api'
 )
 
@@ -127,6 +129,7 @@ option_module = py.extension_module(
   cpp_args: extra_cpp_args,
   link_args: extra_link_args,
   install: true,
+  install_rpath: install_rpath_value,
   subdir: 'vnpy_tora/api'
 )
 
@@ -139,6 +142,7 @@ stock_module = py.extension_module(
   cpp_args: extra_cpp_args,
   link_args: extra_link_args,
   install: true,
+  install_rpath: install_rpath_value,
   subdir: 'vnpy_tora/api'
 )
 
