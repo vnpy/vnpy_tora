@@ -5,7 +5,7 @@ from uuid import getnode
 import requests
 
 
-def get_iip():
+def get_iip() -> str:
     """"""
     iip: str = ""
 
@@ -18,15 +18,16 @@ def get_iip():
     return iip
 
 
-def get_lip():
+def get_lip() -> str:
     """"""
     return socket.gethostbyname(socket.gethostname())
 
 
-def get_mac():
+def get_mac() -> str:
     """"""
     node: int = getnode()
-    mac: str = "".join(("%012X" % node)[i: i + 2] for i in range(0, 12, 2))
+    hex_str = f"{node:012X}"
+    mac: str = "".join(hex_str[i: i + 2] for i in range(0, 12, 2))
     return mac
 
 
@@ -46,7 +47,7 @@ def run_cmd(cmd: str) -> str:
             return stdout.decode()
 
 
-def get_hd():
+def get_hd() -> str:
     """"""
     for name in ["vda", "sda"]:
         cmd: str = f"udevadm info --query=all --name=/dev/{name} | grep ID_SERIAL"
@@ -59,7 +60,7 @@ def get_hd():
     return ""
 
 
-def get_terminal_info():
+def get_terminal_info() -> str:
     """"""
     iip = ""
     iport = ""

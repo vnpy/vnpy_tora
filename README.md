@@ -5,9 +5,9 @@
 </p>
 
 <p align="center">
-    <img src ="https://img.shields.io/badge/version-2024.12.23-blueviolet.svg"/>
+    <img src ="https://img.shields.io/badge/version-2025.08.17-blueviolet.svg"/>
     <img src ="https://img.shields.io/badge/platform-windows|linux-yellow.svg"/>
-    <img src ="https://img.shields.io/badge/python-3.10|3.11|3.12-blue.svg" />
+    <img src ="https://img.shields.io/badge/python-3.10|3.11|3.12|3.13-blue.svg" />
     <img src ="https://img.shields.io/github/license/vnpy/vnpy.svg?color=orange"/>
 </p>
 
@@ -27,7 +27,7 @@ API版本的详细信息，请参考[奇点官网](https://n-sight.com.cn/)。
 
 ## 安装
 
-安装环境推荐基于3.9.0版本以上的【[**VeighNa Studio**](https://www.vnpy.com)】。
+安装环境推荐基于4.0.0版本以上的【[**VeighNa Studio**](https://www.vnpy.com)】。
 
 直接使用pip命令：
 
@@ -39,6 +39,12 @@ pip install vnpy_tora
 
 ```
 pip install .
+```
+
+如果需要以**开发模式**安装到当前Python环境，可以使用下述命令：
+
+```
+pip install -e . --no-build-isolation --config-settings=build-dir=.\vnpy_tora\api
 ```
 
 ## 使用

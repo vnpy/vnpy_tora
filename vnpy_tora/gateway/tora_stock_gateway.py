@@ -110,6 +110,25 @@ PRODUCT_TORA2VT: dict[str, Product] = {
     TORA_TSTP_PID_BJStock: Product.EQUITY,
 }
 
+
+ETF_SECURITY_TYPES: set[str] = {
+    "b",    # 上海单市场股票ETF
+    "c",    # 上海单市场实物债券ETF
+    "d",    # 上海黄金ETF
+    "e",    # 上海黄金ETF
+    "s",    # 上海跨市场ETF
+    "t",    # 上海跨境ETF
+    "K",    # 深圳跨境ETF
+    "L",    # 深圳黄金ETF
+    "M",    # 深圳现金债券ETF
+    "N",    # 深圳单市场股票ETF
+    "O",    # 深圳单市场实物债券ETF
+    "P",    # 深圳货币ETF
+    "Y",    # 深圳跨市场股票ETF
+    "@",    # 上海科创板ETFss
+}
+
+
 # 多空方向映射
 DIRECTION_TORA2VT: dict[str, Direction] = {
     TORA_TSTP_D_Buy: Direction.LONG,
@@ -152,8 +171,10 @@ class ToraStockGateway(BaseGateway):
         """构造函数"""
         super().__init__(event_engine, gateway_name)
 
-        self.td_api: "ToraTdApi" = ToraTdApi(self)
-        self.md_api: "ToraMdApi" = ToraMdApi(self)
+        self.td_api: ToraTdApi = ToraTdApi(self)
+        self.md_api: ToraMdApi = ToraMdApi(self)
+
+        self.count: int = 0
 
     def connect(self, setting: dict) -> None:
         """连接交易接口"""
@@ -205,7 +226,7 @@ class ToraStockGateway(BaseGateway):
         """输出错误信息日志"""
         error_id: int = error["ErrorID"]
         error_msg: str = error["ErrorMsg"]
-        msg: str = f"{msg}，代码：{error_id}，信息：{error_msg}"
+        msg = f"{msg}，代码：{error_id}，信息：{error_msg}"
         self.write_log(msg)
 
     def process_timer_event(self, event: Event) -> None:
@@ -223,7 +244,6 @@ class ToraStockGateway(BaseGateway):
 
     def init_query(self) -> None:
         """初始化查询任务"""
-        self.count: int = 0
         self.query_functions: list = [self.query_account, self.query_position]
         self.event_engine.register(EVENT_TIMER, self.process_timer_event)
 
@@ -285,7 +305,7 @@ class ToraMdApi(MdApi):
         dt: datetime = datetime.strptime(
             f'{current_date}-{current_time}', "%Y%m%d-%H:%M:%S"
         )
-        dt: datetime = dt.replace(tzinfo=CHINA_TZ)
+        dt = dt.replace(tzinfo=CHINA_TZ)
 
         tick: TickData = TickData(
             symbol=data["SecurityID"],
@@ -328,6 +348,10 @@ class ToraMdApi(MdApi):
             tick.ask_volume_3 = data["AskVolume3"]
             tick.ask_volume_4 = data["AskVolume4"]
             tick.ask_volume_5 = data["AskVolume5"]
+
+        tick.extra = {
+            "iopv": data["IOPV"]
+        }
 
         self.gateway.on_tick(tick)
 
@@ -377,7 +401,7 @@ class ToraMdApi(MdApi):
 
     def update_date(self) -> None:
         """更新当前日期"""
-        self.current_date: str = datetime.now().strftime("%Y%m%d")
+        self.current_date = datetime.now().strftime("%Y%m%d")
 
 
 class ToraTdApi(StockApi):
@@ -397,9 +421,9 @@ class ToraTdApi(StockApi):
         self.auth_status: bool = False
         self.login_failed: bool = False
 
-        self.investor_id: str = None
+        self.investor_id: str | None = None
         self.shareholder_ids: dict[Exchange, str] = {}
-        self.account_id: str = None
+        self.account_id: str | None = None
         self.localid: int = 10000
         self.userid: str = ""
         self.password: str = ""
@@ -462,7 +486,7 @@ class ToraTdApi(StockApi):
 
         timestamp: str = f"{data['InsertDate']} {data['InsertTime']}"
         dt: datetime = datetime.strptime(timestamp, "%Y%m%d %H:%M:%S")
-        dt: datetime = dt.replace(tzinfo=CHINA_TZ)
+        dt = dt.replace(tzinfo=CHINA_TZ)
 
         order: OrderData = OrderData(
             symbol=symbol,
@@ -491,7 +515,7 @@ class ToraTdApi(StockApi):
 
         timestamp: str = f"{data['TradeDate']} {data['TradeTime']}"
         dt: datetime = datetime.strptime(timestamp, "%Y%m%d %H:%M:%S")
-        dt: datetime = dt.replace(tzinfo=CHINA_TZ)
+        dt = dt.replace(tzinfo=CHINA_TZ)
 
         trade: TradeData = TradeData(
             symbol=symbol,
@@ -519,12 +543,19 @@ class ToraTdApi(StockApi):
         if not data:
             return
 
+        product: Product = PRODUCT_TORA2VT.get(data["ProductID"], Product.EQUITY)
+        if (
+            product == Product.FUND
+            and data["SecurityType"] in ETF_SECURITY_TYPES
+        ):
+            product = Product.ETF
+
         contract_data: ContractData = ContractData(
             gateway_name=self.gateway_name,
             symbol=data["SecurityID"],
             exchange=EXCHANGE_TORA2VT[data["ExchangeID"]],
             name=data["SecurityName"],
-            product=PRODUCT_TORA2VT.get(data["ProductID"], Product.EQUITY),
+            product=product,
             size=data["VolumeMultiple"],
             pricetick=data["PriceTick"],
             min_volume=data["MinLimitOrderBuyVolume"],
@@ -543,7 +574,7 @@ class ToraTdApi(StockApi):
         if not data:
             return
 
-        self.account_id: str = data["AccountID"]
+        self.account_id = data["AccountID"]
         account_data: AccountData = AccountData(
             gateway_name=self.gateway_name,
             accountid=data["AccountID"],
@@ -576,7 +607,7 @@ class ToraTdApi(StockApi):
         """用户名查询回报"""
         if not data:
             return
-        self.investor_id: str = data["InvestorID"]
+        self.investor_id = data["InvestorID"]
 
     def onRspQryPosition(
         self,
@@ -620,7 +651,7 @@ class ToraTdApi(StockApi):
 
         order_id: str = str(data["OrderRef"])
         dt: datetime = datetime.now()
-        dt: datetime = dt.replace(tzinfo=CHINA_TZ)
+        dt = dt.replace(tzinfo=CHINA_TZ)
 
         order: OrderData = OrderData(
             symbol=data["SecurityID"],
@@ -715,7 +746,7 @@ class ToraTdApi(StockApi):
         self.reqid += 1
         self.reqQryPosition({}, self.reqid)
 
-    def send_order(self, req: OrderRequest):
+    def send_order(self, req: OrderRequest) -> str:
         """委托下单"""
         if req.type not in ORDER_TYPE_VT2TORA:
             self.gateway.write_log(f"委托失败，不支持的委托类型{req.type.value}")
@@ -746,11 +777,11 @@ class ToraTdApi(StockApi):
         order: OrderData = req.create_order_data(str(order_id), self.gateway_name)
         self.gateway.on_order(order)
 
-        return order.vt_orderid
+        return order.vt_orderid     # type: ignore
 
     def cancel_order(self, req: CancelRequest) -> None:
         """委托撤单"""
-        sysid: str = self.orderid_sysid_map.get(req.orderid, None)
+        sysid: str | None = self.orderid_sysid_map.get(req.orderid, None)
         if not sysid:
             self.gateway.write_log(f"撤单失败，找不到{req.orderid}对应的系统委托号")
         self.reqid += 1

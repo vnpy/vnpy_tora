@@ -10,17 +10,17 @@ TYPE_CPP2PY = {
 class DataTypeGenerator:
     """DataType生成器"""
 
-    def __init__(self, filename: str, prefix: str):
+    def __init__(self, filename: str, prefix: str) -> None:
         """Constructor"""
         self.filename = filename
         self.prefix = prefix
-        self.enums = {}
-        self.enums_map = {}
-        self.last = ""
+        self.enums: dict = {}
+        self.enums_map: dict = {}
+        self.last: str = ""
 
-    def run(self):
+    def run(self) -> None:
         """主函数"""
-        self.f_cpp = open(self.filename, "r")
+        self.f_cpp = open(self.filename)
         self.f_define = open(f"{self.prefix}_constant.py", "w")
         self.f_typedef = open(f"{self.prefix}_typedef.py", "w")
 
@@ -35,7 +35,7 @@ class DataTypeGenerator:
 
         print("DataType生成完毕")
 
-    def process_line(self, line: str):
+    def process_line(self, line: str) -> None:
         """处理每行"""
         line = line.replace("\n", "")
         line = line.split(";")[0]
@@ -58,7 +58,7 @@ class DataTypeGenerator:
                 new_line = line.replace(",", "") + " = 2\n"
             self.f_define.write(new_line)
 
-    def process_define(self, line: str):
+    def process_define(self, line: str) -> None:
         """处理常量定义"""
         words = line.split(" ")
         words = [word for word in words if word]
@@ -72,7 +72,7 @@ class DataTypeGenerator:
         new_line = f"{name} = {value}\n"
         self.f_define.write(new_line)
 
-    def process_enum(self, line: str):
+    def process_enum(self, line: str) -> None:
         """处理枚举值定义"""
         words = line.split(" ")
         words = [word for word in words if word]
@@ -84,7 +84,7 @@ class DataTypeGenerator:
         self.last = name
         self.enums[name] = "enum"
 
-    def process_typedef(self, line: str):
+    def process_typedef(self, line: str) -> None:
         """处理类型定义"""
         words = line.split(" ")
         words = [word for word in words if word != ""]
@@ -104,7 +104,7 @@ class DataTypeGenerator:
         # print(line, typedef)
         self.f_typedef.write(new_line)
 
-    def write(self):
+    def write(self) -> None:
         for k, v in self.enums.items():
             if "{" in k:
                 k = k.replace("{", "")
