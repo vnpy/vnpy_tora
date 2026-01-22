@@ -25,6 +25,14 @@
 
 API版本的详细信息，请参考[奇点官网](https://n-sight.com.cn/)。
 
+## 编译
+
+```
+pip install build
+
+python -m build
+```
+
 ## 安装
 
 安装环境推荐基于4.0.0版本以上的【[**VeighNa Studio**](https://www.vnpy.com)】。
