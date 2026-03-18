@@ -27,38 +27,41 @@ using namespace std;
 #define ONRSPUNSUBSPECIALMARKETDATA 10
 #define ONRSPSUBSIMPLIFYMARKETDATA 11
 #define ONRSPUNSUBSIMPLIFYMARKETDATA 12
-#define ONRSPSUBSECURITYSTATUS 13
-#define ONRSPUNSUBSECURITYSTATUS 14
-#define ONRSPSUBMARKETSTATUS 15
-#define ONRSPUNSUBMARKETSTATUS 16
-#define ONRSPSUBIMCPARAMS 17
-#define ONRSPUNSUBIMCPARAMS 18
-#define ONRSPINQUIRYMARKETDATAMIRROR 19
-#define ONRSPINQUIRYPHMARKETDATAMIRROR 20
-#define ONRSPINQUIRYSPECIALMARKETDATAMIRROR 21
-#define ONRSPSUBSPMARKETDATA 22
-#define ONRSPUNSUBSPMARKETDATA 23
-#define ONRSPSUBSPSIMPLIFYMARKETDATA 24
-#define ONRSPUNSUBSPSIMPLIFYMARKETDATA 25
-#define ONRSPSUBSPSECURITYSTATUS 26
-#define ONRSPUNSUBSPSECURITYSTATUS 27
-#define ONRSPSUBSPMARKETSTATUS 28
-#define ONRSPUNSUBSPMARKETSTATUS 29
-#define ONRSPINQUIRYSPMARKETDATAMIRROR 30
-#define ONRTNMARKETDATA 31
-#define ONRTNPHMARKETDATA 32
-#define ONRTNSPECIALMARKETDATA 33
-#define ONRTNSIMPLIFYMARKETDATA 34
-#define ONRTNSECURITYSTATUS 35
-#define ONRTNMARKETSTATUS 36
-#define ONRTNIMCPARAMS 37
-#define ONRTNSPMARKETDATA 38
-#define ONRTNSPSIMPLIFYMARKETDATA 39
-#define ONRTNSPSECURITYSTATUS 40
-#define ONRTNSPMARKETSTATUS 41
-#define ONRSPSUBRAPIDMARKETDATA 42
-#define ONRSPUNSUBRAPIDMARKETDATA 43
-#define ONRTNRAPIDMARKETDATA 44
+#define ONRSPSUBIOPV 13
+#define ONRSPUNSUBIOPV 14
+#define ONRSPSUBSECURITYSTATUS 15
+#define ONRSPUNSUBSECURITYSTATUS 16
+#define ONRSPSUBMARKETSTATUS 17
+#define ONRSPUNSUBMARKETSTATUS 18
+#define ONRSPSUBIMCPARAMS 19
+#define ONRSPUNSUBIMCPARAMS 20
+#define ONRSPINQUIRYMARKETDATAMIRROR 21
+#define ONRSPINQUIRYPHMARKETDATAMIRROR 22
+#define ONRSPINQUIRYSPECIALMARKETDATAMIRROR 23
+#define ONRSPSUBSPMARKETDATA 24
+#define ONRSPUNSUBSPMARKETDATA 25
+#define ONRSPSUBSPSIMPLIFYMARKETDATA 26
+#define ONRSPUNSUBSPSIMPLIFYMARKETDATA 27
+#define ONRSPSUBSPSECURITYSTATUS 28
+#define ONRSPUNSUBSPSECURITYSTATUS 29
+#define ONRSPSUBSPMARKETSTATUS 30
+#define ONRSPUNSUBSPMARKETSTATUS 31
+#define ONRSPINQUIRYSPMARKETDATAMIRROR 32
+#define ONRTNMARKETDATA 33
+#define ONRTNPHMARKETDATA 34
+#define ONRTNSPECIALMARKETDATA 35
+#define ONRTNSIMPLIFYMARKETDATA 36
+#define ONRTNIOPV 37
+#define ONRTNSECURITYSTATUS 38
+#define ONRTNMARKETSTATUS 39
+#define ONRTNIMCPARAMS 40
+#define ONRTNSPMARKETDATA 41
+#define ONRTNSPSIMPLIFYMARKETDATA 42
+#define ONRTNSPSECURITYSTATUS 43
+#define ONRTNSPMARKETSTATUS 44
+#define ONRSPSUBRAPIDMARKETDATA 45
+#define ONRSPUNSUBRAPIDMARKETDATA 46
+#define ONRTNRAPIDMARKETDATA 47
 
 
 ///-------------------------------------------------------------------------------------
@@ -140,6 +143,12 @@ public:
 	///退订简易行情应答（仅TCP模式下可用）
 	virtual void OnRspUnSubSimplifyMarketData(CTORATstpSpecificSecurityField* pSpecificSecurityField, CTORATstpRspInfoField* pRspInfoField);
 
+	///订阅独立IOPV行情应答
+	virtual void OnRspSubIOPV(CTORATstpSpecificSecurityField* pSpecificSecurityField, CTORATstpRspInfoField* pRspInfoField);
+
+	///退订独立IOPV行情应答
+	virtual void OnRspUnSubIOPV(CTORATstpSpecificSecurityField* pSpecificSecurityField, CTORATstpRspInfoField* pRspInfoField);
+
 	///订阅合约状态应答
 	virtual void OnRspSubSecurityStatus(CTORATstpSpecificSecurityField* pSpecificSecurityField, CTORATstpRspInfoField* pRspInfoField);
 
@@ -206,6 +215,9 @@ public:
 	///简易行情通知（仅TCP模式下可用）
 	virtual void OnRtnSimplifyMarketData(CTORATstpSimplifyMarketDataField* pSimplifyMarketDataField);
 
+	///独立IOPV行情通知
+	virtual void OnRtnIOPV(CTORATstpIOPVField* pIOPVField);
+
 	///合约状态
 	virtual void OnRtnSecurityStatus(CTORATstpSecurityStatusField* pSecurityStatusField);
 
@@ -267,6 +279,10 @@ public:
 
 	virtual void onRspUnSubSimplifyMarketData(const dict& data, const dict& error) {};
 
+	virtual void onRspSubIOPV(const dict& data, const dict& error) {};
+
+	virtual void onRspUnSubIOPV(const dict& data, const dict& error) {};
+
 	virtual void onRspSubSecurityStatus(const dict& data, const dict& error) {};
 
 	virtual void onRspUnSubSecurityStatus(const dict& data, const dict& error) {};
@@ -310,6 +326,8 @@ public:
 	virtual void onRtnSpecialMarketData(const dict& data) {};
 
 	virtual void onRtnSimplifyMarketData(const dict& data) {};
+
+	virtual void onRtnIOPV(const dict& data) {};
 
 	virtual void onRtnSecurityStatus(const dict& data) {};
 
@@ -363,6 +381,10 @@ public:
 
 	void processRspUnSubSimplifyMarketData(Task* task);
 
+	void processRspSubIOPV(Task* task);
+
+	void processRspUnSubIOPV(Task* task);
+
 	void processRspSubSecurityStatus(Task* task);
 
 	void processRspUnSubSecurityStatus(Task* task);
@@ -406,6 +428,8 @@ public:
 	void processRtnSpecialMarketData(Task* task);
 
 	void processRtnSimplifyMarketData(Task* task);
+
+	void processRtnIOPV(Task* task);
 
 	void processRtnSecurityStatus(Task* task);
 
@@ -476,6 +500,10 @@ public:
 	int subscribeSimplifyMarketData(string ppsecurityid, int ncount, string exchangeid);
 
 	int unSubscribeSimplifyMarketData(string ppsecurityid, int ncount, string exchangeid);
+
+	int subscribeIOPV(string ppsecurityid, int ncount, string exchangeid);
+
+	int unSubscribeIOPV(string ppsecurityid, int ncount, string exchangeid);
 
 	int subscribeSecurityStatus(string ppsecurityid, int ncount, string exchangeid);
 

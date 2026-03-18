@@ -235,6 +235,44 @@ void MdApi::OnRspUnSubSimplifyMarketData(CTORATstpSpecificSecurityField* pSpecif
 	this->task_queue.push(task);
 };
 
+void MdApi::OnRspSubIOPV(CTORATstpSpecificSecurityField* pSpecificSecurityField, CTORATstpRspInfoField* pRspInfoField)
+{
+	Task task = Task();
+	task.task_name = ONRSPSUBIOPV;
+	if (pSpecificSecurityField)
+	{
+		CTORATstpSpecificSecurityField* task_data = new CTORATstpSpecificSecurityField();
+		*task_data = *pSpecificSecurityField;
+		task.task_data = task_data;
+	}
+	if (pRspInfoField)
+	{
+		CTORATstpRspInfoField* task_error = new CTORATstpRspInfoField();
+		*task_error = *pRspInfoField;
+		task.task_error = task_error;
+	}
+	this->task_queue.push(task);
+};
+
+void MdApi::OnRspUnSubIOPV(CTORATstpSpecificSecurityField* pSpecificSecurityField, CTORATstpRspInfoField* pRspInfoField)
+{
+	Task task = Task();
+	task.task_name = ONRSPUNSUBIOPV;
+	if (pSpecificSecurityField)
+	{
+		CTORATstpSpecificSecurityField* task_data = new CTORATstpSpecificSecurityField();
+		*task_data = *pSpecificSecurityField;
+		task.task_data = task_data;
+	}
+	if (pRspInfoField)
+	{
+		CTORATstpRspInfoField* task_error = new CTORATstpRspInfoField();
+		*task_error = *pRspInfoField;
+		task.task_error = task_error;
+	}
+	this->task_queue.push(task);
+};
+
 void MdApi::OnRspSubSecurityStatus(CTORATstpSpecificSecurityField* pSpecificSecurityField, CTORATstpRspInfoField* pRspInfoField)
 {
 	Task task = Task();
@@ -637,6 +675,19 @@ void MdApi::OnRtnSimplifyMarketData(CTORATstpSimplifyMarketDataField* pSimplifyM
 	this->task_queue.push(task);
 };
 
+void MdApi::OnRtnIOPV(CTORATstpIOPVField* pIOPVField)
+{
+	Task task = Task();
+	task.task_name = ONRTNIOPV;
+	if (pIOPVField)
+	{
+		CTORATstpIOPVField* task_data = new CTORATstpIOPVField();
+		*task_data = *pIOPVField;
+		task.task_data = task_data;
+	}
+	this->task_queue.push(task);
+};
+
 void MdApi::OnRtnSecurityStatus(CTORATstpSecurityStatusField* pSecurityStatusField)
 {
 	Task task = Task();
@@ -871,6 +922,18 @@ void MdApi::processTask()
 				break;
 			}
 
+			case ONRSPSUBIOPV:
+			{
+				this->processRspSubIOPV(&task);
+				break;
+			}
+
+			case ONRSPUNSUBIOPV:
+			{
+				this->processRspUnSubIOPV(&task);
+				break;
+			}
+
 			case ONRSPSUBSECURITYSTATUS:
 			{
 				this->processRspSubSecurityStatus(&task);
@@ -1000,6 +1063,12 @@ void MdApi::processTask()
 			case ONRTNSIMPLIFYMARKETDATA:
 			{
 				this->processRtnSimplifyMarketData(&task);
+				break;
+			}
+
+			case ONRTNIOPV:
+			{
+				this->processRtnIOPV(&task);
 				break;
 			}
 
@@ -1346,6 +1415,50 @@ void MdApi::processRspUnSubSimplifyMarketData(Task* task)
 	this->onRspUnSubSimplifyMarketData(data, error);
 };
 
+void MdApi::processRspSubIOPV(Task* task)
+{
+	gil_scoped_acquire acquire;
+	dict data;
+	if (task->task_data)
+	{
+		CTORATstpSpecificSecurityField* task_data = (CTORATstpSpecificSecurityField*)task->task_data;
+		data["ExchangeID"] = task_data->ExchangeID;
+		data["SecurityID"] = toUtf(task_data->SecurityID);
+		delete task_data;
+	}
+	dict error;
+	if (task->task_error)
+	{
+		CTORATstpRspInfoField* task_error = (CTORATstpRspInfoField*)task->task_error;
+		error["ErrorID"] = task_error->ErrorID;
+		error["ErrorMsg"] = toUtf(task_error->ErrorMsg);
+		delete task_error;
+	}
+	this->onRspSubIOPV(data, error);
+};
+
+void MdApi::processRspUnSubIOPV(Task* task)
+{
+	gil_scoped_acquire acquire;
+	dict data;
+	if (task->task_data)
+	{
+		CTORATstpSpecificSecurityField* task_data = (CTORATstpSpecificSecurityField*)task->task_data;
+		data["ExchangeID"] = task_data->ExchangeID;
+		data["SecurityID"] = toUtf(task_data->SecurityID);
+		delete task_data;
+	}
+	dict error;
+	if (task->task_error)
+	{
+		CTORATstpRspInfoField* task_error = (CTORATstpRspInfoField*)task->task_error;
+		error["ErrorID"] = task_error->ErrorID;
+		error["ErrorMsg"] = toUtf(task_error->ErrorMsg);
+		delete task_error;
+	}
+	this->onRspUnSubIOPV(data, error);
+};
+
 void MdApi::processRspSubSecurityStatus(Task* task)
 {
 	gil_scoped_acquire acquire;
@@ -1528,6 +1641,10 @@ void MdApi::processRspInquiryMarketDataMirror(Task* task)
 		data["HWLevel"] = task_data->HWLevel;
 		data["PreCloseIOPV"] = task_data->PreCloseIOPV;
 		data["IOPV"] = task_data->IOPV;
+		data["ETFPurVolume"] = task_data->ETFPurVolume;
+		data["ETFPurCount"] = task_data->ETFPurCount;
+		data["ETFRedVolume"] = task_data->ETFRedVolume;
+		data["ETFRedCount"] = task_data->ETFRedCount;
 		delete task_data;
 	}
 	dict error;
@@ -1832,6 +1949,10 @@ void MdApi::processRspInquirySPMarketDataMirror(Task* task)
 		data["HWLevel"] = task_data->HWLevel;
 		data["PreCloseIOPV"] = task_data->PreCloseIOPV;
 		data["IOPV"] = task_data->IOPV;
+		data["ETFPurVolume"] = task_data->ETFPurVolume;
+		data["ETFPurCount"] = task_data->ETFPurCount;
+		data["ETFRedVolume"] = task_data->ETFRedVolume;
+		data["ETFRedCount"] = task_data->ETFRedCount;
 		delete task_data;
 	}
 	dict error;
@@ -1899,6 +2020,10 @@ void MdApi::processRtnMarketData(Task* task)
 		data["HWLevel"] = task_data->HWLevel;
 		data["PreCloseIOPV"] = task_data->PreCloseIOPV;
 		data["IOPV"] = task_data->IOPV;
+		data["ETFPurVolume"] = task_data->ETFPurVolume;
+		data["ETFPurCount"] = task_data->ETFPurCount;
+		data["ETFRedVolume"] = task_data->ETFRedVolume;
+		data["ETFRedCount"] = task_data->ETFRedCount;
 		delete task_data;
 	}
 	this->onRtnMarketData(data);
@@ -1975,6 +2100,25 @@ void MdApi::processRtnSimplifyMarketData(Task* task)
 		delete task_data;
 	}
 	this->onRtnSimplifyMarketData(data);
+};
+
+void MdApi::processRtnIOPV(Task* task)
+{
+	gil_scoped_acquire acquire;
+	dict data;
+	if (task->task_data)
+	{
+		CTORATstpIOPVField* task_data = (CTORATstpIOPVField*)task->task_data;
+		data["SecurityID"] = toUtf(task_data->SecurityID);
+		data["ExchangeID"] = task_data->ExchangeID;
+		data["SecurityName"] = toUtf(task_data->SecurityName);
+		data["UpdateTime"] = toUtf(task_data->UpdateTime);
+		data["UpdateMillisec"] = task_data->UpdateMillisec;
+		data["IOPV"] = task_data->IOPV;
+		data["MDSecurityStat"] = task_data->MDSecurityStat;
+		delete task_data;
+	}
+	this->onRtnIOPV(data);
 };
 
 void MdApi::processRtnSecurityStatus(Task* task)
@@ -2097,6 +2241,10 @@ void MdApi::processRtnSPMarketData(Task* task)
 		data["HWLevel"] = task_data->HWLevel;
 		data["PreCloseIOPV"] = task_data->PreCloseIOPV;
 		data["IOPV"] = task_data->IOPV;
+		data["ETFPurVolume"] = task_data->ETFPurVolume;
+		data["ETFPurCount"] = task_data->ETFPurCount;
+		data["ETFRedVolume"] = task_data->ETFRedVolume;
+		data["ETFRedCount"] = task_data->ETFRedCount;
 		delete task_data;
 	}
 	this->onRtnSPMarketData(data);
@@ -2491,6 +2639,20 @@ int MdApi::unSubscribeSimplifyMarketData(string ppSecurityID, int nCount, string
 	return i;
 };
 
+int MdApi::subscribeIOPV(string ppSecurityID, int nCount, string ExchangeID)
+{
+	char* buffer = (char*)ppSecurityID.c_str();
+	int i = this->api->SubscribeIOPV(&buffer, nCount, ExchangeID.c_str()[0]);
+	return i;
+};
+
+int MdApi::unSubscribeIOPV(string ppSecurityID, int nCount, string ExchangeID)
+{
+	char* buffer = (char*)ppSecurityID.c_str();
+	int i = this->api->UnSubscribeIOPV(&buffer, nCount, ExchangeID.c_str()[0]);
+	return i;
+};
+
 int MdApi::subscribeSecurityStatus(string ppSecurityID, int nCount, string ExchangeID)
 {
 	char* buffer = (char*)ppSecurityID.c_str();
@@ -2801,6 +2963,30 @@ public:
 		}
 	};
 
+	void onRspSubIOPV(const dict& data, const dict& error) override
+	{
+		try
+		{
+			PYBIND11_OVERLOAD(void, MdApi, onRspSubIOPV, data, error);
+		}
+		catch (const error_already_set& e)
+		{
+			cout << e.what() << endl;
+		}
+	};
+
+	void onRspUnSubIOPV(const dict& data, const dict& error) override
+	{
+		try
+		{
+			PYBIND11_OVERLOAD(void, MdApi, onRspUnSubIOPV, data, error);
+		}
+		catch (const error_already_set& e)
+		{
+			cout << e.what() << endl;
+		}
+	};
+
 	void onRspSubSecurityStatus(const dict& data, const dict& error) override
 	{
 		try
@@ -3065,6 +3251,18 @@ public:
 		}
 	};
 
+	void onRtnIOPV(const dict& data) override
+	{
+		try
+		{
+			PYBIND11_OVERLOAD(void, MdApi, onRtnIOPV, data);
+		}
+		catch (const error_already_set& e)
+		{
+			cout << e.what() << endl;
+		}
+	};
+
 	void onRtnSecurityStatus(const dict& data) override
 	{
 		try
@@ -3214,6 +3412,8 @@ PYBIND11_MODULE(vntoramd, m)
 		.def("unSubscribeSpecialMarketData", &MdApi::unSubscribeSpecialMarketData)
 		.def("subscribeSimplifyMarketData", &MdApi::subscribeSimplifyMarketData)
 		.def("unSubscribeSimplifyMarketData", &MdApi::unSubscribeSimplifyMarketData)
+		.def("subscribeIOPV", &MdApi::subscribeIOPV)
+		.def("unSubscribeIOPV", &MdApi::unSubscribeIOPV)
 		.def("subscribeSecurityStatus", &MdApi::subscribeSecurityStatus)
 		.def("unSubscribeSecurityStatus", &MdApi::unSubscribeSecurityStatus)
 		.def("subscribeMarketStatus", &MdApi::subscribeMarketStatus)
@@ -3248,6 +3448,8 @@ PYBIND11_MODULE(vntoramd, m)
 		.def("onRspUnSubSpecialMarketData", &MdApi::onRspUnSubSpecialMarketData)
 		.def("onRspSubSimplifyMarketData", &MdApi::onRspSubSimplifyMarketData)
 		.def("onRspUnSubSimplifyMarketData", &MdApi::onRspUnSubSimplifyMarketData)
+		.def("onRspSubIOPV", &MdApi::onRspSubIOPV)
+		.def("onRspUnSubIOPV", &MdApi::onRspUnSubIOPV)
 		.def("onRspSubSecurityStatus", &MdApi::onRspSubSecurityStatus)
 		.def("onRspUnSubSecurityStatus", &MdApi::onRspUnSubSecurityStatus)
 		.def("onRspSubMarketStatus", &MdApi::onRspSubMarketStatus)
@@ -3270,6 +3472,7 @@ PYBIND11_MODULE(vntoramd, m)
 		.def("onRtnPHMarketData", &MdApi::onRtnPHMarketData)
 		.def("onRtnSpecialMarketData", &MdApi::onRtnSpecialMarketData)
 		.def("onRtnSimplifyMarketData", &MdApi::onRtnSimplifyMarketData)
+		.def("onRtnIOPV", &MdApi::onRtnIOPV)
 		.def("onRtnSecurityStatus", &MdApi::onRtnSecurityStatus)
 		.def("onRtnMarketStatus", &MdApi::onRtnMarketStatus)
 		.def("onRtnImcParams", &MdApi::onRtnImcParams)

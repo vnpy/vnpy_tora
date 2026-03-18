@@ -168,7 +168,6 @@ public:
 	///获取连接信息应答
 	virtual void OnRspGetConnectionInfo(CTORATstpSPConnectionInfoField* pConnectionInfoField, CTORATstpSPRspInfoField* pRspInfoField, int nRequestID);
 
-
 	//登录应答
 	virtual void OnRspUserLogin(CTORATstpSPRspUserLoginField* pRspUserLoginField, CTORATstpSPRspInfoField* pRspInfo, int nRequestID);
 

@@ -23,87 +23,93 @@ using namespace std;
 #define ONRSPUSERPASSWORDUPDATE 6
 #define ONRSPINPUTDEVICESERIAL 7
 #define ONRSPORDERINSERT 8
-#define ONRTNORDER 9
-#define ONERRRTNORDERINSERT 10
-#define ONRTNTRADE 11
-#define ONRSPORDERACTION 12
-#define ONERRRTNORDERACTION 13
-#define ONRSPCONDORDERINSERT 14
-#define ONRTNCONDORDER 15
-#define ONERRRTNCONDORDERINSERT 16
-#define ONRSPCONDORDERACTION 17
-#define ONERRRTNCONDORDERACTION 18
-#define ONRSPNEGOORDERINSERT 19
-#define ONRTNNEGOORDER 20
-#define ONERRRTNNEGOORDERINSERT 21
-#define ONRTNNEGOTRADE 22
-#define ONRSPNEGOORDERACTION 23
-#define ONERRRTNNEGOORDERACTION 24
-#define ONRSPORDERINSERTEX 25
-#define ONRSPORDERACTIONEX 26
-#define ONRTNMARKETSTATUS 27
-#define ONRSPTRANSFERFUND 28
-#define ONERRRTNTRANSFERFUND 29
-#define ONRTNTRANSFERFUND 30
-#define ONRSPTRANSFERPOSITION 31
-#define ONERRRTNTRANSFERPOSITION 32
-#define ONRTNTRANSFERPOSITION 33
-#define ONRTNPERIPHERYTRANSFERPOSITION 34
-#define ONRTNPERIPHERYTRANSFERFUND 35
-#define ONRSPINQUIRYJZFUND 36
-#define ONRSPINQUIRYBANKACCOUNTFUND 37
-#define ONRTNTRADINGNOTICE 38
-#define ONRSPINQUIRYMAXORDERVOLUME 39
-#define ONRSPINQUIRYTRADECONCENTRATION 40
-#define ONRSPMODIFYOPENPOSCOST 41
-#define ONRSPINPUTNODEFUNDASSIGNMENT 42
-#define ONRSPINQUIRYNODEFUNDASSIGNMENT 43
-#define ONRSPQRYEXCHANGE 44
-#define ONRSPQRYSECURITY 45
-#define ONRSPQRYIPOINFO 46
-#define ONRSPQRYUSER 47
-#define ONRSPQRYINVESTOR 48
-#define ONRSPQRYSHAREHOLDERACCOUNT 49
-#define ONRSPQRYRATIONALINFO 50
-#define ONRSPQRYORDER 51
-#define ONRSPQRYORDERACTION 52
-#define ONRSPQRYTRADE 53
-#define ONRSPQRYTRADINGACCOUNT 54
-#define ONRSPQRYPOSITION 55
-#define ONRSPQRYTRADINGFEE 56
-#define ONRSPQRYINVESTORTRADINGFEE 57
-#define ONRSPQRYIPOQUOTA 58
-#define ONRSPQRYORDERFUNDDETAIL 59
-#define ONRSPQRYFUNDTRANSFERDETAIL 60
-#define ONRSPQRYPOSITIONTRANSFERDETAIL 61
-#define ONRSPQRYPERIPHERYPOSITIONTRANSFERDETAIL 62
-#define ONRSPQRYPERIPHERYFUNDTRANSFERDETAIL 63
-#define ONRSPQRYBONDCONVERSIONINFO 64
-#define ONRSPQRYBONDPUTBACKINFO 65
-#define ONRSPQRYINVESTORCONDORDERLIMITPARAM 66
-#define ONRSPQRYCONDITIONORDER 67
-#define ONRSPQRYCONDORDERACTION 68
-#define ONRSPQRYTRADINGNOTICE 69
-#define ONRSPQRYIPONUMBERRESULT 70
-#define ONRSPQRYIPOMATCHNUMBERRESULT 71
-#define ONRSPQRYSHAREHOLDERSPECPRIVILEGE 72
-#define ONRSPQRYMARKET 73
-#define ONRSPQRYETFFILE 74
-#define ONRSPQRYETFBASKET 75
-#define ONRSPQRYINVESTORPOSITIONLIMIT 76
-#define ONRSPQRYSZSEIMCPARAMS 77
-#define ONRSPQRYSZSEIMCEXCHANGERATE 78
-#define ONRSPQRYSZSEHKPRICETICKINFO 79
-#define ONRSPQRYLOFFUNDINFO 80
-#define ONRSPQRYPLEDGEPOSITION 81
-#define ONRSPQRYPLEDGEINFO 82
-#define ONRSPQRYSYSTEMNODEINFO 83
-#define ONRSPQRYSTANDARDBONDPOSITION 84
-#define ONRSPQRYPREMATURITYREPOORDER 85
-#define ONRSPQRYNEGOORDER 86
-#define ONRSPQRYNEGOORDERACTION 87
-#define ONRSPQRYNEGOTRADE 88
-#define ONRSPQRYNEGOTIATIONPARAM 89
+#define ONRSPPUBLICOFFEREDFUNDORDERINSERT 9
+#define ONRTNORDER 10
+#define ONERRRTNORDERINSERT 11
+#define ONRTNTRADE 12
+#define ONRSPORDERACTION 13
+#define ONERRRTNORDERACTION 14
+#define ONRSPCONDORDERINSERT 15
+#define ONRTNCONDORDER 16
+#define ONERRRTNCONDORDERINSERT 17
+#define ONRSPCONDORDERACTION 18
+#define ONERRRTNCONDORDERACTION 19
+#define ONRSPNEGOORDERINSERT 20
+#define ONRTNNEGOORDER 21
+#define ONERRRTNNEGOORDERINSERT 22
+#define ONRTNNEGOTRADE 23
+#define ONRSPNEGOORDERACTION 24
+#define ONERRRTNNEGOORDERACTION 25
+#define ONRSPORDERINSERTEX 26
+#define ONRSPORDERACTIONEX 27
+#define ONRTNMARKETSTATUS 28
+#define ONRSPTRANSFERFUND 29
+#define ONERRRTNTRANSFERFUND 30
+#define ONRTNTRANSFERFUND 31
+#define ONRSPTRANSFERPOSITION 32
+#define ONERRRTNTRANSFERPOSITION 33
+#define ONRTNTRANSFERPOSITION 34
+#define ONRTNPERIPHERYTRANSFERPOSITION 35
+#define ONRTNPERIPHERYTRANSFERFUND 36
+#define ONRSPINQUIRYJZFUND 37
+#define ONRSPINQUIRYBANKACCOUNTFUND 38
+#define ONRTNTRADINGNOTICE 39
+#define ONRSPINQUIRYMAXORDERVOLUME 40
+#define ONRSPINQUIRYTRADECONCENTRATION 41
+#define ONRSPMODIFYOPENPOSCOST 42
+#define ONRSPINPUTNODEFUNDASSIGNMENT 43
+#define ONRSPINQUIRYNODEFUNDASSIGNMENT 44
+#define ONRSPQRYEXCHANGE 45
+#define ONRSPQRYSECURITY 46
+#define ONRSPQRYIPOINFO 47
+#define ONRSPQRYUSER 48
+#define ONRSPQRYINVESTOR 49
+#define ONRSPQRYSHAREHOLDERACCOUNT 50
+#define ONRSPQRYRATIONALINFO 51
+#define ONRSPQRYORDER 52
+#define ONRSPQRYORDERACTION 53
+#define ONRSPQRYTRADE 54
+#define ONRSPQRYTRADINGACCOUNT 55
+#define ONRSPQRYPOSITION 56
+#define ONRSPQRYTRADINGFEE 57
+#define ONRSPQRYINVESTORTRADINGFEE 58
+#define ONRSPQRYIPOQUOTA 59
+#define ONRSPQRYORDERFUNDDETAIL 60
+#define ONRSPQRYFUNDTRANSFERDETAIL 61
+#define ONRSPQRYPOSITIONTRANSFERDETAIL 62
+#define ONRSPQRYPERIPHERYPOSITIONTRANSFERDETAIL 63
+#define ONRSPQRYPERIPHERYFUNDTRANSFERDETAIL 64
+#define ONRSPQRYBONDCONVERSIONINFO 65
+#define ONRSPQRYBONDPUTBACKINFO 66
+#define ONRSPQRYINVESTORCONDORDERLIMITPARAM 67
+#define ONRSPQRYCONDITIONORDER 68
+#define ONRSPQRYCONDORDERACTION 69
+#define ONRSPQRYTRADINGNOTICE 70
+#define ONRSPQRYIPONUMBERRESULT 71
+#define ONRSPQRYIPOMATCHNUMBERRESULT 72
+#define ONRSPQRYSHAREHOLDERSPECPRIVILEGE 73
+#define ONRSPQRYMARKET 74
+#define ONRSPQRYETFFILE 75
+#define ONRSPQRYETFBASKET 76
+#define ONRSPQRYINVESTORPOSITIONLIMIT 77
+#define ONRSPQRYIMCPARAMS 78
+#define ONRSPQRYIMCEXCHANGERATE 79
+#define ONRSPQRYHKPRICETICKINFO 80
+#define ONRSPQRYLOFFUNDINFO 81
+#define ONRSPQRYPLEDGEPOSITION 82
+#define ONRSPQRYPLEDGEINFO 83
+#define ONRSPQRYSYSTEMNODEINFO 84
+#define ONRSPQRYSTANDARDBONDPOSITION 85
+#define ONRSPQRYPREMATURITYREPOORDER 86
+#define ONRSPQRYNEGOORDER 87
+#define ONRSPQRYNEGOORDERACTION 88
+#define ONRSPQRYNEGOTRADE 89
+#define ONRSPQRYNEGOTIATIONPARAM 90
+#define ONRSPQRYPUBLICOFFEREDFUNDINFO 91
+#define ONRSPQRYPUBLICOFFEREDFUNDTRADEDETAIL 92
+#define ONRSPQRYTENDERINFO 93
+#define ONRSPQRYADDITIONALOFFERINGINFO 94
+#define ONRSPQRYADDITIONALOFFERINGQUOTA 95
 
 
 ///-------------------------------------------------------------------------------------
@@ -175,6 +181,9 @@ public:
 
 	///报单录入响应
 	virtual void OnRspOrderInsert(CTORATstpInputOrderField* pInputOrderField, CTORATstpRspInfoField* pRspInfoField, int nRequestID);
+
+	///公募基金管理人调仓报单响应
+	virtual void OnRspPublicOfferedFundOrderInsert(CTORATstpInputOrderField* pInputOrderField, CTORATstpRspInfoField* pRspInfoField, int nRequestID);
 
 	///报单回报
 	virtual void OnRtnOrder(CTORATstpOrderField* pOrderField);
@@ -380,14 +389,14 @@ public:
 	///查询投资者限仓信息响应
 	virtual void OnRspQryInvestorPositionLimit(CTORATstpInvestorPositionLimitField* pInvestorPositionLimitField, CTORATstpRspInfoField* pRspInfoField, int nRequestID, bool bIsLast);
 
-	///查询深港通国际市场互联状态信息响应
-	virtual void OnRspQrySZSEImcParams(CTORATstpSZSEImcParamsField* pSZSEImcParamsField, CTORATstpRspInfoField* pRspInfoField, int nRequestID, bool bIsLast);
+	///查询国际市场互联状态信息响应
+	virtual void OnRspQryImcParams(CTORATstpImcParamsField* pImcParamsField, CTORATstpRspInfoField* pRspInfoField, int nRequestID, bool bIsLast);
 
-	///查询深港通国际市场互联汇率信息响应
-	virtual void OnRspQrySZSEImcExchangeRate(CTORATstpSZSEImcExchangeRateField* pSZSEImcExchangeRateField, CTORATstpRspInfoField* pRspInfoField, int nRequestID, bool bIsLast);
+	///查询国际市场互联汇率信息响应
+	virtual void OnRspQryImcExchangeRate(CTORATstpImcExchangeRateField* pImcExchangeRateField, CTORATstpRspInfoField* pRspInfoField, int nRequestID, bool bIsLast);
 
-	///查询深港通最小价差信息响应
-	virtual void OnRspQrySZSEHKPriceTickInfo(CTORATstpSZSEHKPriceTickInfoField* pSZSEHKPriceTickInfoField, CTORATstpRspInfoField* pRspInfoField, int nRequestID, bool bIsLast);
+	///查询最小价差信息响应
+	virtual void OnRspQryHKPriceTickInfo(CTORATstpHKPriceTickInfoField* pHKPriceTickInfoField, CTORATstpRspInfoField* pRspInfoField, int nRequestID, bool bIsLast);
 
 	///查询LOF基金信息响应
 	virtual void OnRspQryLofFundInfo(CTORATstpLofFundInfoField* pLofFundInfoField, CTORATstpRspInfoField* pRspInfoField, int nRequestID, bool bIsLast);
@@ -419,6 +428,20 @@ public:
 	///查询协议交易参数响应
 	virtual void OnRspQryNegotiationParam(CTORATstpNegotiationParamField* pNegotiationParamField, CTORATstpRspInfoField* pRspInfoField, int nRequestID, bool bIsLast);
 
+	///查询公募基金发行信息响应
+	virtual void OnRspQryPublicOfferedFundInfo(CTORATstpPublicOfferedFundInfoField* pPublicOfferedFundInfoField, CTORATstpRspInfoField* pRspInfoField, int nRequestID, bool bIsLast);
+
+	///查询公募基金申赎成交明细响应
+	virtual void OnRspQryPublicOfferedFundTradeDetail(CTORATstpPublicOfferedFundTradeDetailField* pPublicOfferedFundTradeDetailField, CTORATstpRspInfoField* pRspInfoField, int nRequestID, bool bIsLast);
+
+	///查询要约收购信息
+	virtual void OnRspQryTenderInfo(CTORATstpTenderInfoField* pTenderInfoField, CTORATstpRspInfoField* pRspInfoField, int nRequestID, bool bIsLast);
+
+	///查询基础设施基金非定向扩募信息响应
+	virtual void OnRspQryAdditionalOfferingInfo(CTORATstpAdditionalOfferingInfoField* pAdditionalOfferingInfoField, CTORATstpRspInfoField* pRspInfoField, int nRequestID, bool bIsLast);
+
+	///查询基础设施基金非定向扩募配售额度响应
+	virtual void OnRspQryAdditionalOfferingQuota(CTORATstpAdditionalOfferingQuotaField* pAdditionalOfferingQuotaField, CTORATstpRspInfoField* pRspInfoField, int nRequestID, bool bIsLast);
 
 	//-------------------------------------------------------------------------------------
 	//data：回调函数的数据字典
@@ -441,6 +464,8 @@ public:
 	virtual void onRspInputDeviceSerial(const dict& data, const dict& error, int nRequestID) {};
 
 	virtual void onRspOrderInsert(const dict& data, const dict& error, int nRequestID) {};
+
+	virtual void onRspPublicOfferedFundOrderInsert(const dict& data, const dict& error, int nRequestID) {};
 
 	virtual void onRtnOrder(const dict& data) {};
 
@@ -578,11 +603,11 @@ public:
 
 	virtual void onRspQryInvestorPositionLimit(const dict& data, const dict& error, int nRequestID, bool last) {};
 
-	virtual void onRspQrySZSEImcParams(const dict& data, const dict& error, int nRequestID, bool last) {};
+	virtual void onRspQryImcParams(const dict& data, const dict& error, int nRequestID, bool last) {};
 
-	virtual void onRspQrySZSEImcExchangeRate(const dict& data, const dict& error, int nRequestID, bool last) {};
+	virtual void onRspQryImcExchangeRate(const dict& data, const dict& error, int nRequestID, bool last) {};
 
-	virtual void onRspQrySZSEHKPriceTickInfo(const dict& data, const dict& error, int nRequestID, bool last) {};
+	virtual void onRspQryHKPriceTickInfo(const dict& data, const dict& error, int nRequestID, bool last) {};
 
 	virtual void onRspQryLofFundInfo(const dict& data, const dict& error, int nRequestID, bool last) {};
 
@@ -603,6 +628,16 @@ public:
 	virtual void onRspQryNegoTrade(const dict& data, const dict& error, int nRequestID, bool last) {};
 
 	virtual void onRspQryNegotiationParam(const dict& data, const dict& error, int nRequestID, bool last) {};
+
+	virtual void onRspQryPublicOfferedFundInfo(const dict& data, const dict& error, int nRequestID, bool last) {};
+
+	virtual void onRspQryPublicOfferedFundTradeDetail(const dict& data, const dict& error, int nRequestID, bool last) {};
+
+	virtual void onRspQryTenderInfo(const dict& data, const dict& error, int nRequestID, bool last) {};
+
+	virtual void onRspQryAdditionalOfferingInfo(const dict& data, const dict& error, int nRequestID, bool last) {};
+
+	virtual void onRspQryAdditionalOfferingQuota(const dict& data, const dict& error, int nRequestID, bool last) {};
 
 	//-------------------------------------------------------------------------------------
 	//task：任务
@@ -627,6 +662,8 @@ public:
 	void processRspInputDeviceSerial(Task* task);
 
 	void processRspOrderInsert(Task* task);
+
+	void processRspPublicOfferedFundOrderInsert(Task* task);
 
 	void processRtnOrder(Task* task);
 
@@ -764,11 +801,11 @@ public:
 
 	void processRspQryInvestorPositionLimit(Task* task);
 
-	void processRspQrySZSEImcParams(Task* task);
+	void processRspQryImcParams(Task* task);
 
-	void processRspQrySZSEImcExchangeRate(Task* task);
+	void processRspQryImcExchangeRate(Task* task);
 
-	void processRspQrySZSEHKPriceTickInfo(Task* task);
+	void processRspQryHKPriceTickInfo(Task* task);
 
 	void processRspQryLofFundInfo(Task* task);
 
@@ -789,6 +826,17 @@ public:
 	void processRspQryNegoTrade(Task* task);
 
 	void processRspQryNegotiationParam(Task* task);
+
+	void processRspQryPublicOfferedFundInfo(Task* task);
+
+	void processRspQryPublicOfferedFundTradeDetail(Task* task);
+
+	void processRspQryTenderInfo(Task* task);
+
+	void processRspQryAdditionalOfferingInfo(Task* task);
+
+	void processRspQryAdditionalOfferingQuota(Task* task);
+
 
 	//-------------------------------------------------------------------------------------
 	//req:主动函数的请求字典
@@ -827,6 +875,8 @@ public:
 	int reqInputDeviceSerial(const dict& req, int nrequestid);
 
 	int reqOrderInsert(const dict& req, int nrequestid);
+
+	int reqPublicOfferedFundOrderInsert(const dict& req, int nrequestid);
 
 	int reqOrderAction(const dict& req, int nrequestid);
 
@@ -926,11 +976,11 @@ public:
 
 	int reqQryInvestorPositionLimit(const dict& req, int nrequestid);
 
-	int reqQrySZSEImcParams(const dict& req, int nrequestid);
+	int reqQryImcParams(const dict& req, int nrequestid);
 
-	int reqQrySZSEImcExchangeRate(const dict& req, int nrequestid);
+	int reqQryImcExchangeRate(const dict& req, int nrequestid);
 
-	int reqQrySZSEHKPriceTickInfo(const dict& req, int nrequestid);
+	int reqQryHKPriceTickInfo(const dict& req, int nrequestid);
 
 	int reqQryLofFundInfo(const dict& req, int nrequestid);
 
@@ -951,4 +1001,14 @@ public:
 	int reqQryNegoTrade(const dict& req, int nrequestid);
 
 	int reqQryNegotiationParam(const dict& req, int nrequestid);
+
+	int reqQryPublicOfferedFundInfo(const dict& req, int nrequestid);
+
+	int reqQryPublicOfferedFundTradeDetail(const dict& req, int nrequestid);
+
+	int reqQryTenderInfo(const dict& req, int nrequestid);
+
+	int reqQryAdditionalOfferingInfo(const dict& req, int nrequestid);
+
+	int reqQryAdditionalOfferingQuota(const dict& req, int nrequestid);
 };

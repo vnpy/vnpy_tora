@@ -158,6 +158,26 @@ void StockApi::OnRspOrderInsert(CTORATstpInputOrderField* pInputOrderField, CTOR
 	this->task_queue.push(task);
 };
 
+void StockApi::OnRspPublicOfferedFundOrderInsert(CTORATstpInputOrderField* pInputOrderField, CTORATstpRspInfoField* pRspInfoField, int nRequestID)
+{
+	Task task = Task();
+	task.task_name = ONRSPPUBLICOFFEREDFUNDORDERINSERT;
+	if (pInputOrderField)
+	{
+		CTORATstpInputOrderField* task_data = new CTORATstpInputOrderField();
+		*task_data = *pInputOrderField;
+		task.task_data = task_data;
+	}
+	if (pRspInfoField)
+	{
+		CTORATstpRspInfoField* task_error = new CTORATstpRspInfoField();
+		*task_error = *pRspInfoField;
+		task.task_error = task_error;
+	}
+	task.task_id = int(nRequestID);
+	this->task_queue.push(task);
+};
+
 void StockApi::OnRtnOrder(CTORATstpOrderField* pOrderField)
 {
 	Task task = Task();
@@ -1474,14 +1494,14 @@ void StockApi::OnRspQryInvestorPositionLimit(CTORATstpInvestorPositionLimitField
 	this->task_queue.push(task);
 };
 
-void StockApi::OnRspQrySZSEImcParams(CTORATstpSZSEImcParamsField* pSZSEImcParamsField, CTORATstpRspInfoField* pRspInfoField, int nRequestID, bool bIsLast)
+void StockApi::OnRspQryImcParams(CTORATstpImcParamsField* pImcParamsField, CTORATstpRspInfoField* pRspInfoField, int nRequestID, bool bIsLast)
 {
 	Task task = Task();
-	task.task_name = ONRSPQRYSZSEIMCPARAMS;
-	if (pSZSEImcParamsField)
+	task.task_name = ONRSPQRYIMCPARAMS;
+	if (pImcParamsField)
 	{
-		CTORATstpSZSEImcParamsField* task_data = new CTORATstpSZSEImcParamsField();
-		*task_data = *pSZSEImcParamsField;
+		CTORATstpImcParamsField* task_data = new CTORATstpImcParamsField();
+		*task_data = *pImcParamsField;
 		task.task_data = task_data;
 	}
 	if (pRspInfoField)
@@ -1495,14 +1515,14 @@ void StockApi::OnRspQrySZSEImcParams(CTORATstpSZSEImcParamsField* pSZSEImcParams
 	this->task_queue.push(task);
 };
 
-void StockApi::OnRspQrySZSEImcExchangeRate(CTORATstpSZSEImcExchangeRateField* pSZSEImcExchangeRateField, CTORATstpRspInfoField* pRspInfoField, int nRequestID, bool bIsLast)
+void StockApi::OnRspQryImcExchangeRate(CTORATstpImcExchangeRateField* pImcExchangeRateField, CTORATstpRspInfoField* pRspInfoField, int nRequestID, bool bIsLast)
 {
 	Task task = Task();
-	task.task_name = ONRSPQRYSZSEIMCEXCHANGERATE;
-	if (pSZSEImcExchangeRateField)
+	task.task_name = ONRSPQRYIMCEXCHANGERATE;
+	if (pImcExchangeRateField)
 	{
-		CTORATstpSZSEImcExchangeRateField* task_data = new CTORATstpSZSEImcExchangeRateField();
-		*task_data = *pSZSEImcExchangeRateField;
+		CTORATstpImcExchangeRateField* task_data = new CTORATstpImcExchangeRateField();
+		*task_data = *pImcExchangeRateField;
 		task.task_data = task_data;
 	}
 	if (pRspInfoField)
@@ -1516,14 +1536,14 @@ void StockApi::OnRspQrySZSEImcExchangeRate(CTORATstpSZSEImcExchangeRateField* pS
 	this->task_queue.push(task);
 };
 
-void StockApi::OnRspQrySZSEHKPriceTickInfo(CTORATstpSZSEHKPriceTickInfoField* pSZSEHKPriceTickInfoField, CTORATstpRspInfoField* pRspInfoField, int nRequestID, bool bIsLast)
+void StockApi::OnRspQryHKPriceTickInfo(CTORATstpHKPriceTickInfoField* pHKPriceTickInfoField, CTORATstpRspInfoField* pRspInfoField, int nRequestID, bool bIsLast)
 {
 	Task task = Task();
-	task.task_name = ONRSPQRYSZSEHKPRICETICKINFO;
-	if (pSZSEHKPriceTickInfoField)
+	task.task_name = ONRSPQRYHKPRICETICKINFO;
+	if (pHKPriceTickInfoField)
 	{
-		CTORATstpSZSEHKPriceTickInfoField* task_data = new CTORATstpSZSEHKPriceTickInfoField();
-		*task_data = *pSZSEHKPriceTickInfoField;
+		CTORATstpHKPriceTickInfoField* task_data = new CTORATstpHKPriceTickInfoField();
+		*task_data = *pHKPriceTickInfoField;
 		task.task_data = task_data;
 	}
 	if (pRspInfoField)
@@ -1747,6 +1767,111 @@ void StockApi::OnRspQryNegotiationParam(CTORATstpNegotiationParamField* pNegotia
 	this->task_queue.push(task);
 };
 
+void StockApi::OnRspQryPublicOfferedFundInfo(CTORATstpPublicOfferedFundInfoField* pPublicOfferedFundInfoField, CTORATstpRspInfoField* pRspInfoField, int nRequestID, bool bIsLast)
+{
+	Task task = Task();
+	task.task_name = ONRSPQRYPUBLICOFFEREDFUNDINFO;
+	if (pPublicOfferedFundInfoField)
+	{
+		CTORATstpPublicOfferedFundInfoField* task_data = new CTORATstpPublicOfferedFundInfoField();
+		*task_data = *pPublicOfferedFundInfoField;
+		task.task_data = task_data;
+	}
+	if (pRspInfoField)
+	{
+		CTORATstpRspInfoField* task_error = new CTORATstpRspInfoField();
+		*task_error = *pRspInfoField;
+		task.task_error = task_error;
+	}
+	task.task_id = int(nRequestID);
+	task.task_last = bIsLast;
+	this->task_queue.push(task);
+};
+
+void StockApi::OnRspQryPublicOfferedFundTradeDetail(CTORATstpPublicOfferedFundTradeDetailField* pPublicOfferedFundTradeDetailField, CTORATstpRspInfoField* pRspInfoField, int nRequestID, bool bIsLast)
+{
+	Task task = Task();
+	task.task_name = ONRSPQRYPUBLICOFFEREDFUNDTRADEDETAIL;
+	if (pPublicOfferedFundTradeDetailField)
+	{
+		CTORATstpPublicOfferedFundTradeDetailField* task_data = new CTORATstpPublicOfferedFundTradeDetailField();
+		*task_data = *pPublicOfferedFundTradeDetailField;
+		task.task_data = task_data;
+	}
+	if (pRspInfoField)
+	{
+		CTORATstpRspInfoField* task_error = new CTORATstpRspInfoField();
+		*task_error = *pRspInfoField;
+		task.task_error = task_error;
+	}
+	task.task_id = int(nRequestID);
+	task.task_last = bIsLast;
+	this->task_queue.push(task);
+};
+
+void StockApi::OnRspQryTenderInfo(CTORATstpTenderInfoField* pTenderInfoField, CTORATstpRspInfoField* pRspInfoField, int nRequestID, bool bIsLast)
+{
+	Task task = Task();
+	task.task_name = ONRSPQRYTENDERINFO;
+	if (pTenderInfoField)
+	{
+		CTORATstpTenderInfoField* task_data = new CTORATstpTenderInfoField();
+		*task_data = *pTenderInfoField;
+		task.task_data = task_data;
+	}
+	if (pRspInfoField)
+	{
+		CTORATstpRspInfoField* task_error = new CTORATstpRspInfoField();
+		*task_error = *pRspInfoField;
+		task.task_error = task_error;
+	}
+	task.task_id = int(nRequestID);
+	task.task_last = bIsLast;
+	this->task_queue.push(task);
+};
+
+void StockApi::OnRspQryAdditionalOfferingInfo(CTORATstpAdditionalOfferingInfoField* pAdditionalOfferingInfoField, CTORATstpRspInfoField* pRspInfoField, int nRequestID, bool bIsLast)
+{
+	Task task = Task();
+	task.task_name = ONRSPQRYADDITIONALOFFERINGINFO;
+	if (pAdditionalOfferingInfoField)
+	{
+		CTORATstpAdditionalOfferingInfoField* task_data = new CTORATstpAdditionalOfferingInfoField();
+		*task_data = *pAdditionalOfferingInfoField;
+		task.task_data = task_data;
+	}
+	if (pRspInfoField)
+	{
+		CTORATstpRspInfoField* task_error = new CTORATstpRspInfoField();
+		*task_error = *pRspInfoField;
+		task.task_error = task_error;
+	}
+	task.task_id = int(nRequestID);
+	task.task_last = bIsLast;
+	this->task_queue.push(task);
+};
+
+void StockApi::OnRspQryAdditionalOfferingQuota(CTORATstpAdditionalOfferingQuotaField* pAdditionalOfferingQuotaField, CTORATstpRspInfoField* pRspInfoField, int nRequestID, bool bIsLast)
+{
+	Task task = Task();
+	task.task_name = ONRSPQRYADDITIONALOFFERINGQUOTA;
+	if (pAdditionalOfferingQuotaField)
+	{
+		CTORATstpAdditionalOfferingQuotaField* task_data = new CTORATstpAdditionalOfferingQuotaField();
+		*task_data = *pAdditionalOfferingQuotaField;
+		task.task_data = task_data;
+	}
+	if (pRspInfoField)
+	{
+		CTORATstpRspInfoField* task_error = new CTORATstpRspInfoField();
+		*task_error = *pRspInfoField;
+		task.task_error = task_error;
+	}
+	task.task_id = int(nRequestID);
+	task.task_last = bIsLast;
+	this->task_queue.push(task);
+};
+
 ///-------------------------------------------------------------------------------------
 ///工作线程从队列中取出数据，转化为python对象后，进行推送
 ///-------------------------------------------------------------------------------------
@@ -1812,6 +1937,12 @@ void StockApi::processTask()
 			case ONRSPORDERINSERT:
 			{
 				this->processRspOrderInsert(&task);
+				break;
+			}
+
+			case ONRSPPUBLICOFFEREDFUNDORDERINSERT:
+			{
+				this->processRspPublicOfferedFundOrderInsert(&task);
 				break;
 			}
 
@@ -2223,21 +2354,21 @@ void StockApi::processTask()
 				break;
 			}
 
-			case ONRSPQRYSZSEIMCPARAMS:
+			case ONRSPQRYIMCPARAMS:
 			{
-				this->processRspQrySZSEImcParams(&task);
+				this->processRspQryImcParams(&task);
 				break;
 			}
 
-			case ONRSPQRYSZSEIMCEXCHANGERATE:
+			case ONRSPQRYIMCEXCHANGERATE:
 			{
-				this->processRspQrySZSEImcExchangeRate(&task);
+				this->processRspQryImcExchangeRate(&task);
 				break;
 			}
 
-			case ONRSPQRYSZSEHKPRICETICKINFO:
+			case ONRSPQRYHKPRICETICKINFO:
 			{
-				this->processRspQrySZSEHKPriceTickInfo(&task);
+				this->processRspQryHKPriceTickInfo(&task);
 				break;
 			}
 
@@ -2298,6 +2429,36 @@ void StockApi::processTask()
 			case ONRSPQRYNEGOTIATIONPARAM:
 			{
 				this->processRspQryNegotiationParam(&task);
+				break;
+			}
+
+			case ONRSPQRYPUBLICOFFEREDFUNDINFO:
+			{
+				this->processRspQryPublicOfferedFundInfo(&task);
+				break;
+			}
+
+			case ONRSPQRYPUBLICOFFEREDFUNDTRADEDETAIL:
+			{
+				this->processRspQryPublicOfferedFundTradeDetail(&task);
+				break;
+			}
+
+			case ONRSPQRYTENDERINFO:
+			{
+				this->processRspQryTenderInfo(&task);
+				break;
+			}
+
+			case ONRSPQRYADDITIONALOFFERINGINFO:
+			{
+				this->processRspQryAdditionalOfferingInfo(&task);
+				break;
+			}
+
+			case ONRSPQRYADDITIONALOFFERINGQUOTA:
+			{
+				this->processRspQryAdditionalOfferingQuota(&task);
 				break;
 			}
 			};
@@ -2391,6 +2552,9 @@ void StockApi::processRspUserLogin(Task* task)
 		data["OuterIPAddress"] = toUtf(task_data->OuterIPAddress);
 		data["MacAddress"] = toUtf(task_data->MacAddress);
 		data["NodeRef"] = task_data->NodeRef;
+		data["TradeCommFlux"] = task_data->TradeCommFlux;
+		data["QueryCommFlux"] = task_data->QueryCommFlux;
+		data["OrderCommFlux"] = task_data->OrderCommFlux;
 		delete task_data;
 	}
 	dict error;
@@ -2516,6 +2680,50 @@ void StockApi::processRspOrderInsert(Task* task)
 	this->onRspOrderInsert(data, error, task->task_id);
 };
 
+void StockApi::processRspPublicOfferedFundOrderInsert(Task* task)
+{
+	gil_scoped_acquire acquire;
+	dict data;
+	if (task->task_data)
+	{
+		CTORATstpInputOrderField* task_data = (CTORATstpInputOrderField*)task->task_data;
+		data["UserRequestID"] = task_data->UserRequestID;
+		data["ExchangeID"] = task_data->ExchangeID;
+		data["InvestorID"] = toUtf(task_data->InvestorID);
+		data["BusinessUnitID"] = toUtf(task_data->BusinessUnitID);
+		data["ShareholderID"] = toUtf(task_data->ShareholderID);
+		data["SecurityID"] = toUtf(task_data->SecurityID);
+		data["Direction"] = task_data->Direction;
+		data["LimitPrice"] = task_data->LimitPrice;
+		data["VolumeTotalOriginal"] = task_data->VolumeTotalOriginal;
+		data["OrderPriceType"] = task_data->OrderPriceType;
+		data["TimeCondition"] = task_data->TimeCondition;
+		data["VolumeCondition"] = task_data->VolumeCondition;
+		data["Operway"] = task_data->Operway;
+		data["OrderRef"] = task_data->OrderRef;
+		data["LotType"] = task_data->LotType;
+		data["OrderSysID"] = toUtf(task_data->OrderSysID);
+		data["CondCheck"] = task_data->CondCheck;
+		data["GTDate"] = toUtf(task_data->GTDate);
+		data["ForceCloseReason"] = task_data->ForceCloseReason;
+		data["CreditDebtID"] = toUtf(task_data->CreditDebtID);
+		data["CreditQuotaType"] = task_data->CreditQuotaType;
+		data["DiscountCouponID"] = task_data->DiscountCouponID;
+		data["SInfo"] = toUtf(task_data->SInfo);
+		data["IInfo"] = task_data->IInfo;
+		delete task_data;
+	}
+	dict error;
+	if (task->task_error)
+	{
+		CTORATstpRspInfoField* task_error = (CTORATstpRspInfoField*)task->task_error;
+		error["ErrorID"] = task_error->ErrorID;
+		error["ErrorMsg"] = toUtf(task_error->ErrorMsg);
+		delete task_error;
+	}
+	this->onRspPublicOfferedFundOrderInsert(data, error, task->task_id);
+};
+
 void StockApi::processRtnOrder(Task* task)
 {
 	gil_scoped_acquire acquire;
@@ -2576,6 +2784,7 @@ void StockApi::processRtnOrder(Task* task)
 		data["RtnFloatInfo1"] = task_data->RtnFloatInfo1;
 		data["RtnFloatInfo2"] = task_data->RtnFloatInfo2;
 		data["RtnFloatInfo3"] = task_data->RtnFloatInfo3;
+		data["AcceptTimeStamp"] = task_data->AcceptTimeStamp;
 		delete task_data;
 	}
 	this->onRtnOrder(data);
@@ -3847,6 +4056,7 @@ void StockApi::processRspQrySecurity(Task* task)
 		data["PreClosePrice"] = task_data->PreClosePrice;
 		data["UpperLimitPrice"] = task_data->UpperLimitPrice;
 		data["LowerLimitPrice"] = task_data->LowerLimitPrice;
+		data["DayTrading"] = task_data->DayTrading;
 		delete task_data;
 	}
 	dict error;
@@ -3883,6 +4093,7 @@ void StockApi::processRspQryIPOInfo(Task* task)
 		data["IssueMode"] = task_data->IssueMode;
 		data["TradingDay"] = toUtf(task_data->TradingDay);
 		data["MaxPrice"] = task_data->MaxPrice;
+		data["Remark"] = task_data->Remark;
 		delete task_data;
 	}
 	dict error;
@@ -3913,6 +4124,9 @@ void StockApi::processRspQryUser(Task* task)
 		data["CloseDate"] = toUtf(task_data->CloseDate);
 		data["OrderInsertCommFlux"] = task_data->OrderInsertCommFlux;
 		data["OrderActionCommFlux"] = task_data->OrderActionCommFlux;
+		data["TradeCommFlux"] = task_data->TradeCommFlux;
+		data["QueryCommFlux"] = task_data->QueryCommFlux;
+		data["OrderCommFlux"] = task_data->OrderCommFlux;
 		delete task_data;
 	}
 	dict error;
@@ -4085,6 +4299,7 @@ void StockApi::processRspQryOrder(Task* task)
 		data["RtnFloatInfo1"] = task_data->RtnFloatInfo1;
 		data["RtnFloatInfo2"] = task_data->RtnFloatInfo2;
 		data["RtnFloatInfo3"] = task_data->RtnFloatInfo3;
+		data["AcceptTimeStamp"] = task_data->AcceptTimeStamp;
 		delete task_data;
 	}
 	dict error;
@@ -4290,6 +4505,7 @@ void StockApi::processRspQryPosition(Task* task)
 		data["TodayTotalBuyAmount"] = task_data->TodayTotalBuyAmount;
 		data["TodayTotalSellAmount"] = task_data->TodayTotalSellAmount;
 		data["PreFrozen"] = task_data->PreFrozen;
+		data["TodayTotalCloseVolume"] = task_data->TodayTotalCloseVolume;
 		delete task_data;
 	}
 	dict error;
@@ -5098,13 +5314,13 @@ void StockApi::processRspQryInvestorPositionLimit(Task* task)
 	this->onRspQryInvestorPositionLimit(data, error, task->task_id, task->task_last);
 };
 
-void StockApi::processRspQrySZSEImcParams(Task* task)
+void StockApi::processRspQryImcParams(Task* task)
 {
 	gil_scoped_acquire acquire;
 	dict data;
 	if (task->task_data)
 	{
-		CTORATstpSZSEImcParamsField* task_data = (CTORATstpSZSEImcParamsField*)task->task_data;
+		CTORATstpImcParamsField* task_data = (CTORATstpImcParamsField*)task->task_data;
 		data["MarketID"] = task_data->MarketID;
 		data["OpenFlag"] = task_data->OpenFlag;
 		data["ThresholdAmount"] = task_data->ThresholdAmount;
@@ -5120,21 +5336,22 @@ void StockApi::processRspQrySZSEImcParams(Task* task)
 		error["ErrorMsg"] = toUtf(task_error->ErrorMsg);
 		delete task_error;
 	}
-	this->onRspQrySZSEImcParams(data, error, task->task_id, task->task_last);
+	this->onRspQryImcParams(data, error, task->task_id, task->task_last);
 };
 
-void StockApi::processRspQrySZSEImcExchangeRate(Task* task)
+void StockApi::processRspQryImcExchangeRate(Task* task)
 {
 	gil_scoped_acquire acquire;
 	dict data;
 	if (task->task_data)
 	{
-		CTORATstpSZSEImcExchangeRateField* task_data = (CTORATstpSZSEImcExchangeRateField*)task->task_data;
+		CTORATstpImcExchangeRateField* task_data = (CTORATstpImcExchangeRateField*)task->task_data;
 		data["FromCurrency"] = task_data->FromCurrency;
 		data["ToCurrency"] = task_data->ToCurrency;
 		data["BidRate"] = task_data->BidRate;
 		data["OfferRate"] = task_data->OfferRate;
 		data["MidPointRate"] = task_data->MidPointRate;
+		data["MarketID"] = task_data->MarketID;
 		delete task_data;
 	}
 	dict error;
@@ -5145,22 +5362,23 @@ void StockApi::processRspQrySZSEImcExchangeRate(Task* task)
 		error["ErrorMsg"] = toUtf(task_error->ErrorMsg);
 		delete task_error;
 	}
-	this->onRspQrySZSEImcExchangeRate(data, error, task->task_id, task->task_last);
+	this->onRspQryImcExchangeRate(data, error, task->task_id, task->task_last);
 };
 
-void StockApi::processRspQrySZSEHKPriceTickInfo(Task* task)
+void StockApi::processRspQryHKPriceTickInfo(Task* task)
 {
 	gil_scoped_acquire acquire;
 	dict data;
 	if (task->task_data)
 	{
-		CTORATstpSZSEHKPriceTickInfoField* task_data = (CTORATstpSZSEHKPriceTickInfoField*)task->task_data;
+		CTORATstpHKPriceTickInfoField* task_data = (CTORATstpHKPriceTickInfoField*)task->task_data;
 		data["PriceTickID"] = task_data->PriceTickID;
 		data["PriceTickGroupID"] = task_data->PriceTickGroupID;
 		data["PriceTickType"] = task_data->PriceTickType;
 		data["BeginPrice"] = task_data->BeginPrice;
 		data["EndPrice"] = task_data->EndPrice;
 		data["PriceTick"] = task_data->PriceTick;
+		data["MarketID"] = task_data->MarketID;
 		delete task_data;
 	}
 	dict error;
@@ -5171,7 +5389,7 @@ void StockApi::processRspQrySZSEHKPriceTickInfo(Task* task)
 		error["ErrorMsg"] = toUtf(task_error->ErrorMsg);
 		delete task_error;
 	}
-	this->onRspQrySZSEHKPriceTickInfo(data, error, task->task_id, task->task_last);
+	this->onRspQryHKPriceTickInfo(data, error, task->task_id, task->task_last);
 };
 
 void StockApi::processRspQryLofFundInfo(Task* task)
@@ -5535,6 +5753,170 @@ void StockApi::processRspQryNegotiationParam(Task* task)
 	this->onRspQryNegotiationParam(data, error, task->task_id, task->task_last);
 };
 
+void StockApi::processRspQryPublicOfferedFundInfo(Task* task)
+{
+	gil_scoped_acquire acquire;
+	dict data;
+	if (task->task_data)
+	{
+		CTORATstpPublicOfferedFundInfoField* task_data = (CTORATstpPublicOfferedFundInfoField*)task->task_data;
+		data["ExchangeID"] = task_data->ExchangeID;
+		data["SecurityID"] = toUtf(task_data->SecurityID);
+		data["ManagerID"] = toUtf(task_data->ManagerID);
+		data["ForwardPbuID"] = toUtf(task_data->ForwardPbuID);
+		data["ForwardShareholderID"] = toUtf(task_data->ForwardShareholderID);
+		delete task_data;
+	}
+	dict error;
+	if (task->task_error)
+	{
+		CTORATstpRspInfoField* task_error = (CTORATstpRspInfoField*)task->task_error;
+		error["ErrorID"] = task_error->ErrorID;
+		error["ErrorMsg"] = toUtf(task_error->ErrorMsg);
+		delete task_error;
+	}
+	this->onRspQryPublicOfferedFundInfo(data, error, task->task_id, task->task_last);
+};
+
+void StockApi::processRspQryPublicOfferedFundTradeDetail(Task* task)
+{
+	gil_scoped_acquire acquire;
+	dict data;
+	if (task->task_data)
+	{
+		CTORATstpPublicOfferedFundTradeDetailField* task_data = (CTORATstpPublicOfferedFundTradeDetailField*)task->task_data;
+		data["ExchangeID"] = task_data->ExchangeID;
+		data["ShareholderID"] = toUtf(task_data->ShareholderID);
+		data["Direction"] = task_data->Direction;
+		data["FundSecurityID"] = toUtf(task_data->FundSecurityID);
+		data["BasketSecurityID"] = toUtf(task_data->BasketSecurityID);
+		data["TradeReportType"] = task_data->TradeReportType;
+		data["TradeID"] = toUtf(task_data->TradeID);
+		data["PbuID"] = toUtf(task_data->PbuID);
+		data["OrderLocalID"] = toUtf(task_data->OrderLocalID);
+		data["ExchOrderID"] = toUtf(task_data->ExchOrderID);
+		data["TradeReportNums"] = task_data->TradeReportNums;
+		data["DeliveryVolume"] = task_data->DeliveryVolume;
+		data["TotalSubsCash"] = task_data->TotalSubsCash;
+		data["SSESubsCash"] = task_data->SSESubsCash;
+		data["SZSESubsCash"] = task_data->SZSESubsCash;
+		data["HKSubsCash"] = task_data->HKSubsCash;
+		data["OtherSubsCash"] = task_data->OtherSubsCash;
+		data["TradeDate"] = toUtf(task_data->TradeDate);
+		data["TradeTime"] = toUtf(task_data->TradeTime);
+		data["ManagerID"] = toUtf(task_data->ManagerID);
+		data["ManagerPbuID"] = toUtf(task_data->ManagerPbuID);
+		data["ManagerShareholderID"] = toUtf(task_data->ManagerShareholderID);
+		data["DataIndex"] = task_data->DataIndex;
+		data["BasketMarketID"] = task_data->BasketMarketID;
+		data["AffiliatedShareholderID"] = toUtf(task_data->AffiliatedShareholderID);
+		data["AffiliatedPbuID"] = toUtf(task_data->AffiliatedPbuID);
+		delete task_data;
+	}
+	dict error;
+	if (task->task_error)
+	{
+		CTORATstpRspInfoField* task_error = (CTORATstpRspInfoField*)task->task_error;
+		error["ErrorID"] = task_error->ErrorID;
+		error["ErrorMsg"] = toUtf(task_error->ErrorMsg);
+		delete task_error;
+	}
+	this->onRspQryPublicOfferedFundTradeDetail(data, error, task->task_id, task->task_last);
+};
+
+void StockApi::processRspQryTenderInfo(Task* task)
+{
+	gil_scoped_acquire acquire;
+	dict data;
+	if (task->task_data)
+	{
+		CTORATstpTenderInfoField* task_data = (CTORATstpTenderInfoField*)task->task_data;
+		data["ExchangeID"] = task_data->ExchangeID;
+		data["TenderSecurityID"] = toUtf(task_data->TenderSecurityID);
+		data["TendererID"] = toUtf(task_data->TendererID);
+		data["TendererName"] = toUtf(task_data->TendererName);
+		data["UnderlyingSecurityID"] = toUtf(task_data->UnderlyingSecurityID);
+		data["UnderlyingSecurityName"] = toUtf(task_data->UnderlyingSecurityName);
+		data["ProductID"] = task_data->ProductID;
+		data["SecurityType"] = task_data->SecurityType;
+		data["OfferingPrice"] = task_data->OfferingPrice;
+		data["MinOrderVol"] = task_data->MinOrderVol;
+		data["MaxOrderVol"] = task_data->MaxOrderVol;
+		data["OrderUnit"] = task_data->OrderUnit;
+		data["BeginDate"] = toUtf(task_data->BeginDate);
+		data["EndDate"] = toUtf(task_data->EndDate);
+		delete task_data;
+	}
+	dict error;
+	if (task->task_error)
+	{
+		CTORATstpRspInfoField* task_error = (CTORATstpRspInfoField*)task->task_error;
+		error["ErrorID"] = task_error->ErrorID;
+		error["ErrorMsg"] = toUtf(task_error->ErrorMsg);
+		delete task_error;
+	}
+	this->onRspQryTenderInfo(data, error, task->task_id, task->task_last);
+};
+
+void StockApi::processRspQryAdditionalOfferingInfo(Task* task)
+{
+	gil_scoped_acquire acquire;
+	dict data;
+	if (task->task_data)
+	{
+		CTORATstpAdditionalOfferingInfoField* task_data = (CTORATstpAdditionalOfferingInfoField*)task->task_data;
+		data["ExchangeID"] = task_data->ExchangeID;
+		data["SecurityID"] = toUtf(task_data->SecurityID);
+		data["SecurityName"] = toUtf(task_data->SecurityName);
+		data["ProductID"] = task_data->ProductID;
+		data["SecurityType"] = task_data->SecurityType;
+		data["MinPrice"] = task_data->MinPrice;
+		data["MaxPrice"] = task_data->MaxPrice;
+		data["MinVolume"] = task_data->MinVolume;
+		data["MaxVolume"] = task_data->MaxVolume;
+		data["VolumeUnit"] = task_data->VolumeUnit;
+		data["BeginDate"] = toUtf(task_data->BeginDate);
+		data["EndDate"] = toUtf(task_data->EndDate);
+		data["Remark"] = task_data->Remark;
+		delete task_data;
+	}
+	dict error;
+	if (task->task_error)
+	{
+		CTORATstpRspInfoField* task_error = (CTORATstpRspInfoField*)task->task_error;
+		error["ErrorID"] = task_error->ErrorID;
+		error["ErrorMsg"] = toUtf(task_error->ErrorMsg);
+		delete task_error;
+	}
+	this->onRspQryAdditionalOfferingInfo(data, error, task->task_id, task->task_last);
+};
+
+void StockApi::processRspQryAdditionalOfferingQuota(Task* task)
+{
+	gil_scoped_acquire acquire;
+	dict data;
+	if (task->task_data)
+	{
+		CTORATstpAdditionalOfferingQuotaField* task_data = (CTORATstpAdditionalOfferingQuotaField*)task->task_data;
+		data["ExchangeID"] = task_data->ExchangeID;
+		data["ShareholderID"] = toUtf(task_data->ShareholderID);
+		data["SecurityID"] = toUtf(task_data->SecurityID);
+		data["InvestorID"] = toUtf(task_data->InvestorID);
+		data["MaxVolume"] = task_data->MaxVolume;
+		data["FrzVolume"] = task_data->FrzVolume;
+		delete task_data;
+	}
+	dict error;
+	if (task->task_error)
+	{
+		CTORATstpRspInfoField* task_error = (CTORATstpRspInfoField*)task->task_error;
+		error["ErrorID"] = task_error->ErrorID;
+		error["ErrorMsg"] = toUtf(task_error->ErrorMsg);
+		delete task_error;
+	}
+	this->onRspQryAdditionalOfferingQuota(data, error, task->task_id, task->task_last);
+};
+
 ///-------------------------------------------------------------------------------------
 ///主动函数
 ///-------------------------------------------------------------------------------------
@@ -5642,6 +6024,9 @@ int StockApi::reqUserLogin(const dict& req, int nRequestID)
 	getString(req, "CertSerial", myreq.CertSerial);
 	getChar(req, "DeviceType", &myreq.DeviceType);
 	getInt(req, "NodeRef", &myreq.NodeRef);
+	getString(req, "GwInnerIPAddress", myreq.GwInnerIPAddress);
+	getString(req, "GwOuterIPAddress", myreq.GwOuterIPAddress);
+	getString(req, "GwMacAddress", myreq.GwMacAddress);
 	int i = this->api->ReqUserLogin(&myreq, nRequestID);
 	return i;
 };
@@ -5710,6 +6095,38 @@ int StockApi::reqOrderInsert(const dict& req, int nRequestID)
 	getString(req, "SInfo", myreq.SInfo);
 	getInt(req, "IInfo", &myreq.IInfo);
 	int i = this->api->ReqOrderInsert(&myreq, nRequestID);
+	return i;
+};
+
+int StockApi::reqPublicOfferedFundOrderInsert(const dict& req, int nRequestID)
+{
+	CTORATstpInputOrderField myreq = CTORATstpInputOrderField();
+	memset(&myreq, 0, sizeof(myreq));
+	getInt(req, "UserRequestID", &myreq.UserRequestID);
+	getChar(req, "ExchangeID", &myreq.ExchangeID);
+	getString(req, "InvestorID", myreq.InvestorID);
+	getString(req, "BusinessUnitID", myreq.BusinessUnitID);
+	getString(req, "ShareholderID", myreq.ShareholderID);
+	getString(req, "SecurityID", myreq.SecurityID);
+	getChar(req, "Direction", &myreq.Direction);
+	getDouble(req, "LimitPrice", &myreq.LimitPrice);
+	getInt(req, "VolumeTotalOriginal", &myreq.VolumeTotalOriginal);
+	getChar(req, "OrderPriceType", &myreq.OrderPriceType);
+	getChar(req, "TimeCondition", &myreq.TimeCondition);
+	getChar(req, "VolumeCondition", &myreq.VolumeCondition);
+	getChar(req, "Operway", &myreq.Operway);
+	getInt(req, "OrderRef", &myreq.OrderRef);
+	getChar(req, "LotType", &myreq.LotType);
+	getString(req, "OrderSysID", myreq.OrderSysID);
+	getChar(req, "CondCheck", &myreq.CondCheck);
+	getString(req, "GTDate", myreq.GTDate);
+	getChar(req, "ForceCloseReason", &myreq.ForceCloseReason);
+	getString(req, "CreditDebtID", myreq.CreditDebtID);
+	getChar(req, "CreditQuotaType", &myreq.CreditQuotaType);
+	getInt(req, "DiscountCouponID", &myreq.DiscountCouponID);
+	getString(req, "SInfo", myreq.SInfo);
+	getInt(req, "IInfo", &myreq.IInfo);
+	int i = this->api->ReqPublicOfferedFundOrderInsert(&myreq, nRequestID);
 	return i;
 };
 
@@ -6461,31 +6878,33 @@ int StockApi::reqQryInvestorPositionLimit(const dict& req, int nRequestID)
 	return i;
 };
 
-int StockApi::reqQrySZSEImcParams(const dict& req, int nRequestID)
+int StockApi::reqQryImcParams(const dict& req, int nRequestID)
 {
-	CTORATstpQrySZSEImcParamsField myreq = CTORATstpQrySZSEImcParamsField();
+	CTORATstpQryImcParamsField myreq = CTORATstpQryImcParamsField();
 	memset(&myreq, 0, sizeof(myreq));
 	getChar(req, "MarketID", &myreq.MarketID);
-	int i = this->api->ReqQrySZSEImcParams(&myreq, nRequestID);
+	int i = this->api->ReqQryImcParams(&myreq, nRequestID);
 	return i;
 };
 
-int StockApi::reqQrySZSEImcExchangeRate(const dict& req, int nRequestID)
+int StockApi::reqQryImcExchangeRate(const dict& req, int nRequestID)
 {
-	CTORATstpQrySZSEImcExchangeRateField myreq = CTORATstpQrySZSEImcExchangeRateField();
+	CTORATstpQryImcExchangeRateField myreq = CTORATstpQryImcExchangeRateField();
 	memset(&myreq, 0, sizeof(myreq));
 	getChar(req, "FromCurrency", &myreq.FromCurrency);
 	getChar(req, "ToCurrency", &myreq.ToCurrency);
-	int i = this->api->ReqQrySZSEImcExchangeRate(&myreq, nRequestID);
+	getChar(req, "MarketID", &myreq.MarketID);
+	int i = this->api->ReqQryImcExchangeRate(&myreq, nRequestID);
 	return i;
 };
 
-int StockApi::reqQrySZSEHKPriceTickInfo(const dict& req, int nRequestID)
+int StockApi::reqQryHKPriceTickInfo(const dict& req, int nRequestID)
 {
-	CTORATstpQrySZSEHKPriceTickInfoField myreq = CTORATstpQrySZSEHKPriceTickInfoField();
+	CTORATstpQryHKPriceTickInfoField myreq = CTORATstpQryHKPriceTickInfoField();
 	memset(&myreq, 0, sizeof(myreq));
 	getChar(req, "PriceTickID", &myreq.PriceTickID);
-	int i = this->api->ReqQrySZSEHKPriceTickInfo(&myreq, nRequestID);
+	getChar(req, "MarketID", &myreq.MarketID);
+	int i = this->api->ReqQryHKPriceTickInfo(&myreq, nRequestID);
 	return i;
 };
 
@@ -6626,6 +7045,64 @@ int StockApi::reqQryNegotiationParam(const dict& req, int nRequestID)
 	return i;
 };
 
+int StockApi::reqQryPublicOfferedFundInfo(const dict& req, int nRequestID)
+{
+	CTORATstpQryPublicOfferedFundInfoField myreq = CTORATstpQryPublicOfferedFundInfoField();
+	memset(&myreq, 0, sizeof(myreq));
+	getChar(req, "ExchangeID", &myreq.ExchangeID);
+	getString(req, "SecurityID", myreq.SecurityID);
+	getString(req, "ManagerID", myreq.ManagerID);
+	int i = this->api->ReqQryPublicOfferedFundInfo(&myreq, nRequestID);
+	return i;
+};
+
+int StockApi::reqQryPublicOfferedFundTradeDetail(const dict& req, int nRequestID)
+{
+	CTORATstpQryPublicOfferedFundTradeDetailField myreq = CTORATstpQryPublicOfferedFundTradeDetailField();
+	memset(&myreq, 0, sizeof(myreq));
+	getChar(req, "ExchangeID", &myreq.ExchangeID);
+	getString(req, "FundSecurityID", myreq.FundSecurityID);
+	getString(req, "ManagerID", myreq.ManagerID);
+	getInt(req, "IndexStart", &myreq.IndexStart);
+	getInt(req, "IndexEnd", &myreq.IndexEnd);
+	int i = this->api->ReqQryPublicOfferedFundTradeDetail(&myreq, nRequestID);
+	return i;
+};
+
+int StockApi::reqQryTenderInfo(const dict& req, int nRequestID)
+{
+	CTORATstpQryTenderInfoField myreq = CTORATstpQryTenderInfoField();
+	memset(&myreq, 0, sizeof(myreq));
+	getChar(req, "ExchangeID", &myreq.ExchangeID);
+	getString(req, "TenderSecurityID", myreq.TenderSecurityID);
+	getString(req, "TendererID", myreq.TendererID);
+	getString(req, "UnderlyingSecurityID", myreq.UnderlyingSecurityID);
+	int i = this->api->ReqQryTenderInfo(&myreq, nRequestID);
+	return i;
+};
+
+int StockApi::reqQryAdditionalOfferingInfo(const dict& req, int nRequestID)
+{
+	CTORATstpQryAdditionalOfferingInfoField myreq = CTORATstpQryAdditionalOfferingInfoField();
+	memset(&myreq, 0, sizeof(myreq));
+	getChar(req, "ExchangeID", &myreq.ExchangeID);
+	getString(req, "SecurityID", myreq.SecurityID);
+	int i = this->api->ReqQryAdditionalOfferingInfo(&myreq, nRequestID);
+	return i;
+};
+
+int StockApi::reqQryAdditionalOfferingQuota(const dict& req, int nRequestID)
+{
+	CTORATstpQryAdditionalOfferingQuotaField myreq = CTORATstpQryAdditionalOfferingQuotaField();
+	memset(&myreq, 0, sizeof(myreq));
+	getChar(req, "ExchangeID", &myreq.ExchangeID);
+	getString(req, "SecurityID", myreq.SecurityID);
+	getString(req, "ShareholderID", myreq.ShareholderID);
+	getString(req, "InvestorID", myreq.InvestorID);
+	int i = this->api->ReqQryAdditionalOfferingQuota(&myreq, nRequestID);
+	return i;
+};
+
 ///-------------------------------------------------------------------------------------
 ///pybind11封装
 ///-------------------------------------------------------------------------------------
@@ -6735,6 +7212,18 @@ public:
 		try
 		{
 			PYBIND11_OVERLOAD(void, StockApi, onRspOrderInsert, data, error, nRequestID);
+		}
+		catch (const error_already_set& e)
+		{
+			cout << e.what() << endl;
+		}
+	};
+
+	void onRspPublicOfferedFundOrderInsert(const dict& data, const dict& error, int nRequestID) override
+	{
+		try
+		{
+			PYBIND11_OVERLOAD(void, StockApi, onRspPublicOfferedFundOrderInsert, data, error, nRequestID);
 		}
 		catch (const error_already_set& e)
 		{
@@ -7558,11 +8047,11 @@ public:
 		}
 	};
 
-	void onRspQrySZSEImcParams(const dict& data, const dict& error, int nRequestID, bool last) override
+	void onRspQryImcParams(const dict& data, const dict& error, int nRequestID, bool last) override
 	{
 		try
 		{
-			PYBIND11_OVERLOAD(void, StockApi, onRspQrySZSEImcParams, data, error, nRequestID, last);
+			PYBIND11_OVERLOAD(void, StockApi, onRspQryImcParams, data, error, nRequestID, last);
 		}
 		catch (const error_already_set& e)
 		{
@@ -7570,11 +8059,11 @@ public:
 		}
 	};
 
-	void onRspQrySZSEImcExchangeRate(const dict& data, const dict& error, int nRequestID, bool last) override
+	void onRspQryImcExchangeRate(const dict& data, const dict& error, int nRequestID, bool last) override
 	{
 		try
 		{
-			PYBIND11_OVERLOAD(void, StockApi, onRspQrySZSEImcExchangeRate, data, error, nRequestID, last);
+			PYBIND11_OVERLOAD(void, StockApi, onRspQryImcExchangeRate, data, error, nRequestID, last);
 		}
 		catch (const error_already_set& e)
 		{
@@ -7582,11 +8071,11 @@ public:
 		}
 	};
 
-	void onRspQrySZSEHKPriceTickInfo(const dict& data, const dict& error, int nRequestID, bool last) override
+	void onRspQryHKPriceTickInfo(const dict& data, const dict& error, int nRequestID, bool last) override
 	{
 		try
 		{
-			PYBIND11_OVERLOAD(void, StockApi, onRspQrySZSEHKPriceTickInfo, data, error, nRequestID, last);
+			PYBIND11_OVERLOAD(void, StockApi, onRspQryHKPriceTickInfo, data, error, nRequestID, last);
 		}
 		catch (const error_already_set& e)
 		{
@@ -7713,6 +8202,66 @@ public:
 			cout << e.what() << endl;
 		}
 	};
+
+	void onRspQryPublicOfferedFundInfo(const dict& data, const dict& error, int nRequestID, bool last) override
+	{
+		try
+		{
+			PYBIND11_OVERLOAD(void, StockApi, onRspQryPublicOfferedFundInfo, data, error, nRequestID, last);
+		}
+		catch (const error_already_set& e)
+		{
+			cout << e.what() << endl;
+		}
+	};
+
+	void onRspQryPublicOfferedFundTradeDetail(const dict& data, const dict& error, int nRequestID, bool last) override
+	{
+		try
+		{
+			PYBIND11_OVERLOAD(void, StockApi, onRspQryPublicOfferedFundTradeDetail, data, error, nRequestID, last);
+		}
+		catch (const error_already_set& e)
+		{
+			cout << e.what() << endl;
+		}
+	};
+
+	void onRspQryTenderInfo(const dict& data, const dict& error, int nRequestID, bool last) override
+	{
+		try
+		{
+			PYBIND11_OVERLOAD(void, StockApi, onRspQryTenderInfo, data, error, nRequestID, last);
+		}
+		catch (const error_already_set& e)
+		{
+			cout << e.what() << endl;
+		}
+	};
+
+	void onRspQryAdditionalOfferingInfo(const dict& data, const dict& error, int nRequestID, bool last) override
+	{
+		try
+		{
+			PYBIND11_OVERLOAD(void, StockApi, onRspQryAdditionalOfferingInfo, data, error, nRequestID, last);
+		}
+		catch (const error_already_set& e)
+		{
+			cout << e.what() << endl;
+		}
+	};
+
+	void onRspQryAdditionalOfferingQuota(const dict& data, const dict& error, int nRequestID, bool last) override
+	{
+		try
+		{
+			PYBIND11_OVERLOAD(void, StockApi, onRspQryAdditionalOfferingQuota, data, error, nRequestID, last);
+		}
+		catch (const error_already_set& e)
+		{
+			cout << e.what() << endl;
+		}
+	};
 };
 
 PYBIND11_MODULE(vntorastock, m)
@@ -7737,6 +8286,7 @@ PYBIND11_MODULE(vntorastock, m)
 		.def("reqUserPasswordUpdate", &StockApi::reqUserPasswordUpdate)
 		.def("reqInputDeviceSerial", &StockApi::reqInputDeviceSerial)
 		.def("reqOrderInsert", &StockApi::reqOrderInsert)
+		.def("reqPublicOfferedFundOrderInsert", &StockApi::reqPublicOfferedFundOrderInsert)
 		.def("reqOrderAction", &StockApi::reqOrderAction)
 		.def("reqCondOrderInsert", &StockApi::reqCondOrderInsert)
 		.def("reqCondOrderAction", &StockApi::reqCondOrderAction)
@@ -7786,9 +8336,9 @@ PYBIND11_MODULE(vntorastock, m)
 		.def("reqQryETFFile", &StockApi::reqQryETFFile)
 		.def("reqQryETFBasket", &StockApi::reqQryETFBasket)
 		.def("reqQryInvestorPositionLimit", &StockApi::reqQryInvestorPositionLimit)
-		.def("reqQrySZSEImcParams", &StockApi::reqQrySZSEImcParams)
-		.def("reqQrySZSEImcExchangeRate", &StockApi::reqQrySZSEImcExchangeRate)
-		.def("reqQrySZSEHKPriceTickInfo", &StockApi::reqQrySZSEHKPriceTickInfo)
+		.def("reqQryImcParams", &StockApi::reqQryImcParams)
+		.def("reqQryImcExchangeRate", &StockApi::reqQryImcExchangeRate)
+		.def("reqQryHKPriceTickInfo", &StockApi::reqQryHKPriceTickInfo)
 		.def("reqQryLofFundInfo", &StockApi::reqQryLofFundInfo)
 		.def("reqQryPledgePosition", &StockApi::reqQryPledgePosition)
 		.def("reqQryPledgeInfo", &StockApi::reqQryPledgeInfo)
@@ -7799,6 +8349,11 @@ PYBIND11_MODULE(vntorastock, m)
 		.def("reqQryNegoOrderAction", &StockApi::reqQryNegoOrderAction)
 		.def("reqQryNegoTrade", &StockApi::reqQryNegoTrade)
 		.def("reqQryNegotiationParam", &StockApi::reqQryNegotiationParam)
+		.def("reqQryPublicOfferedFundInfo", &StockApi::reqQryPublicOfferedFundInfo)
+		.def("reqQryPublicOfferedFundTradeDetail", &StockApi::reqQryPublicOfferedFundTradeDetail)
+		.def("reqQryTenderInfo", &StockApi::reqQryTenderInfo)
+		.def("reqQryAdditionalOfferingInfo", &StockApi::reqQryAdditionalOfferingInfo)
+		.def("reqQryAdditionalOfferingQuota", &StockApi::reqQryAdditionalOfferingQuota)
 
 		.def("onFrontConnected", &StockApi::onFrontConnected)
 		.def("onFrontDisconnected", &StockApi::onFrontDisconnected)
@@ -7809,6 +8364,7 @@ PYBIND11_MODULE(vntorastock, m)
 		.def("onRspUserPasswordUpdate", &StockApi::onRspUserPasswordUpdate)
 		.def("onRspInputDeviceSerial", &StockApi::onRspInputDeviceSerial)
 		.def("onRspOrderInsert", &StockApi::onRspOrderInsert)
+		.def("onRspPublicOfferedFundOrderInsert", &StockApi::onRspPublicOfferedFundOrderInsert)
 		.def("onRtnOrder", &StockApi::onRtnOrder)
 		.def("onErrRtnOrderInsert", &StockApi::onErrRtnOrderInsert)
 		.def("onRtnTrade", &StockApi::onRtnTrade)
@@ -7877,9 +8433,9 @@ PYBIND11_MODULE(vntorastock, m)
 		.def("onRspQryETFFile", &StockApi::onRspQryETFFile)
 		.def("onRspQryETFBasket", &StockApi::onRspQryETFBasket)
 		.def("onRspQryInvestorPositionLimit", &StockApi::onRspQryInvestorPositionLimit)
-		.def("onRspQrySZSEImcParams", &StockApi::onRspQrySZSEImcParams)
-		.def("onRspQrySZSEImcExchangeRate", &StockApi::onRspQrySZSEImcExchangeRate)
-		.def("onRspQrySZSEHKPriceTickInfo", &StockApi::onRspQrySZSEHKPriceTickInfo)
+		.def("onRspQryImcParams", &StockApi::onRspQryImcParams)
+        .def("onRspQryImcExchangeRate", &StockApi::onRspQryImcExchangeRate)
+        .def("onRspQryHKPriceTickInfo", &StockApi::onRspQryHKPriceTickInfo)
 		.def("onRspQryLofFundInfo", &StockApi::onRspQryLofFundInfo)
 		.def("onRspQryPledgePosition", &StockApi::onRspQryPledgePosition)
 		.def("onRspQryPledgeInfo", &StockApi::onRspQryPledgeInfo)
@@ -7890,6 +8446,11 @@ PYBIND11_MODULE(vntorastock, m)
 		.def("onRspQryNegoOrderAction", &StockApi::onRspQryNegoOrderAction)
 		.def("onRspQryNegoTrade", &StockApi::onRspQryNegoTrade)
 		.def("onRspQryNegotiationParam", &StockApi::onRspQryNegotiationParam)
+		.def("onRspQryPublicOfferedFundInfo", &StockApi::onRspQryPublicOfferedFundInfo)
+        .def("onRspQryPublicOfferedFundTradeDetail", &StockApi::onRspQryPublicOfferedFundTradeDetail)
+        .def("onRspQryTenderInfo", &StockApi::onRspQryTenderInfo)
+        .def("onRspQryAdditionalOfferingInfo", &StockApi::onRspQryAdditionalOfferingInfo)
+        .def("onRspQryAdditionalOfferingQuota", &StockApi::onRspQryAdditionalOfferingQuota)
 		;
 
 }
