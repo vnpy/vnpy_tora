@@ -321,6 +321,18 @@ namespace TORALEV1API
 	
 		///基金实时参考净值
 		TTORATstpPriceType	IOPV;
+	
+		///ETF实时申购数量
+		TTORATstpLongVolumeType	ETFPurVolume;
+	
+		///ETF实时申购笔数
+		TTORATstpLongVolumeType	ETFPurCount;
+	
+		///ETF实时赎回数量
+		TTORATstpLongVolumeType	ETFRedVolume;
+	
+		///ETF实时赎回笔数
+		TTORATstpLongVolumeType	ETFRedCount;
 	};
 	
 	/// 查询响应域
@@ -569,6 +581,31 @@ namespace TORALEV1API
 	
 		///额度是否可用
 		TTORATstpBoolType	AmountStatus;
+	};
+	
+	/// 独立IOPV行情
+	struct CTORATstpIOPVField
+	{
+		///证券代码
+		TTORATstpSecurityIDType	SecurityID;
+	
+		///交易所代码
+		TTORATstpExchangeIDType	ExchangeID;
+	
+		///证券名称
+		TTORATstpSecurityNameType	SecurityName;
+	
+		///更新时间
+		TTORATstpTimeType	UpdateTime;
+	
+		///更新毫秒
+		TTORATstpMillisecType	UpdateMillisec;
+	
+		///基金实时参考净值
+		TTORATstpPriceType	IOPV;
+	
+		///基金行情实时状态(只有深圳行情有效)
+		TTORATstpMDSecurityStatType	MDSecurityStat;
 	};
 	
 	/// 合成快照

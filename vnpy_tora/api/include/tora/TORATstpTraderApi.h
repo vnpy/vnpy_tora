@@ -61,6 +61,9 @@ namespace TORASTOCKAPI
 		///报单录入响应
 		virtual void OnRspOrderInsert(CTORATstpInputOrderField *pInputOrderField, CTORATstpRspInfoField *pRspInfoField, int nRequestID) {};
 		
+		///公募基金管理人调仓报单响应
+		virtual void OnRspPublicOfferedFundOrderInsert(CTORATstpInputOrderField *pInputOrderField, CTORATstpRspInfoField *pRspInfoField, int nRequestID) {};
+		
 		///报单回报
 		virtual void OnRtnOrder(CTORATstpOrderField *pOrderField) {};
 		
@@ -265,14 +268,14 @@ namespace TORASTOCKAPI
 		///查询投资者限仓信息响应
 		virtual void OnRspQryInvestorPositionLimit(CTORATstpInvestorPositionLimitField *pInvestorPositionLimitField, CTORATstpRspInfoField *pRspInfoField, int nRequestID, bool bIsLast) {}; 
 		
-		///查询深港通国际市场互联状态信息响应
-		virtual void OnRspQrySZSEImcParams(CTORATstpSZSEImcParamsField *pSZSEImcParamsField, CTORATstpRspInfoField *pRspInfoField, int nRequestID, bool bIsLast) {}; 
+		///查询国际市场互联状态信息响应
+		virtual void OnRspQryImcParams(CTORATstpImcParamsField *pImcParamsField, CTORATstpRspInfoField *pRspInfoField, int nRequestID, bool bIsLast) {}; 
 		
-		///查询深港通国际市场互联汇率信息响应
-		virtual void OnRspQrySZSEImcExchangeRate(CTORATstpSZSEImcExchangeRateField *pSZSEImcExchangeRateField, CTORATstpRspInfoField *pRspInfoField, int nRequestID, bool bIsLast) {}; 
+		///查询国际市场互联汇率信息响应
+		virtual void OnRspQryImcExchangeRate(CTORATstpImcExchangeRateField *pImcExchangeRateField, CTORATstpRspInfoField *pRspInfoField, int nRequestID, bool bIsLast) {}; 
 		
-		///查询深港通最小价差信息响应
-		virtual void OnRspQrySZSEHKPriceTickInfo(CTORATstpSZSEHKPriceTickInfoField *pSZSEHKPriceTickInfoField, CTORATstpRspInfoField *pRspInfoField, int nRequestID, bool bIsLast) {}; 
+		///查询最小价差信息响应
+		virtual void OnRspQryHKPriceTickInfo(CTORATstpHKPriceTickInfoField *pHKPriceTickInfoField, CTORATstpRspInfoField *pRspInfoField, int nRequestID, bool bIsLast) {}; 
 		
 		///查询LOF基金信息响应
 		virtual void OnRspQryLofFundInfo(CTORATstpLofFundInfoField *pLofFundInfoField, CTORATstpRspInfoField *pRspInfoField, int nRequestID, bool bIsLast) {}; 
@@ -303,6 +306,21 @@ namespace TORASTOCKAPI
 		
 		///查询协议交易参数响应
 		virtual void OnRspQryNegotiationParam(CTORATstpNegotiationParamField *pNegotiationParamField, CTORATstpRspInfoField *pRspInfoField, int nRequestID, bool bIsLast) {}; 
+		
+		///查询公募基金发行信息响应
+		virtual void OnRspQryPublicOfferedFundInfo(CTORATstpPublicOfferedFundInfoField *pPublicOfferedFundInfoField, CTORATstpRspInfoField *pRspInfoField, int nRequestID, bool bIsLast) {}; 
+		
+		///查询公募基金申赎成交明细响应
+		virtual void OnRspQryPublicOfferedFundTradeDetail(CTORATstpPublicOfferedFundTradeDetailField *pPublicOfferedFundTradeDetailField, CTORATstpRspInfoField *pRspInfoField, int nRequestID, bool bIsLast) {}; 
+		
+		///查询要约收购信息
+		virtual void OnRspQryTenderInfo(CTORATstpTenderInfoField *pTenderInfoField, CTORATstpRspInfoField *pRspInfoField, int nRequestID, bool bIsLast) {}; 
+		
+		///查询基础设施基金非定向扩募信息响应
+		virtual void OnRspQryAdditionalOfferingInfo(CTORATstpAdditionalOfferingInfoField *pAdditionalOfferingInfoField, CTORATstpRspInfoField *pRspInfoField, int nRequestID, bool bIsLast) {}; 
+		
+		///查询基础设施基金非定向扩募配售额度响应
+		virtual void OnRspQryAdditionalOfferingQuota(CTORATstpAdditionalOfferingQuotaField *pAdditionalOfferingQuotaField, CTORATstpRspInfoField *pRspInfoField, int nRequestID, bool bIsLast) {}; 
 			
 	};
 	
@@ -313,7 +331,7 @@ namespace TORASTOCKAPI
 		///@param pszFlowPath 存贮订阅信息文件的目录，默认为当前目录
 		///@param bEncrpyt 网络数据是否加密传输，默认不加密
 		///@param eTradeCommMode 网络通讯模式，默认使用TCP模式
-		///@param pszInterfaceAddr UDP协议网卡地址，或TCPDIRECT网卡地址
+		///@param pszInterfaceAddr UDP协议网卡地址，或TCPDIRECT网卡名称
 		///@param bUsingOrderEx 是否使用报单扩展功能，默认不使用
 		///@return 创建出的TraderApi
 		static CTORATstpTraderApi *CreateTstpTraderApi(const char *pszFlowPath = "", bool bEncrypt = false, TTORATstpTradeCommModeType eTradeCommMode = TORA_TSTP_TCM_TCP, const char *pszInterfaceAddr = "", bool bUsingOrderEx = false);
@@ -388,6 +406,9 @@ namespace TORASTOCKAPI
 		
 		///报单录入请求
 		virtual int ReqOrderInsert(CTORATstpInputOrderField *pInputOrderField, int nRequestID) = 0;
+		
+		///公募基金管理人调仓报单请求
+		virtual int ReqPublicOfferedFundOrderInsert(CTORATstpInputOrderField *pInputOrderField, int nRequestID) = 0;
 		
 		///撤单请求
 		virtual int ReqOrderAction(CTORATstpInputOrderActionField *pInputOrderActionField, int nRequestID) = 0;
@@ -536,14 +557,14 @@ namespace TORASTOCKAPI
 		///查询投资者限仓信息请求
 		virtual int ReqQryInvestorPositionLimit(CTORATstpQryInvestorPositionLimitField *pQryInvestorPositionLimitField, int nRequestID) = 0;
 		
-		///查询深港通国际市场互联状态信息请求
-		virtual int ReqQrySZSEImcParams(CTORATstpQrySZSEImcParamsField *pQrySZSEImcParamsField, int nRequestID) = 0;
+		///查询国际市场互联状态信息请求
+		virtual int ReqQryImcParams(CTORATstpQryImcParamsField *pQryImcParamsField, int nRequestID) = 0;
 		
-		///查询深港通国际市场互联汇率信息请求
-		virtual int ReqQrySZSEImcExchangeRate(CTORATstpQrySZSEImcExchangeRateField *pQrySZSEImcExchangeRateField, int nRequestID) = 0;
+		///查询国际市场互联汇率信息请求
+		virtual int ReqQryImcExchangeRate(CTORATstpQryImcExchangeRateField *pQryImcExchangeRateField, int nRequestID) = 0;
 		
-		///查询深港通最小价差信息请求
-		virtual int ReqQrySZSEHKPriceTickInfo(CTORATstpQrySZSEHKPriceTickInfoField *pQrySZSEHKPriceTickInfoField, int nRequestID) = 0;
+		///查询最小价差信息请求
+		virtual int ReqQryHKPriceTickInfo(CTORATstpQryHKPriceTickInfoField *pQryHKPriceTickInfoField, int nRequestID) = 0;
 		
 		///查询LOF基金信息请求
 		virtual int ReqQryLofFundInfo(CTORATstpQryLofFundInfoField *pQryLofFundInfoField, int nRequestID) = 0;
@@ -574,6 +595,21 @@ namespace TORASTOCKAPI
 		
 		///查询协议交易参数请求
 		virtual int ReqQryNegotiationParam(CTORATstpQryNegotiationParamField *pQryNegotiationParamField, int nRequestID) = 0;
+		
+		///查询公募基金发行信息请求
+		virtual int ReqQryPublicOfferedFundInfo(CTORATstpQryPublicOfferedFundInfoField *pQryPublicOfferedFundInfoField, int nRequestID) = 0;
+		
+		///查询公募基金申赎成交明细请求
+		virtual int ReqQryPublicOfferedFundTradeDetail(CTORATstpQryPublicOfferedFundTradeDetailField *pQryPublicOfferedFundTradeDetailField, int nRequestID) = 0;
+		
+		///查询要约收购信息
+		virtual int ReqQryTenderInfo(CTORATstpQryTenderInfoField *pQryTenderInfoField, int nRequestID) = 0;
+		
+		///查询基础设施基金非定向扩募信息请求
+		virtual int ReqQryAdditionalOfferingInfo(CTORATstpQryAdditionalOfferingInfoField *pQryAdditionalOfferingInfoField, int nRequestID) = 0;
+		
+		///查询基础设施基金非定向扩募配售额度请求
+		virtual int ReqQryAdditionalOfferingQuota(CTORATstpQryAdditionalOfferingQuotaField *pQryAdditionalOfferingQuotaField, int nRequestID) = 0;
 		
 		
 	protected:

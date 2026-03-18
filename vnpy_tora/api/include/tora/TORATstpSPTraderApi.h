@@ -335,8 +335,10 @@ namespace TORASPAPI
 		///创建TraderApi
 		///@param pszFlowPath 存贮订阅信息文件的目录，默认为当前目录
 		///@param bEncrpyt 网络数据是否加密传输，默认不加密
+		///@param eTradeCommMode 网络通讯模式，默认使用TCP模式
+		///@param pszInterfaceAddr UDP协议网卡地址，或TCPDIRECT网卡地址
 		///@return 创建出的TraderApi
-		static CTORATstpSPTraderApi *CreateTstpSPTraderApi(const char *pszFlowPath = "", bool bEncrypt = false);
+		static CTORATstpSPTraderApi *CreateTstpSPTraderApi(const char *pszFlowPath = "", bool bEncrypt = false, TTORATstpSPTradeCommModeType eTradeCommMode = TORA_TSTP_SP_TCM_TCP, const char *pszInterfaceAddr = "");
 		
 		///获取API版本号
 		///@return 版本号
