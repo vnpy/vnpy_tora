@@ -76,6 +76,18 @@ case ONRSPUNSUBSIMPLIFYMARKETDATA:
 	break;
 }
 
+case ONRSPSUBIOPV:
+{
+	this->processRspSubIOPV(&task);
+	break;
+}
+
+case ONRSPUNSUBIOPV:
+{
+	this->processRspUnSubIOPV(&task);
+	break;
+}
+
 case ONRSPSUBSECURITYSTATUS:
 {
 	this->processRspSubSecurityStatus(&task);
@@ -205,6 +217,12 @@ case ONRTNSPECIALMARKETDATA:
 case ONRTNSIMPLIFYMARKETDATA:
 {
 	this->processRtnSimplifyMarketData(&task);
+	break;
+}
+
+case ONRTNIOPV:
+{
+	this->processRtnIOPV(&task);
 	break;
 }
 

@@ -41,6 +41,9 @@ class DataTypeGenerator:
         line = line.split(";")[0]
         line = line.replace("\t", " ")
 
+        if line.strip().startswith("#") or "inline" in line or "namespace" in line:
+            return
+
         if "const" in line:
             self.process_define(line)
         elif "typedef" in line and "__int64" not in line:
@@ -48,7 +51,15 @@ class DataTypeGenerator:
         elif "enum" in line:
             pass
             # self.process_enum(line)
-        elif line.replace(" ", "") and "{" not in line and "}" not in line and "///" not in line and "#" not in line and "__" not in line:
+        elif (
+            line.replace(" ", "")
+            and "{" not in line
+            and "}" not in line
+            and "///" not in line
+            and "#" not in line
+            and "__" not in line
+            and line.replace(" ", "").startswith("TORA_")
+        ):
             line = line.replace(" ", "")
             if "=" in line:
                 new_line = line.replace("=0,", "") + " = 1\n"
@@ -65,10 +76,15 @@ class DataTypeGenerator:
         if len(words) < 3:
             return
 
-        if "=" in words:
-            name = words[2]
-            value = words[-1]
+        if "=" not in words:
+            return
 
+        name = words[2]
+        if not name.startswith("TORA_"):
+            return
+
+        eq_idx = words.index("=")
+        value = " ".join(words[eq_idx + 1:])
         new_line = f"{name} = {value}\n"
         self.f_define.write(new_line)
 
@@ -113,6 +129,8 @@ class DataTypeGenerator:
 
 
 if __name__ == "__main__":
+    """"""
+
     # generator = DataTypeGenerator("../include/tora/TORATstpXMdApiDataType.h", "toramd")
     # generator.run()
 

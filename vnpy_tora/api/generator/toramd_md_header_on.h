@@ -24,6 +24,10 @@ virtual void onRspSubSimplifyMarketData(const dict &data, const dict &error) {};
 
 virtual void onRspUnSubSimplifyMarketData(const dict &data, const dict &error) {};
 
+virtual void onRspSubIOPV(const dict &data, const dict &error) {};
+
+virtual void onRspUnSubIOPV(const dict &data, const dict &error) {};
+
 virtual void onRspSubSecurityStatus(const dict &data, const dict &error) {};
 
 virtual void onRspUnSubSecurityStatus(const dict &data, const dict &error) {};
@@ -67,6 +71,8 @@ virtual void onRtnPHMarketData(const dict &data) {};
 virtual void onRtnSpecialMarketData(const dict &data) {};
 
 virtual void onRtnSimplifyMarketData(const dict &data) {};
+
+virtual void onRtnIOPV(const dict &data) {};
 
 virtual void onRtnSecurityStatus(const dict &data) {};
 

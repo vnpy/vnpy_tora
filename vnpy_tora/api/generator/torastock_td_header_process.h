@@ -16,6 +16,8 @@ void processRspInputDeviceSerial(Task *task);
 
 void processRspOrderInsert(Task *task);
 
+void processRspPublicOfferedFundOrderInsert(Task *task);
+
 void processRtnOrder(Task *task);
 
 void processErrRtnOrderInsert(Task *task);
@@ -152,11 +154,11 @@ void processRspQryETFBasket(Task *task);
 
 void processRspQryInvestorPositionLimit(Task *task);
 
-void processRspQrySZSEImcParams(Task *task);
+void processRspQryImcParams(Task *task);
 
-void processRspQrySZSEImcExchangeRate(Task *task);
+void processRspQryImcExchangeRate(Task *task);
 
-void processRspQrySZSEHKPriceTickInfo(Task *task);
+void processRspQryHKPriceTickInfo(Task *task);
 
 void processRspQryLofFundInfo(Task *task);
 
@@ -177,4 +179,14 @@ void processRspQryNegoOrderAction(Task *task);
 void processRspQryNegoTrade(Task *task);
 
 void processRspQryNegotiationParam(Task *task);
+
+void processRspQryPublicOfferedFundInfo(Task *task);
+
+void processRspQryPublicOfferedFundTradeDetail(Task *task);
+
+void processRspQryTenderInfo(Task *task);
+
+void processRspQryAdditionalOfferingInfo(Task *task);
+
+void processRspQryAdditionalOfferingQuota(Task *task);
 

@@ -113,6 +113,10 @@ CTORATstpMarketDataField = {
     "HWLevel": "int",
     "PreCloseIOPV": "double",
     "IOPV": "double",
+    "ETFPurVolume": "long long",
+    "ETFPurCount": "long long",
+    "ETFRedVolume": "long long",
+    "ETFRedCount": "long long",
 }
 
 CTORATstpQryRspInfoField = {
@@ -209,6 +213,16 @@ CTORATstpImcParamsField = {
     "ThresholdAmount": "double",
     "PosAmt": "double",
     "AmountStatus": "int",
+}
+
+CTORATstpIOPVField = {
+    "SecurityID": "string",
+    "ExchangeID": "char",
+    "SecurityName": "string",
+    "UpdateTime": "string",
+    "UpdateMillisec": "int",
+    "IOPV": "double",
+    "MDSecurityStat": "char",
 }
 
 CTORATstpRapidMarketDataField = {
@@ -308,3 +322,4 @@ CTORATstpConnectionInfoField = {
     "OuterPort": "int",
     "MacAddress": "string",
 }
+

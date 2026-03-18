@@ -274,6 +274,50 @@ void MdApi::processRspUnSubSimplifyMarketData(Task *task)
 	this->onRspUnSubSimplifyMarketData(data, error);
 };
 
+void MdApi::processRspSubIOPV(Task *task)
+{
+	gil_scoped_acquire acquire;
+	dict data;
+	if (task->task_data)
+	{
+		CTORATstpSpecificSecurityField *task_data = (CTORATstpSpecificSecurityField*)task->task_data;
+		data["ExchangeID"] = task_data->ExchangeID;
+		data["SecurityID"] = toUtf(task_data->SecurityID);
+		delete task_data;
+	}
+	dict error;
+	if (task->task_error)
+	{
+		CTORATstpRspInfoField *task_error = (CTORATstpRspInfoField*)task->task_error;
+		error["ErrorID"] = task_error->ErrorID;
+		error["ErrorMsg"] = toUtf(task_error->ErrorMsg);
+		delete task_error;
+	}
+	this->onRspSubIOPV(data, error);
+};
+
+void MdApi::processRspUnSubIOPV(Task *task)
+{
+	gil_scoped_acquire acquire;
+	dict data;
+	if (task->task_data)
+	{
+		CTORATstpSpecificSecurityField *task_data = (CTORATstpSpecificSecurityField*)task->task_data;
+		data["ExchangeID"] = task_data->ExchangeID;
+		data["SecurityID"] = toUtf(task_data->SecurityID);
+		delete task_data;
+	}
+	dict error;
+	if (task->task_error)
+	{
+		CTORATstpRspInfoField *task_error = (CTORATstpRspInfoField*)task->task_error;
+		error["ErrorID"] = task_error->ErrorID;
+		error["ErrorMsg"] = toUtf(task_error->ErrorMsg);
+		delete task_error;
+	}
+	this->onRspUnSubIOPV(data, error);
+};
+
 void MdApi::processRspSubSecurityStatus(Task *task)
 {
 	gil_scoped_acquire acquire;
@@ -456,6 +500,10 @@ void MdApi::processRspInquiryMarketDataMirror(Task *task)
 		data["HWLevel"] = task_data->HWLevel;
 		data["PreCloseIOPV"] = task_data->PreCloseIOPV;
 		data["IOPV"] = task_data->IOPV;
+		data["ETFPurVolume"] = task_data->ETFPurVolume;
+		data["ETFPurCount"] = task_data->ETFPurCount;
+		data["ETFRedVolume"] = task_data->ETFRedVolume;
+		data["ETFRedCount"] = task_data->ETFRedCount;
 		delete task_data;
 	}
 	dict error;
@@ -760,6 +808,10 @@ void MdApi::processRspInquirySPMarketDataMirror(Task *task)
 		data["HWLevel"] = task_data->HWLevel;
 		data["PreCloseIOPV"] = task_data->PreCloseIOPV;
 		data["IOPV"] = task_data->IOPV;
+		data["ETFPurVolume"] = task_data->ETFPurVolume;
+		data["ETFPurCount"] = task_data->ETFPurCount;
+		data["ETFRedVolume"] = task_data->ETFRedVolume;
+		data["ETFRedCount"] = task_data->ETFRedCount;
 		delete task_data;
 	}
 	dict error;
@@ -827,6 +879,10 @@ void MdApi::processRtnMarketData(Task *task)
 		data["HWLevel"] = task_data->HWLevel;
 		data["PreCloseIOPV"] = task_data->PreCloseIOPV;
 		data["IOPV"] = task_data->IOPV;
+		data["ETFPurVolume"] = task_data->ETFPurVolume;
+		data["ETFPurCount"] = task_data->ETFPurCount;
+		data["ETFRedVolume"] = task_data->ETFRedVolume;
+		data["ETFRedCount"] = task_data->ETFRedCount;
 		delete task_data;
 	}
 	this->onRtnMarketData(data);
@@ -903,6 +959,25 @@ void MdApi::processRtnSimplifyMarketData(Task *task)
 		delete task_data;
 	}
 	this->onRtnSimplifyMarketData(data);
+};
+
+void MdApi::processRtnIOPV(Task *task)
+{
+	gil_scoped_acquire acquire;
+	dict data;
+	if (task->task_data)
+	{
+		CTORATstpIOPVField *task_data = (CTORATstpIOPVField*)task->task_data;
+		data["SecurityID"] = toUtf(task_data->SecurityID);
+		data["ExchangeID"] = task_data->ExchangeID;
+		data["SecurityName"] = toUtf(task_data->SecurityName);
+		data["UpdateTime"] = toUtf(task_data->UpdateTime);
+		data["UpdateMillisec"] = task_data->UpdateMillisec;
+		data["IOPV"] = task_data->IOPV;
+		data["MDSecurityStat"] = task_data->MDSecurityStat;
+		delete task_data;
+	}
+	this->onRtnIOPV(data);
 };
 
 void MdApi::processRtnSecurityStatus(Task *task)
@@ -1025,6 +1100,10 @@ void MdApi::processRtnSPMarketData(Task *task)
 		data["HWLevel"] = task_data->HWLevel;
 		data["PreCloseIOPV"] = task_data->PreCloseIOPV;
 		data["IOPV"] = task_data->IOPV;
+		data["ETFPurVolume"] = task_data->ETFPurVolume;
+		data["ETFPurCount"] = task_data->ETFPurCount;
+		data["ETFRedVolume"] = task_data->ETFRedVolume;
+		data["ETFRedCount"] = task_data->ETFRedCount;
 		delete task_data;
 	}
 	this->onRtnSPMarketData(data);

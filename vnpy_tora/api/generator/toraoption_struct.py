@@ -1,9 +1,14 @@
 CTORATstpSPFensUserInfoField = {
-    "LogInAccount": "string",
-    "LogInAccountType": "char",
+    "FensVer": "int",
+    "FensEnvID": "string",
+    "FensNodeID": "string",
+    "FensUserID": "string",
+    "UserID": "string",
+    "ClientInfo": "string",
 }
 
 CTORATstpSPConnectionInfoField = {
+    "RequestID": "int",
     "InnerIPAddress": "string",
     "InnerPort": "int",
     "OuterIPAddress": "string",
@@ -21,6 +26,7 @@ CTORATstpSPReqUserLoginField = {
     "OneTimePassword": "string",
     "InnerIPAddress": "string",
     "Lang": "char",
+    "RequestID": "int",
     "TerminalInfo": "string",
     "GWMacAddress": "string",
     "GWInnerIPAddress": "string",
@@ -77,15 +83,18 @@ CTORATstpSPRspInfoField = {
 
 CTORATstpSPUserLogoutField = {
     "UserID": "string",
+    "RequestID": "int",
 }
 
 CTORATstpSPUserPasswordUpdateField = {
     "UserID": "string",
     "OldPassword": "string",
     "NewPassword": "string",
+    "RequestID": "int",
 }
 
 CTORATstpSPReqInputDeviceSerialField = {
+    "RequestID": "int",
     "UserID": "string",
     "DeviceID": "string",
     "CertSerial": "string",
@@ -110,6 +119,7 @@ CTORATstpSPInputOrderField = {
     "VolumeCondition": "char",
     "MinVolume": "int",
     "ForceCloseReason": "char",
+    "RequestID": "int",
     "UserForceClose": "int",
     "InvestorID": "string",
     "ExchangeID": "char",
@@ -198,6 +208,7 @@ CTORATstpSPInputOrderActionField = {
     "ExchangeID": "char",
     "OrderSysID": "string",
     "OrderActionFlag": "char",
+    "RequestID": "int",
     "SecurityID": "string",
     "InnerIPAddress": "string",
     "MacAddress": "string",
@@ -243,6 +254,7 @@ CTORATstpSPInputExerciseField = {
     "SecurityID": "string",
     "ExerciseRef": "int",
     "Volume": "int",
+    "RequestID": "int",
     "BusinessUnitID": "string",
     "ExerciseType": "char",
     "ExchangeID": "char",
@@ -315,6 +327,7 @@ CTORATstpSPInputExerciseActionField = {
     "InvestorID": "string",
     "ExerciseActionRef": "int",
     "ExerciseRef": "int",
+    "RequestID": "int",
     "FrontID": "int",
     "SessionID": "int",
     "ExchangeID": "char",
@@ -339,6 +352,7 @@ CTORATstpSPInputLockField = {
     "LockRef": "int",
     "LockType": "char",
     "Volume": "int",
+    "RequestID": "int",
     "InvestorID": "string",
     "ExchangeID": "char",
     "ShareholderID": "string",
@@ -405,6 +419,7 @@ CTORATstpSPInputLockActionField = {
     "InvestorID": "string",
     "LockActionRef": "int",
     "LockRef": "int",
+    "RequestID": "int",
     "FrontID": "int",
     "SessionID": "int",
     "ExchangeID": "char",
@@ -477,6 +492,7 @@ CTORATstpSPInputCombOrderField = {
     "CombDirection": "char",
     "ExchangeCombID": "string",
     "Volume": "int",
+    "RequestID": "int",
     "InvestorID": "string",
     "ExchangeID": "char",
     "ShareholderID": "string",
@@ -549,6 +565,7 @@ CTORATstpSPInputCombOrderActionField = {
     "InvestorID": "string",
     "CombOrderActionRef": "int",
     "CombOrderRef": "int",
+    "RequestID": "int",
     "FrontID": "int",
     "SessionID": "int",
     "ExchangeID": "char",
@@ -581,6 +598,7 @@ CTORATstpSPInputCondOrderField = {
     "VolumeCondition": "char",
     "MinVolume": "int",
     "ForceCloseReason": "char",
+    "RequestID": "int",
     "UserForceClose": "int",
     "InvestorID": "string",
     "ExchangeID": "char",
@@ -673,6 +691,7 @@ CTORATstpSPConditionOrderField = {
 }
 
 CTORATstpSPInputCondOrderActionField = {
+    "RequestID": "int",
     "ExchangeID": "char",
     "CondOrderActionRef": "int",
     "CondOrderRef": "int",
@@ -701,6 +720,7 @@ CTORATstpSPInputCombExerciseField = {
     "PutSecurityID": "string",
     "CombExerciseRef": "int",
     "Volume": "int",
+    "RequestID": "int",
     "BusinessUnitID": "string",
     "ExchangeID": "char",
     "ShareholderID": "string",
@@ -770,6 +790,7 @@ CTORATstpSPInputCombExerciseActionField = {
     "InvestorID": "string",
     "CombExerciseActionRef": "int",
     "CombExerciseRef": "int",
+    "RequestID": "int",
     "FrontID": "int",
     "SessionID": "int",
     "ExchangeID": "char",
@@ -796,6 +817,7 @@ CTORATstpSPReqInquiryMaxLockVolumeField = {
     "ShareholderID": "string",
     "ExchangeID": "char",
     "SecurityID": "string",
+    "RequestID": "int",
 }
 
 CTORATstpSPRspInquiryMaxLockVolumeField = {
@@ -814,6 +836,7 @@ CTORATstpSPReqInquiryMaxCoverVolumeField = {
     "ShareholderID": "string",
     "ExchangeID": "char",
     "SecurityID": "string",
+    "RequestID": "int",
 }
 
 CTORATstpSPRspInquiryMaxCoverVolumeField = {
@@ -835,6 +858,7 @@ CTORATstpSPReqInquirySplitCombMarginDifferenceField = {
     "ShareholderID": "string",
     "CombinationStrategy": "char",
     "Volume": "int",
+    "RequestID": "int",
 }
 
 CTORATstpSPRspInquirySplitCombMarginDifferenceField = {
@@ -863,6 +887,7 @@ CTORATstpSPInputTransferFundField = {
     "CurrencyID": "char",
     "TransferDirection": "char",
     "Amount": "double",
+    "RequestID": "int",
     "DepartmentID": "string",
     "TradingAccountPassword": "string",
     "BankID": "char",
@@ -938,6 +963,7 @@ CTORATstpSPInputTransferStockPositionField = {
     "SPStockTransferReason": "char",
     "Volume": "int",
     "TransferPositionType": "char",
+    "RequestID": "int",
 }
 
 CTORATstpSPTransferStockPositionField = {
@@ -967,6 +993,7 @@ CTORATstpSPReqInquiryJZFundField = {
     "AccountID": "string",
     "CurrencyID": "char",
     "DepartmentID": "string",
+    "RequestID": "int",
 }
 
 CTORATstpSPRspInquiryJZFundField = {
@@ -982,6 +1009,7 @@ CTORATstpSPReqInquiryBankAccountFundField = {
     "AccountID": "string",
     "CurrencyID": "char",
     "DepartmentID": "string",
+    "RequestID": "int",
     "BankAccountPassword": "string",
 }
 
@@ -1003,6 +1031,7 @@ CTORATstpSPReqInquiryStockPositionField = {
     "TradingDay": "string",
     "ExchangeID": "char",
     "SecurityID": "string",
+    "RequestID": "int",
 }
 
 CTORATstpSPRspInquiryStockPositionField = {
@@ -2370,3 +2399,4 @@ CTORATstpSPCombExerciseActionField = {
     "OuterIPAddress": "string",
     "OuterPort": "int",
 }
+

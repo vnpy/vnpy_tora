@@ -26,6 +26,9 @@ int StockApi::reqUserLogin(const dict &req, int nRequestID)
 	getString(req, "CertSerial", myreq.CertSerial);
 	getChar(req, "DeviceType", &myreq.DeviceType);
 	getInt(req, "NodeRef", &myreq.NodeRef);
+	getString(req, "GwInnerIPAddress", myreq.GwInnerIPAddress);
+	getString(req, "GwOuterIPAddress", myreq.GwOuterIPAddress);
+	getString(req, "GwMacAddress", myreq.GwMacAddress);
 	int i = this->api->ReqUserLogin(&myreq, nRequestID);
 	return i;
 };
@@ -94,6 +97,38 @@ int StockApi::reqOrderInsert(const dict &req, int nRequestID)
 	getString(req, "SInfo", myreq.SInfo);
 	getInt(req, "IInfo", &myreq.IInfo);
 	int i = this->api->ReqOrderInsert(&myreq, nRequestID);
+	return i;
+};
+
+int StockApi::reqPublicOfferedFundOrderInsert(const dict &req, int nRequestID)
+{
+	CTORATstpInputOrderField myreq = CTORATstpInputOrderField();
+	memset(&myreq, 0, sizeof(myreq));
+	getInt(req, "UserRequestID", &myreq.UserRequestID);
+	getChar(req, "ExchangeID", &myreq.ExchangeID);
+	getString(req, "InvestorID", myreq.InvestorID);
+	getString(req, "BusinessUnitID", myreq.BusinessUnitID);
+	getString(req, "ShareholderID", myreq.ShareholderID);
+	getString(req, "SecurityID", myreq.SecurityID);
+	getChar(req, "Direction", &myreq.Direction);
+	getDouble(req, "LimitPrice", &myreq.LimitPrice);
+	getInt(req, "VolumeTotalOriginal", &myreq.VolumeTotalOriginal);
+	getChar(req, "OrderPriceType", &myreq.OrderPriceType);
+	getChar(req, "TimeCondition", &myreq.TimeCondition);
+	getChar(req, "VolumeCondition", &myreq.VolumeCondition);
+	getChar(req, "Operway", &myreq.Operway);
+	getInt(req, "OrderRef", &myreq.OrderRef);
+	getChar(req, "LotType", &myreq.LotType);
+	getString(req, "OrderSysID", myreq.OrderSysID);
+	getChar(req, "CondCheck", &myreq.CondCheck);
+	getString(req, "GTDate", myreq.GTDate);
+	getChar(req, "ForceCloseReason", &myreq.ForceCloseReason);
+	getString(req, "CreditDebtID", myreq.CreditDebtID);
+	getChar(req, "CreditQuotaType", &myreq.CreditQuotaType);
+	getInt(req, "DiscountCouponID", &myreq.DiscountCouponID);
+	getString(req, "SInfo", myreq.SInfo);
+	getInt(req, "IInfo", &myreq.IInfo);
+	int i = this->api->ReqPublicOfferedFundOrderInsert(&myreq, nRequestID);
 	return i;
 };
 
@@ -845,31 +880,33 @@ int StockApi::reqQryInvestorPositionLimit(const dict &req, int nRequestID)
 	return i;
 };
 
-int StockApi::reqQrySZSEImcParams(const dict &req, int nRequestID)
+int StockApi::reqQryImcParams(const dict &req, int nRequestID)
 {
-	CTORATstpQrySZSEImcParamsField myreq = CTORATstpQrySZSEImcParamsField();
+	CTORATstpQryImcParamsField myreq = CTORATstpQryImcParamsField();
 	memset(&myreq, 0, sizeof(myreq));
 	getChar(req, "MarketID", &myreq.MarketID);
-	int i = this->api->ReqQrySZSEImcParams(&myreq, nRequestID);
+	int i = this->api->ReqQryImcParams(&myreq, nRequestID);
 	return i;
 };
 
-int StockApi::reqQrySZSEImcExchangeRate(const dict &req, int nRequestID)
+int StockApi::reqQryImcExchangeRate(const dict &req, int nRequestID)
 {
-	CTORATstpQrySZSEImcExchangeRateField myreq = CTORATstpQrySZSEImcExchangeRateField();
+	CTORATstpQryImcExchangeRateField myreq = CTORATstpQryImcExchangeRateField();
 	memset(&myreq, 0, sizeof(myreq));
 	getChar(req, "FromCurrency", &myreq.FromCurrency);
 	getChar(req, "ToCurrency", &myreq.ToCurrency);
-	int i = this->api->ReqQrySZSEImcExchangeRate(&myreq, nRequestID);
+	getChar(req, "MarketID", &myreq.MarketID);
+	int i = this->api->ReqQryImcExchangeRate(&myreq, nRequestID);
 	return i;
 };
 
-int StockApi::reqQrySZSEHKPriceTickInfo(const dict &req, int nRequestID)
+int StockApi::reqQryHKPriceTickInfo(const dict &req, int nRequestID)
 {
-	CTORATstpQrySZSEHKPriceTickInfoField myreq = CTORATstpQrySZSEHKPriceTickInfoField();
+	CTORATstpQryHKPriceTickInfoField myreq = CTORATstpQryHKPriceTickInfoField();
 	memset(&myreq, 0, sizeof(myreq));
 	getChar(req, "PriceTickID", &myreq.PriceTickID);
-	int i = this->api->ReqQrySZSEHKPriceTickInfo(&myreq, nRequestID);
+	getChar(req, "MarketID", &myreq.MarketID);
+	int i = this->api->ReqQryHKPriceTickInfo(&myreq, nRequestID);
 	return i;
 };
 
@@ -1007,6 +1044,64 @@ int StockApi::reqQryNegotiationParam(const dict &req, int nRequestID)
 	getChar(req, "ExchangeID", &myreq.ExchangeID);
 	getString(req, "SecurityID", myreq.SecurityID);
 	int i = this->api->ReqQryNegotiationParam(&myreq, nRequestID);
+	return i;
+};
+
+int StockApi::reqQryPublicOfferedFundInfo(const dict &req, int nRequestID)
+{
+	CTORATstpQryPublicOfferedFundInfoField myreq = CTORATstpQryPublicOfferedFundInfoField();
+	memset(&myreq, 0, sizeof(myreq));
+	getChar(req, "ExchangeID", &myreq.ExchangeID);
+	getString(req, "SecurityID", myreq.SecurityID);
+	getString(req, "ManagerID", myreq.ManagerID);
+	int i = this->api->ReqQryPublicOfferedFundInfo(&myreq, nRequestID);
+	return i;
+};
+
+int StockApi::reqQryPublicOfferedFundTradeDetail(const dict &req, int nRequestID)
+{
+	CTORATstpQryPublicOfferedFundTradeDetailField myreq = CTORATstpQryPublicOfferedFundTradeDetailField();
+	memset(&myreq, 0, sizeof(myreq));
+	getChar(req, "ExchangeID", &myreq.ExchangeID);
+	getString(req, "FundSecurityID", myreq.FundSecurityID);
+	getString(req, "ManagerID", myreq.ManagerID);
+	getInt(req, "IndexStart", &myreq.IndexStart);
+	getInt(req, "IndexEnd", &myreq.IndexEnd);
+	int i = this->api->ReqQryPublicOfferedFundTradeDetail(&myreq, nRequestID);
+	return i;
+};
+
+int StockApi::reqQryTenderInfo(const dict &req, int nRequestID)
+{
+	CTORATstpQryTenderInfoField myreq = CTORATstpQryTenderInfoField();
+	memset(&myreq, 0, sizeof(myreq));
+	getChar(req, "ExchangeID", &myreq.ExchangeID);
+	getString(req, "TenderSecurityID", myreq.TenderSecurityID);
+	getString(req, "TendererID", myreq.TendererID);
+	getString(req, "UnderlyingSecurityID", myreq.UnderlyingSecurityID);
+	int i = this->api->ReqQryTenderInfo(&myreq, nRequestID);
+	return i;
+};
+
+int StockApi::reqQryAdditionalOfferingInfo(const dict &req, int nRequestID)
+{
+	CTORATstpQryAdditionalOfferingInfoField myreq = CTORATstpQryAdditionalOfferingInfoField();
+	memset(&myreq, 0, sizeof(myreq));
+	getChar(req, "ExchangeID", &myreq.ExchangeID);
+	getString(req, "SecurityID", myreq.SecurityID);
+	int i = this->api->ReqQryAdditionalOfferingInfo(&myreq, nRequestID);
+	return i;
+};
+
+int StockApi::reqQryAdditionalOfferingQuota(const dict &req, int nRequestID)
+{
+	CTORATstpQryAdditionalOfferingQuotaField myreq = CTORATstpQryAdditionalOfferingQuotaField();
+	memset(&myreq, 0, sizeof(myreq));
+	getChar(req, "ExchangeID", &myreq.ExchangeID);
+	getString(req, "SecurityID", myreq.SecurityID);
+	getString(req, "ShareholderID", myreq.ShareholderID);
+	getString(req, "InvestorID", myreq.InvestorID);
+	int i = this->api->ReqQryAdditionalOfferingQuota(&myreq, nRequestID);
 	return i;
 };
 

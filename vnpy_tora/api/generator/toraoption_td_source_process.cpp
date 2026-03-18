@@ -31,6 +31,7 @@ void OptionApi::processRspGetConnectionInfo(Task *task)
 	if (task->task_data)
 	{
 		CTORATstpSPConnectionInfoField *task_data = (CTORATstpSPConnectionInfoField*)task->task_data;
+		data["RequestID"] = task_data->RequestID;
 		data["InnerIPAddress"] = toUtf(task_data->InnerIPAddress);
 		data["InnerPort"] = task_data->InnerPort;
 		data["OuterIPAddress"] = toUtf(task_data->OuterIPAddress);
@@ -108,6 +109,7 @@ void OptionApi::processRspUserLogout(Task *task)
 	{
 		CTORATstpSPUserLogoutField *task_data = (CTORATstpSPUserLogoutField*)task->task_data;
 		data["UserID"] = toUtf(task_data->UserID);
+		data["RequestID"] = task_data->RequestID;
 		delete task_data;
 	}
 	dict error;
@@ -131,6 +133,7 @@ void OptionApi::processRspUserPasswordUpdate(Task *task)
 		data["UserID"] = toUtf(task_data->UserID);
 		data["OldPassword"] = toUtf(task_data->OldPassword);
 		data["NewPassword"] = toUtf(task_data->NewPassword);
+		data["RequestID"] = task_data->RequestID;
 		delete task_data;
 	}
 	dict error;
@@ -185,6 +188,7 @@ void OptionApi::processRspOrderInsert(Task *task)
 		data["VolumeCondition"] = task_data->VolumeCondition;
 		data["MinVolume"] = task_data->MinVolume;
 		data["ForceCloseReason"] = task_data->ForceCloseReason;
+		data["RequestID"] = task_data->RequestID;
 		data["UserForceClose"] = task_data->UserForceClose;
 		data["InvestorID"] = toUtf(task_data->InvestorID);
 		data["ExchangeID"] = task_data->ExchangeID;
@@ -299,6 +303,7 @@ void OptionApi::processErrRtnOrderInsert(Task *task)
 		data["VolumeCondition"] = task_data->VolumeCondition;
 		data["MinVolume"] = task_data->MinVolume;
 		data["ForceCloseReason"] = task_data->ForceCloseReason;
+		data["RequestID"] = task_data->RequestID;
 		data["UserForceClose"] = task_data->UserForceClose;
 		data["InvestorID"] = toUtf(task_data->InvestorID);
 		data["ExchangeID"] = task_data->ExchangeID;
@@ -346,6 +351,7 @@ void OptionApi::processRspOrderAction(Task *task)
 		data["ExchangeID"] = task_data->ExchangeID;
 		data["OrderSysID"] = toUtf(task_data->OrderSysID);
 		data["OrderActionFlag"] = task_data->OrderActionFlag;
+		data["RequestID"] = task_data->RequestID;
 		data["SecurityID"] = toUtf(task_data->SecurityID);
 		data["InnerIPAddress"] = toUtf(task_data->InnerIPAddress);
 		data["MacAddress"] = toUtf(task_data->MacAddress);
@@ -386,6 +392,7 @@ void OptionApi::processErrRtnOrderAction(Task *task)
 		data["ExchangeID"] = task_data->ExchangeID;
 		data["OrderSysID"] = toUtf(task_data->OrderSysID);
 		data["OrderActionFlag"] = task_data->OrderActionFlag;
+		data["RequestID"] = task_data->RequestID;
 		data["SecurityID"] = toUtf(task_data->SecurityID);
 		data["InnerIPAddress"] = toUtf(task_data->InnerIPAddress);
 		data["MacAddress"] = toUtf(task_data->MacAddress);
@@ -457,6 +464,7 @@ void OptionApi::processRspExerciseInsert(Task *task)
 		data["SecurityID"] = toUtf(task_data->SecurityID);
 		data["ExerciseRef"] = task_data->ExerciseRef;
 		data["Volume"] = task_data->Volume;
+		data["RequestID"] = task_data->RequestID;
 		data["BusinessUnitID"] = toUtf(task_data->BusinessUnitID);
 		data["ExerciseType"] = task_data->ExerciseType;
 		data["ExchangeID"] = task_data->ExchangeID;
@@ -556,6 +564,7 @@ void OptionApi::processErrRtnExerciseInsert(Task *task)
 		data["SecurityID"] = toUtf(task_data->SecurityID);
 		data["ExerciseRef"] = task_data->ExerciseRef;
 		data["Volume"] = task_data->Volume;
+		data["RequestID"] = task_data->RequestID;
 		data["BusinessUnitID"] = toUtf(task_data->BusinessUnitID);
 		data["ExerciseType"] = task_data->ExerciseType;
 		data["ExchangeID"] = task_data->ExchangeID;
@@ -595,6 +604,7 @@ void OptionApi::processRspExerciseAction(Task *task)
 		data["InvestorID"] = toUtf(task_data->InvestorID);
 		data["ExerciseActionRef"] = task_data->ExerciseActionRef;
 		data["ExerciseRef"] = task_data->ExerciseRef;
+		data["RequestID"] = task_data->RequestID;
 		data["FrontID"] = task_data->FrontID;
 		data["SessionID"] = task_data->SessionID;
 		data["ExchangeID"] = task_data->ExchangeID;
@@ -635,6 +645,7 @@ void OptionApi::processErrRtnExerciseAction(Task *task)
 		data["InvestorID"] = toUtf(task_data->InvestorID);
 		data["ExerciseActionRef"] = task_data->ExerciseActionRef;
 		data["ExerciseRef"] = task_data->ExerciseRef;
+		data["RequestID"] = task_data->RequestID;
 		data["FrontID"] = task_data->FrontID;
 		data["SessionID"] = task_data->SessionID;
 		data["ExchangeID"] = task_data->ExchangeID;
@@ -676,6 +687,7 @@ void OptionApi::processRspLockInsert(Task *task)
 		data["LockRef"] = task_data->LockRef;
 		data["LockType"] = task_data->LockType;
 		data["Volume"] = task_data->Volume;
+		data["RequestID"] = task_data->RequestID;
 		data["InvestorID"] = toUtf(task_data->InvestorID);
 		data["ExchangeID"] = task_data->ExchangeID;
 		data["ShareholderID"] = toUtf(task_data->ShareholderID);
@@ -769,6 +781,7 @@ void OptionApi::processErrRtnLockInsert(Task *task)
 		data["LockRef"] = task_data->LockRef;
 		data["LockType"] = task_data->LockType;
 		data["Volume"] = task_data->Volume;
+		data["RequestID"] = task_data->RequestID;
 		data["InvestorID"] = toUtf(task_data->InvestorID);
 		data["ExchangeID"] = task_data->ExchangeID;
 		data["ShareholderID"] = toUtf(task_data->ShareholderID);
@@ -807,6 +820,7 @@ void OptionApi::processRspLockAction(Task *task)
 		data["InvestorID"] = toUtf(task_data->InvestorID);
 		data["LockActionRef"] = task_data->LockActionRef;
 		data["LockRef"] = task_data->LockRef;
+		data["RequestID"] = task_data->RequestID;
 		data["FrontID"] = task_data->FrontID;
 		data["SessionID"] = task_data->SessionID;
 		data["ExchangeID"] = task_data->ExchangeID;
@@ -847,6 +861,7 @@ void OptionApi::processErrRtnLockAction(Task *task)
 		data["InvestorID"] = toUtf(task_data->InvestorID);
 		data["LockActionRef"] = task_data->LockActionRef;
 		data["LockRef"] = task_data->LockRef;
+		data["RequestID"] = task_data->RequestID;
 		data["FrontID"] = task_data->FrontID;
 		data["SessionID"] = task_data->SessionID;
 		data["ExchangeID"] = task_data->ExchangeID;
@@ -945,6 +960,7 @@ void OptionApi::processRspCombOrderInsert(Task *task)
 		data["CombDirection"] = task_data->CombDirection;
 		data["ExchangeCombID"] = toUtf(task_data->ExchangeCombID);
 		data["Volume"] = task_data->Volume;
+		data["RequestID"] = task_data->RequestID;
 		data["InvestorID"] = toUtf(task_data->InvestorID);
 		data["ExchangeID"] = task_data->ExchangeID;
 		data["ShareholderID"] = toUtf(task_data->ShareholderID);
@@ -1046,6 +1062,7 @@ void OptionApi::processErrRtnCombOrderInsert(Task *task)
 		data["CombDirection"] = task_data->CombDirection;
 		data["ExchangeCombID"] = toUtf(task_data->ExchangeCombID);
 		data["Volume"] = task_data->Volume;
+		data["RequestID"] = task_data->RequestID;
 		data["InvestorID"] = toUtf(task_data->InvestorID);
 		data["ExchangeID"] = task_data->ExchangeID;
 		data["ShareholderID"] = toUtf(task_data->ShareholderID);
@@ -1085,6 +1102,7 @@ void OptionApi::processRspCombOrderAction(Task *task)
 		data["InvestorID"] = toUtf(task_data->InvestorID);
 		data["CombOrderActionRef"] = task_data->CombOrderActionRef;
 		data["CombOrderRef"] = task_data->CombOrderRef;
+		data["RequestID"] = task_data->RequestID;
 		data["FrontID"] = task_data->FrontID;
 		data["SessionID"] = task_data->SessionID;
 		data["ExchangeID"] = task_data->ExchangeID;
@@ -1125,6 +1143,7 @@ void OptionApi::processErrRtnCombOrderAction(Task *task)
 		data["InvestorID"] = toUtf(task_data->InvestorID);
 		data["CombOrderActionRef"] = task_data->CombOrderActionRef;
 		data["CombOrderRef"] = task_data->CombOrderRef;
+		data["RequestID"] = task_data->RequestID;
 		data["FrontID"] = task_data->FrontID;
 		data["SessionID"] = task_data->SessionID;
 		data["ExchangeID"] = task_data->ExchangeID;
@@ -1174,6 +1193,7 @@ void OptionApi::processRspCondOrderInsert(Task *task)
 		data["VolumeCondition"] = task_data->VolumeCondition;
 		data["MinVolume"] = task_data->MinVolume;
 		data["ForceCloseReason"] = task_data->ForceCloseReason;
+		data["RequestID"] = task_data->RequestID;
 		data["UserForceClose"] = task_data->UserForceClose;
 		data["InvestorID"] = toUtf(task_data->InvestorID);
 		data["ExchangeID"] = task_data->ExchangeID;
@@ -1304,6 +1324,7 @@ void OptionApi::processErrRtnCondOrderInsert(Task *task)
 		data["VolumeCondition"] = task_data->VolumeCondition;
 		data["MinVolume"] = task_data->MinVolume;
 		data["ForceCloseReason"] = task_data->ForceCloseReason;
+		data["RequestID"] = task_data->RequestID;
 		data["UserForceClose"] = task_data->UserForceClose;
 		data["InvestorID"] = toUtf(task_data->InvestorID);
 		data["ExchangeID"] = task_data->ExchangeID;
@@ -1354,6 +1375,7 @@ void OptionApi::processRspCondOrderAction(Task *task)
 	if (task->task_data)
 	{
 		CTORATstpSPInputCondOrderActionField *task_data = (CTORATstpSPInputCondOrderActionField*)task->task_data;
+		data["RequestID"] = task_data->RequestID;
 		data["ExchangeID"] = task_data->ExchangeID;
 		data["CondOrderActionRef"] = task_data->CondOrderActionRef;
 		data["CondOrderRef"] = task_data->CondOrderRef;
@@ -1394,6 +1416,7 @@ void OptionApi::processErrRtnCondOrderAction(Task *task)
 	if (task->task_data)
 	{
 		CTORATstpSPInputCondOrderActionField *task_data = (CTORATstpSPInputCondOrderActionField*)task->task_data;
+		data["RequestID"] = task_data->RequestID;
 		data["ExchangeID"] = task_data->ExchangeID;
 		data["CondOrderActionRef"] = task_data->CondOrderActionRef;
 		data["CondOrderRef"] = task_data->CondOrderRef;
@@ -1439,6 +1462,7 @@ void OptionApi::processRspCombExerciseInsert(Task *task)
 		data["PutSecurityID"] = toUtf(task_data->PutSecurityID);
 		data["CombExerciseRef"] = task_data->CombExerciseRef;
 		data["Volume"] = task_data->Volume;
+		data["RequestID"] = task_data->RequestID;
 		data["BusinessUnitID"] = toUtf(task_data->BusinessUnitID);
 		data["ExchangeID"] = task_data->ExchangeID;
 		data["ShareholderID"] = toUtf(task_data->ShareholderID);
@@ -1536,6 +1560,7 @@ void OptionApi::processErrRtnCombExerciseInsert(Task *task)
 		data["PutSecurityID"] = toUtf(task_data->PutSecurityID);
 		data["CombExerciseRef"] = task_data->CombExerciseRef;
 		data["Volume"] = task_data->Volume;
+		data["RequestID"] = task_data->RequestID;
 		data["BusinessUnitID"] = toUtf(task_data->BusinessUnitID);
 		data["ExchangeID"] = task_data->ExchangeID;
 		data["ShareholderID"] = toUtf(task_data->ShareholderID);
@@ -1574,6 +1599,7 @@ void OptionApi::processRspCombExerciseAction(Task *task)
 		data["InvestorID"] = toUtf(task_data->InvestorID);
 		data["CombExerciseActionRef"] = task_data->CombExerciseActionRef;
 		data["CombExerciseRef"] = task_data->CombExerciseRef;
+		data["RequestID"] = task_data->RequestID;
 		data["FrontID"] = task_data->FrontID;
 		data["SessionID"] = task_data->SessionID;
 		data["ExchangeID"] = task_data->ExchangeID;
@@ -1615,6 +1641,7 @@ void OptionApi::processErrRtnCombExerciseAction(Task *task)
 		data["InvestorID"] = toUtf(task_data->InvestorID);
 		data["CombExerciseActionRef"] = task_data->CombExerciseActionRef;
 		data["CombExerciseRef"] = task_data->CombExerciseRef;
+		data["RequestID"] = task_data->RequestID;
 		data["FrontID"] = task_data->FrontID;
 		data["SessionID"] = task_data->SessionID;
 		data["ExchangeID"] = task_data->ExchangeID;
@@ -1749,6 +1776,7 @@ void OptionApi::processRspTransferFund(Task *task)
 		data["CurrencyID"] = task_data->CurrencyID;
 		data["TransferDirection"] = task_data->TransferDirection;
 		data["Amount"] = task_data->Amount;
+		data["RequestID"] = task_data->RequestID;
 		data["DepartmentID"] = toUtf(task_data->DepartmentID);
 		data["TradingAccountPassword"] = toUtf(task_data->TradingAccountPassword);
 		data["BankID"] = task_data->BankID;
@@ -1805,6 +1833,7 @@ void OptionApi::processErrRtnTransferFund(Task *task)
 		data["CurrencyID"] = task_data->CurrencyID;
 		data["TransferDirection"] = task_data->TransferDirection;
 		data["Amount"] = task_data->Amount;
+		data["RequestID"] = task_data->RequestID;
 		data["DepartmentID"] = toUtf(task_data->DepartmentID);
 		data["TradingAccountPassword"] = toUtf(task_data->TradingAccountPassword);
 		data["BankID"] = task_data->BankID;
@@ -1905,6 +1934,7 @@ void OptionApi::processRspTransferStockPosition(Task *task)
 		data["SPStockTransferReason"] = task_data->SPStockTransferReason;
 		data["Volume"] = task_data->Volume;
 		data["TransferPositionType"] = task_data->TransferPositionType;
+		data["RequestID"] = task_data->RequestID;
 		delete task_data;
 	}
 	dict error;
@@ -1967,6 +1997,7 @@ void OptionApi::processErrRtnTransferStockPosition(Task *task)
 		data["SPStockTransferReason"] = task_data->SPStockTransferReason;
 		data["Volume"] = task_data->Volume;
 		data["TransferPositionType"] = task_data->TransferPositionType;
+		data["RequestID"] = task_data->RequestID;
 		delete task_data;
 	}
 	dict error;

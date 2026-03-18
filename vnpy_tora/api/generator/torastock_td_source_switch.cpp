@@ -52,6 +52,12 @@ case ONRSPORDERINSERT:
 	break;
 }
 
+case ONRSPPUBLICOFFEREDFUNDORDERINSERT:
+{
+	this->processRspPublicOfferedFundOrderInsert(&task);
+	break;
+}
+
 case ONRTNORDER:
 {
 	this->processRtnOrder(&task);
@@ -460,21 +466,21 @@ case ONRSPQRYINVESTORPOSITIONLIMIT:
 	break;
 }
 
-case ONRSPQRYSZSEIMCPARAMS:
+case ONRSPQRYIMCPARAMS:
 {
-	this->processRspQrySZSEImcParams(&task);
+	this->processRspQryImcParams(&task);
 	break;
 }
 
-case ONRSPQRYSZSEIMCEXCHANGERATE:
+case ONRSPQRYIMCEXCHANGERATE:
 {
-	this->processRspQrySZSEImcExchangeRate(&task);
+	this->processRspQryImcExchangeRate(&task);
 	break;
 }
 
-case ONRSPQRYSZSEHKPRICETICKINFO:
+case ONRSPQRYHKPRICETICKINFO:
 {
-	this->processRspQrySZSEHKPriceTickInfo(&task);
+	this->processRspQryHKPriceTickInfo(&task);
 	break;
 }
 
@@ -535,6 +541,36 @@ case ONRSPQRYNEGOTRADE:
 case ONRSPQRYNEGOTIATIONPARAM:
 {
 	this->processRspQryNegotiationParam(&task);
+	break;
+}
+
+case ONRSPQRYPUBLICOFFEREDFUNDINFO:
+{
+	this->processRspQryPublicOfferedFundInfo(&task);
+	break;
+}
+
+case ONRSPQRYPUBLICOFFEREDFUNDTRADEDETAIL:
+{
+	this->processRspQryPublicOfferedFundTradeDetail(&task);
+	break;
+}
+
+case ONRSPQRYTENDERINFO:
+{
+	this->processRspQryTenderInfo(&task);
+	break;
+}
+
+case ONRSPQRYADDITIONALOFFERINGINFO:
+{
+	this->processRspQryAdditionalOfferingInfo(&task);
+	break;
+}
+
+case ONRSPQRYADDITIONALOFFERINGQUOTA:
+{
+	this->processRspQryAdditionalOfferingQuota(&task);
 	break;
 }
 

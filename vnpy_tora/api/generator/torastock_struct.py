@@ -17,6 +17,9 @@ CTORATstpReqUserLoginField = {
     "CertSerial": "string",
     "DeviceType": "char",
     "NodeRef": "int",
+    "GwInnerIPAddress": "string",
+    "GwOuterIPAddress": "string",
+    "GwMacAddress": "string",
 }
 
 CTORATstpRspUserLoginField = {
@@ -44,6 +47,9 @@ CTORATstpRspUserLoginField = {
     "OuterIPAddress": "string",
     "MacAddress": "string",
     "NodeRef": "int",
+    "TradeCommFlux": "int",
+    "QueryCommFlux": "int",
+    "OrderCommFlux": "int",
 }
 
 CTORATstpRspInfoField = {
@@ -157,6 +163,7 @@ CTORATstpOrderField = {
     "RtnFloatInfo1": "double",
     "RtnFloatInfo2": "double",
     "RtnFloatInfo3": "double",
+    "AcceptTimeStamp": "long long",
 }
 
 CTORATstpUserRefField = {
@@ -798,6 +805,7 @@ CTORATstpSecurityField = {
     "PreClosePrice": "double",
     "UpperLimitPrice": "double",
     "LowerLimitPrice": "double",
+    "DayTrading": "int",
 }
 
 CTORATstpQryIPOInfoField = {
@@ -822,6 +830,7 @@ CTORATstpIPOInfoField = {
     "IssueMode": "char",
     "TradingDay": "string",
     "MaxPrice": "double",
+    "Remark": "long long",
 }
 
 CTORATstpQryUserField = {
@@ -840,6 +849,9 @@ CTORATstpUserField = {
     "CloseDate": "string",
     "OrderInsertCommFlux": "int",
     "OrderActionCommFlux": "int",
+    "TradeCommFlux": "int",
+    "QueryCommFlux": "int",
+    "OrderCommFlux": "int",
 }
 
 CTORATstpQryInvestorField = {
@@ -1072,6 +1084,7 @@ CTORATstpPositionField = {
     "TodayTotalBuyAmount": "double",
     "TodayTotalSellAmount": "double",
     "PreFrozen": "int",
+    "TodayTotalCloseVolume": "int",
 }
 
 CTORATstpQryTradingFeeField = {
@@ -1597,11 +1610,11 @@ CTORATstpInvestorPositionLimitField = {
     "UUPIC": "string",
 }
 
-CTORATstpQrySZSEImcParamsField = {
+CTORATstpQryImcParamsField = {
     "MarketID": "char",
 }
 
-CTORATstpSZSEImcParamsField = {
+CTORATstpImcParamsField = {
     "MarketID": "char",
     "OpenFlag": "int",
     "ThresholdAmount": "double",
@@ -1609,30 +1622,34 @@ CTORATstpSZSEImcParamsField = {
     "AmountStatus": "int",
 }
 
-CTORATstpQrySZSEImcExchangeRateField = {
+CTORATstpQryImcExchangeRateField = {
     "FromCurrency": "char",
     "ToCurrency": "char",
+    "MarketID": "char",
 }
 
-CTORATstpSZSEImcExchangeRateField = {
+CTORATstpImcExchangeRateField = {
     "FromCurrency": "char",
     "ToCurrency": "char",
     "BidRate": "double",
     "OfferRate": "double",
     "MidPointRate": "double",
+    "MarketID": "char",
 }
 
-CTORATstpQrySZSEHKPriceTickInfoField = {
+CTORATstpQryHKPriceTickInfoField = {
     "PriceTickID": "char",
+    "MarketID": "char",
 }
 
-CTORATstpSZSEHKPriceTickInfoField = {
+CTORATstpHKPriceTickInfoField = {
     "PriceTickID": "char",
     "PriceTickGroupID": "int",
     "PriceTickType": "char",
     "BeginPrice": "double",
     "EndPrice": "double",
     "PriceTick": "double",
+    "MarketID": "char",
 }
 
 CTORATstpQryLofFundInfoField = {
@@ -1848,6 +1865,118 @@ CTORATstpNegotiationParamField = {
     "bMarketMaker": "int",
 }
 
+CTORATstpQryPublicOfferedFundInfoField = {
+    "ExchangeID": "char",
+    "SecurityID": "string",
+    "ManagerID": "string",
+}
+
+CTORATstpPublicOfferedFundInfoField = {
+    "ExchangeID": "char",
+    "SecurityID": "string",
+    "ManagerID": "string",
+    "ForwardPbuID": "string",
+    "ForwardShareholderID": "string",
+}
+
+CTORATstpQryPublicOfferedFundTradeDetailField = {
+    "ExchangeID": "char",
+    "FundSecurityID": "string",
+    "ManagerID": "string",
+    "IndexStart": "int",
+    "IndexEnd": "int",
+}
+
+CTORATstpPublicOfferedFundTradeDetailField = {
+    "ExchangeID": "char",
+    "ShareholderID": "string",
+    "Direction": "char",
+    "FundSecurityID": "string",
+    "BasketSecurityID": "string",
+    "TradeReportType": "char",
+    "TradeID": "string",
+    "PbuID": "string",
+    "OrderLocalID": "string",
+    "ExchOrderID": "string",
+    "TradeReportNums": "int",
+    "DeliveryVolume": "int",
+    "TotalSubsCash": "double",
+    "SSESubsCash": "double",
+    "SZSESubsCash": "double",
+    "HKSubsCash": "double",
+    "OtherSubsCash": "double",
+    "TradeDate": "string",
+    "TradeTime": "string",
+    "ManagerID": "string",
+    "ManagerPbuID": "string",
+    "ManagerShareholderID": "string",
+    "DataIndex": "int",
+    "BasketMarketID": "char",
+    "AffiliatedShareholderID": "string",
+    "AffiliatedPbuID": "string",
+}
+
+CTORATstpQryTenderInfoField = {
+    "ExchangeID": "char",
+    "TenderSecurityID": "string",
+    "TendererID": "string",
+    "UnderlyingSecurityID": "string",
+}
+
+CTORATstpTenderInfoField = {
+    "ExchangeID": "char",
+    "TenderSecurityID": "string",
+    "TendererID": "string",
+    "TendererName": "string",
+    "UnderlyingSecurityID": "string",
+    "UnderlyingSecurityName": "string",
+    "ProductID": "char",
+    "SecurityType": "char",
+    "OfferingPrice": "double",
+    "MinOrderVol": "int",
+    "MaxOrderVol": "int",
+    "OrderUnit": "int",
+    "BeginDate": "string",
+    "EndDate": "string",
+}
+
+CTORATstpQryAdditionalOfferingInfoField = {
+    "ExchangeID": "char",
+    "SecurityID": "string",
+}
+
+CTORATstpAdditionalOfferingInfoField = {
+    "ExchangeID": "char",
+    "SecurityID": "string",
+    "SecurityName": "string",
+    "ProductID": "char",
+    "SecurityType": "char",
+    "MinPrice": "double",
+    "MaxPrice": "double",
+    "MinVolume": "int",
+    "MaxVolume": "int",
+    "VolumeUnit": "int",
+    "BeginDate": "string",
+    "EndDate": "string",
+    "Remark": "long long",
+}
+
+CTORATstpQryAdditionalOfferingQuotaField = {
+    "ExchangeID": "char",
+    "SecurityID": "string",
+    "ShareholderID": "string",
+    "InvestorID": "string",
+}
+
+CTORATstpAdditionalOfferingQuotaField = {
+    "ExchangeID": "char",
+    "ShareholderID": "string",
+    "SecurityID": "string",
+    "InvestorID": "string",
+    "MaxVolume": "int",
+    "FrzVolume": "int",
+}
+
 CTORATstpFensUserInfoField = {
     "FensVer": "int",
     "FensEnvID": "string",
@@ -1865,3 +1994,4 @@ CTORATstpConnectionInfoField = {
     "OuterPort": "int",
     "MacAddress": "string",
 }
+

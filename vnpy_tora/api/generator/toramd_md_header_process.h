@@ -24,6 +24,10 @@ void processRspSubSimplifyMarketData(Task *task);
 
 void processRspUnSubSimplifyMarketData(Task *task);
 
+void processRspSubIOPV(Task *task);
+
+void processRspUnSubIOPV(Task *task);
+
 void processRspSubSecurityStatus(Task *task);
 
 void processRspUnSubSecurityStatus(Task *task);
@@ -67,6 +71,8 @@ void processRtnPHMarketData(Task *task);
 void processRtnSpecialMarketData(Task *task);
 
 void processRtnSimplifyMarketData(Task *task);
+
+void processRtnIOPV(Task *task);
 
 void processRtnSecurityStatus(Task *task);
 

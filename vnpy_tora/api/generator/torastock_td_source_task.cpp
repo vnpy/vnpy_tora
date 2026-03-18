@@ -148,6 +148,26 @@ void StockApi::OnRspOrderInsert(CTORATstpInputOrderField *pInputOrderField, CTOR
 	this->task_queue.push(task);
 };
 
+void StockApi::OnRspPublicOfferedFundOrderInsert(CTORATstpInputOrderField *pInputOrderField, CTORATstpRspInfoField *pRspInfoField, int nRequestID) 
+{
+	Task task = Task();
+	task.task_name = ONRSPPUBLICOFFEREDFUNDORDERINSERT;
+	if (pInputOrderField)
+	{
+		CTORATstpInputOrderField *task_data = new CTORATstpInputOrderField();
+		*task_data = *pInputOrderField;
+		task.task_data = task_data;
+	}
+	if (pRspInfoField)
+	{
+		CTORATstpRspInfoField *task_error = new CTORATstpRspInfoField();
+		*task_error = *pRspInfoField;
+		task.task_error = task_error;
+	}
+	task.task_id = int(nRequestID);
+	this->task_queue.push(task);
+};
+
 void StockApi::OnRtnOrder(CTORATstpOrderField *pOrderField) 
 {
 	Task task = Task();
@@ -1464,14 +1484,14 @@ void StockApi::OnRspQryInvestorPositionLimit(CTORATstpInvestorPositionLimitField
 	this->task_queue.push(task);
 };
 
-void StockApi::OnRspQrySZSEImcParams(CTORATstpSZSEImcParamsField *pSZSEImcParamsField, CTORATstpRspInfoField *pRspInfoField, int nRequestID, bool bIsLast)  
+void StockApi::OnRspQryImcParams(CTORATstpImcParamsField *pImcParamsField, CTORATstpRspInfoField *pRspInfoField, int nRequestID, bool bIsLast)  
 {
 	Task task = Task();
-	task.task_name = ONRSPQRYSZSEIMCPARAMS;
-	if (pSZSEImcParamsField)
+	task.task_name = ONRSPQRYIMCPARAMS;
+	if (pImcParamsField)
 	{
-		CTORATstpSZSEImcParamsField *task_data = new CTORATstpSZSEImcParamsField();
-		*task_data = *pSZSEImcParamsField;
+		CTORATstpImcParamsField *task_data = new CTORATstpImcParamsField();
+		*task_data = *pImcParamsField;
 		task.task_data = task_data;
 	}
 	if (pRspInfoField)
@@ -1485,14 +1505,14 @@ void StockApi::OnRspQrySZSEImcParams(CTORATstpSZSEImcParamsField *pSZSEImcParams
 	this->task_queue.push(task);
 };
 
-void StockApi::OnRspQrySZSEImcExchangeRate(CTORATstpSZSEImcExchangeRateField *pSZSEImcExchangeRateField, CTORATstpRspInfoField *pRspInfoField, int nRequestID, bool bIsLast)  
+void StockApi::OnRspQryImcExchangeRate(CTORATstpImcExchangeRateField *pImcExchangeRateField, CTORATstpRspInfoField *pRspInfoField, int nRequestID, bool bIsLast)  
 {
 	Task task = Task();
-	task.task_name = ONRSPQRYSZSEIMCEXCHANGERATE;
-	if (pSZSEImcExchangeRateField)
+	task.task_name = ONRSPQRYIMCEXCHANGERATE;
+	if (pImcExchangeRateField)
 	{
-		CTORATstpSZSEImcExchangeRateField *task_data = new CTORATstpSZSEImcExchangeRateField();
-		*task_data = *pSZSEImcExchangeRateField;
+		CTORATstpImcExchangeRateField *task_data = new CTORATstpImcExchangeRateField();
+		*task_data = *pImcExchangeRateField;
 		task.task_data = task_data;
 	}
 	if (pRspInfoField)
@@ -1506,14 +1526,14 @@ void StockApi::OnRspQrySZSEImcExchangeRate(CTORATstpSZSEImcExchangeRateField *pS
 	this->task_queue.push(task);
 };
 
-void StockApi::OnRspQrySZSEHKPriceTickInfo(CTORATstpSZSEHKPriceTickInfoField *pSZSEHKPriceTickInfoField, CTORATstpRspInfoField *pRspInfoField, int nRequestID, bool bIsLast)  
+void StockApi::OnRspQryHKPriceTickInfo(CTORATstpHKPriceTickInfoField *pHKPriceTickInfoField, CTORATstpRspInfoField *pRspInfoField, int nRequestID, bool bIsLast)  
 {
 	Task task = Task();
-	task.task_name = ONRSPQRYSZSEHKPRICETICKINFO;
-	if (pSZSEHKPriceTickInfoField)
+	task.task_name = ONRSPQRYHKPRICETICKINFO;
+	if (pHKPriceTickInfoField)
 	{
-		CTORATstpSZSEHKPriceTickInfoField *task_data = new CTORATstpSZSEHKPriceTickInfoField();
-		*task_data = *pSZSEHKPriceTickInfoField;
+		CTORATstpHKPriceTickInfoField *task_data = new CTORATstpHKPriceTickInfoField();
+		*task_data = *pHKPriceTickInfoField;
 		task.task_data = task_data;
 	}
 	if (pRspInfoField)
@@ -1724,6 +1744,111 @@ void StockApi::OnRspQryNegotiationParam(CTORATstpNegotiationParamField *pNegotia
 	{
 		CTORATstpNegotiationParamField *task_data = new CTORATstpNegotiationParamField();
 		*task_data = *pNegotiationParamField;
+		task.task_data = task_data;
+	}
+	if (pRspInfoField)
+	{
+		CTORATstpRspInfoField *task_error = new CTORATstpRspInfoField();
+		*task_error = *pRspInfoField;
+		task.task_error = task_error;
+	}
+	task.task_id = int(nRequestID);
+	task.task_last = bIsLast;
+	this->task_queue.push(task);
+};
+
+void StockApi::OnRspQryPublicOfferedFundInfo(CTORATstpPublicOfferedFundInfoField *pPublicOfferedFundInfoField, CTORATstpRspInfoField *pRspInfoField, int nRequestID, bool bIsLast)  
+{
+	Task task = Task();
+	task.task_name = ONRSPQRYPUBLICOFFEREDFUNDINFO;
+	if (pPublicOfferedFundInfoField)
+	{
+		CTORATstpPublicOfferedFundInfoField *task_data = new CTORATstpPublicOfferedFundInfoField();
+		*task_data = *pPublicOfferedFundInfoField;
+		task.task_data = task_data;
+	}
+	if (pRspInfoField)
+	{
+		CTORATstpRspInfoField *task_error = new CTORATstpRspInfoField();
+		*task_error = *pRspInfoField;
+		task.task_error = task_error;
+	}
+	task.task_id = int(nRequestID);
+	task.task_last = bIsLast;
+	this->task_queue.push(task);
+};
+
+void StockApi::OnRspQryPublicOfferedFundTradeDetail(CTORATstpPublicOfferedFundTradeDetailField *pPublicOfferedFundTradeDetailField, CTORATstpRspInfoField *pRspInfoField, int nRequestID, bool bIsLast)  
+{
+	Task task = Task();
+	task.task_name = ONRSPQRYPUBLICOFFEREDFUNDTRADEDETAIL;
+	if (pPublicOfferedFundTradeDetailField)
+	{
+		CTORATstpPublicOfferedFundTradeDetailField *task_data = new CTORATstpPublicOfferedFundTradeDetailField();
+		*task_data = *pPublicOfferedFundTradeDetailField;
+		task.task_data = task_data;
+	}
+	if (pRspInfoField)
+	{
+		CTORATstpRspInfoField *task_error = new CTORATstpRspInfoField();
+		*task_error = *pRspInfoField;
+		task.task_error = task_error;
+	}
+	task.task_id = int(nRequestID);
+	task.task_last = bIsLast;
+	this->task_queue.push(task);
+};
+
+void StockApi::OnRspQryTenderInfo(CTORATstpTenderInfoField *pTenderInfoField, CTORATstpRspInfoField *pRspInfoField, int nRequestID, bool bIsLast)  
+{
+	Task task = Task();
+	task.task_name = ONRSPQRYTENDERINFO;
+	if (pTenderInfoField)
+	{
+		CTORATstpTenderInfoField *task_data = new CTORATstpTenderInfoField();
+		*task_data = *pTenderInfoField;
+		task.task_data = task_data;
+	}
+	if (pRspInfoField)
+	{
+		CTORATstpRspInfoField *task_error = new CTORATstpRspInfoField();
+		*task_error = *pRspInfoField;
+		task.task_error = task_error;
+	}
+	task.task_id = int(nRequestID);
+	task.task_last = bIsLast;
+	this->task_queue.push(task);
+};
+
+void StockApi::OnRspQryAdditionalOfferingInfo(CTORATstpAdditionalOfferingInfoField *pAdditionalOfferingInfoField, CTORATstpRspInfoField *pRspInfoField, int nRequestID, bool bIsLast)  
+{
+	Task task = Task();
+	task.task_name = ONRSPQRYADDITIONALOFFERINGINFO;
+	if (pAdditionalOfferingInfoField)
+	{
+		CTORATstpAdditionalOfferingInfoField *task_data = new CTORATstpAdditionalOfferingInfoField();
+		*task_data = *pAdditionalOfferingInfoField;
+		task.task_data = task_data;
+	}
+	if (pRspInfoField)
+	{
+		CTORATstpRspInfoField *task_error = new CTORATstpRspInfoField();
+		*task_error = *pRspInfoField;
+		task.task_error = task_error;
+	}
+	task.task_id = int(nRequestID);
+	task.task_last = bIsLast;
+	this->task_queue.push(task);
+};
+
+void StockApi::OnRspQryAdditionalOfferingQuota(CTORATstpAdditionalOfferingQuotaField *pAdditionalOfferingQuotaField, CTORATstpRspInfoField *pRspInfoField, int nRequestID, bool bIsLast)  
+{
+	Task task = Task();
+	task.task_name = ONRSPQRYADDITIONALOFFERINGQUOTA;
+	if (pAdditionalOfferingQuotaField)
+	{
+		CTORATstpAdditionalOfferingQuotaField *task_data = new CTORATstpAdditionalOfferingQuotaField();
+		*task_data = *pAdditionalOfferingQuotaField;
 		task.task_data = task_data;
 	}
 	if (pRspInfoField)

@@ -106,6 +106,18 @@ void onRspOrderInsert(const dict &data, const dict &error, int nRequestID) overr
 	}
 };
 
+void onRspPublicOfferedFundOrderInsert(const dict &data, const dict &error, int nRequestID) override
+{
+	try
+	{
+		PYBIND11_OVERLOAD(void, StockApi, onRspPublicOfferedFundOrderInsert, data, error, nRequestID);
+	}
+	catch (const error_already_set &e)
+	{
+		cout << e.what() << endl;
+	}
+};
+
 void onRtnOrder(const dict &data) override
 {
 	try
@@ -922,11 +934,11 @@ void onRspQryInvestorPositionLimit(const dict &data, const dict &error, int nReq
 	}
 };
 
-void onRspQrySZSEImcParams(const dict &data, const dict &error, int nRequestID, bool last) override
+void onRspQryImcParams(const dict &data, const dict &error, int nRequestID, bool last) override
 {
 	try
 	{
-		PYBIND11_OVERLOAD(void, StockApi, onRspQrySZSEImcParams, data, error, nRequestID, last);
+		PYBIND11_OVERLOAD(void, StockApi, onRspQryImcParams, data, error, nRequestID, last);
 	}
 	catch (const error_already_set &e)
 	{
@@ -934,11 +946,11 @@ void onRspQrySZSEImcParams(const dict &data, const dict &error, int nRequestID, 
 	}
 };
 
-void onRspQrySZSEImcExchangeRate(const dict &data, const dict &error, int nRequestID, bool last) override
+void onRspQryImcExchangeRate(const dict &data, const dict &error, int nRequestID, bool last) override
 {
 	try
 	{
-		PYBIND11_OVERLOAD(void, StockApi, onRspQrySZSEImcExchangeRate, data, error, nRequestID, last);
+		PYBIND11_OVERLOAD(void, StockApi, onRspQryImcExchangeRate, data, error, nRequestID, last);
 	}
 	catch (const error_already_set &e)
 	{
@@ -946,11 +958,11 @@ void onRspQrySZSEImcExchangeRate(const dict &data, const dict &error, int nReque
 	}
 };
 
-void onRspQrySZSEHKPriceTickInfo(const dict &data, const dict &error, int nRequestID, bool last) override
+void onRspQryHKPriceTickInfo(const dict &data, const dict &error, int nRequestID, bool last) override
 {
 	try
 	{
-		PYBIND11_OVERLOAD(void, StockApi, onRspQrySZSEHKPriceTickInfo, data, error, nRequestID, last);
+		PYBIND11_OVERLOAD(void, StockApi, onRspQryHKPriceTickInfo, data, error, nRequestID, last);
 	}
 	catch (const error_already_set &e)
 	{
@@ -1071,6 +1083,66 @@ void onRspQryNegotiationParam(const dict &data, const dict &error, int nRequestI
 	try
 	{
 		PYBIND11_OVERLOAD(void, StockApi, onRspQryNegotiationParam, data, error, nRequestID, last);
+	}
+	catch (const error_already_set &e)
+	{
+		cout << e.what() << endl;
+	}
+};
+
+void onRspQryPublicOfferedFundInfo(const dict &data, const dict &error, int nRequestID, bool last) override
+{
+	try
+	{
+		PYBIND11_OVERLOAD(void, StockApi, onRspQryPublicOfferedFundInfo, data, error, nRequestID, last);
+	}
+	catch (const error_already_set &e)
+	{
+		cout << e.what() << endl;
+	}
+};
+
+void onRspQryPublicOfferedFundTradeDetail(const dict &data, const dict &error, int nRequestID, bool last) override
+{
+	try
+	{
+		PYBIND11_OVERLOAD(void, StockApi, onRspQryPublicOfferedFundTradeDetail, data, error, nRequestID, last);
+	}
+	catch (const error_already_set &e)
+	{
+		cout << e.what() << endl;
+	}
+};
+
+void onRspQryTenderInfo(const dict &data, const dict &error, int nRequestID, bool last) override
+{
+	try
+	{
+		PYBIND11_OVERLOAD(void, StockApi, onRspQryTenderInfo, data, error, nRequestID, last);
+	}
+	catch (const error_already_set &e)
+	{
+		cout << e.what() << endl;
+	}
+};
+
+void onRspQryAdditionalOfferingInfo(const dict &data, const dict &error, int nRequestID, bool last) override
+{
+	try
+	{
+		PYBIND11_OVERLOAD(void, StockApi, onRspQryAdditionalOfferingInfo, data, error, nRequestID, last);
+	}
+	catch (const error_already_set &e)
+	{
+		cout << e.what() << endl;
+	}
+};
+
+void onRspQryAdditionalOfferingQuota(const dict &data, const dict &error, int nRequestID, bool last) override
+{
+	try
+	{
+		PYBIND11_OVERLOAD(void, StockApi, onRspQryAdditionalOfferingQuota, data, error, nRequestID, last);
 	}
 	catch (const error_already_set &e)
 	{

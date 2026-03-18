@@ -403,6 +403,7 @@ class ApiGenerator:
 
 
 if __name__ == "__main__":
+    """"""
 
     # generator = ApiGenerator("../include/tora/TORATstpXMdApi.h", "toramd", "md", "MdApi")
     # generator.run()

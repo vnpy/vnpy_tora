@@ -17,6 +17,7 @@ int OptionApi::reqUserLogin(const dict &req, int nRequestID)
 	getString(req, "OneTimePassword", myreq.OneTimePassword);
 	getString(req, "InnerIPAddress", myreq.InnerIPAddress);
 	getChar(req, "Lang", &myreq.Lang);
+	getInt(req, "RequestID", &myreq.RequestID);
 	getString(req, "TerminalInfo", myreq.TerminalInfo);
 	getString(req, "GWMacAddress", myreq.GWMacAddress);
 	getString(req, "GWInnerIPAddress", myreq.GWInnerIPAddress);
@@ -39,6 +40,7 @@ int OptionApi::reqUserLogout(const dict &req, int nRequestID)
 	CTORATstpSPUserLogoutField myreq = CTORATstpSPUserLogoutField();
 	memset(&myreq, 0, sizeof(myreq));
 	getString(req, "UserID", myreq.UserID);
+	getInt(req, "RequestID", &myreq.RequestID);
 	int i = this->api->ReqUserLogout(&myreq, nRequestID);
 	return i;
 };
@@ -50,6 +52,7 @@ int OptionApi::reqUserPasswordUpdate(const dict &req, int nRequestID)
 	getString(req, "UserID", myreq.UserID);
 	getString(req, "OldPassword", myreq.OldPassword);
 	getString(req, "NewPassword", myreq.NewPassword);
+	getInt(req, "RequestID", &myreq.RequestID);
 	int i = this->api->ReqUserPasswordUpdate(&myreq, nRequestID);
 	return i;
 };
@@ -58,6 +61,7 @@ int OptionApi::reqInputDeviceSerial(const dict &req, int nRequestID)
 {
 	CTORATstpSPReqInputDeviceSerialField myreq = CTORATstpSPReqInputDeviceSerialField();
 	memset(&myreq, 0, sizeof(myreq));
+	getInt(req, "RequestID", &myreq.RequestID);
 	getString(req, "UserID", myreq.UserID);
 	getString(req, "DeviceID", myreq.DeviceID);
 	getString(req, "CertSerial", myreq.CertSerial);
@@ -82,6 +86,7 @@ int OptionApi::reqOrderInsert(const dict &req, int nRequestID)
 	getChar(req, "VolumeCondition", &myreq.VolumeCondition);
 	getInt(req, "MinVolume", &myreq.MinVolume);
 	getChar(req, "ForceCloseReason", &myreq.ForceCloseReason);
+	getInt(req, "RequestID", &myreq.RequestID);
 	getInt(req, "UserForceClose", &myreq.UserForceClose);
 	getString(req, "InvestorID", myreq.InvestorID);
 	getChar(req, "ExchangeID", &myreq.ExchangeID);
@@ -117,6 +122,7 @@ int OptionApi::reqOrderAction(const dict &req, int nRequestID)
 	getChar(req, "ExchangeID", &myreq.ExchangeID);
 	getString(req, "OrderSysID", myreq.OrderSysID);
 	getChar(req, "OrderActionFlag", &myreq.OrderActionFlag);
+	getInt(req, "RequestID", &myreq.RequestID);
 	getString(req, "SecurityID", myreq.SecurityID);
 	getString(req, "InnerIPAddress", myreq.InnerIPAddress);
 	getString(req, "MacAddress", myreq.MacAddress);
@@ -141,6 +147,7 @@ int OptionApi::reqExerciseInsert(const dict &req, int nRequestID)
 	getString(req, "SecurityID", myreq.SecurityID);
 	getInt(req, "ExerciseRef", &myreq.ExerciseRef);
 	getInt(req, "Volume", &myreq.Volume);
+	getInt(req, "RequestID", &myreq.RequestID);
 	getString(req, "BusinessUnitID", myreq.BusinessUnitID);
 	getChar(req, "ExerciseType", &myreq.ExerciseType);
 	getChar(req, "ExchangeID", &myreq.ExchangeID);
@@ -168,6 +175,7 @@ int OptionApi::reqExerciseAction(const dict &req, int nRequestID)
 	getString(req, "InvestorID", myreq.InvestorID);
 	getInt(req, "ExerciseActionRef", &myreq.ExerciseActionRef);
 	getInt(req, "ExerciseRef", &myreq.ExerciseRef);
+	getInt(req, "RequestID", &myreq.RequestID);
 	getInt(req, "FrontID", &myreq.FrontID);
 	getInt(req, "SessionID", &myreq.SessionID);
 	getChar(req, "ExchangeID", &myreq.ExchangeID);
@@ -197,6 +205,7 @@ int OptionApi::reqLockInsert(const dict &req, int nRequestID)
 	getInt(req, "LockRef", &myreq.LockRef);
 	getChar(req, "LockType", &myreq.LockType);
 	getInt(req, "Volume", &myreq.Volume);
+	getInt(req, "RequestID", &myreq.RequestID);
 	getString(req, "InvestorID", myreq.InvestorID);
 	getChar(req, "ExchangeID", &myreq.ExchangeID);
 	getString(req, "ShareholderID", myreq.ShareholderID);
@@ -223,6 +232,7 @@ int OptionApi::reqLockAction(const dict &req, int nRequestID)
 	getString(req, "InvestorID", myreq.InvestorID);
 	getInt(req, "LockActionRef", &myreq.LockActionRef);
 	getInt(req, "LockRef", &myreq.LockRef);
+	getInt(req, "RequestID", &myreq.RequestID);
 	getInt(req, "FrontID", &myreq.FrontID);
 	getInt(req, "SessionID", &myreq.SessionID);
 	getChar(req, "ExchangeID", &myreq.ExchangeID);
@@ -254,6 +264,7 @@ int OptionApi::reqCombOrderInsert(const dict &req, int nRequestID)
 	getChar(req, "CombDirection", &myreq.CombDirection);
 	getString(req, "ExchangeCombID", myreq.ExchangeCombID);
 	getInt(req, "Volume", &myreq.Volume);
+	getInt(req, "RequestID", &myreq.RequestID);
 	getString(req, "InvestorID", myreq.InvestorID);
 	getChar(req, "ExchangeID", &myreq.ExchangeID);
 	getString(req, "ShareholderID", myreq.ShareholderID);
@@ -281,6 +292,7 @@ int OptionApi::reqCombOrderAction(const dict &req, int nRequestID)
 	getString(req, "InvestorID", myreq.InvestorID);
 	getInt(req, "CombOrderActionRef", &myreq.CombOrderActionRef);
 	getInt(req, "CombOrderRef", &myreq.CombOrderRef);
+	getInt(req, "RequestID", &myreq.RequestID);
 	getInt(req, "FrontID", &myreq.FrontID);
 	getInt(req, "SessionID", &myreq.SessionID);
 	getChar(req, "ExchangeID", &myreq.ExchangeID);
@@ -318,6 +330,7 @@ int OptionApi::reqCondOrderInsert(const dict &req, int nRequestID)
 	getChar(req, "VolumeCondition", &myreq.VolumeCondition);
 	getInt(req, "MinVolume", &myreq.MinVolume);
 	getChar(req, "ForceCloseReason", &myreq.ForceCloseReason);
+	getInt(req, "RequestID", &myreq.RequestID);
 	getInt(req, "UserForceClose", &myreq.UserForceClose);
 	getString(req, "InvestorID", myreq.InvestorID);
 	getChar(req, "ExchangeID", &myreq.ExchangeID);
@@ -356,6 +369,7 @@ int OptionApi::reqCondOrderAction(const dict &req, int nRequestID)
 {
 	CTORATstpSPInputCondOrderActionField myreq = CTORATstpSPInputCondOrderActionField();
 	memset(&myreq, 0, sizeof(myreq));
+	getInt(req, "RequestID", &myreq.RequestID);
 	getChar(req, "ExchangeID", &myreq.ExchangeID);
 	getInt(req, "CondOrderActionRef", &myreq.CondOrderActionRef);
 	getInt(req, "CondOrderRef", &myreq.CondOrderRef);
@@ -389,6 +403,7 @@ int OptionApi::reqCombExerciseInsert(const dict &req, int nRequestID)
 	getString(req, "PutSecurityID", myreq.PutSecurityID);
 	getInt(req, "CombExerciseRef", &myreq.CombExerciseRef);
 	getInt(req, "Volume", &myreq.Volume);
+	getInt(req, "RequestID", &myreq.RequestID);
 	getString(req, "BusinessUnitID", myreq.BusinessUnitID);
 	getChar(req, "ExchangeID", &myreq.ExchangeID);
 	getString(req, "ShareholderID", myreq.ShareholderID);
@@ -415,6 +430,7 @@ int OptionApi::reqCombExerciseAction(const dict &req, int nRequestID)
 	getString(req, "InvestorID", myreq.InvestorID);
 	getInt(req, "CombExerciseActionRef", &myreq.CombExerciseActionRef);
 	getInt(req, "CombExerciseRef", &myreq.CombExerciseRef);
+	getInt(req, "RequestID", &myreq.RequestID);
 	getInt(req, "FrontID", &myreq.FrontID);
 	getInt(req, "SessionID", &myreq.SessionID);
 	getChar(req, "ExchangeID", &myreq.ExchangeID);
@@ -446,6 +462,7 @@ int OptionApi::reqInquiryMaxLockVolume(const dict &req, int nRequestID)
 	getString(req, "ShareholderID", myreq.ShareholderID);
 	getChar(req, "ExchangeID", &myreq.ExchangeID);
 	getString(req, "SecurityID", myreq.SecurityID);
+	getInt(req, "RequestID", &myreq.RequestID);
 	int i = this->api->ReqInquiryMaxLockVolume(&myreq, nRequestID);
 	return i;
 };
@@ -459,6 +476,7 @@ int OptionApi::reqInquiryMaxCoverVolume(const dict &req, int nRequestID)
 	getString(req, "ShareholderID", myreq.ShareholderID);
 	getChar(req, "ExchangeID", &myreq.ExchangeID);
 	getString(req, "SecurityID", myreq.SecurityID);
+	getInt(req, "RequestID", &myreq.RequestID);
 	int i = this->api->ReqInquiryMaxCoverVolume(&myreq, nRequestID);
 	return i;
 };
@@ -475,6 +493,7 @@ int OptionApi::reqInquirySplitCombMarginDifference(const dict &req, int nRequest
 	getString(req, "ShareholderID", myreq.ShareholderID);
 	getChar(req, "CombinationStrategy", &myreq.CombinationStrategy);
 	getInt(req, "Volume", &myreq.Volume);
+	getInt(req, "RequestID", &myreq.RequestID);
 	int i = this->api->ReqInquirySplitCombMarginDifference(&myreq, nRequestID);
 	return i;
 };
@@ -488,6 +507,7 @@ int OptionApi::reqTransferFund(const dict &req, int nRequestID)
 	getChar(req, "CurrencyID", &myreq.CurrencyID);
 	getChar(req, "TransferDirection", &myreq.TransferDirection);
 	getDouble(req, "Amount", &myreq.Amount);
+	getInt(req, "RequestID", &myreq.RequestID);
 	getString(req, "DepartmentID", myreq.DepartmentID);
 	getString(req, "TradingAccountPassword", myreq.TradingAccountPassword);
 	getChar(req, "BankID", &myreq.BankID);
@@ -510,6 +530,7 @@ int OptionApi::reqTransferStockPosition(const dict &req, int nRequestID)
 	getChar(req, "SPStockTransferReason", &myreq.SPStockTransferReason);
 	getInt(req, "Volume", &myreq.Volume);
 	getChar(req, "TransferPositionType", &myreq.TransferPositionType);
+	getInt(req, "RequestID", &myreq.RequestID);
 	int i = this->api->ReqTransferStockPosition(&myreq, nRequestID);
 	return i;
 };
@@ -521,6 +542,7 @@ int OptionApi::reqInquiryJZFund(const dict &req, int nRequestID)
 	getString(req, "AccountID", myreq.AccountID);
 	getChar(req, "CurrencyID", &myreq.CurrencyID);
 	getString(req, "DepartmentID", myreq.DepartmentID);
+	getInt(req, "RequestID", &myreq.RequestID);
 	int i = this->api->ReqInquiryJZFund(&myreq, nRequestID);
 	return i;
 };
@@ -532,6 +554,7 @@ int OptionApi::reqInquiryBankAccountFund(const dict &req, int nRequestID)
 	getString(req, "AccountID", myreq.AccountID);
 	getChar(req, "CurrencyID", &myreq.CurrencyID);
 	getString(req, "DepartmentID", myreq.DepartmentID);
+	getInt(req, "RequestID", &myreq.RequestID);
 	getString(req, "BankAccountPassword", myreq.BankAccountPassword);
 	int i = this->api->ReqInquiryBankAccountFund(&myreq, nRequestID);
 	return i;
@@ -548,6 +571,7 @@ int OptionApi::reqInquiryStockPosition(const dict &req, int nRequestID)
 	getString(req, "TradingDay", myreq.TradingDay);
 	getChar(req, "ExchangeID", &myreq.ExchangeID);
 	getString(req, "SecurityID", myreq.SecurityID);
+	getInt(req, "RequestID", &myreq.RequestID);
 	int i = this->api->ReqInquiryStockPosition(&myreq, nRequestID);
 	return i;
 };
