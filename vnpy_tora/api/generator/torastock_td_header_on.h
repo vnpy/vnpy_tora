@@ -16,6 +16,8 @@ virtual void onRspInputDeviceSerial(const dict &data, const dict &error, int nRe
 
 virtual void onRspOrderInsert(const dict &data, const dict &error, int nRequestID) {};
 
+virtual void onRspPublicOfferedFundOrderInsert(const dict &data, const dict &error, int nRequestID) {};
+
 virtual void onRtnOrder(const dict &data) {};
 
 virtual void onErrRtnOrderInsert(const dict &data, const dict &error, int nRequestID) {};
@@ -152,11 +154,11 @@ virtual void onRspQryETFBasket(const dict &data, const dict &error, int nRequest
 
 virtual void onRspQryInvestorPositionLimit(const dict &data, const dict &error, int nRequestID, bool last) {};
 
-virtual void onRspQrySZSEImcParams(const dict &data, const dict &error, int nRequestID, bool last) {};
+virtual void onRspQryImcParams(const dict &data, const dict &error, int nRequestID, bool last) {};
 
-virtual void onRspQrySZSEImcExchangeRate(const dict &data, const dict &error, int nRequestID, bool last) {};
+virtual void onRspQryImcExchangeRate(const dict &data, const dict &error, int nRequestID, bool last) {};
 
-virtual void onRspQrySZSEHKPriceTickInfo(const dict &data, const dict &error, int nRequestID, bool last) {};
+virtual void onRspQryHKPriceTickInfo(const dict &data, const dict &error, int nRequestID, bool last) {};
 
 virtual void onRspQryLofFundInfo(const dict &data, const dict &error, int nRequestID, bool last) {};
 
@@ -177,4 +179,14 @@ virtual void onRspQryNegoOrderAction(const dict &data, const dict &error, int nR
 virtual void onRspQryNegoTrade(const dict &data, const dict &error, int nRequestID, bool last) {};
 
 virtual void onRspQryNegotiationParam(const dict &data, const dict &error, int nRequestID, bool last) {};
+
+virtual void onRspQryPublicOfferedFundInfo(const dict &data, const dict &error, int nRequestID, bool last) {};
+
+virtual void onRspQryPublicOfferedFundTradeDetail(const dict &data, const dict &error, int nRequestID, bool last) {};
+
+virtual void onRspQryTenderInfo(const dict &data, const dict &error, int nRequestID, bool last) {};
+
+virtual void onRspQryAdditionalOfferingInfo(const dict &data, const dict &error, int nRequestID, bool last) {};
+
+virtual void onRspQryAdditionalOfferingQuota(const dict &data, const dict &error, int nRequestID, bool last) {};
 

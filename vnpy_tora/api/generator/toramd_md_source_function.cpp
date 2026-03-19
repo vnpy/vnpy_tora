@@ -93,6 +93,20 @@ int MdApi::unSubscribeSimplifyMarketData(string ppSecurityID, int nCount, string
 	return i;
 };
 
+int MdApi::subscribeIOPV(string ppSecurityID, int nCount, string ExchangeID)
+{
+	char* buffer = (char*)ppSecurityID.c_str();
+	int i = this->api->SubscribeIOPV(&buffer, nCount, ExchangeID.c_str()[0]);
+	return i;
+};
+
+int MdApi::unSubscribeIOPV(string ppSecurityID, int nCount, string ExchangeID)
+{
+	char* buffer = (char*)ppSecurityID.c_str();
+	int i = this->api->UnSubscribeIOPV(&buffer, nCount, ExchangeID.c_str()[0]);
+	return i;
+};
+
 int MdApi::subscribeSecurityStatus(string ppSecurityID, int nCount, string ExchangeID)
 {
 	char* buffer = (char*)ppSecurityID.c_str();

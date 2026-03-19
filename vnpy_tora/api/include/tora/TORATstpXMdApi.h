@@ -73,6 +73,12 @@ namespace TORALEV1API
 		///退订简易行情应答（仅TCP模式下可用）
 		virtual void OnRspUnSubSimplifyMarketData(CTORATstpSpecificSecurityField *pSpecificSecurityField, CTORATstpRspInfoField *pRspInfoField) {};
 
+		///订阅独立IOPV行情应答
+		virtual void OnRspSubIOPV(CTORATstpSpecificSecurityField* pSpecificSecurityField, CTORATstpRspInfoField* pRspInfoField) {};
+
+		///退订独立IOPV行情应答
+		virtual void OnRspUnSubIOPV(CTORATstpSpecificSecurityField* pSpecificSecurityField, CTORATstpRspInfoField* pRspInfoField) {};
+
 		///订阅合约状态应答
 		virtual void OnRspSubSecurityStatus(CTORATstpSpecificSecurityField *pSpecificSecurityField, CTORATstpRspInfoField *pRspInfoField) {};
 
@@ -138,6 +144,9 @@ namespace TORALEV1API
 
 		///简易行情通知（仅TCP模式下可用）
 		virtual void OnRtnSimplifyMarketData(CTORATstpSimplifyMarketDataField *pSimplifyMarketDataField) {};
+
+		///独立IOPV行情通知
+		virtual void OnRtnIOPV(CTORATstpIOPVField* pIOPVField) {};
 
 		///合约状态
 		virtual void OnRtnSecurityStatus(CTORATstpSecurityStatusField *pSecurityStatusField) {};
@@ -272,6 +281,12 @@ namespace TORALEV1API
 
 		///退订简易行情（仅TCP模式下可用）
 		virtual int UnSubscribeSimplifyMarketData(char **ppSecurityID, int nCount, TTORATstpExchangeIDType ExchangeID) = 0;
+
+		///订阅独立IOPV行情
+		virtual int SubscribeIOPV(char** ppSecurityID, int nCount, TTORATstpExchangeIDType ExchangeID) = 0;
+
+		///退订独立IOPV行情
+		virtual int UnSubscribeIOPV(char** ppSecurityID, int nCount, TTORATstpExchangeIDType ExchangeID) = 0;
 
 		///订阅合约状态
 		virtual int SubscribeSecurityStatus(char **ppSecurityID, int nCount, TTORATstpExchangeIDType ExchangeID) = 0;

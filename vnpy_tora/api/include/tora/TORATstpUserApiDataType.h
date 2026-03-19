@@ -159,6 +159,8 @@ namespace TORASTOCKAPI
 	const char TORA_TSTP_AM_FingerPrint = '1';
 	///钥匙串
 	const char TORA_TSTP_AM_CertInfo = '2';
+	///代理秘钥
+	const char TORA_TSTP_AM_AgentKey = '3';
 	typedef char TTORATstpAuthModeType;
 	
 	/////////////////////////////////////////////////////////////////////////
@@ -404,6 +406,14 @@ namespace TORASTOCKAPI
 	const char TORA_TSTP_D_TCRBuy = 'C';
 	///成交确认卖出
 	const char TORA_TSTP_D_TCRSell = 'D';
+	///要约预受
+	const char TORA_TSTP_D_TenderAccept = 'E';
+	///要约解除
+	const char TORA_TSTP_D_TenderRelieve = 'F';
+	///公开扩募
+	const char TORA_TSTP_D_PublicOffering = 'G';
+	///配售扩募
+	const char TORA_TSTP_D_PlacementOffering = 'H';
 	typedef char TTORATstpDirectionType;
 	
 	/////////////////////////////////////////////////////////////////////////
@@ -643,6 +653,15 @@ namespace TORASTOCKAPI
 	/// TTORATstpFloatInfoType是一个浮点型附加信息类型
 	/////////////////////////////////////////////////////////////////////////
 	typedef double TTORATstpFloatInfoType;
+	
+	/////////////////////////////////////////////////////////////////////////
+	/// TTORATstpBigTimeStampType是一个长时间戳类型
+	/////////////////////////////////////////////////////////////////////////
+	#ifdef WINDOWS
+	typedef __int64 TTORATstpBigTimeStampType;
+	#else
+	typedef long long int TTORATstpBigTimeStampType;
+	#endif
 	
 	/////////////////////////////////////////////////////////////////////////
 	/// TTORATstpTradeIDType是一个成交编号类型
@@ -898,6 +917,8 @@ namespace TORASTOCKAPI
 	const char TORA_TSTP_BKID_BOB = 'i';
 	///邮储银行
 	const char TORA_TSTP_BKID_PSBC = 'j';
+	///江苏银行
+	const char TORA_TSTP_BKID_SUYH = 'k';
 	typedef char TTORATstpBankIDType;
 	
 	/////////////////////////////////////////////////////////////////////////
@@ -1013,6 +1034,16 @@ namespace TORASTOCKAPI
 	const char TORA_TSTP_PID_SHKC = 'i';
 	///北京股票
 	const char TORA_TSTP_PID_BJStock = 'j';
+	///沪港通港股主板
+	const char TORA_TSTP_PID_SSEHKMain = 'k';
+	///沪港通港股创业板
+	const char TORA_TSTP_PID_SSEHKGEM = 'l';
+	///沪港通港股扩充交易证券
+	const char TORA_TSTP_PID_SSEHKETS = 'm';
+	///沪港通港股NasdaqAMX市场
+	const char TORA_TSTP_PID_SSEHKNasdaqAMX = 'n';
+	///北京债券
+	const char TORA_TSTP_PID_BJBond = 'o';
 	typedef char TTORATstpProductIDType;
 	
 	/////////////////////////////////////////////////////////////////////////
@@ -1053,7 +1084,7 @@ namespace TORASTOCKAPI
 	const char TORA_TSTP_STP_SHCEFund = 'q';
 	///上海开放式基金
 	const char TORA_TSTP_STP_SHOEFund = 'r';
-	///上海跨市场ETF
+	///上海跨市场股票ETF
 	const char TORA_TSTP_STP_SHCrossMarketStockETF = 's';
 	///上海跨境ETF
 	const char TORA_TSTP_STP_SHCrossBorderETF = 't';
@@ -1175,6 +1206,26 @@ namespace TORASTOCKAPI
 	const char TORA_TSTP_STP_BJStock = '[';
 	///上海科创板可交换债
 	const char TORA_TSTP_STP_SHKCExchangeableBond = ']';
+	///沪港通港股债券
+	const char TORA_TSTP_STP_SSEHKBond = '(';
+	///沪港通港股一篮子权证
+	const char TORA_TSTP_STP_SSEHKBasketWarrant = ')';
+	///沪港通港股股本
+	const char TORA_TSTP_STP_SSEHKEquity = '&';
+	///沪港通港股信托
+	const char TORA_TSTP_STP_SSEHKTrust = '{';
+	///沪港通港股权证
+	const char TORA_TSTP_STP_SSEHKWarrant = '}';
+	///上海跨市场债券ETF
+	const char TORA_TSTP_STP_SHCrossMarketBondETF = '_';
+	///深圳跨市场债券ETF
+	const char TORA_TSTP_STP_SZCrossMarketBondETF = ':';
+	///北京公司债
+	const char TORA_TSTP_STP_BJBondCompany = '.';
+	///上海多资产ETF
+	const char TORA_TSTP_STP_SHMultiAssetETF = '`';
+	///深圳多资产ETF
+	const char TORA_TSTP_STP_SZMultiAssetETF = '!';
 	typedef char TTORATstpSecurityTypeType;
 	
 	/////////////////////////////////////////////////////////////////////////
@@ -1577,7 +1628,7 @@ namespace TORASTOCKAPI
 	///退市整理板
 	const char TORA_TSTP_SPLT_Delisting = '2';
 	///港股通
-	const char TORA_TSTP_SPLT_SZSEHK = '3';
+	const char TORA_TSTP_SPLT_HK = '3';
 	///科创板
 	const char TORA_TSTP_SPLT_SHKC = '4';
 	///创业板注册制
@@ -1596,6 +1647,8 @@ namespace TORASTOCKAPI
 	const char TORA_TSTP_SPLT_Main = 'b';
 	///退市整理版可转债
 	const char TORA_TSTP_SPLT_DelConvertBond = 'c';
+	///科创板成长层
+	const char TORA_TSTP_SPLT_SHKCU = 'd';
 	typedef char TTORATstpSpecPrivilegeTypeType;
 	
 	/////////////////////////////////////////////////////////////////////////
@@ -1669,6 +1722,36 @@ namespace TORASTOCKAPI
 	/// TTORATstpNodeInfoType是一个节点信息类型
 	/////////////////////////////////////////////////////////////////////////
 	typedef char TTORATstpNodeInfoType[33];
+	
+	/////////////////////////////////////////////////////////////////////////
+	/// TTORATstpSequenceNoType是一个流水号类型
+	/////////////////////////////////////////////////////////////////////////
+	typedef int TTORATstpSequenceNoType;
+	
+	/////////////////////////////////////////////////////////////////////////
+	/// TTORATstpTradeReportTypeType是一个成交回报类型类型
+	/////////////////////////////////////////////////////////////////////////
+	///ETF成交
+	const char TORA_TSTP_TRT_ETF = '1';
+	///成分券成交
+	const char TORA_TSTP_TRT_Basket = '2';
+	///资金替代成交
+	const char TORA_TSTP_TRT_CashSubs = '3';
+	///交收成交
+	const char TORA_TSTP_TRT_Delivery = '4';
+	///冲正
+	const char TORA_TSTP_TRT_Repeal = '5';
+	typedef char TTORATstpTradeReportTypeType;
+	
+	/////////////////////////////////////////////////////////////////////////
+	/// TTORATstpExchOrderIDType是一个交易所订单编号类型
+	/////////////////////////////////////////////////////////////////////////
+	typedef char TTORATstpExchOrderIDType[21];
+	
+	/////////////////////////////////////////////////////////////////////////
+	/// TTORATstpTendererIDType是一个收购参与人编码类型
+	/////////////////////////////////////////////////////////////////////////
+	typedef char TTORATstpTendererIDType[11];
 	
 	/////////////////////////////////////////////////////////////////////////
 	/// TTORATstpFensVerType是一个版本号类型

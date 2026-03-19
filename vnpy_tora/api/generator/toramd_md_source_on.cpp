@@ -154,6 +154,30 @@ void onRspUnSubSimplifyMarketData(const dict &data, const dict &error) override
 	}
 };
 
+void onRspSubIOPV(const dict &data, const dict &error) override
+{
+	try
+	{
+		PYBIND11_OVERLOAD(void, MdApi, onRspSubIOPV, data, error);
+	}
+	catch (const error_already_set &e)
+	{
+		cout << e.what() << endl;
+	}
+};
+
+void onRspUnSubIOPV(const dict &data, const dict &error) override
+{
+	try
+	{
+		PYBIND11_OVERLOAD(void, MdApi, onRspUnSubIOPV, data, error);
+	}
+	catch (const error_already_set &e)
+	{
+		cout << e.what() << endl;
+	}
+};
+
 void onRspSubSecurityStatus(const dict &data, const dict &error) override
 {
 	try
@@ -411,6 +435,18 @@ void onRtnSimplifyMarketData(const dict &data) override
 	try
 	{
 		PYBIND11_OVERLOAD(void, MdApi, onRtnSimplifyMarketData, data);
+	}
+	catch (const error_already_set &e)
+	{
+		cout << e.what() << endl;
+	}
+};
+
+void onRtnIOPV(const dict &data) override
+{
+	try
+	{
+		PYBIND11_OVERLOAD(void, MdApi, onRtnIOPV, data);
 	}
 	catch (const error_already_set &e)
 	{

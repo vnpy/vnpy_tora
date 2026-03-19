@@ -68,6 +68,15 @@ namespace TORASTOCKAPI
 	
 		///关联节点编号(内部使用)
 		TTORATstpNodeIDType	NodeRef;
+	
+		///网关内网IP地址
+		TTORATstpIPAddressType	GwInnerIPAddress;
+	
+		///网关外网IP地址
+		TTORATstpIPAddressType	GwOuterIPAddress;
+	
+		///网关Mac地址
+		TTORATstpMacAddressType	GwMacAddress;
 	};
 	
 	/// 登录响应
@@ -144,6 +153,15 @@ namespace TORASTOCKAPI
 	
 		///关联节点编号(内部使用)
 		TTORATstpNodeIDType	NodeRef;
+	
+		///交易流控
+		TTORATstpCommFluxType	TradeCommFlux;
+	
+		///查询流控
+		TTORATstpCommFluxType	QueryCommFlux;
+	
+		///委托流控
+		TTORATstpCommFluxType	OrderCommFlux;
 	};
 	
 	/// 响应信息
@@ -448,6 +466,9 @@ namespace TORASTOCKAPI
 	
 		///回报附加浮点型数据3
 		TTORATstpFloatInfoType	RtnFloatInfo3;
+	
+		///交易所接受时间戳
+		TTORATstpBigTimeStampType	AcceptTimeStamp;
 	};
 	
 	/// 用户标识
@@ -2196,6 +2217,9 @@ namespace TORASTOCKAPI
 	
 		///跌停板价
 		TTORATstpPriceType	LowerLimitPrice;
+	
+		///是否可当日回转交易
+		TTORATstpBoolType	DayTrading;
 	};
 	
 	/// 查询新股信息
@@ -2258,6 +2282,9 @@ namespace TORASTOCKAPI
 	
 		///最大申购价格
 		TTORATstpPriceType	MaxPrice;
+	
+		///备注
+		TTORATstpSecurityStatusType	Remark;
 	};
 	
 	/// 查询用户
@@ -2302,6 +2329,15 @@ namespace TORASTOCKAPI
 	
 		///撤单流控
 		TTORATstpCommFluxType	OrderActionCommFlux;
+	
+		///交易流控
+		TTORATstpCommFluxType	TradeCommFlux;
+	
+		///查询流控
+		TTORATstpCommFluxType	QueryCommFlux;
+	
+		///委托流控
+		TTORATstpCommFluxType	OrderCommFlux;
 	};
 	
 	/// 查询投资者
@@ -2928,6 +2964,9 @@ namespace TORASTOCKAPI
 	
 		///上日冻结(盘中不变)
 		TTORATstpVolumeType	PreFrozen;
+	
+		///当日累计平仓数量
+		TTORATstpVolumeType	TodayTotalCloseVolume;
 	};
 	
 	/// 查询基础交易费率
@@ -4299,15 +4338,15 @@ namespace TORASTOCKAPI
 		TTORATstpUUPICType	UUPIC;
 	};
 	
-	/// 查询深港通国际市场互联状态信息
-	struct CTORATstpQrySZSEImcParamsField
+	/// 查询国际市场互联状态信息
+	struct CTORATstpQryImcParamsField
 	{
 		///市场代码
 		TTORATstpMarketIDType	MarketID;
 	};
 	
-	/// 深港通国际市场互联状态信息
-	struct CTORATstpSZSEImcParamsField
+	/// 国际市场互联状态信息
+	struct CTORATstpImcParamsField
 	{
 		///市场代码
 		TTORATstpMarketIDType	MarketID;
@@ -4325,18 +4364,21 @@ namespace TORASTOCKAPI
 		TTORATstpBoolType	AmountStatus;
 	};
 	
-	/// 查询深港通国际市场互联汇率信息
-	struct CTORATstpQrySZSEImcExchangeRateField
+	/// 查询国际市场互联汇率信息
+	struct CTORATstpQryImcExchangeRateField
 	{
 		///源货币币种
 		TTORATstpCurrencyIDType	FromCurrency;
 	
 		///目标货币币种
 		TTORATstpCurrencyIDType	ToCurrency;
+	
+		///市场代码
+		TTORATstpMarketIDType	MarketID;
 	};
 	
-	/// 深港通国际市场互联汇率信息
-	struct CTORATstpSZSEImcExchangeRateField
+	/// 国际市场互联汇率信息
+	struct CTORATstpImcExchangeRateField
 	{
 		///源货币币种
 		TTORATstpCurrencyIDType	FromCurrency;
@@ -4352,17 +4394,23 @@ namespace TORASTOCKAPI
 	
 		///参考汇率中间价
 		TTORATstpPriceType	MidPointRate;
+	
+		///市场代码
+		TTORATstpMarketIDType	MarketID;
 	};
 	
-	/// 查询深港通最小价差信息
-	struct CTORATstpQrySZSEHKPriceTickInfoField
+	/// 查询最小价差信息
+	struct CTORATstpQryHKPriceTickInfoField
 	{
 		///价差品种
 		TTORATstpPriceTickIDType	PriceTickID;
+	
+		///市场代码
+		TTORATstpMarketIDType	MarketID;
 	};
 	
-	/// 深港通最小价差信息
-	struct CTORATstpSZSEHKPriceTickInfoField
+	/// 最小价差信息
+	struct CTORATstpHKPriceTickInfoField
 	{
 		///价差品种
 		TTORATstpPriceTickIDType	PriceTickID;
@@ -4381,6 +4429,9 @@ namespace TORASTOCKAPI
 	
 		///价差值
 		TTORATstpPriceType	PriceTick;
+	
+		///市场代码
+		TTORATstpMarketIDType	MarketID;
 	};
 	
 	/// 查询LOF基金信息
@@ -4930,6 +4981,292 @@ namespace TORASTOCKAPI
 	
 		///是否有做市商
 		TTORATstpBoolType	bMarketMaker;
+	};
+	
+	/// 查询公募基金发行信息
+	struct CTORATstpQryPublicOfferedFundInfoField
+	{
+		///交易所代码
+		TTORATstpExchangeIDType	ExchangeID;
+	
+		///基金代码
+		TTORATstpSecurityIDType	SecurityID;
+	
+		///基金管理人代码
+		TTORATstpInvestorIDType	ManagerID;
+	};
+	
+	/// 公募基金发行信息
+	struct CTORATstpPublicOfferedFundInfoField
+	{
+		///交易所代码
+		TTORATstpExchangeIDType	ExchangeID;
+	
+		///基金代码
+		TTORATstpSecurityIDType	SecurityID;
+	
+		///基金管理人代码
+		TTORATstpInvestorIDType	ManagerID;
+	
+		///转发回报交易单元
+		TTORATstpPbuIDType	ForwardPbuID;
+	
+		///转发回报股东账号
+		TTORATstpShareholderIDType	ForwardShareholderID;
+	};
+	
+	/// 查询公募基金申赎成交明细
+	struct CTORATstpQryPublicOfferedFundTradeDetailField
+	{
+		///交易所代码
+		TTORATstpExchangeIDType	ExchangeID;
+	
+		///基金代码
+		TTORATstpSecurityIDType	FundSecurityID;
+	
+		///基金管理人代码
+		TTORATstpInvestorIDType	ManagerID;
+	
+		///起始索引序号
+		TTORATstpSequenceNoType	IndexStart;
+	
+		///结束索引序号
+		TTORATstpSequenceNoType	IndexEnd;
+	};
+	
+	/// 公募基金申赎成交明细
+	struct CTORATstpPublicOfferedFundTradeDetailField
+	{
+		///交易所代码
+		TTORATstpExchangeIDType	ExchangeID;
+	
+		///股东账户代码
+		TTORATstpShareholderIDType	ShareholderID;
+	
+		///申赎方向
+		TTORATstpDirectionType	Direction;
+	
+		///基金代码
+		TTORATstpSecurityIDType	FundSecurityID;
+	
+		///成分股代码
+		TTORATstpSecurityIDType	BasketSecurityID;
+	
+		///成交回报类型
+		TTORATstpTradeReportTypeType	TradeReportType;
+	
+		///成交编号
+		TTORATstpTradeIDType	TradeID;
+	
+		///交易单元代码
+		TTORATstpPbuIDType	PbuID;
+	
+		///本地报单编号
+		TTORATstpOrderLocalIDType	OrderLocalID;
+	
+		///交易所订单编号
+		TTORATstpExchOrderIDType	ExchOrderID;
+	
+		///成交明细记录数
+		TTORATstpSequenceNoType	TradeReportNums;
+	
+		///成分股交付数量
+		TTORATstpVolumeType	DeliveryVolume;
+	
+		///总现金替代金额
+		TTORATstpMoneyType	TotalSubsCash;
+	
+		///沪市替代金额(仅沪市基金有效)
+		TTORATstpMoneyType	SSESubsCash;
+	
+		///深市替代金额(仅沪市基金有效)
+		TTORATstpMoneyType	SZSESubsCash;
+	
+		///港市替代金额(仅沪市基金有效)
+		TTORATstpMoneyType	HKSubsCash;
+	
+		///其它替代金额(仅沪市基金有效)
+		TTORATstpMoneyType	OtherSubsCash;
+	
+		///成交日期
+		TTORATstpDateType	TradeDate;
+	
+		///成交时间
+		TTORATstpTimeType	TradeTime;
+	
+		///基金管理人代码
+		TTORATstpInvestorIDType	ManagerID;
+	
+		///基金管理人交易单元
+		TTORATstpPbuIDType	ManagerPbuID;
+	
+		///基金管理人股东账号
+		TTORATstpShareholderIDType	ManagerShareholderID;
+	
+		///数据索引
+		TTORATstpSequenceNoType	DataIndex;
+	
+		///成分股市场代码
+		TTORATstpMarketIDType	BasketMarketID;
+	
+		///关联股东代码(跨市场ETF全实物申赎有效)
+		TTORATstpShareholderIDType	AffiliatedShareholderID;
+	
+		///关联交易单元(跨市场ETF全实物申赎有效)
+		TTORATstpPbuIDType	AffiliatedPbuID;
+	};
+	
+	/// 查询要约收购信息
+	struct CTORATstpQryTenderInfoField
+	{
+		///交易所代码
+		TTORATstpExchangeIDType	ExchangeID;
+	
+		///要约收购编码
+		TTORATstpSecurityIDType	TenderSecurityID;
+	
+		///收购参与人编码
+		TTORATstpTendererIDType	TendererID;
+	
+		///标的证券代码
+		TTORATstpSecurityIDType	UnderlyingSecurityID;
+	};
+	
+	/// 要约收购信息
+	struct CTORATstpTenderInfoField
+	{
+		///交易所代码
+		TTORATstpExchangeIDType	ExchangeID;
+	
+		///要约收购编码
+		TTORATstpSecurityIDType	TenderSecurityID;
+	
+		///收购参与人编码
+		TTORATstpTendererIDType	TendererID;
+	
+		///收购参与人名称
+		TTORATstpSecurityNameType	TendererName;
+	
+		///标的证券代码
+		TTORATstpSecurityIDType	UnderlyingSecurityID;
+	
+		///标的证券名称
+		TTORATstpSecurityNameType	UnderlyingSecurityName;
+	
+		///证券品种代码
+		TTORATstpProductIDType	ProductID;
+	
+		///证券类别代码
+		TTORATstpSecurityTypeType	SecurityType;
+	
+		///收购价格
+		TTORATstpPriceType	OfferingPrice;
+	
+		///收购最小数量
+		TTORATstpVolumeType	MinOrderVol;
+	
+		///收购最大数量
+		TTORATstpVolumeType	MaxOrderVol;
+	
+		///收购单位
+		TTORATstpVolumeType	OrderUnit;
+	
+		///收购起始日期
+		TTORATstpDateType	BeginDate;
+	
+		///收购结束日期
+		TTORATstpDateType	EndDate;
+	};
+	
+	/// 查询基础设施基金非定向扩募信息
+	struct CTORATstpQryAdditionalOfferingInfoField
+	{
+		///交易所代码
+		TTORATstpExchangeIDType	ExchangeID;
+	
+		///证券代码
+		TTORATstpSecurityIDType	SecurityID;
+	};
+	
+	/// 基础设施基金非定向扩募信息
+	struct CTORATstpAdditionalOfferingInfoField
+	{
+		///交易所代码
+		TTORATstpExchangeIDType	ExchangeID;
+	
+		///证券代码
+		TTORATstpSecurityIDType	SecurityID;
+	
+		///证券名称
+		TTORATstpSecurityNameType	SecurityName;
+	
+		///产品代码
+		TTORATstpProductIDType	ProductID;
+	
+		///证券类别代码
+		TTORATstpSecurityTypeType	SecurityType;
+	
+		///最小申购价格
+		TTORATstpPriceType	MinPrice;
+	
+		///最大申购价格
+		TTORATstpPriceType	MaxPrice;
+	
+		///最小申购数量
+		TTORATstpVolumeType	MinVolume;
+	
+		///最大申购数量
+		TTORATstpVolumeType	MaxVolume;
+	
+		///申购单位数量
+		TTORATstpVolumeType	VolumeUnit;
+	
+		///扩募开始日期
+		TTORATstpDateType	BeginDate;
+	
+		///扩募截止日期
+		TTORATstpDateType	EndDate;
+	
+		///备注
+		TTORATstpSecurityStatusType	Remark;
+	};
+	
+	/// 查询基础设施基金非定向扩募配售额度
+	struct CTORATstpQryAdditionalOfferingQuotaField
+	{
+		///交易所代码
+		TTORATstpExchangeIDType	ExchangeID;
+	
+		///证券代码
+		TTORATstpSecurityIDType	SecurityID;
+	
+		///股东账户代码
+		TTORATstpShareholderIDType	ShareholderID;
+	
+		///投资者代码
+		TTORATstpInvestorIDType	InvestorID;
+	};
+	
+	/// 基础设施基金非定向扩募配售额度
+	struct CTORATstpAdditionalOfferingQuotaField
+	{
+		///交易所代码
+		TTORATstpExchangeIDType	ExchangeID;
+	
+		///股东代码
+		TTORATstpShareholderIDType	ShareholderID;
+	
+		///证券代码
+		TTORATstpSecurityIDType	SecurityID;
+	
+		///投资者代码
+		TTORATstpInvestorIDType	InvestorID;
+	
+		///配售额度
+		TTORATstpVolumeType	MaxVolume;
+	
+		///冻结额度
+		TTORATstpVolumeType	FrzVolume;
 	};
 	
 	/// fens用户信息

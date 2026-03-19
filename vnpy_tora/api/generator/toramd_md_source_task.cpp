@@ -225,6 +225,44 @@ void MdApi::OnRspUnSubSimplifyMarketData(CTORATstpSpecificSecurityField *pSpecif
 	this->task_queue.push(task);
 };
 
+void MdApi::OnRspSubIOPV(CTORATstpSpecificSecurityField* pSpecificSecurityField, CTORATstpRspInfoField* pRspInfoField) 
+{
+	Task task = Task();
+	task.task_name = ONRSPSUBIOPV;
+	if (pSpecificSecurityField)
+	{
+		CTORATstpSpecificSecurityField *task_data = new CTORATstpSpecificSecurityField();
+		*task_data = *pSpecificSecurityField;
+		task.task_data = task_data;
+	}
+	if (pRspInfoField)
+	{
+		CTORATstpRspInfoField *task_error = new CTORATstpRspInfoField();
+		*task_error = *pRspInfoField;
+		task.task_error = task_error;
+	}
+	this->task_queue.push(task);
+};
+
+void MdApi::OnRspUnSubIOPV(CTORATstpSpecificSecurityField* pSpecificSecurityField, CTORATstpRspInfoField* pRspInfoField) 
+{
+	Task task = Task();
+	task.task_name = ONRSPUNSUBIOPV;
+	if (pSpecificSecurityField)
+	{
+		CTORATstpSpecificSecurityField *task_data = new CTORATstpSpecificSecurityField();
+		*task_data = *pSpecificSecurityField;
+		task.task_data = task_data;
+	}
+	if (pRspInfoField)
+	{
+		CTORATstpRspInfoField *task_error = new CTORATstpRspInfoField();
+		*task_error = *pRspInfoField;
+		task.task_error = task_error;
+	}
+	this->task_queue.push(task);
+};
+
 void MdApi::OnRspSubSecurityStatus(CTORATstpSpecificSecurityField *pSpecificSecurityField, CTORATstpRspInfoField *pRspInfoField) 
 {
 	Task task = Task();
@@ -622,6 +660,19 @@ void MdApi::OnRtnSimplifyMarketData(CTORATstpSimplifyMarketDataField *pSimplifyM
 	{
 		CTORATstpSimplifyMarketDataField *task_data = new CTORATstpSimplifyMarketDataField();
 		*task_data = *pSimplifyMarketDataField;
+		task.task_data = task_data;
+	}
+	this->task_queue.push(task);
+};
+
+void MdApi::OnRtnIOPV(CTORATstpIOPVField* pIOPVField) 
+{
+	Task task = Task();
+	task.task_name = ONRTNIOPV;
+	if (pIOPVField)
+	{
+		CTORATstpIOPVField *task_data = new CTORATstpIOPVField();
+		*task_data = *pIOPVField;
 		task.task_data = task_data;
 	}
 	this->task_queue.push(task);

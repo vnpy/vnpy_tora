@@ -104,6 +104,8 @@ class StructGenerator:
 
 
 if __name__ == "__main__":
+    """"""
+
     # generator = StructGenerator("../include/tora/TORATstpXMdApiStruct.h", "toramd")
     # generator.run()
 

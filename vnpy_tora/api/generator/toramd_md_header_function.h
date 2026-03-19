@@ -22,6 +22,10 @@ int subscribeSimplifyMarketData(string ppsecurityid, int ncount, string exchange
 
 int unSubscribeSimplifyMarketData(string ppsecurityid, int ncount, string exchangeid);
 
+int subscribeIOPV(string ppsecurityid, int ncount, string exchangeid);
+
+int unSubscribeIOPV(string ppsecurityid, int ncount, string exchangeid);
+
 int subscribeSecurityStatus(string ppsecurityid, int ncount, string exchangeid);
 
 int unSubscribeSecurityStatus(string ppsecurityid, int ncount, string exchangeid);

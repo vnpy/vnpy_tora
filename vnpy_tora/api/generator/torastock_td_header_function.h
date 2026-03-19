@@ -12,6 +12,8 @@ int reqInputDeviceSerial(const dict &req, int nrequestid);
 
 int reqOrderInsert(const dict &req, int nrequestid);
 
+int reqPublicOfferedFundOrderInsert(const dict &req, int nrequestid);
+
 int reqOrderAction(const dict &req, int nrequestid);
 
 int reqCondOrderInsert(const dict &req, int nrequestid);
@@ -110,11 +112,11 @@ int reqQryETFBasket(const dict &req, int nrequestid);
 
 int reqQryInvestorPositionLimit(const dict &req, int nrequestid);
 
-int reqQrySZSEImcParams(const dict &req, int nrequestid);
+int reqQryImcParams(const dict &req, int nrequestid);
 
-int reqQrySZSEImcExchangeRate(const dict &req, int nrequestid);
+int reqQryImcExchangeRate(const dict &req, int nrequestid);
 
-int reqQrySZSEHKPriceTickInfo(const dict &req, int nrequestid);
+int reqQryHKPriceTickInfo(const dict &req, int nrequestid);
 
 int reqQryLofFundInfo(const dict &req, int nrequestid);
 
@@ -135,4 +137,14 @@ int reqQryNegoOrderAction(const dict &req, int nrequestid);
 int reqQryNegoTrade(const dict &req, int nrequestid);
 
 int reqQryNegotiationParam(const dict &req, int nrequestid);
+
+int reqQryPublicOfferedFundInfo(const dict &req, int nrequestid);
+
+int reqQryPublicOfferedFundTradeDetail(const dict &req, int nrequestid);
+
+int reqQryTenderInfo(const dict &req, int nrequestid);
+
+int reqQryAdditionalOfferingInfo(const dict &req, int nrequestid);
+
+int reqQryAdditionalOfferingQuota(const dict &req, int nrequestid);
 
