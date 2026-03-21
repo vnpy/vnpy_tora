@@ -5,7 +5,7 @@
 </p>
 
 <p align="center">
-    <img src ="https://img.shields.io/badge/version-2025.08.17-blueviolet.svg"/>
+    <img src ="https://img.shields.io/badge/version-2026.03.21-blueviolet.svg"/>
     <img src ="https://img.shields.io/badge/platform-windows|linux-yellow.svg"/>
     <img src ="https://img.shields.io/badge/python-3.10|3.11|3.12|3.13-blue.svg" />
     <img src ="https://img.shields.io/github/license/vnpy/vnpy.svg?color=orange"/>
@@ -17,11 +17,11 @@
 
 股票API的版本为：
 
-- Level1行情：v1.0.5_20230210
-- 交易：v4.0.8_20230627
+- Level1行情：v1.0.9_20250825
+- 交易：v4.1.6_20251121
 
 期权的API版本为：
-- v1.3.3_20220908
+- v1.3.4_20230908
 
 API版本的详细信息，请参考[奇点官网](https://n-sight.com.cn/)。
 

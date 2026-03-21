@@ -178,7 +178,7 @@ class ToraOptionGateway(BaseGateway):
         "地址类型": [ADDRESS_FRONT, ADDRESS_FENS]
     }
 
-    exchanges: list[str] = list(EXCHANGE_VT2TORA.keys())
+    exchanges: list[Exchange] = list(EXCHANGE_VT2TORA.keys())
 
     def __init__(self, event_engine: EventEngine, gateway_name: str) -> None:
         """构造函数"""
@@ -417,8 +417,8 @@ class ToraMdApi(MdApi):
     def subscribe(self, req: SubscribeRequest) -> None:
         """订阅行情"""
         if self.login_status:
-            exchange: Exchange = EXCHANGE_VT2TORA[req.exchange]
-            self.subscribeSPMarketData(req.symbol, 1, exchange)
+            tora_exchange: str = EXCHANGE_VT2TORA[req.exchange]
+            self.subscribeSPMarketData(req.symbol, 1, tora_exchange)
 
     def close(self) -> None:
         """关闭连接"""
@@ -812,7 +812,7 @@ class ToraTdApi(OptionApi):
         order: OrderData = req.create_order_data(str(order_id), self.gateway_name)
         self.gateway.on_order(order)
 
-        return order.vt_orderid     # type: ignore
+        return order.vt_orderid
 
     def cancel_order(self, req: CancelRequest) -> None:
         """委托撤单"""

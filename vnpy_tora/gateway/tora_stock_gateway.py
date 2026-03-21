@@ -165,7 +165,7 @@ class ToraStockGateway(BaseGateway):
         "地址类型": [ADDRESS_FRONT, ADDRESS_FENS]
     }
 
-    exchanges: list[str] = list(EXCHANGE_VT2TORA.keys())
+    exchanges: list[Exchange] = list(EXCHANGE_VT2TORA.keys())
 
     def __init__(self, event_engine: EventEngine, gateway_name: str) -> None:
         """构造函数"""
@@ -391,8 +391,8 @@ class ToraMdApi(MdApi):
     def subscribe(self, req: SubscribeRequest) -> None:
         """订阅行情"""
         if self.login_status:
-            exchange: Exchange = EXCHANGE_VT2TORA[req.exchange]
-            self.subscribeMarketData(req.symbol, 1, exchange)
+            tora_exchange: str = EXCHANGE_VT2TORA[req.exchange]
+            self.subscribeMarketData(req.symbol, 1, tora_exchange)
 
     def close(self) -> None:
         """关闭连接"""
@@ -475,8 +475,10 @@ class ToraTdApi(StockApi):
 
     def onRtnOrder(self, data: dict) -> None:
         """委托更新推送"""
-        type: OrderType = ORDERTYPE_TORA2VT.get(data["OrderPriceType"], None)
-        if not type:
+        order_type: OrderType | None = ORDERTYPE_TORA2VT.get(
+            data["OrderPriceType"]
+        )
+        if order_type is None:
             return
 
         symbol: str = data["SecurityID"]
@@ -492,7 +494,7 @@ class ToraTdApi(StockApi):
             symbol=symbol,
             exchange=exchange,
             orderid=order_id,
-            type=ORDERTYPE_TORA2VT[data["OrderPriceType"]],
+            type=order_type,
             direction=DIRECTION_TORA2VT[data["Direction"]],
             price=data["LimitPrice"],
             volume=data["VolumeTotalOriginal"],
@@ -645,8 +647,10 @@ class ToraTdApi(StockApi):
 
     def onErrRtnOrderInsert(self, data: dict, error: dict, reqid: int) -> None:
         """委托下单失败回报"""
-        type: OrderType = ORDERTYPE_TORA2VT.get(data["OrderPriceType"], None)
-        if not type:
+        order_type: OrderType | None = ORDERTYPE_TORA2VT.get(
+            data["OrderPriceType"]
+        )
+        if order_type is None:
             return
 
         order_id: str = str(data["OrderRef"])
@@ -657,7 +661,7 @@ class ToraTdApi(StockApi):
             symbol=data["SecurityID"],
             exchange=EXCHANGE_TORA2VT[data["ExchangeID"]],
             orderid=order_id,
-            type=ORDERTYPE_TORA2VT[data["OrderPriceType"]],
+            type=order_type,
             direction=DIRECTION_TORA2VT[data["Direction"]],
             price=data["LimitPrice"],
             volume=data["VolumeTotalOriginal"],
@@ -777,7 +781,7 @@ class ToraTdApi(StockApi):
         order: OrderData = req.create_order_data(str(order_id), self.gateway_name)
         self.gateway.on_order(order)
 
-        return order.vt_orderid     # type: ignore
+        return order.vt_orderid
 
     def cancel_order(self, req: CancelRequest) -> None:
         """委托撤单"""
