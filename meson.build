@@ -1,7 +1,7 @@
 project(
   'vnpy_tora',
   'cpp',
-  version: '2026.03.21',
+  version: '2026.05.14',
   license: 'MIT',
   meson_version: '>=1.7.0',
   default_options: [
