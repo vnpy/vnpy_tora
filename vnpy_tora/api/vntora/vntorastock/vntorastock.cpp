@@ -5976,13 +5976,13 @@ void StockApi::registerNameServer(string pszNsAddress)
 void StockApi::registerFensUserInfo(const dict& req)
 {
 	CTORATstpFensUserInfoField myreq = CTORATstpFensUserInfoField();
+	memset(&myreq, 0, sizeof(myreq));
 	getShort(req, "FensVer", &myreq.FensVer);
 	getString(req, "FensEnvID", myreq.FensEnvID);
 	getString(req, "FensNodeID", myreq.FensNodeID);
 	getString(req, "FensUserID", myreq.FensUserID);
 	getString(req, "UserID", myreq.UserID);
 	getString(req, "ClientInfo", myreq.ClientInfo);
-	memset(&myreq, 0, sizeof(myreq));
 	this->api->RegisterFensUserInfo(&myreq);
 }
 
