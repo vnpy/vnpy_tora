@@ -140,6 +140,9 @@ DIRECTION_VT2TORA: dict[Direction, str] = {v: k for k, v in DIRECTION_TORA2VT.it
 # 其他常量
 CHINA_TZ = ZoneInfo("Asia/Shanghai")       # 中国时区
 
+# 合约数据全局缓存字典
+symbol_contract_map: dict[str, ContractData] = {}
+
 
 ACCOUNT_USERID: str = "用户代码"
 ACCOUNT_ACCOUNTID: str = "资金账号"
@@ -262,6 +265,7 @@ class ToraMdApi(MdApi):
         self.connect_status: bool = False
         self.login_status: bool = False
         self.subscribed: set = set()
+        self.iopv_cache: dict[str, float] = {}
 
         self.userid: str = ""
         self.password: str = ""
@@ -297,6 +301,17 @@ class ToraMdApi(MdApi):
             return
 
         self.gateway.write_error("行情订阅失败", error)
+
+    def onRspSubIOPV(
+        self,
+        data: dict,
+        error: dict
+    ) -> None:
+        """订阅IOPV回报"""
+        if not error or not error["ErrorID"]:
+            return
+
+        self.gateway.write_error("IOPV订阅失败", error)
 
     def onRtnMarketData(self, data: dict) -> None:
         """行情数据推送"""
@@ -350,10 +365,14 @@ class ToraMdApi(MdApi):
             tick.ask_volume_5 = data["AskVolume5"]
 
         tick.extra = {
-            "iopv": data["IOPV"]
+            "iopv": self.iopv_cache.get(tick.symbol, data["IOPV"])
         }
 
         self.gateway.on_tick(tick)
+
+    def onRtnIOPV(self, data: dict) -> None:
+        """IOPV数据推送"""
+        self.iopv_cache[data["SecurityID"]] = data["IOPV"]
 
     def connect(
         self,
@@ -393,6 +412,10 @@ class ToraMdApi(MdApi):
         if self.login_status:
             tora_exchange: str = EXCHANGE_VT2TORA[req.exchange]
             self.subscribeMarketData(req.symbol, 1, tora_exchange)
+
+            contract: ContractData | None = symbol_contract_map.get(req.symbol)
+            if contract is not None and contract.product == Product.ETF:
+                self.subscribeIOPV(req.symbol, 1, tora_exchange)
 
     def close(self) -> None:
         """关闭连接"""
@@ -563,6 +586,7 @@ class ToraTdApi(StockApi):
             min_volume=data["MinLimitOrderBuyVolume"],
             net_position=True,
         )
+        symbol_contract_map[contract_data.symbol] = contract_data
         self.gateway.on_contract(contract_data)
 
     def onRspQryTradingAccount(
