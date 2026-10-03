@@ -1,3 +1,5 @@
+"""实现华鑫奇点期权交易接口。"""
+
 import platform
 from datetime import datetime
 from pathlib import Path
@@ -262,7 +264,7 @@ class ToraOptionGateway(BaseGateway):
 
 
 class ToraMdApi(MdApi):
-    """"""
+    """对接华鑫奇点期权的行情接口。"""
 
     def __init__(self, gateway: ToraOptionGateway) -> None:
         """构造函数"""
@@ -431,7 +433,7 @@ class ToraMdApi(MdApi):
 
 
 class ToraTdApi(OptionApi):
-    """"""
+    """对接华鑫奇点期权的交易接口。"""
 
     def __init__(self, gateway: ToraOptionGateway) -> None:
         """构造函数"""

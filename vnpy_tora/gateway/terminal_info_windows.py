@@ -1,17 +1,19 @@
+"""在 Windows 上采集华鑫奇点终端信息。"""
+
 import wmi
 import requests
 import pythoncom
 
 
 def get_iip() -> str:
-    """"""
+    """查询公网 IP。"""
     f = requests.get("http://myip.dnsomatic.com")
     iip: str = f.text
     return iip
 
 
 def get_lip() -> str:
-    """"""
+    """读取本机 IP。"""
     c = wmi.WMI()
 
     lip = ""
@@ -22,7 +24,7 @@ def get_lip() -> str:
 
 
 def get_mac() -> str:
-    """"""
+    """读取本机 MAC 地址。"""
     c = wmi.WMI()
 
     mac = ""
@@ -33,7 +35,7 @@ def get_mac() -> str:
 
 
 def get_hd() -> str:
-    """"""
+    """读取硬盘序列号。"""
     c = wmi.WMI()
 
     hd = ""
@@ -44,7 +46,7 @@ def get_hd() -> str:
 
 
 def get_terminal_info() -> str:
-    """"""
+    """初始化 COM 并组装终端信息字符串。"""
     # Initialize COM object in this thread.
     pythoncom.CoInitialize()
 

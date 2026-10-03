@@ -1,3 +1,5 @@
+"""华鑫奇点接口常量。"""
+
 TORA_TERT_RESTART = 1
 TORA_TERT_RESUME = 1
 TORA_TERT_QUICK = 2

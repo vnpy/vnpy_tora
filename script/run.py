@@ -1,3 +1,5 @@
+"""启动 VeighNa Trader 并加载华鑫奇点股票和期权接口。"""
+
 from vnpy.event import EventEngine
 from vnpy.trader.engine import MainEngine
 from vnpy.trader.ui import MainWindow, create_qapp

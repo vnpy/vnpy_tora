@@ -1,3 +1,5 @@
+"""在 Linux 上采集华鑫奇点终端信息。"""
+
 import subprocess
 import socket
 from uuid import getnode
@@ -6,7 +8,7 @@ import requests
 
 
 def get_iip() -> str:
-    """"""
+    """查询公网 IP。"""
     iip: str = ""
 
     try:
@@ -19,12 +21,12 @@ def get_iip() -> str:
 
 
 def get_lip() -> str:
-    """"""
+    """返回本机 IP。"""
     return socket.gethostbyname(socket.gethostname())
 
 
 def get_mac() -> str:
-    """"""
+    """返回本机 MAC 地址。"""
     node: int = getnode()
     hex_str = f"{node:012X}"
     mac: str = "".join(hex_str[i: i + 2] for i in range(0, 12, 2))
@@ -48,7 +50,7 @@ def run_cmd(cmd: str) -> str:
 
 
 def get_hd() -> str:
-    """"""
+    """读取磁盘序列号。"""
     for name in ["vda", "sda"]:
         cmd: str = f"udevadm info --query=all --name=/dev/{name} | grep ID_SERIAL"
         result: str = run_cmd(cmd)
@@ -61,7 +63,7 @@ def get_hd() -> str:
 
 
 def get_terminal_info() -> str:
-    """"""
+    """组装终端信息字符串。"""
     iip = ""
     iport = ""
     lip = get_lip()
