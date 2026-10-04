@@ -21,7 +21,7 @@
 # SOFTWARE.
 """VeighNa 华鑫奇点股票和期权交易接口。"""
 
-import importlib_metadata
+from importlib import metadata
 
 from .gateway import ToraStockGateway, ToraOptionGateway
 
@@ -30,6 +30,6 @@ __all__ = ["ToraStockGateway", "ToraOptionGateway"]
 
 
 try:
-    __version__ = importlib_metadata.version("vnpy_tora")
-except importlib_metadata.PackageNotFoundError:
+    __version__ = metadata.version("vnpy_tora")
+except metadata.PackageNotFoundError:
     __version__ = "dev"
