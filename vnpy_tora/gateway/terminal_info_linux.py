@@ -12,7 +12,7 @@ def get_iip() -> str:
     iip: str = ""
 
     try:
-        r = requests.get("https://api.vnpy.com/ip", timeout=2)
+        r: requests.Response = requests.get("https://api.vnpy.com/ip", timeout=2)
         iip = r.json()["ip"]
     except Exception:
         pass
@@ -28,19 +28,21 @@ def get_lip() -> str:
 def get_mac() -> str:
     """返回本机 MAC 地址。"""
     node: int = getnode()
-    hex_str = f"{node:012X}"
+    hex_str: str = f"{node:012X}"
     mac: str = "".join(hex_str[i: i + 2] for i in range(0, 12, 2))
     return mac
 
 
 def run_cmd(cmd: str) -> str:
     """运行命令"""
+    proc: subprocess.Popen[bytes]
     with subprocess.Popen(
         cmd,
         shell=True,
         stdout=subprocess.PIPE,
         stderr=subprocess.STDOUT
     ) as proc:
+        stdout: bytes
         stdout, _ = proc.communicate()
 
         if proc.returncode > 0:
@@ -51,6 +53,7 @@ def run_cmd(cmd: str) -> str:
 
 def get_hd() -> str:
     """读取磁盘序列号。"""
+    name: str
     for name in ["vda", "sda"]:
         cmd: str = f"udevadm info --query=all --name=/dev/{name} | grep ID_SERIAL"
         result: str = run_cmd(cmd)
@@ -64,13 +67,13 @@ def get_hd() -> str:
 
 def get_terminal_info() -> str:
     """组装终端信息字符串。"""
-    iip = ""
-    iport = ""
-    lip = get_lip()
-    mac = get_mac()
-    hd = get_hd()
+    iip: str = ""
+    iport: str = ""
+    lip: str = get_lip()
+    mac: str = get_mac()
+    hd: str = get_hd()
 
-    terminal_info = ";".join([
+    terminal_info: str = ";".join([
         "PC",
         f"IIP={iip}",
         f"IPORT={iport}",

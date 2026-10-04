@@ -1,5 +1,6 @@
 """实现华鑫奇点股票交易接口。"""
 
+from collections.abc import Callable
 import platform
 from datetime import datetime
 from pathlib import Path
@@ -140,7 +141,7 @@ DIRECTION_VT2TORA: dict[Direction, str] = {v: k for k, v in DIRECTION_TORA2VT.it
 
 
 # 其他常量
-CHINA_TZ = ZoneInfo("Asia/Shanghai")       # 中国时区
+CHINA_TZ: ZoneInfo = ZoneInfo("Asia/Shanghai")       # 中国时区
 
 # 合约数据全局缓存字典
 symbol_contract_map: dict[str, ContractData] = {}
@@ -241,7 +242,7 @@ class ToraStockGateway(BaseGateway):
             return
         self.count = 0
 
-        func = self.query_functions.pop(0)
+        func: Callable[[], None] = self.query_functions.pop(0)
         func()
         self.query_functions.append(func)
 
@@ -388,7 +389,7 @@ class ToraMdApi(MdApi):
         """连接服务器"""
         self.userid = userid
         self.password = password
-        self.account_type = account_type
+        self.account_type: str = account_type
 
         # 禁止重复发起连接，会导致异常崩溃
         if not self.connect_status:
@@ -655,7 +656,7 @@ class ToraTdApi(StockApi):
 
         volume: int = data["CurrentPosition"]
         if volume == 0:
-            price = 0
+            price: float = 0
         else:
             price = data["TotalPosCost"] / volume
 
@@ -716,7 +717,7 @@ class ToraTdApi(StockApi):
         """连接服务器"""
         self.userid = userid
         self.password = password
-        self.account_type = account_type
+        self.account_type: str = account_type
         self.product_info = product_info
         self.dynamic_password = dynamic_password
 
@@ -788,6 +789,9 @@ class ToraTdApi(StockApi):
         suffix: str = str(self.reqid).rjust(5, "0")
         order_id: int = int(prefix + suffix)
 
+        opt: str
+        tc: str
+        vc: str
         opt, tc, vc = ORDER_TYPE_VT2TORA[req.type]
 
         tora_req: dict = {

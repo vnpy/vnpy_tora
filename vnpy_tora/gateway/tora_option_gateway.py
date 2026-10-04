@@ -1,5 +1,6 @@
 """实现华鑫奇点期权交易接口。"""
 
+from collections.abc import Callable
 import platform
 from datetime import datetime
 from pathlib import Path
@@ -153,7 +154,7 @@ OPTIONTYPE_TORA2VT: dict[str, OptionType] = {
 }
 
 # 其他常量
-CHINA_TZ = ZoneInfo("Asia/Shanghai")       # 中国时区
+CHINA_TZ: ZoneInfo = ZoneInfo("Asia/Shanghai")       # 中国时区
 
 
 ACCOUNT_USERID: str = "用户代码"
@@ -251,7 +252,7 @@ class ToraOptionGateway(BaseGateway):
             return
         self.count = 0
 
-        func = self.query_functions.pop(0)
+        func: Callable[[], None] = self.query_functions.pop(0)
         func()
         self.query_functions.append(func)
 
@@ -661,7 +662,7 @@ class ToraTdApi(OptionApi):
 
         volume: int = data["TodayPos"] + data["HistoryPos"]
         if volume == 0:
-            price = 0
+            price: float = 0
         else:
             price = data["TotalPosCost"] / volume
 
@@ -722,7 +723,7 @@ class ToraTdApi(OptionApi):
         self.password = password
         self.account_type = account_type
         self.product_info = product_info
-        self.dynamic_password = dynamic_password
+        self.dynamic_password: str = dynamic_password
 
         if not self.connect_status:
             path: Path = get_folder_path(self.gateway_name.lower())
@@ -792,6 +793,9 @@ class ToraTdApi(OptionApi):
         suffix: str = str(self.reqid).rjust(5, "0")
         order_id: int = int(prefix + suffix)
 
+        opt: str
+        tc: str
+        vc: str
         opt, tc, vc = ORDER_TYPE_VT2TORA[req.type]
 
         tora_req: dict = {
